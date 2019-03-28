@@ -64,13 +64,14 @@ module.exports = {
             require('@fullhuman/postcss-purgecss')({
               content: [
                 'src/assets/**/*.css',
+                'content/**/*.md',
                 'src/**/*.vue',
                 'src/**/*.js'
               ],
               extractors: [
                 {
                   extractor: TailwindExtractor,
-                  extensions: ['css', 'vue', 'js']
+                  extensions: ['css', 'vue', 'js', 'md']
                 }
               ],
               whitelistPatterns: [/shiki/, /a(lgoli)?a/]
