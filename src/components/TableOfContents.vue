@@ -1,5 +1,5 @@
 <template>
-  <aside class="toc hidden md:block lg:hidden xl:block md:w-1/3 xl:w-1/6 lg:pt-24" v-if="links.length > 1">
+  <aside class="toc hidden md:block lg:hidden xl:block md:w-1/3 xl:w-1/6 lg:pt-24">
     <div class="pl-6 fixed sticky top-24 w-full">
       <div class="overflow-y-auto h-quickies py-8 md:mx-12 xl:mx-0">
         <h4 class="font-normal text-gray-700 mb-4 mt-2 p-0" v-if="title && links.length > 0">On this page:</h4>
