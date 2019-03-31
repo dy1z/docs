@@ -5,14 +5,6 @@
       <section class="flex xl:w-auto lg:ml-80">
         <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
           <div v-html="$page.doc.content"/>
-          <footer class="flex justify-between border-t mt-12 pt-8">
-            <span v-if="previousPage">
-              <g-link :to="previousPage">&larr; {{ previousPage.title }}</g-link>
-            </span>
-            <span v-if="nextPage">
-              <g-link :to="nextPage">{{ nextPage.title }} &rarr;</g-link>
-            </span>
-          </footer>
         </article>
         <table-of-contents :page="$page.doc" title="On this page:" />
       </section>
@@ -41,7 +33,6 @@ function addScrollTo(el) {
 export default {
   data() {
     return {
-      links: links,
       scrollTargets: []
     }
   },
@@ -121,21 +112,12 @@ export default {
     config () {
       return config
     },
+    links () {
+      return links
+    },
     ogImageUrl () {
       return `${this.config.siteUrl}/images/maizzle-card.jpg`
     },
-    items () {
-      return this.links.reduce((acc, group) => (acc.push(...group.items), acc), [])
-    },
-    currentIndex () {
-      return this.items.findIndex(item => item.path === this.$route.path)
-    },
-    nextPage () {
-      return this.items[this.currentIndex + 1]
-    },
-    previousPage () {
-      return this.items[this.currentIndex - 1]
-    }
   },
 }
 </script>
