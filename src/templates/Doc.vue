@@ -147,6 +147,11 @@ query Doc ($path: String) {
     title
     content
     description
+    headings {
+      depth
+      value
+      anchor
+    }
   }
 }
 </page-query>
