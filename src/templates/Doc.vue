@@ -33,7 +33,6 @@ function addScrollTo(el) {
 export default {
   data() {
     return {
-      links: links,
       scrollTargets: []
     }
   },
@@ -113,21 +112,12 @@ export default {
     config () {
       return config
     },
+    links () {
+      return links
+    },
     ogImageUrl () {
       return `${this.config.siteUrl}/images/maizzle-card.jpg`
     },
-    items () {
-      return this.links.reduce((acc, group) => (acc.push(...group.items), acc), [])
-    },
-    currentIndex () {
-      return this.items.findIndex(item => item.path === this.$route.path)
-    },
-    nextPage () {
-      return this.items[this.currentIndex + 1]
-    },
-    previousPage () {
-      return this.items[this.currentIndex - 1]
-    }
   },
 }
 </script>
