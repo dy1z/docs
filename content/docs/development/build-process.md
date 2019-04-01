@@ -9,17 +9,17 @@ When you run `maizzle build`, your Nunjucks templates go through a series of eve
 
 To get a better understanding of how Maizzle builds your emails, here's a step-by-step guide of what's going on under the hood:
 
-### 1. Nunjucks init
+## 1. Nunjucks init
 
 The templating engine is initialized. This is also where we configure [Nunjucks](https://mozilla.github.io/nunjucks/) to support Markdown and custom tags, like `{% component %}`.
 
-### 2. Get the configuration
+## 2. Get the configuration
 
 If you specified an [environment](/docs/environments/) name, i.e. `maizzle build staging`, your `config.staging.js` is merged on top of the base `config.js`. 
 
 Otherwise, running `maizzle build` simply uses the base `config.js` file.
 
-### 3. Compile Tailwind CSS
+## 3. Compile Tailwind CSS
 
 Tailwind CSS is compiled, based on the (merged) config above. Various [PostCSS](https://postcss.org/) plugins are enabled depending on the build environment and your config.
 
@@ -31,13 +31,13 @@ When _not_ developing locally, PurgeCSS is used to remove any unused classes fro
   </div>
 </div>
 
-### 4. Copy sources to output dir
+## 4. Copy sources to output dir
 
 Your source templates and assets are copied to the destination directory defined in your config. This is so that we can then process them in place. 
 
 At this point, if you're developing locally with `maizzle build` or `maizzle serve` (both of which use the base `config.js`), the compiled Tailwind CSS is output to a file in your destination directory - it helps with class autocompletion in some editors.
 
-### 5. Compile and output templates
+## 5. Compile and output templates
 
 Each template is parsed and compiled in place, in your destination directory:
 
