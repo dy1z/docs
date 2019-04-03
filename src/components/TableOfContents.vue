@@ -5,7 +5,7 @@
         <h4 class="font-normal text-gray-700 mb-4 mt-2 p-0" v-show="title && page.headings.length > 0">On this page:</h4>
         <ul class="text-sm">
           <template v-for="item in page.headings">
-            <li v-if="item.depth > 1" :key="item.anchor" class="mb-2">
+            <li v-if="item.depth > 1" :key="item.anchor" class="mb-2 truncate">
               <a :href="`${item.anchor}`" @click="scrollTo(item.anchor)" :class="{'ml-4': item.depth > 2, 'active': item.anchor == activeToc}" class="text-gray-600 hover:text-black scroll-to">
                 {{ item.value }}
               </a>
