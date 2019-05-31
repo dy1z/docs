@@ -14,7 +14,7 @@ The common type of button, built with a table. For an extra touch, let's add rou
 ```html
 <table>
   <tr>
-    <th class="bg-green-500 hover-bg-green-600 rounded" style="mso-padding-alt: 12px 48px;">
+    <th class="bg-indigo-500 hover-bg-indigo-600 rounded" style="mso-padding-alt: 12px 48px;">
       <a href="https://maizzle.com" class="block text-white text-sm leading-full py-12 px-48 no-underline">Button</a>
     </th>
   </tr>
@@ -22,7 +22,7 @@ The common type of button, built with a table. For an extra touch, let's add rou
 ```
 
 <div class="mt-8 mb-4 items-center flex flex-wrap">
-  Here's how that would look like: <a href="#" class="mt-4 sm:mt-0 sm:ml-8 rounded bg-green-500 hover:bg-green-600 text-sm font-bold leading-full py-3 px-12"><span class="text-white">Button</span></a>
+  Here's how that would look like: <a href="#" class="mt-4 sm:mt-0 sm:ml-8 rounded bg-indigo-500 hover:bg-indigo-600 text-sm font-bold leading-full py-3 px-12"><span class="text-white">Button</span></a>
 </div>
 
 ## Outlined
@@ -34,15 +34,15 @@ To make it more interesting, let's also change the background on hover:
 ```html
 <table>
   <tr>
-    <th class="border-2 border-indigo hover-bg-indigo block rounded" style="mso-padding-alt: 12px 48px;">
-      <a href="https://maizzle.com" class="block text-sm text-indigo all-hover-text-white leading-full py-12 px-48 no-underline">Button</a>
+    <th class="border-2 border-indigo-500 hover-bg-indigo-500 block rounded" style="mso-padding-alt: 12px 48px;">
+      <a href="https://maizzle.com" class="block text-sm text-indigo-500 all-hover-text-white leading-full py-12 px-48 no-underline">Button</a>
     </th>
   </tr>
 </table>
 ```
 
 <div class="mt-8 mb-4 items-center flex">
-  Example: <a href="#" class="ml-8 rounded border-2 border-green-500 hover:border-green-600 hover:bg-green-600 group text-sm font-bold leading-full py-3 px-12"><span class="text-green-500 group-hover:text-white">Button</span></a>
+  Example: <a href="#" class="ml-8 rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 group text-sm font-bold leading-full py-3 px-12"><span class="text-indigo-500 group-hover:text-white">Button</span></a>
 </div>
 
 ## Pill
@@ -52,7 +52,7 @@ Pill buttons use a larger border-radius value. Remember, Outlook doesn't support
 ```html
 <table>
   <tr>
-    <th class="bg-green-500 hover-bg-green-600 shadow-md rounded-full" style="mso-padding-alt: 12px 48px;">
+    <th class="bg-indigo-500 hover-bg-indigo-600 shadow-md rounded-full" style="mso-padding-alt: 12px 48px;">
       <a href="https://maizzle.com" class="block text-sm text-white leading-full py-12 px-48 no-underline">Button</a>
     </th>
   </tr>
@@ -60,7 +60,7 @@ Pill buttons use a larger border-radius value. Remember, Outlook doesn't support
 ```
 
 <div class="mt-8 mb-4 items-center flex">
-  Example: <a href="#" class="ml-8 rounded-full shadow-md bg-green-500 hover:bg-green-600 text-sm font-bold leading-full py-3 px-12"><span class="text-white">Button</span></a>
+  Example: <a href="#" class="ml-8 rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm font-bold leading-full py-3 px-12"><span class="text-white">Button</span></a>
 </div>
 
 ## Look & feel
