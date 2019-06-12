@@ -50,15 +50,18 @@ For example, let's register an utility for Open Sans:
 ```js
 // tailwind.config.js
 
-fonts: {
-  'open-sans': [
-    '"Open Sans"',
-    '-apple-system',
-    '"Segoe UI"',
-    'sans-serif',
-  ],
+theme: {
+  fontFamily: {
+    'open-sans': [
+      '"Open Sans"',
+      '-apple-system',
+      '"Segoe UI"',
+      'sans-serif',
+    ],
+    // ...
+  },
   // ...
-},
+}
 // ...
 ```
 
