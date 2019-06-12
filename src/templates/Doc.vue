@@ -21,6 +21,7 @@ import DocsHeader from '@/components/DocsHeader'
 import links from '@/data/docs-links.yml'
 
 function addScrollTo(el) {
+  el.preventDefault()
   let href = el.target.getAttribute('href')
 
   scrollToElement(href, {
@@ -28,6 +29,8 @@ function addScrollTo(el) {
     ease: 'out-expo',
     duration: 400
   })
+
+  history.pushState ? history.pushState(null, null, href) : location.hash = href
 }
 
 export default {

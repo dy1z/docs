@@ -6,7 +6,7 @@
         <ul class="text-sm">
           <template v-for="item in page.headings">
             <li v-if="item.depth > 1" :key="item.anchor" class="mb-2 truncate">
-              <a :href="`${item.anchor}`" @click="scrollTo(item.anchor)" :class="{'ml-4': item.depth > 2, 'active': item.anchor == activeToc}" class="text-gray-600 hover:text-black scroll-to">
+              <a :href="`${item.anchor}`" @click.prevent="scrollTo(item.anchor)" :class="{'ml-4': item.depth > 2, 'active': item.anchor == activeToc}" class="text-gray-600 hover:text-black scroll-to">
                 {{ item.value }}
               </a>
             </li>
@@ -30,10 +30,9 @@ export default {
     }
   },
   mounted () {
-    this.activeToc = ''
     if (this.$route.hash) {
       this.scrollTo(this.$route.hash)
-      this.activeToc = this.$route.hash.substring(1)
+      this.activeToc = this.$route.hash
     }
   },
   methods: {
@@ -45,6 +44,8 @@ export default {
         ease: 'out-expo',
         duration: 400
       })
+
+      history.pushState ? history.pushState(null, null, anchor) : location.hash = anchor
     },
   },
 }
