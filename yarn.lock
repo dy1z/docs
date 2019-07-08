@@ -2049,15 +2049,7 @@ color-string@^1.5.2, color-string@^1.5.3:
     color-name "^1.0.0"
     simple-swizzle "^0.2.2"
 
-color@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/color/-/color-3.1.0.tgz#d8e9fb096732875774c84bf922815df0308d0ffc"
-  integrity sha512-CwyopLkuRYO5ei2EpzpIh6LqJMt6Mt+jZhO5VI5f/wJLZriXQE32/SSqzmrh+QB+AZT81Cj8yv+7zwToW8ahZg==
-  dependencies:
-    color-convert "^1.9.1"
-    color-string "^1.5.2"
-
-color@^3.1.1:
+color@^3.0.0, color@^3.1.1, color@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/color/-/color-3.1.2.tgz#68148e7f85d41ad7649c5fa8c8106f098d229e10"
   integrity sha512-vXTJhHebByxZn3lDvDJYw4lR5+uB3vuoHsuYA5AKuxRVn5wzzIfQKGLBmgdVRHKTJYeK5rvJcHnrd0Li49CFpg==
@@ -8076,12 +8068,12 @@ tailwindcss-border-gradients@^2.0.1:
     color "^3.1.1"
     lodash "^4.17.11"
 
-tailwindcss-gradients@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss-gradients/-/tailwindcss-gradients-2.1.0.tgz#d69a8dd33f7d5ba9103dda3ec2fe37ee10f7beb5"
-  integrity sha512-dK3+eHJ1VqUUgkSIv4Dtl8p6NfGHlCpGpmGXu/8/pWui8yvMTtRDLXGl1+0ig/xMVeH1OFXl7UjIOz8BI7kIiA==
+tailwindcss-gradients@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-gradients/-/tailwindcss-gradients-2.2.0.tgz#32e6947cf2e3bc6014683617246c0ca75aac5a05"
+  integrity sha512-Ajz/2ft1oGF8jyaYScRvxctyZIelJa0+LgUCG4EeqH8BONx8O3GuO6j5X2xGYl5Uhd7Th+yTOBLY8c7O5Eoivg==
   dependencies:
-    color "^3.1.1"
+    color "^3.1.2"
     lodash "^4.17.11"
 
 tailwindcss-transitions@^2.0.1:
