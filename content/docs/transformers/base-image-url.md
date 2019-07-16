@@ -42,3 +42,23 @@ Mind the trailing slash on your URL: this influences how you reference images.
 <!-- If baseImageURL contains trailing slash -->
 <img src="folder/product-1.png">
 ```
+
+## Disabling
+
+Disable `baseImageURL` by setting its value to an empty string or a falsy value.
+
+Here's an example of how you can do that with Front Matter:
+
+```handlebars
+---
+baseImageURL: ''
+---
+```
+
+or
+
+```handlebars
+---
+baseImageURL: false
+---
+```
