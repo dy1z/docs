@@ -9,14 +9,14 @@ description: "Add CSS background image gradients with Outlook VML fallback to yo
 
 Maizzle includes a Tailwind CSS [plugin](https://www.npmjs.com/package/tailwindcss-gradients) that generates classes based on utilities that you define in `tailwind.config.js`, so you can easily use them in your emails.
 
-## CSS-only
+## CSS
 
 Simply add the utility class on an element. Specify a background color first, so that email clients that don't support CSS background gradients can display a fallback:
 
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 bg-gradient-b-blue-dark">
+    <td class="bg-blue-500 bg-gradient-b-blue-700">
       <!-- ... -->
     </td>
   </tr>
@@ -26,19 +26,45 @@ Simply add the utility class on an element. Specify a background color first, so
 You can configure the directions in the plugin's options, in your `tailwind.config.js`:
 
 ```js
-directions: {
-  't': 'to top',
-  'tr': 'to top right',
-  'r': 'to right',
-  'br': 'to bottom right',
-  'b': 'to bottom',
-  'bl': 'to bottom left',
-  'l': 'to left',
-  'tl': 'to top left',
+theme: {
+  linearGradients: theme => ({
+    colors: theme('colors'),
+    directions: {
+      't': 'to top',
+      'tr': 'to top right',
+      'r': 'to right',
+      'br': 'to bottom right',
+      'b': 'to bottom',
+      'bl': 'to bottom left',
+      'l': 'to left',
+      'tl': 'to top left',
+    },
+  }),
+  // ...
+  radialGradients: theme => ({
+    colors: theme('colors'),
+    positions: {
+      'default': 'center',
+      't': 'top',
+      'tr': 'top right',
+      'r': 'right',
+      'br': 'bottom right',
+      'b': 'bottom',
+      'bl': 'bottom left',
+      'l': 'left',
+      'tl': 'top left',
+    },
+    shapes: {
+      default: 'ellipse',
+    },
+    sizes: {
+      default: 'closest-side',
+    },
+  }),
 },
 ```
 
-## Outlook Fallback
+## Outlook VML
 
 Outlook for Windows doesn't support CSS gradients, but we can use VML.
 
@@ -47,7 +73,7 @@ You need to add it right after the element with the CSS gradient, wrapping your 
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 bg-gradient-b-blue-dark">
+    <td class="bg-blue-500 bg-gradient-b-blue-700">
       <!--[if gte mso 9]>
       <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
       <v:fill type="gradient" color="#0072FF" color2="#00C6FF" angle="90" />
@@ -73,7 +99,7 @@ Use the `all` screen breakpoint utility to prevent Juice from inlining your grad
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 all-bg-gradient-b-blue-dark">
+    <td class="bg-blue-500 all-bg-gradient-b-blue-700">
       <!-- ... -->
     </td>
   </tr>
