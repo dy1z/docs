@@ -3815,10 +3815,10 @@ gridsome-plugin-remark-shiki@^0.3.0:
     shiki-languages "^0.1.0"
     unist-util-visit "^1.4.0"
 
-gridsome@^0.6.6:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.6.6.tgz#054ce5b4f4c43624fd4885cbadd116e4b12471e2"
-  integrity sha512-6NSnOhM5wvxxSxIJt9FAOeA5IRZgx6J1V19kyfKyLxdWjlzfDwrhKFUPgROgob3N5zQfapslt3Zi21t8YS8DKg==
+gridsome@^0.6.7:
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.6.7.tgz#f86232e18426acda78b97b552cccdf310240a765"
+  integrity sha512-0BuCq2YF2edRfkhI4phsBywB2XX9P5yMfbNy4nStNKU6187UsvnQO/aYjSl1m1rxoBSAFvvOBTuo0VXXKpf4Qw==
   dependencies:
     "@babel/core" "^7.0.0"
     "@gridsome/cli" "^0.2.1"
@@ -8068,10 +8068,10 @@ tailwindcss-border-gradients@^2.0.1:
     color "^3.1.1"
     lodash "^4.17.11"
 
-tailwindcss-gradients@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss-gradients/-/tailwindcss-gradients-2.2.0.tgz#32e6947cf2e3bc6014683617246c0ca75aac5a05"
-  integrity sha512-Ajz/2ft1oGF8jyaYScRvxctyZIelJa0+LgUCG4EeqH8BONx8O3GuO6j5X2xGYl5Uhd7Th+yTOBLY8c7O5Eoivg==
+tailwindcss-gradients@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-gradients/-/tailwindcss-gradients-2.3.0.tgz#4be6498607c1a90e13161b2101aadc4501aa0480"
+  integrity sha512-d+SIcdPz+ceWGrnwV+d34gRCMeazBU74131L9ELfZHbF3gMkcOSuRMsGfopM7DWJiJwjQXWywo6qQaqs3AIYsA==
   dependencies:
     color "^3.1.2"
     lodash "^4.17.11"
@@ -8083,10 +8083,10 @@ tailwindcss-transitions@^2.0.1:
   dependencies:
     lodash "^4.17.11"
 
-tailwindcss@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.0.4.tgz#98f186c8142bfb292bcbfcb53b84df369f11ef91"
-  integrity sha512-+1NNPW+U83k6DV/uUOnsfmX86Cfb8N87fiuN0cX0mEi2sZUpglLzZqlXtP8FD9Hlne5H1UhlS8tajz+F9SSxjA==
+tailwindcss@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.0.6.tgz#4e9dbd5726d5bd5c634e7b49d0aa4ea03d112330"
+  integrity sha512-hhdvXpnlYNnxfZCpldMypSWRzgmoQbKBy3namGlsP0Gs+qM8EwF3DBVUPoq8wJYbBFjzrgatE4czWJ6f12Y9+Q==
   dependencies:
     autoprefixer "^9.4.5"
     bytes "^3.0.0"
