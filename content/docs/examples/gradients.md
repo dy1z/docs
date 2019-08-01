@@ -16,7 +16,7 @@ Simply add the utility class on an element. Specify a background color first, so
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 bg-gradient-b-blue-700">
+    <td class="bg-blue-500 bg-gradient-b-black-transparent">
       <!-- ... -->
     </td>
   </tr>
@@ -28,7 +28,7 @@ You can configure the directions in the plugin's options, in your `tailwind.conf
 ```js
 theme: {
   linearGradients: theme => ({
-    colors: theme('colors'),
+    colors: theme('gradients'),
     directions: {
       't': 'to top',
       'tr': 'to top right',
@@ -42,7 +42,7 @@ theme: {
   }),
   // ...
   radialGradients: theme => ({
-    colors: theme('colors'),
+    colors: theme('gradients'),
     positions: {
       'default': 'center',
       't': 'top',
@@ -73,7 +73,7 @@ You need to add it right after the element with the CSS gradient, wrapping your 
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 bg-gradient-b-blue-700">
+    <td class="bg-blue-500 bg-gradient-b-black-transparent">
       <!--[if gte mso 9]>
       <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
       <v:fill type="gradient" color="#0072FF" color2="#00C6FF" angle="90" />
@@ -99,7 +99,7 @@ Use the `all` screen breakpoint utility to prevent Juice from inlining your grad
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 all-bg-gradient-b-blue-700">
+    <td class="bg-blue-500 all-bg-gradient-b-black-transparent">
       <!-- ... -->
     </td>
   </tr>
