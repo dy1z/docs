@@ -112,7 +112,7 @@ templates: {
 
 ### source
 
-Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to build, and it's also used by postcss-purgecss when scanning for selectors to preserve.
+Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors to preserve.
 
 ```js
 templates: {
@@ -125,15 +125,17 @@ templates: {
 
 File extensions that you use for your Templates. 
 
-Maizzle will only look for files ending in _these_ extensions, when searching your `templates.source` directory for Templates to build.
+Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.source` directory for Templates to build.
 
 ```js
 templates: {
-  filetypes: 'html|njk|nunjucks',
+  filetypes: ['html', 'njk', 'nunjucks'], // or 'html|njk|nunjucks'
 },
 ```
 
 This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory.
+
+You can define them in an array, or as a pipe-delimited list of strings.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">While you can use any file extension for your Templates, <code class="shiki-inline">njk</code> is recommended, as it clearly shows that Nunjucks code is being used.</div>
