@@ -97,26 +97,7 @@ More on screens, in the [Tailwind CSS docs &nearr;](https://tailwindcss.com/docs
 
 ## Plugins
 
-Currently, Maizzle ships with just one plugin - [tailwindcss-gradients](https://www.npmjs.com/package/tailwindcss-gradients).
-You can configure it in the `plugins` key in your Tailwind config:
-
-```js
-plugins: [
-  require('tailwindcss-gradients')({
-    variants: ['responsive'],
-    directions: {
-      't': 'to top',
-      'tr': 'to top right',
-      'r': 'to right',
-      'br': 'to bottom right',
-      'b': 'to bottom',
-      'bl': 'to bottom left',
-      'l': 'to left',
-      'tl': 'to top left',
-    },
-    gradients: { /* [...] */ }
-  }),
-],
-```
+Maizzle comes with the [tailwindcss-gradients](https://www.npmjs.com/package/tailwindcss-gradients) plugin.
+See the [Gradients docs](/docs/gradients/) for examples showing how to configure and use it.
 
 Of course, you can add any plugin you want, like [CSS grid](https://www.npmjs.com/package/tailwindcss-grid) or [border image gradients](https://www.npmjs.com/package/tailwindcss-border-gradients).
