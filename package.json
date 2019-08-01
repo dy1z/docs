@@ -22,7 +22,7 @@
     "scroll-to-element": "^2.0.3",
     "tailwindcss": "^1.0.4",
     "tailwindcss-border-gradients": "^2.0.1",
-    "tailwindcss-gradients": "^2.2.0",
+    "tailwindcss-gradients": "^2.3.0",
     "tailwindcss-transitions": "^2.0.1"
   }
 }

@@ -8068,10 +8068,10 @@ tailwindcss-border-gradients@^2.0.1:
     color "^3.1.1"
     lodash "^4.17.11"
 
-tailwindcss-gradients@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/tailwindcss-gradients/-/tailwindcss-gradients-2.2.0.tgz#32e6947cf2e3bc6014683617246c0ca75aac5a05"
-  integrity sha512-Ajz/2ft1oGF8jyaYScRvxctyZIelJa0+LgUCG4EeqH8BONx8O3GuO6j5X2xGYl5Uhd7Th+yTOBLY8c7O5Eoivg==
+tailwindcss-gradients@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-gradients/-/tailwindcss-gradients-2.3.0.tgz#4be6498607c1a90e13161b2101aadc4501aa0480"
+  integrity sha512-d+SIcdPz+ceWGrnwV+d34gRCMeazBU74131L9ELfZHbF3gMkcOSuRMsGfopM7DWJiJwjQXWywo6qQaqs3AIYsA==
   dependencies:
     color "^3.1.2"
     lodash "^4.17.11"
