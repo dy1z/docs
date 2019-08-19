@@ -12,13 +12,14 @@ Additionally, it reduces the risk of [Gmail clipping](https://github.com/hteumeu
 
 ---
 
-Maizzle uses [html-minifier](https://www.npmjs.com/package/html-minifier) and exposes its options to your config:
+Maizzle uses [html-minifier](https://www.npmjs.com/package/html-minifier) and exposes its options to your config. 
+For example, let's define after how many characters minified code should break:
 
 ```js
 // config.js
 module.exports = {
   minify: {
-    removeEmptyAttributes: true,
+    maxLineLength: 500,
     // ...
   },
   // ...
