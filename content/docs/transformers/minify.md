@@ -34,6 +34,14 @@ Checkout the full [list of html-minifier options &nearr;](https://www.npmjs.com/
 
 ## removeEmptyAttributes
 
-Removes all attributes with whitespace-only values.
+Removes all attributes with whitespace-only values:
+
+```js
+module.exports = {
+  minify: {
+    removeEmptyAttributes: true,
+  },
+}
+```
 
 After CSS inlining and cleanup take place, it can happen that you end up with empty `style=""` attributes. This option can help you get rid of them.
