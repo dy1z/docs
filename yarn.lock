@@ -8068,10 +8068,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-tailwindcss-border-gradients@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/tailwindcss-border-gradients/-/tailwindcss-border-gradients-2.0.1.tgz#d04cf2e8300b69075c8a6d74f2d8d9b3d4ea328a"
-  integrity sha512-ubh8ml+5Y5q2GE6862QKUqtte0Qs6C3XSA3PcFSnBvneTveKmrVNItKTonFDtzhrzFtu7/Z8PmNKOIEkRUH/Bw==
+tailwindcss-border-gradients@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tailwindcss-border-gradients/-/tailwindcss-border-gradients-2.0.3.tgz#c07cd44a0dc7c86fe2fa160117f6ac640866bca3"
+  integrity sha512-LI2FOtuX1QcTcmXz49f038SfitEw/7d50vcdWD18foEUSpT7VS8etZAWxn4FdH9vxnAjbGVcEGiTKz3Y9iZvoA==
   dependencies:
     color "^3.1.1"
     lodash "^4.17.11"
