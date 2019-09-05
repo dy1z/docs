@@ -106,7 +106,7 @@
               </g-link>
             </li>
           </ul>
-          <hr class="w-px h-24 lg:h-64 -mb-6 lg:-mb-12 z-20 relative bg-gray-300">
+          <hr class="w-px h-24 lg:h-64 -mb-6 lg:-mb-12 mx-auto z-20 relative bg-gray-300">
           <div class="sm:mx-16 md:mx-32 lg:mx-0 py-px">
             <div class="lg:w-3/5 mx-auto relative bg-white flex flex-wrap justify-center rounded -mb-40 z-10 shadow-lg-soft overflow-hidden p-8 lg:p-16 lg:py-24">
               <h3 class="font-bold text-2xl leading-tight mb-4">Start building awesome emails</h3>
