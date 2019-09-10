@@ -45,6 +45,7 @@ module.exports = {
     removeUnusedCSS: {
       enabled: false,
     },
+    replaceStrings: false,
     keepOnlyAttributeSizes: {
       width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
       height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],

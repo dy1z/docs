@@ -31,6 +31,7 @@ module.exports = {
     removeUnusedCSS: {
       enabled: false,
     },
+    replaceStrings: false,
     keepOnlyAttributeSizes: {
       width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
       height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
@@ -176,6 +177,39 @@ cleanup: {
     // ...
   }
   // ...
+}
+```
+
+## replaceStrings
+
+Maizzle can batch replace strings in your HTML email template, and it even works with regular expressions!
+
+Use the `replaceStrings` option to define key-value pairs of regular expressions and strings to replace them with:
+
+```js
+// config.production.js
+module.exports = {
+  cleanup: {
+    replaceStrings: {
+      'find and replace this exact string': 'with this one',
+      '\\s?style=""': '',
+    },
+    // ...
+  },
+}
+```
+
+This is useful for cleaning up any potentially leftover code like empty `style=""` attributes, or simply replacing any string of text in the final HTML.
+
+When developing locally, Maizzle sets this to `false` so that it skips it and build time isn't unnecessarily affected: 
+
+```js
+// config.js
+module.exports = {
+  cleanup: {
+    replaceStrings: false,
+    // ...
+  },
 }
 ```
 
