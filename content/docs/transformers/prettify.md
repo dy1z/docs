@@ -11,12 +11,10 @@ Maizzle can pretty print your HTML code.
 Need to send HTML to a human? Enable `prettify` in your config:
 
 ```js
-// config.js
+// config.staging.js
 module.exports = {
   prettify: {
-    enabled: false,
-    indent_inner_html: false,
-    ocd: true,
+    enabled: true,
   },
   // ...
 }
