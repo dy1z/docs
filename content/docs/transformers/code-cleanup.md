@@ -213,6 +213,10 @@ module.exports = {
 }
 ```
 
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Character classes need to be escaped when defining a regular expression for <code class="shiki-inline">replaceStrings</code>. As you can see above, <code class="shiki-inline">\s</code> becomes <code class="shiki-inline">\\s</code>.</div>
+</div>
+
 ## keepOnlyAttributeSizes
 
 Define for which elements should Maizzle only keep attribute sizes, like `width=""` and `height=""`. Elements in these arrays will have their inline CSS widths and heights removed.
