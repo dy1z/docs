@@ -14,26 +14,32 @@
           <div class="lg:w-3/5 mx-auto px-4 lg:px-10 text-white text-center py-8 lg:pb-16">
             <h1 class="font-thin text-4xl mb-4 leading-tight tracking-tight">Framework for <span class="font-semibold">Rapid Email Prototyping</span></h1>
             <p class="text-lg mb-16">Maizzle is an email framework that helps you <strong>quickly build emails</strong> with utility-first CSS and advanced, email-specific post-processing.</p>
-            <g-link to="/docs/introduction/" class="border hover:border-yellow-450 text-white hover:text-yellow-900 shadow-md hover:bg-gradient-l-yellow-dark text-base px-12 py-3 rounded-full">Get Started</g-link>
+            <g-link to="/docs/introduction/" class="relative border text-white shadow-md text-base px-12 py-3 rounded-full group">
+              <span class="relative z-10 group-hover:text-yellow-900 transition-color">Get Started</span>
+              <span class="absolute inset-0 bg-gradient-l-yellow-dark border-yellow-450 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </g-link>
             <p class="text-xs pt-8">Looking for the <g-link href="https://github.com/maizzle/maizzle-php" class="border-b border-transparent hover:border-white transition-border-color text-white">Jigsaw version</g-link>?</p>
           </div>
           <div class="sm:w-4/5 mx-auto relative bg-white flex flex-wrap text-center rounded -mb-12 lg:-mb-16 z-10 shadow-lg-soft overflow-hidden">
             <div class="w-1/3 group">
-              <g-link to="/docs/commands/" class="text-gray-500 hover:text-gray-900 flex flex-col items-center p-4 py-6 sm:py-12 lg:p-16 hover:bg-gradient-b-yellow-dark font-semibold">
-                <svg class="fill-current w-6 lg:w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm2 2v12h16V5H2z"/></svg>
-                <span class="block text-gray-700 group-hover:text-gray-900 mt-2">CLI</span>
+              <g-link to="/docs/commands/" class="text-gray-500 hover:text-gray-900 flex flex-col items-center p-4 py-6 sm:py-12 lg:p-16 font-semibold group relative">
+                <svg class="fill-current w-6 lg:w-10 transition-color z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm2 2v12h16V5H2z"/></svg>
+                <span class="block text-gray-700 group-hover:text-gray-900 mt-2 transition-color z-10">CLI</span>
+                <span class="absolute inset-0 bg-gradient-b-yellow-dark border-yellow-450 opacity-0 group-hover:opacity-100 transition-opacity"></span>
               </g-link>
             </div>
             <div class="w-1/3 group">
-              <g-link to="/docs/introduction/" class="text-gray-500 hover:text-gray-900 flex flex-col items-center p-4 py-6 sm:py-12 lg:p-16 hover:bg-gradient-b-yellow-dark font-semibold">
-                <svg class="fill-current w-6 lg:w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M.7 9.3l4.8-4.8 1.4 1.42L2.84 10l4.07 4.07-1.41 1.42L0 10l.7-.7zm18.6 1.4l.7-.7-5.49-5.49-1.4 1.42L17.16 10l-4.07 4.07 1.41 1.42 4.78-4.78z"/></svg>
-                <span class="block text-gray-700 group-hover:text-gray-900 mt-2">Framework</span>
+              <g-link to="/docs/introduction/" class="text-gray-500 hover:text-gray-900 flex flex-col items-center p-4 py-6 sm:py-12 lg:p-16 font-semibold relative group">
+                <svg class="fill-current w-6 lg:w-10 transition-color z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M.7 9.3l4.8-4.8 1.4 1.42L2.84 10l4.07 4.07-1.41 1.42L0 10l.7-.7zm18.6 1.4l.7-.7-5.49-5.49-1.4 1.42L17.16 10l-4.07 4.07 1.41 1.42 4.78-4.78z"/></svg>
+                <span class="block text-gray-700 group-hover:text-gray-900 mt-2 transition-color z-10">Framework</span>
+                <span class="absolute inset-0 bg-gradient-b-yellow-dark border-yellow-450 opacity-0 group-hover:opacity-100 transition-opacity"></span>
               </g-link>
             </div>
             <div class="w-1/3 group">
-              <g-link to="/docs/commands/#new" class="text-gray-500 hover:text-gray-900 flex flex-col items-center p-4 py-6 sm:py-12 lg:p-16 hover:bg-gradient-b-yellow-dark font-semibold">
-                <svg class="fill-current w-6 lg:w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V0L8.11 5.87 3 12h4v8L17 8h-4z"/></svg>
-                <span class="block text-gray-700 group-hover:text-gray-900 mt-2">Starter</span>
+              <g-link to="/docs/commands/#new" class="text-gray-500 hover:text-gray-900 flex flex-col items-center p-4 py-6 sm:py-12 lg:p-16 font-semibold relative group">
+                <svg class="fill-current w-6 lg:w-10 transition-color z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V0L8.11 5.87 3 12h4v8L17 8h-4z"/></svg>
+                <span class="block text-gray-700 group-hover:text-gray-900 mt-2 transition-color z-10">Starter</span>
+                <span class="absolute inset-0 bg-gradient-b-yellow-dark border-yellow-450 opacity-0 group-hover:opacity-100 transition-opacity"></span>
               </g-link>
             </div>
           </div>
