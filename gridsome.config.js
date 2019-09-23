@@ -5,7 +5,7 @@ class TailwindExtractor {
 }
 
 module.exports = {
-  siteName: 'Maizzle - Framework for Rapid Email Prototyping',
+  siteName: 'Maizzle',
   siteDescription: "Maizzle is an email framework that helps you quickly build emails with utility-first CSS and advanced, email-specific post-processing.",
   siteUrl: 'https://maizzle.com',
   titleTemplate: `%s | Maizzle - Framework for Rapid Email Prototyping`,

@@ -138,16 +138,16 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.config.siteName,
+      title: 'Home',
       meta: [
         { property: "og:type", content: 'website' },
-        { property: "og:title", content: this.config.siteName },
+        { property: "og:title", content: 'Home' },
         { property: "og:description", content: this.config.siteDescription },
         { property: "og:url", content: this.config.siteUrl },
         { property: "og:image", content: this.ogImageUrl },
 
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: this.config.siteName },
+        { name: "twitter:title", content: 'Home' },
         { name: "twitter:description", content: this.config.siteDescription },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
