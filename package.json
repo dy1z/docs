@@ -23,6 +23,6 @@
     "tailwindcss": "^1.1.2",
     "tailwindcss-border-gradients": "^2.0.3",
     "tailwindcss-gradients": "^2.3.0",
-    "tailwindcss-transitions": "^2.0.1"
+    "tailwindcss-transitions": "^2.1.0"
   }
 }
