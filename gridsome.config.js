@@ -30,7 +30,6 @@ module.exports = {
       options: {
         path: 'content/docs/**/*.md',
         typeName: 'Doc',
-        route: '/docs/:slug',
       }
     },
     {
@@ -46,6 +45,10 @@ module.exports = {
       }
     },
   ],
+
+  templates: {
+    Doc: '/docs/:title',
+  },
 
   chainWebpack: config => {
     config.module
