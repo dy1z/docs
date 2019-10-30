@@ -10,7 +10,7 @@ The CLI tool includes commands for scaffolding, developing, and building your em
 ## new
 
 ```sh
-maizzle new [path] [repo]
+maizzle new [path] [repo] --no-deps?
 ```
 
 The `new` command is used to scaffold and initialize a Maizzle project. 
@@ -19,8 +19,12 @@ It accepts two arguments, both optional:
 
 | Argument | Type | Required | Default value | Description
 | --- | --- | --- | --- | --- |
-| `[path]` | string | no |  maizzle | Directory name to create
-| `[repo]` | string | no |  <div class="w-32 break-words"><span>https:&zwnj;//github.com/maizzle/maizzle</span></div> | Repository URL for a starter project
+| `[path]` | string | no |  maizzle | Directory name to create project in
+| `[repo]` | string | no |  <div class="w-32 break-words"><span>https:&zwnj;//github.com/maizzle/maizzle</span></div> | Git repository URL for a starter project
+
+| Flag | Shorthand | Description
+| --- | --- | --- |
+| `--no-deps` | `-d` | Don't install NPM dependencies
 
 Running it with no arguments will:
 
@@ -44,10 +48,10 @@ maizzle build [env]
 
 | Argument | Type | Required | Default value | Description
 | --- | --- | --- | --- | --- |
-| `[env]` | string | no |  local | An environment name to use. This is the `[env]` inside your `config.[env].js` file name.
+| `[env]` | string | no |  local | An environment name to use. This is the `[env]` in your `config.[env].js` file name.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If no <code class="shiki-inline">[env]</code> is specified, Maizzle will only use <code class="shiki-inline">config.js</code>.</div>
+  <div class="text-gray-600">If no <code class="shiki-inline">[env]</code> is specified, Maizzle will default it to <code class="shiki-inline">local</code> and use <code class="shiki-inline">config.js</code>.</div>
 </div>
 
 
