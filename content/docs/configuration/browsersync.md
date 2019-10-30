@@ -1,14 +1,16 @@
 ---
-title: "BrowserSync"
+title: "Browsersync"
 slug: browsersync
-description: "Develop emails locally with BrowserSync and have the browser automatically refresh the page when you update an email template"
+description: "Develop emails locally with Browsersync and have the browser automatically refresh the page when you update an email template"
 ---
 
-# BrowserSync
+# Browsersync
 
-When running the `maizzle serve` command, Maizzle uses [BrowserSync](https://browsersync.io/) to start a local server and open a directory listing of your emails in your default browser.
+When running the `maizzle serve` command, Maizzle uses [Browsersync](https://browsersync.io/) to start a local server and open a directory listing of your emails in your default browser.
 
 You can then make changes to your emails, save them, and watch the browser automatically refresh the page for you.
+
+Here is the default Browsersync config in Maizzle:
 
 ```js
 // config.js
@@ -31,17 +33,17 @@ module.exports = {
 
 ## directory
 
-When running `maizzle serve` with this setting enabled, BrowserSync will open a file explorer in your browser, starting at the root of the build directory.
+When running `maizzle serve` with this setting enabled, Browsersync will open a file explorer in your browser, starting at the root of the build directory.
 
-If you set this to `false`, the page opened by BrowserSync will be blank, and you'll need to manually navigate to your emails directory.
+If you set this to `false`, the page opened by Browsersync will be blank, and you'll need to manually navigate to your emails directory.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If using the <code class="shiki-inline">tunnel</code> option for a client demo, use <code class="shiki-inline">listing: false</code>, so they can't freely browse all your emails by going to the root URL.</div>
+  <div class="text-gray-600">If using the <code class="shiki-inline">tunnel</code> option for a client demo, use <code class="shiki-inline">directory: false</code>, so they can't freely browse all your emails by going to the root URL.</div>
 </div>
 
 ## notify
 
-Toggle BrowserSync's annoying pop-over notifications. Off by default ✌
+Toggle Browsersync's annoying pop-over notifications. Off by default ✌
 
 ## open
 
@@ -49,11 +51,11 @@ Decide which URL to open automatically when Browsersync starts.
 
 Can be `true`, `local`, `external`, `ui`, `ui-external`, `tunnel` or `false`
 
-See [BrowserSync docs](https://browsersync.io/docs/options#option-open) for details.
+See [Browsersync docs](https://browsersync.io/docs/options#option-open) for details.
 
 ## port
 
-Set the server port number - by default, your local development server will be available at `http://localhost:3000`.
+Set the server port number - by default, your local development server will be available at <code class="shiki-inline">http&zwnj;://localhost:<strong>3000</strong></code>.
 
 ## tunnel
 
@@ -61,12 +63,12 @@ When set to `true`, Maizzle will enable localhost tunneling in Browsersync, so y
 
 Both parties see the same thing, and scrolling is synced, too.
 
-You can also use a string instead of a boolean - for example `tunnel: 'mybrand'`. In this case, BrowserSync will attempt to use a custom subdomain for the URL, i.e. `https://mybrand.localtunnel.me`.
+You can also use a string instead of a boolean - for example `tunnel: 'mybrand'`. In this case, Browsersync will attempt to use a custom subdomain for the URL, i.e. `https://mybrand.localtunnel.me`.
 If that subdomain is unavailable, you will be allocated a random name as usual.
 
 ## watch
 
-Array of extra paths for BrowserSync to watch.
+Array of extra paths for Browsersync to watch.
 
 By default, the following paths are watched: 
 
@@ -90,6 +92,6 @@ module.exports = {
 }
 ```
 
-When a file in these custom watch paths is updated, BrowserSync will trigger a rebuild and will also refresh the browser page.
+When a file in these custom watch paths is updated, Browsersync will trigger a rebuild and will also refresh the browser page.
 
 
