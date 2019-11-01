@@ -1,5 +1,6 @@
 ---
 title: "Language"
+slug: "language"
 description: "Define a global language attribute for your HTML emails, to improve accessibility"
 ---
 

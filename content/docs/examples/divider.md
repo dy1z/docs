@@ -1,5 +1,6 @@
 ---
 title: "Divider"
+slug: "divider"
 description: "Create dividers or horizontal rules for your HTML email template in Maizzle"
 ---
 

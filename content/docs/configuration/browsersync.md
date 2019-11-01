@@ -1,6 +1,6 @@
 ---
 title: "Browsersync"
-slug: browsersync
+slug: "browsersync"
 description: "Develop emails locally with Browsersync and have the browser automatically refresh the page when you update an email template"
 ---
 

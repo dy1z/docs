@@ -1,5 +1,6 @@
 ---
 title: "Extra Attributes"
+slug: "extra-attributes"
 description: "Automatically add attributes to your HTML emails. Write less code and easily improve accessibility."
 ---
 

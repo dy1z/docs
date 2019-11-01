@@ -1,9 +1,10 @@
 ---
-title: "Server Side"
+title: "Node.js"
+slug: "nodejs"
 description: "Use Maizzle in Node.js on the server to compile a string to an HTML email, styled with Tailwind CSS"
 ---
 
-# Server Side
+# Use in Node.js
 
 You can use Maizzle in your Node.js app, to compile a string to an HTML email.
 

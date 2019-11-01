@@ -47,7 +47,7 @@ module.exports = {
   ],
 
   templates: {
-    Doc: '/docs/:title',
+    Doc: '/docs/:slug',
   },
 
   chainWebpack: config => {

@@ -1,6 +1,6 @@
 ---
 title: "Tailwind CSS"
-slug: tailwindcss
+slug: "tailwindcss"
 description: "Learn how to use Tailwind CSS to create HTML email templates with CSS utility classes"
 ---
 

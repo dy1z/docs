@@ -1,5 +1,6 @@
 ---
 title: "Introduction"
+slug: "introduction"
 description: "Get started with the Maizzle Email Framework"
 ---
 

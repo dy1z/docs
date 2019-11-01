@@ -1,5 +1,6 @@
 ---
 title: "Doctype"
+slug: "doctype"
 description: "Define a HTML doctype for your email templates, for compatibility and accessibility purposes"
 ---
 

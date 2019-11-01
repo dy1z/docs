@@ -1,5 +1,6 @@
 ---
 title: "Web Fonts"
+slug: "web-fonts"
 description: "Using Google Fonts or custom web fonts in HTML email with font face and media queries in Maizzle"
 ---
 

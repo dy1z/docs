@@ -23,8 +23,8 @@
       path: /docs/assets/
     - title: Tailwind CSS
       path: /docs/tailwindcss/
-    - title: Server Side
-      path: /docs/server-side/
+    - title: Node.js
+      path: /docs/nodejs/
 
 - name: Configuration
   items:

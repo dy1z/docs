@@ -1,5 +1,6 @@
 ---
 title: "CSS Inlining"
+slug: "css-inlining"
 description: "Configure automatic CSS inlining options for your HTML email templates"
 ---
 

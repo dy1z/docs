@@ -1,5 +1,6 @@
 ---
 title: "Gradients"
+slug: "gradients"
 description: "Add CSS background image gradients with Outlook VML fallback to your HTML email templates in Maizzle"
 ---
 

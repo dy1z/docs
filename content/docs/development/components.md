@@ -1,5 +1,6 @@
 ---
 title: "Components"
+slug: "components"
 description: "Import components into your HTML emails and render them with custom slot content and data"
 ---
 

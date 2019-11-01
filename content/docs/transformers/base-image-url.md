@@ -1,5 +1,6 @@
 ---
 title: "Base Image URL"
+slug: "base-image-url"
 description: "Set a base image URL and easily use absolute URLs or a CDN for your HTML email template images"
 ---
 

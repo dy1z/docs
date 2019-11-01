@@ -1,5 +1,6 @@
 ---
 title: "Assets"
+slug: "assets"
 description: "Learn about asset files - like images - in Maizzle, and organize your email templates into folders"
 ---
 

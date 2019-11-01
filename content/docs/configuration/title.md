@@ -1,5 +1,6 @@
 ---
 title: "Title"
+slug: "title"
 description: "Set a title tag value for your HTML email templates, giving screen reader users some context"
 ---
 

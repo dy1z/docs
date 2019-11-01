@@ -1,5 +1,6 @@
 ---
 title: "Functions"
+slug: "functions"
 description: "Programatically configure Maizzle by using other Node.js packages or writing your own custom functions"
 ---
 

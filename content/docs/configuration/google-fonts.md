@@ -1,5 +1,6 @@
 ---
 title: "Google Fonts"
+slug: "google-fonts"
 description: "Easily import and use Google Fonts in your HTML email templates"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Base Config"
-slug: configuration
+slug: "configuration"
 description: "All Maizzle configuration options, from the default config.js file"
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "Tailwind CSS Config"
-slug: tailwindcss-config
+slug: "tailwindcss-config"
 description: "Tailwind CSS email-tailored configuration in Maizzle"
 ---
 
 # Tailwind CSS Config
 
-Maizzle comes with an email-tailored Tailwind CSS config.
+Maizzle comes with an email-tailored `tailwind.config.js`
 
 ## Spacing units
 
@@ -32,7 +32,7 @@ module.exports = {
 
 ⚡4email doesn't support inline CSS, so there's no reason to enable `!important`.
 
-Use the [`tailwind.config`](/docs/build-paths/#tailwind) option to define a path to a _custom_ Tailwind CSS config file, where you disable the option:
+Use the [`tailwind.config`](/docs/build-paths/#tailwind) option in your environment config, to define a path to a _custom_ Tailwind CSS config file, where you disable the option:
 
 ```js
 // config.amp.js

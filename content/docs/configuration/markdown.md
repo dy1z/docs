@@ -1,5 +1,6 @@
 ---
 title: "Markdown"
+slug: "markdown"
 description: "Use Markdown in your HTML email templates. GitHub Flavored Markdown included, too."
 ---
 

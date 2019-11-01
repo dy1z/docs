@@ -1,5 +1,6 @@
 ---
 title: "Templates"
+slug: "templates"
 description: "Learn how to create HTML emails with Nunjucks template inheritance in Maizzle"
 ---
 

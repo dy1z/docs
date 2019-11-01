@@ -1,5 +1,6 @@
 ---
 title: "Code Cleanup"
+slug: "code-cleanup"
 description: "Define settings for HTML and CSS email code optimization and cleanup"
 ---
 

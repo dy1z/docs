@@ -1,5 +1,6 @@
 ---
 title: "Build Paths"
+slug: "build-paths"
 description: "Configure build source and destination paths for Maizzle to process and output your email templates"
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Charset"
+slug: "charset"
 description: "Define a charset for your HTML email templates, so that they use the correct character encoding"
 ---
 

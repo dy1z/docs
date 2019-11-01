@@ -1,5 +1,6 @@
 ---
 title: "Installation"
+slug: "installation"
 description: "Installing the Maizzle Email Framework on your machine and creating a new project"
 ---
 

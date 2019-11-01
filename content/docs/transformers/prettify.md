@@ -1,12 +1,12 @@
 ---
-title: "Prettify Code"
-slug: prettify
+title: "Prettify Email Code"
+slug: "prettify"
 description: "Pretty print your HTML email template code before sending it to a colleague or a client"
 ---
 
 # Prettify Code
 
-Maizzle can pretty print your HTML code.
+Maizzle can pretty print your HTML email code.
 
 Need to send HTML to a human? Enable `prettify` in your config:
 

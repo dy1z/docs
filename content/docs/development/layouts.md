@@ -1,5 +1,6 @@
 ---
 title: "Layouts"
+slug: "layouts"
 description: "See how to use layouts with Nunjucks templating inheritance to build your HTML emails"
 ---
 

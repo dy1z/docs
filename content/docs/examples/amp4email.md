@@ -1,6 +1,6 @@
 ---
 title: ⚡4email
-slug: amp4email
+slug: "amp4email"
 description: "Use AMP for Email in Maizzle to easily create interactive HTML emails with realtime information and in-line actions"
 ---
 

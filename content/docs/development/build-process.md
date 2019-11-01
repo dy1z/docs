@@ -1,5 +1,6 @@
 ---
 title: "Build process"
+slug: "build-process"
 description: "See how the build process works and how Maizzle builds your emails"
 ---
 

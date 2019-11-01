@@ -1,5 +1,6 @@
 ---
 title: "URL Parameters"
+slug: "url-parameters"
 description: "Easily append custom URL parameters to links in your HTML email template"
 ---
 

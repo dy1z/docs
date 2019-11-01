@@ -1,5 +1,6 @@
 ---
 title: "Buttons"
+slug: "buttons"
 description: "Learn how to create simple buttons for your HTML email templates in Maizzle"
 ---
 

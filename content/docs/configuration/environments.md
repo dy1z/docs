@@ -1,5 +1,6 @@
 ---
 title: "Environments"
+slug: "environments"
 description: "Define distinct build scenarios for your HTML email workflow, each with their own settings"
 ---
 

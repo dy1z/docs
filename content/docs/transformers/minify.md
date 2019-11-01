@@ -1,6 +1,6 @@
 ---
 title: "Email Code Minification"
-slug: minify
+slug: "minify"
 description: "Minify your HTML email code so that your production emails weigh less and you avoid Gmail clipping"
 ---
 

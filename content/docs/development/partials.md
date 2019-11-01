@@ -1,5 +1,6 @@
 ---
 title: "Partials"
+slug: "partials"
 description: "Learn how to use Nunjucks includes to import partials in your HTML email templates"
 ---
 
