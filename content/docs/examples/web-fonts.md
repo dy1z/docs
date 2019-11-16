@@ -47,7 +47,7 @@ Next, we must import it in `main.css`:
 @tailwind components;
 
 /* Import our typography component */
-@import "custom/typography"
+@import "custom/typography";
 
 @tailwind utilities;
 @import "custom/utilities";

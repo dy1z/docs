@@ -8,7 +8,7 @@ description: "Configure automatic CSS inlining options for your HTML email templ
 
 Maizzle uses the Juice library to automatically inline your CSS.
 
-Let's first take a look at all the options available - we'll go through each one:
+Let's first take a look at all the options available:
 
 ```js
 // config.js
@@ -33,19 +33,47 @@ module.exports = {
 
 ## Options
 
-Changing these options in your environment config will apply to all Templates.
+Changing these options in your environment config will apply to all Templates when building emails for that environment.
 
 ### enabled
 
-Enable automatic CSS inlining. When `false`, inlining will not take place and all other settings inside `inlineCSS` will be ignored.
+Enable automatic CSS inlining. When set to `false`, inlining will not take place and all other settings inside `inlineCSS` will be ignored.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Tip: turn this off when developing ⚡4email templates.</div>
+  <div class="text-gray-600">Note: you will need to turn this off when developing <a href="/docs/amp4email/">⚡4email templates</a>.</div>
 </div>
 
 ### styleToAttribute
 
 Defines which CSS properties should Juice duplicate as what HTML attributes.
+
+For example, this property-attribute assignment:
+
+```js
+styleToAttribute: {
+  'background-color': 'bgcolor',
+},
+```
+
+... will transform this:
+
+```html
+<table class="bg-gray-300">
+  <tr>
+    <td>...</td>
+  </tr>
+</table>
+```
+
+... into this:
+
+```html
+<table bgcolor="#e2e8f0">
+  <tr>
+    <td>...</td>
+  </tr>
+</table>
+```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">Some email clients only support certain styles through HTML attributes, completely ignoring CSS properties.</div>

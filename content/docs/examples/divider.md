@@ -70,7 +70,7 @@ For example:
 </table>
 ```
 
-Need a thicker divider hairline? Bump up the height and line-height:
+Need a thicker divider hairline? Bump up the `height` and `line-height`:
 
 ```html
 <table class="w-full">
@@ -87,7 +87,7 @@ Shorter Divider on mobile devices? Use the `sm` breakpoint:
 ```html
 <table class="w-full">
   <tr>
-    <td class="py-24 px-16 sm-py-12 sm-py-8">
+    <td class="py-24 px-16 sm-py-12 sm-px-8">
       <div class="bg-gray-300 h-px leading-px">&amp;zwnj;</div>
     </td>
   </tr>

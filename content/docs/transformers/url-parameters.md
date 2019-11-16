@@ -6,16 +6,14 @@ description: "Easily append custom URL parameters to links in your HTML email te
 
 # URL Parameters
 
-Maizzle can automatically append custom URL parameters to your links.
-
-Useful if you need analytics beside the ones from your <abbr title="Email Service Provider">ESP</abbr>.
+Maizzle can automatically append custom parameters to your URLs.
 
 ## Global
 
-To add the same URL parameters to all links in all templates, update the empty object in your environment config:
+To add the same parameters to all URLs in all Templates, use your environment config:
 
 ```js
-// config.js
+// config.production.js
 module.exports = {
   urlParameters: {
     utm_source: 'maizzle',

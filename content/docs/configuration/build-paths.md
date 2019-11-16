@@ -84,7 +84,8 @@ destination: {
 
 ## layout
 
-Name of the file that you want to use as the [default Layout](/docs/templates/#default-layout). This will be used for all templates that do not specify a Layout to extend.
+Path to the file that you want to use as the [default Layout](/docs/templates/#default-layout). 
+This will be used for all templates that do not specify a Layout to extend in their Front Matter.
 
 ```js
 build: {
@@ -124,7 +125,7 @@ templates: {
 
 ### filetypes
 
-File extensions that you use for your Templates. 
+Define what file extensions you use for your Templates. 
 
 Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.source` directory for Templates to build.
 
@@ -136,10 +137,10 @@ templates: {
 
 This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory.
 
-You can define them in an array, or as a pipe-delimited list of strings.
+You can define `filetypes` as an array, or as a pipe-delimited list of strings.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">While you can use any file extension for your Templates, <code class="shiki-inline">njk</code> is recommended, as it clearly shows that Nunjucks code is being used.</div>
+  <div class="text-gray-600">While you can use any file extension for your Templates, <code class="shiki-inline">njk</code> is recommended, as it clearly shows that Nunjucks templating is being used.</div>
 </div>
 
 
@@ -173,12 +174,12 @@ For example, you might want to:
 - use different Tailwind plugins
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Since Tailwind CSS is compiled <em>only once</em>, before Templates are built, using <code class="shiki-inline">tailwind.config</code> in Front Matter will have no effect.</div>
+  <div class="text-gray-600">Since Tailwind CSS is compiled <em>only once</em>, before Templates are built, using <code class="shiki-inline">build.tailwind.config</code> in Front Matter will have no effect.</div>
 </div>
 
 ## assets
 
-Source and destination directories of your asset files.
+Source and destination directories for your asset files.
 
 At build time, `assets.destination` will be created relative to `build.destination`, and everything inside `assets.source` will be copied into it:
 

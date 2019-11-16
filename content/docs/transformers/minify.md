@@ -6,7 +6,9 @@ description: "Minify your HTML email code so that your production emails weigh l
 
 # Minify Email Code
 
-Use the `minify` option to trim down the HTML size of your production emails. Minified email code weighs less in KB, resulting in faster sendouts, faster opens, and bandwidth savings on limited mobile plans. Every little bit helps 🙂
+Use the `minify` option to trim down the HTML size of your production emails. 
+
+Minified email code weighs less in KB, resulting in faster sendouts, faster opens, and bandwidth savings on limited mobile plans. Every little bit helps 🙂
 
 Additionally, it reduces the risk of [Gmail clipping](https://github.com/hteumeuleu/email-bugs/issues/41).
 

@@ -43,7 +43,7 @@ By default, Maizzle makes your `<table>` accessible, resets its spacing, and ens
 
 Elements that you define here can also be [cheerio](https://github.com/cheeriojs/cheerio) selectors.
 
-For example, let's add a default width to all our wrapper tables:
+For example, let's add a default width to any table that has a `wrapper` class:
 
 ```js
 applyExtraAttributes: {
@@ -56,13 +56,16 @@ applyExtraAttributes: {
 
 ## CSS classes
 
-You can use this to automatically add CSS classes to elements:
+You can also use this to automatically add CSS classes to elements:
 
 ```js
 applyExtraAttributes: {
-  'div.hero': {
-    class: 'custom-class'
-  }
+  'tr:nth-child(even)': {
+    class: 'even'
+  },
+  'tr:nth-child(odd)': {
+    class: 'odd'
+  },
   // ...
 },
 ```
@@ -71,5 +74,5 @@ applyExtraAttributes: {
 
 Because Transformers process your HTML _after_ CSS is compiled, **you cannot use any Tailwind CSS classes here**. That means any class from the compiled `main.css`.
 
-You _will_ see them added to the element's `class=""`, but they won't exist anywhere else in the Template. Therefore, adding classes like this can only be useful if you need them at a later stage in your workflow, like in your <abbr title="Email Service Provider">ESP</abbr>.
+You _will_ see them added to the element's `class=""`, but they won't exist in the `<style>` tag, so they won't work. Therefore, adding classes like this can only be useful if you need them at a later stage in your workflow, like in your <abbr title="Email Service Provider">ESP</abbr>.
 

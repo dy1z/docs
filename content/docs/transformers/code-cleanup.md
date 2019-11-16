@@ -69,7 +69,9 @@ cleanup: {
 }
 ```
 
-You can use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
+The whitelisting options can be used to preserve dynamically generated class names, like `text-{{ computedTextSizeName }}` above.
+
+You can also use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
 
 Learn more about these options, in the [PostCSS Purgecss docs &nearr;](https://github.com/FullHuman/postcss-purgecss#options)
 
@@ -193,7 +195,7 @@ module.exports = {
   cleanup: {
     replaceStrings: {
       'find and replace this exact string': 'with this one',
-      '\\s?style=""': '',
+      '\\s?style=""': '', // remove empty style="" attributes
     },
     // ...
   },
@@ -202,7 +204,7 @@ module.exports = {
 
 This is useful for cleaning up any potentially leftover code like empty `style=""` attributes, or simply replacing any string of text in the final HTML.
 
-When developing locally, Maizzle sets this to `false` so that it skips it and build time isn't unnecessarily affected: 
+Maizzle sets this to `false` in the development config, so that the function doesn't run and build time isn't unnecessarily affected: 
 
 ```js
 // config.js

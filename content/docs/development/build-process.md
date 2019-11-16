@@ -28,7 +28,7 @@ When _not_ developing locally, PurgeCSS is used to remove any unused classes fro
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">
-    Yes, <code class="shiki-inline">email-comb</code> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.
+    Yes, <code class="shiki-inline">email-comb</code> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS per Template as possible.
   </div>
 </div>
 
@@ -40,7 +40,7 @@ At this point, if you're developing locally with `maizzle build` or `maizzle ser
 
 ## 5. Compile and output templates
 
-Each template is parsed and compiled in place, in your destination directory:
+Each Template is parsed and compiled in place, in your destination directory:
 
 1. Maizzle reads the Template file
 
@@ -48,7 +48,7 @@ Each template is parsed and compiled in place, in your destination directory:
 
 3. A unique Template config is computed by merging the Template's Front Matter keys with the environment config
 
-4. The Markdown renderer is configured for the Template being parsed, based on the Template config that was just computed
+4. The Markdown renderer is configured for the Template being compiled, based on the Template config in the previous step
 
 5. Nunjucks renders the Template
     - a default Layout is used, if you haven't specified any
@@ -60,15 +60,15 @@ Each template is parsed and compiled in place, in your destination directory:
 
   The order of events is exactly as follows, and they all happen (or not) depending on how you've configured them in your env config or in the Template's FM:
 
-    - [Juice](https://github.com/Automattic/juice) is used to inline CSS
-    - [email-comb](https://www.npmjs.com/package/email-comb) is used to remove any unused CSS
+    - [Juice](https://github.com/Automattic/juice) inlines CSS
+    - [email-comb](https://www.npmjs.com/package/email-comb) removes any unused CSS
     - inline CSS sizes are removed (`width=""` and `height=""` are preserved)
     - inline background colors are removed (`bgcolor=""` is preserved)
-    - configured extra attributes are added to tags
+    - any extra attributes defined are added to tags
     - `baseImageURL` is prepended to both inline and background image paths
     - [pretty](https://www.npmjs.com/package/pretty) is used to prettify your code
     - [html-minifier](https://www.npmjs.com/package/html-minifier) minifies HTML/CSS, and removes empty attributes
     - ensure six digit HEX color codes (see [package](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit))
     - append any `urlParameters` to links
 
-8. Finally, the file is saved at the [configured location](/docs/build-paths/#destination), with the configured extension.
+8. Finally, the file is saved at the [configured location](/docs/build-paths/#destination), with the [configured extension](/docs/build-paths/#extension).

@@ -213,5 +213,5 @@ title: Preventing in-template embedded CSS from being inlined
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Although it won't be inlined, the CSS will still be subject to <a href="/docs/code-cleanup/#removeunusedcss">cleansing</a>.</div>
+  <div class="text-gray-600">Although it won't be inlined, the CSS will still be processed by <a href="/docs/code-cleanup/#removeunusedcss">email-comb</a>.</div>
 </div>
