@@ -102,3 +102,17 @@ The build command for it would be:
 ```sh
 maizzle build myclient
 ```
+
+## Template conditionals
+
+You can output content in your emails based on the environment you're building for.
+
+An `env` variable is globally available and it contains the environment name - use it in Layouts, Templates, Partials, or Components:
+
+```handlebars
+<!-- src/templates/example.njk -->
+{% if env == 'production' %} 
+  This will show only when running `maizzle build production` 
+{% endif %}
+```
+
