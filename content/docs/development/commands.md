@@ -21,7 +21,7 @@ It accepts two arguments, both optional:
 | Argument | Type | Required | Default value | Description
 | --- | --- | --- | --- | --- |
 | `[path]` | string | no |  maizzle | Directory name to create project in
-| `[repo]` | string | no |  <div class="w-32 break-words"><span>https:&zwnj;//github.com/maizzle/maizzle</span></div> | Git repository URL for a starter project
+| `[repo]` | string | no |  <div class="w-32 break-words"><span>https:&zwnj;//github.com/maizzle/maizzle.git</span></div> | Git repository URL for a starter project
 
 | Flag | Shorthand | Description
 | --- | --- | --- |
@@ -37,6 +37,10 @@ So you can basically clone any repo into any system path, which means you can us
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">If the <code class="shiki-inline">[path]</code> directory already exists, scaffolding will be aborted.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600"><code class="shiki-inline">[repo]</code> must be a valid Git repository URL (.git extension included).</div>
 </div>
 
 ## build
