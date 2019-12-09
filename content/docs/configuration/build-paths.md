@@ -50,13 +50,13 @@ destination: {
 },
 ```
 
-#### Permalink
+#### permalink
 
 You can override `destination.path` for each Template, with the `permalink` <abbr title="Front Matter">FM</abbr> key:
 
 ```handlebars
 ---
-permalink: absolute/path/to/file.html
+permalink: path/to/file.html
 ---
 
 {% block template %}
@@ -64,9 +64,25 @@ permalink: absolute/path/to/file.html
 {% endblock %}
 ```
 
+You can use both relative and absolute file paths.
+
+```handlebars
+---
+# Relative - output one level above project directory
+permalink: ../newsletter.html
+---
+```
+
+```handlebars
+---
+# Absolute - output at a specific system location
+permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
+---
+```
+
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">
-    <code class="shiki-inline">permalink</code> must be an absolute <em>file</em> path, and it is designed to be used only in the Template's Front Matter.
+    <code class="shiki-inline">permalink</code> must be a <em>file</em> path, to be used only in the Template's Front Matter.
   </div>
 </div>
 
