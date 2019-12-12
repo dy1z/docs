@@ -40,15 +40,27 @@ Save the Component to `src/components/vmlbg.njk` and import it into a Template:
 
 ## Arguments
 
-The first argument, `"src/components/vmlbg.njk"`, is the path to our component file.
+The `{% component %}` tag takes two arguments: a file path and a data object.
 
-We can also pass a second argument, which will be available under the `data` variable inside the component. The argument can be:
+### path
+
+The first argument must be the path to our component file, for example `"src/components/vmlbg.njk"`.
+
+The path needs to be relative to the project directory root.
+
+### data
+
+The second argument can be:
 
 - a string
 - an array
 - an object
 
-For example:
+It will be available under the `data` object inside the Component. 
+
+Check the Component definition above, you'll see variables like `{{ data.width }}`
+
+Here's how you'd pass both arguments:
 
 ```js
 {% component "src/components/vmlbg.njk", {width: 600, height: 500, src: 'some/image/path.jpg'} %}
@@ -60,10 +72,12 @@ For example:
 
 Finally, anything that you add between the `{% component %} {% endcomponent %}` tags will be available to the component under a `content` variable.
 
-Congratulations! 
+---
 
-You've just recreated the `vmlbg.njk` Component that Maizzle ships with 😎
+Congratulations! 🎉
 
-## Paths
+You've just recreated the `vmlbg.njk` Component that Maizzle ships with.
 
-Just like with Partials, you can keep your Components wherever you'd like. Just make sure to [update the paths](/docs/partials/#paths) for PurgeCSS and BrowserSync.
+## File Paths
+
+Just like with Partials, you can keep your Components wherever you'd like. Just make sure to [update the paths](/docs/partials/#paths) so PurgeCSS and BrowserSync know about them.

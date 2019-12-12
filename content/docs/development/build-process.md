@@ -10,17 +10,13 @@ When you run `maizzle build`, your Nunjucks templates go through a series of eve
 
 To get a better understanding of how Maizzle builds your emails, here's a step-by-step guide of what's going on under the hood:
 
-## 1. Nunjucks init
-
-The templating engine is initialized. This is also where we configure [Nunjucks](https://mozilla.github.io/nunjucks/) to support Markdown and custom tags, like `{% component %}`.
-
-## 2. Get the configuration
+## 1. Get the configuration
 
 If you specified an [environment](/docs/environments/) name, i.e. `maizzle build staging`, your `config.staging.js` is merged on top of the base `config.js`. 
 
 Otherwise, running `maizzle build` simply uses the base `config.js` file.
 
-## 3. Compile Tailwind CSS
+## 2. Compile Tailwind CSS
 
 Tailwind CSS is compiled, based on the (merged) config above. Various [PostCSS](https://postcss.org/) plugins are enabled depending on the build environment and your config.
 
@@ -32,13 +28,11 @@ When _not_ developing locally, PurgeCSS is used to remove any unused classes fro
   </div>
 </div>
 
-## 4. Copy sources to output dir
+## 3. Copy sources to output dir
 
-Your source templates and assets are copied to the destination directory defined in your config. This is so that we can then process them in place. 
+Your source templates and assets are copied to the destination directory defined in your config. This is so that we can then process them in place.
 
-At this point, if you're developing locally with `maizzle build` or `maizzle serve` (both of which use the base `config.js`), the compiled Tailwind CSS is output to a file in your destination directory - it helps with class autocompletion in some editors.
-
-## 5. Compile and output templates
+## 4. Compile and output templates
 
 Each Template is parsed and compiled in place, in your destination directory:
 
@@ -50,25 +44,29 @@ Each Template is parsed and compiled in place, in your destination directory:
 
 4. The Markdown renderer is configured for the Template being compiled, based on the Template config in the previous step
 
-5. Nunjucks renders the Template
-    - a default Layout is used, if you haven't specified any
-    - the compiled Tailwind CSS and all config options are sent to the Template as variables that you can use
+5. The templating engine is initialized. This is also where we configure [Nunjucks](https://mozilla.github.io/nunjucks/) to support Markdown and custom tags, like `{% component %}`. 
 
-6. [posthtml-content](https://github.com/posthtml/posthtml-content) looks for any `<style tailwind>` tag in the Template. If it finds any, it tries to compile the contents with Tailwind CSS. Useful if you need to use Tailwind CSS inside a style block right in your Template.
+    Your environment name, the compiled Tailwind CSS, and all config options (including any you defined in Front Matter) are exposed to all your templating parts as Nunjucks variables that you can use (`page`, `env`, and `css`).
 
-7. The compiled HTML is now passed on to a series of Transformers. 
+6. The compiled HTML is now passed on to a series of Transformers. 
 
   The order of events is exactly as follows, and they all happen (or not) depending on how you've configured them in your env config or in the Template's FM:
 
+    - [posthtml](https://github.com/posthtml/posthtml) runs with the following plugins:
+      - [posthtml-content](https://github.com/posthtml/posthtml-content) looks for any `<style tailwind>` tag in the Template. If it finds any, it tries to compile the contents with Tailwind CSS. Useful if you need to use Tailwind CSS inside a style block right in your Template.
+      - [prevent-widows](https://github.com/bashaus/prevent-widows) looks for any `prevent-widows` attribute on any tag. When it finds one, it will replace the last space in your text with a `&nbsp;`.
     - [Juice](https://github.com/Automattic/juice) inlines CSS
     - [email-comb](https://www.npmjs.com/package/email-comb) removes any unused CSS
     - inline CSS sizes are removed (`width=""` and `height=""` are preserved)
     - inline background colors are removed (`bgcolor=""` is preserved)
     - any extra attributes defined are added to tags
     - `baseImageURL` is prepended to both inline and background image paths
+    - append any `urlParameters` to links
+    - ensure six digit HEX color codes (see [package](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit))
     - [pretty](https://www.npmjs.com/package/pretty) is used to prettify your code
     - [html-minifier](https://www.npmjs.com/package/html-minifier) minifies HTML/CSS, and removes empty attributes
-    - ensure six digit HEX color codes (see [package](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit))
-    - append any `urlParameters` to links
+    - strings are replaced based on your `replaceStrings` definitions
 
-8. Finally, the file is saved at the [configured location](/docs/build-paths/#destination), with the [configured extension](/docs/build-paths/#extension).
+7. The compiled email template is saved at the [configured location](/docs/build-paths/#destination), with the [configured extension](/docs/build-paths/#extension).
+
+8. A plaintext version is output at the same location and with the same name, if `plaintext` is set to `true`.

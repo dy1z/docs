@@ -34,6 +34,7 @@ const html = Maizzle.render(`html string`, options)
   tailwind: {
     config: {},
     css: '',
+    compiled: '',
   },
   maizzle: {
     config: {},
@@ -41,14 +42,19 @@ const html = Maizzle.render(`html string`, options)
 }
 ```
 
-| tailwind | Type | Default | Description |
-| --- | --- | --- | --- |
-| `config` | Object | null | A Tailwind CSS config object. |
-| `css` | String | @tailwind utilities; | A CSS string. To use Tailwind CSS, you should at least use _@tailwind utilities_ (default) |
+###### `tailwind`
 
-| maizzle | Type | Default | Description |
-| --- | --- | --- | --- |
-| `config` | Object | null | A Maizzle config object. |
+| Option | Required | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| `config` | Yes | Object | `null` | A Tailwind CSS config object. |
+| `css` | No | String | @tailwind components; @tailwind utilities; | A string with CSS in PostCSS syntax. Gets compiled with Tailwind CSS. To use Tailwind, you should at least use _@tailwind utilities_ |
+| `compiled` | No | String | '' | A CSS string to use as-is. If provided, will override `css`. This will not be compiled with Tailwind, resulting in faster render time. |
+
+###### `maizzle`
+
+| Option | Required | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| `config` | Yes | Object | null | A complete Maizzle config object. |
 
 ## Example
 
@@ -63,8 +69,8 @@ layout: src/layouts/master.njk
 {% block template %}
 <table>
   <tr>
-    <td class="bg-blue hover-bg-blue-dark text-white text-center rounded">
-      <a href="https://maizzle.com" class="text-white inline-block text-sm font-semibold py-16 px-24 no-underline">Confirm email address</a>
+    <td class="button">
+      <a href="https://maizzle.com">Confirm email address</a>
     </td>
   </tr>
 </table>
@@ -75,7 +81,12 @@ Maizzle.render(
   {
     tailwind: {
       config: require('./tailwind.config'),
-      css: '@tailwind utilities; .myborder { @apply border border-solid border-gray-300; }',
+      css: `
+        @tailwind utilities;
+        .button { @apply rounded text-center bg-blue-500 text-white; }
+        .button:hover { @apply bg-blue-700; }
+        .button a { @apply inline-block py-16 px-24 text-sm font-semibold no-underline text-white; }
+      `,
     },
     maizzle: {
       config: require('./config'),
@@ -126,8 +137,8 @@ layout: src/layouts/master.njk
 {% block template %}
 <table>
   <tr>
-    <td class="bg-blue hover-bg-blue-dark text-white text-center rounded">
-      <a href="https://maizzle.com" class="text-white inline-block text-sm font-semibold py-16 px-24 no-underline">Confirm email address</a>
+    <td class="rounded text-center bg-blue-500 hover-bg-blue-700 text-white">
+      <a href="https://maizzle.com" class="inline-block py-16 px-24 text-sm font-semibold no-underline text-white">Confirm email address</a>
     </td>
   </tr>
 </table>

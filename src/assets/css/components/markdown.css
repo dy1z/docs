@@ -112,7 +112,7 @@
     }
 
     th, td {
-      @apply p-4 min-w-24;
+      @apply p-4;
     }
 
     th {
@@ -140,12 +140,12 @@ hr {
 
 @screen sm {
   .markdown  {
-    blockquote {
-      @apply mx-10;
+    table {
+      @apply table;
     }
 
-    thead, tbody {
-      @apply block min-w-full;
+    blockquote {
+      @apply mx-10;
     }
   }
 }

@@ -4,9 +4,9 @@ slug: "functions"
 description: "Programatically configure Maizzle by using other Node.js packages or writing your own custom functions"
 ---
 
-# Config Functions
+# Config Variables and Functions
 
-Since Maizzle is fully configured in JavaScript, you can programatically set options or make data available to your Templates.
+Since Maizzle is fully configured in JavaScript, you can programatically set config options and make data available to your Templates.
 
 ## Variables
 
@@ -27,7 +27,7 @@ module.exports = {
       'src/layouts/**/*.*',
       'src/partials/**/*.*',
       'src/components/**/*.*',
-      ...extraPurgePaths,
+      ...extraPurgePaths, // spread the array variable
     ],
     // ...
   },
@@ -37,7 +37,10 @@ module.exports = {
 
 ## Functions
 
-When using functions, you need to make sure to invoke them.
+When using a function, you need to make sure that:
+
+1. it returns something
+2. you invoke it
 
 ```js
 // config.js
@@ -46,7 +49,7 @@ const foo = function() {
 }
 
 module.exports = {
-  foo: foo(),
+  foo: foo(), // invoke function defined above
   bar: function() {
     // do stuff and return
   }(), // invoke function

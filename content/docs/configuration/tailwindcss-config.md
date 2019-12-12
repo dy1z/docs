@@ -14,25 +14,24 @@ Because they are poorly supported in email, `rem` units have been replaced with 
 
 ## !important
 
-The `important` option needs to be `true`, in order for the responsive utilities to actually override inlined CSS.
+The `important` option needs to be `true`, in order for the responsive utilities to actually override inlined CSS:
 
 ```js
 // tailwind.config.js
 module.exports = {
   important: true,
-  // ...
 }
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">When Juice inlines it, CSS will not contain <code class="shiki-inline">!important</code></div>
+  <div class="text-gray-600">This applies only to <code class="shiki-inline">&lt;head&gt;</code> CSS, inlined CSS will not contain <code class="shiki-inline">!important</code></div>
 </div>
 
 ### amp4email
 
 ⚡4email doesn't support inline CSS, so there's no reason to enable `!important`.
 
-Use the [`tailwind.config`](/docs/build-paths/#tailwind) option in your environment config, to define a path to a _custom_ Tailwind CSS config file, where you disable the option:
+Use the [`tailwind.config`](/docs/build-paths/#tailwind) option in your environment config to define a path to a _custom_ Tailwind CSS config file, where you disable the option:
 
 ```js
 // config.amp.js
@@ -46,21 +45,30 @@ build : {
 // tailwind.amp.js
 module.exports = {
   important: false,
-  // ...
 }
 ```
 
+Now you can run the `maizzle amp command`
+
 ## Separator
 
-Separators like `:` in `hover:bg-black` or `/` in `w-1/2` need to be escaped in CSS. Unfortunately, some email clients - Gmail, most notably - fail to parse selectors with escaped characters.
+Separators like `:` in `hover:bg-black` or `/` in `w-1/2` need to be \escaped in CSS. 
 
-Therefore, both `:` and `/` have been replaced with `-` in Maizzle.
+Because some email clients (Gmail 👀) fail to parse selectors with escaped characters, 
+Maizzle normalizes all your CSS selectors and HTML classes, replacing any escaped characters it finds with `-`.
+
+So you can safely use Tailwind's awesome default separator and write classes like `sm:w-1/2` - 
+Maizzle will convert that to `sm-w-1-2` in your compiled template:
 
 ```js
 // tailwind.config.js
 module.exports = {
-  separator: '-',
-  // ...
+  separator: ':',
+  theme: {
+    spacing: {
+      '1/2': '50%',
+    }
+  }
 }
 ```
 

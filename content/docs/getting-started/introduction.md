@@ -52,7 +52,7 @@ _Bring Your Own HTML_ <sup>&trade;</sup>
 
 ## Responsiveness
 
-_Responsive_ is a broad term in HTML email development. Because of the lack of standards and the wildly varying CSS support in email clients, there are many techniques that email designers use to code responsive emails.
+Because of the lack of standards and the wildly varying CSS support in email clients, there are many techniques that email designers use to code responsive emails.
 
 Since you need to <abbr title="Bring Your Own HTML">BYOHTML</abbr>, Maizzle doesn't have an opinion on how you should code your emails: from _spongy_ to _fluid_ to _responsive_ to _hybrid_, everything is supported, so you're free to use whatever technique you like or need.
 
