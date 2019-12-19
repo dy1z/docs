@@ -55,6 +55,8 @@
 
 - name: Transformers
   items:
+    - title: PostHTML
+      path: /docs/posthtml/
     - title: CSS Inlining
       path: /docs/css-inlining/
     - title: Code Cleanup

@@ -179,7 +179,7 @@ title: Using Tailwind CSS directives inside a template
 {% block head %}
 <style tailwind>
   a {
-    @apply text-red;
+    @apply text-blue-500;
   }
   @screen sm {
     table { 
