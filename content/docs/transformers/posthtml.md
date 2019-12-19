@@ -1,7 +1,7 @@
 ---
 title: "PostHTML"
 slug: "posthtml"
-description: "s"
+description: "Use PostHTML to transform your email templates"
 ---
 
 # PostHTML
