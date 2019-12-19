@@ -72,6 +72,10 @@ module.exports = {
 }
 ```
 
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Maizzle only converts <code class="shiki-inline">:</code> and <code class="shiki-inline">/</code> in your classes. If you use other special characters, like <code class="shiki-inline">%</code>  it is your responsibility to convert them.</div>
+</div>
+
 ## Screens
 
 A custom set of `@media` query breakpoints is defined.
