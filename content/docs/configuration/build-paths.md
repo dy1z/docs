@@ -132,12 +132,27 @@ templates: {
 
 Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors to preserve.
 
+It can be a string:
+
 ```js
 templates: {
   source: 'src/templates',
   // ...
 },
 ```
+
+Or an array of strings:
+
+```js
+templates: {
+  source: ['src/templates', '/path/to/more/templates'],
+  // ...
+},
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Remember, Maizzle will copy these folders over to the <code class="shiki-inline">destination.path</code> directory, with everything inside them.</div>
+</div>
 
 ### filetypes
 
