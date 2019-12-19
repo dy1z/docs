@@ -105,6 +105,70 @@ When a Template _extends_ a Layout, the `{% block template %}{% endblock %}` sec
 
 Read more about template inheritance, in the [Nunjucks docs &nearr;](https://mozilla.github.io/nunjucks/templating.html#template-inheritance)
 
+
+## Extending Templates
+
+A Template can also extend another Template 🤯 
+
+For example, imagine `src/templates/first.njk` :
+
+```yaml
+---
+layout: src/layouts/default.njk
+---
+
+{% block template %}
+Parent Template
+{% block button %}First{% endblock %}
+{% endblock %}
+```
+
+We could then extend it in `src/templates/second.njk` :
+
+```yaml
+---
+layout: src/templates/first.njk
+---
+
+{% block template %}
+{% block button %}Second{% endblock %}
+{% endblock %}
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">You can also use super() in the <code class="shiki-inline">{% block template %}</code> of <code class="shiki-inline">second.njk</code>.</div>
+</div>
+
+### Inheritance Gotchas
+
+1\. When extending a Template from another Template, you must always specify the `layout` you're extending - in both templates.
+
+2\. You must always use the `template` keyword for your main template block: both in all Templates that extend a Template, _and_ in your Layout.
+
+So this works:
+
+```yaml
+---
+layout: src/templates/first.njk
+---
+
+{% block template %}
+ # ...
+{% endblock %}
+```
+
+But this won't:
+
+```yaml
+---
+layout: src/templates/first.njk
+---
+
+{% block content %}
+ # ...
+{% endblock %}
+```
+
 ## Basic Example
 
 Here's a very basic Template example:
