@@ -25,6 +25,8 @@
       path: /docs/tailwindcss/
     - title: Node.js
       path: /docs/nodejs/
+    - title: Events
+      path: /docs/events/
 
 - name: Configuration
   items:

@@ -38,7 +38,11 @@ const html = Maizzle.render(`html string`, options)
   },
   maizzle: {
     config: {},
-  }
+  },
+  afterConfig() {},
+  beforeRender() {},
+  afterRender() {},
+  afterTransformers() {},
 }
 ```
 
@@ -55,6 +59,8 @@ const html = Maizzle.render(`html string`, options)
 | Option | Required | Type | Default | Description |
 | --- | --- | --- | --- | --- |
 | `config` | Yes | Object | null | A complete Maizzle config object. |
+
+Besides `tailwind` and `maizzle`, as you can see you can also pass certain functions to the `options` object. These are lifecycle hooks, also called [Events](/docs/events/) in Maizzle.
 
 ## Example
 
