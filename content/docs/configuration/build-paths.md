@@ -223,3 +223,36 @@ assets: {
 
 You can use it to store _any_ global email assets, not just images.
 
+## Nunjucks
+
+You can configure the Nunjucks environment by adding a `nunjucks` object.
+
+Currently, Maizzle only supports customizing the `path` and `tags` for Nunjucks:
+
+```js
+// config.js
+module.exports = {
+  build: {
+    // ..
+    nunjucks: {
+      path: '/Code/emails/project-name',
+      tags: {
+        blockStart: '<%',
+        blockEnd: '%>',
+        variableStart: '[[',
+        variableEnd: ']]',
+        commentStart: '<#',
+        commentEnd: '#>'
+      }
+    },
+  },
+}
+```
+
+### path
+
+Use the `path` key to define a base path for Nunjucks to use - extends, includes, components will all be referenced relative to it.
+
+### tags
+
+Customize the default syntax for Nunjucks blocks, variables, and comments.
