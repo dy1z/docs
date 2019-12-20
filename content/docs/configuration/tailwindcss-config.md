@@ -85,7 +85,6 @@ Maizzle uses a desktop-first approach with `max-width`, instead of Tailwind's de
 ```js
 screens: {
   all: {'raw': 'screen'},
-  xs: {'max': '480px'},
   sm: {'max': '600px'},
 },
 ```
@@ -97,13 +96,9 @@ screens: {
     - defining (web) font stacks for modern email clients 
     - preventing Juice from inlining a utility class
 
-- **xs** 
-  
-  Most smartphone viewports currently fit within this breakpoint.
-
 - **sm** 
 
-  Breakpoint to mark the most common email width boundary.
+  The breakpoint for mobile devices, adjust as needed.
 
 More on screens, in the [Tailwind CSS docs &nearr;](https://tailwindcss.com/docs/responsive-design)
 
