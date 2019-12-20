@@ -64,16 +64,69 @@ cleanup: {
     content: [], // array of filenames or globs to scan for selectors
     whitelist: [], // array of strings
     whitelistPatterns: [], // array of regular expressions
+    extractor: /[\w-/:%]+(?<!:)/g, // regular expression
   }
   // ...
 }
 ```
 
-The whitelisting options can be used to preserve dynamically generated class names, like `text-{{ computedTextSizeName }}` above.
+### content
 
-You can also use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
+Use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
 
-Learn more about these options, in the [PostCSS Purgecss docs &nearr;](https://github.com/FullHuman/postcss-purgecss#options)
+```js
+cleanup: {
+  purgeCSS: {
+    content: ['/Code/emails/project/', 'src/archive/'],
+  }
+}
+```
+
+### whitelist
+
+Use `whitelist` to define an array of class names that you want to preserve:
+
+```js
+cleanup: {
+  purgeCSS: {
+    whitelist: ['wrapper', 'button--active'],
+  }
+}
+```
+
+### whitelistPatterns
+
+Use `whitelistPatterns` to define an array of regular expressions that match class names that you want to preserve:
+
+```js
+cleanup: {
+  purgeCSS: {
+    whitelistPatterns: [/text-red-/, /button/],
+  }
+}
+```
+
+### extractor
+
+If your Tailwind class names include characters not covered by the default extractor, use this option to specify a custom one.
+
+For example, let's make sure we don't purge classes that include a `%` character:
+
+```js
+cleanup: {
+  purgeCSS: {
+    extractor: /[\w-/:%]+(?<!:)/g
+  }
+}
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Special characters like <code class="shiki-inline">%</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code class="shiki-inline">:</code> and <code class="shiki-inline">/</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself - you can do that in the <a href="/docs/events/#afterrender">afterRender()</a> Event.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Learn more about these options, in the <a href="https://github.com/FullHuman/postcss-purgecss#options" target="_blank" rel="nofollow noopener">PostCSS Purgecss docs &nearr;</a></div>
+</div>
 
 ## removeUnusedCSS
 
