@@ -15,7 +15,7 @@
     "@gridsome/transformer-remark": "^0.4.0",
     "@gridsome/transformer-yaml": "^0.2.1",
     "docsearch.js": "^2.6.3",
-    "gridsome": "^0.7.11",
+    "gridsome": "^0.7.12",
     "gridsome-plugin-remark-shiki": "^0.3.0",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^4.2.1",
