@@ -187,7 +187,7 @@ cleanup: {
 
 ### removeHTMLComments
 
-Set to `false`, to prevent `email-comb` from removing `<!-- HTML comments -->`.
+Set to `false` to prevent `email-comb` from removing `<!-- HTML comments -->`.
 
 ```js
 cleanup: {
@@ -203,6 +203,45 @@ cleanup: {
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">🔥 Adding comments for a colleague or client? Use <code class="shiki-inline">{# Nunjucks comments #}</code> - these are not rendered in the final, compiled email.</div>
 </div>
+
+### removeCSSComments
+
+Set to `false` to prevent `email-comb` from removing `/* CSS comments */`.
+
+```js
+cleanup: {
+  removeUnusedCSS: {
+    enabled: true,
+    removeCSSComments: false,
+    // ...
+  }
+  // ...
+}
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If you have <a href="/docs/css-inlining/">CSS inlining</a> enabled, CSS comments will still be removed, even with <code class="shiki-inline">removeCSSComments</code> disabled here.</div>
+</div>
+
+You can use the `data-embed` attribute on a `<style>` tag to disable inlining for CSS inside it, if you need to preserve CSS comments.
+
+For example, MailChimp uses CSS comments to define styles that are editable in their email editor. Here's how you can preserve them:
+
+1. Set `removeCSSComments: false` in your config, as above
+2. Write your CSS with comments in a separate `<style>` tag:
+
+```css
+<style data-embed>
+  /*
+    @tab Page
+    @section Body Background
+    @tip Set the background colour for the email body.
+  */
+  .wrapper {
+    /*@editable*/background-color: #EEEEEE !important;
+  }
+</style>
+```
 
 #### doNotRemoveHTMLCommentsWhoseOpeningTagContains
 
