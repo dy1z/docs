@@ -120,3 +120,11 @@ module.exports = {
 }
 ```
 
+## Prevent inlining
+
+Use the `data-embed` attribute on a `<style>` tag to prevent Juice from inlining the CSS inside it.
+Useful for writing email client CSS hacks, or for preserving CSS comments in tandem with the [`removeCSSComments: false`](/docs/code-cleanup/#removecsscomments) Cleanup option.
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Email client CSS hacks will still need to be <a href="/docs/code-cleanup/#whitelist-1">whitelisted</a> with <code class="shiki-inline">email-comb</code>.</div>
+</div>
