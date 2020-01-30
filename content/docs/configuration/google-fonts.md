@@ -77,7 +77,7 @@ This way, Juice doesn't inline it, and we also shave off some bytes 😎
 For example:
 
 ```html
-<h1 class="all-font-open-sans">Headline text</h1>
+<h1 class="all:font-open-sans">Headline text</h1>
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
