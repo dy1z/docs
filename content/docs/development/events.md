@@ -65,9 +65,11 @@ For example, let's use [Axios](https://github.com/axios/axios) to set a random [
 const axios = require('axios')
 
 module.exports = {
-  async afterConfig(config) {
-    const preheader = await axios('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1')
-    config.preheader = preheader.data[0]
+  events: {
+    async afterConfig(config) {
+      const preheader = await axios('https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1')
+      config.preheader = preheader.data[0]
+    },    
   },
 },
 ```
@@ -84,8 +86,10 @@ As an example, let's add a custom filter to Nunjucks, that will allow us to shor
 ```js
 // config.js
 module.exports = {
-  beforeRender(nunjucks, config) {
-    nunjucks.addFilter('shorten', (str, count) => str.slice(0, count || 20))
+  events: {
+    beforeRender(nunjucks, config) {
+      nunjucks.addFilter('shorten', (str, count) => str.slice(0, count || 20))
+    },    
   },
 },
 ```
@@ -111,10 +115,12 @@ Oh, and we also want to rewrite all call-to-action labels (maybe they're coming 
 ```js
 // config.js
 module.exports = {
-  afterRender(html, config) {
-    config.inlineCSS.enabled = false
-    // must return `html`
-    return html.replace(/Confirm email/g, 'Confirm your email')
+  events: {
+    afterRender(html, config) {
+      config.inlineCSS.enabled = false
+      // must return `html`
+      return html.replace(/Confirm email/g, 'Confirm your email')
+    },    
   },
 },
 ```
@@ -139,17 +145,51 @@ module.exports = {
   minify: {
     enabled: false,
   },
-  afterTransformers(html, config) {
-    // must return `html`
-    if (!config.minify.enabled) {
-      return Minifier.minify(html)
-    }
-
-    return html
+  events: {
+    afterTransformers(html, config) {
+      // must return `html`
+      if (!config.minify.enabled) {
+        return Minifier.minify(html)
+      }
+  
+      return html
+    },
   },
 },
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">You must always return the <code class="shiki-inline">html</code> when using <code class="shiki-inline">afterTransformers()</code>.</div>
+</div>
+
+### afterBuild
+
+Runs after all Templates have been compiled and output to disk. 
+
+Returns an array with a list of all files inside the [`build.destination.path`](/docs/build-paths/#path) directory.
+
+```js
+// config.js
+module.exports = {
+  events: {
+    afterBuild(files) {
+      console.log(files)
+    },
+  },
+},
+```
+
+Using it with the [default Starter](https://github.com/maizzle/maizzle), `maizzle build staging` will output:
+
+```js
+[
+  'build_staging/amp-carousel.html',
+  'build_staging/images/maizzle.png',
+  'build_staging/newsletter.html',
+  'build_staging/transactional.html'
+]
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">The <code class="shiki-inline">afterBuild</code> event is available only when using the <code class="shiki-inline">maizzle build</code> CLI command, so it will only work if added to the <code class="shiki-inline">events</code> object in your environment config.</div>
 </div>
