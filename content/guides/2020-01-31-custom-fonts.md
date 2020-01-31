@@ -36,7 +36,7 @@ cd font-face-project && code .
 
 ## Register @font-face
 
-Imagine we have a display font called Baros, which we're hosting on our website.
+Imagine we have a display font called Barosan, which we're hosting on our website.
 
 We'll use `@font-face` to register our custom font family - we can do this in the Template or in the Layout that we extend.
 
@@ -48,10 +48,10 @@ Open `src/templates/transactional.njk` and add this before `{% block template %}
 {% block head %}
 <style>
   @font-face {
-    font-family: 'Baros';
+    font-family: 'Barosan';
     font-style: normal;
     font-weight: 400;
-    src: local('Baros Regular'), local('Baros-Regular'), url(https://example.com/fonts/baros.woff2) format('woff2');
+    src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
   }
 </style>
 {% endblock %}
@@ -74,10 +74,10 @@ with this:
 {% if css %}
   <style>
     @font-face {
-      font-family: 'Baros';
+      font-family: 'Barosan';
       font-style: normal;
       font-weight: 400;
-      src: local('Baros Regular'), local('Baros-Regular'), url(https://example.com/fonts/baros.woff2) format('woff2');
+      src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
     }
 
     {{ css }}
@@ -100,8 +100,8 @@ Open `tailwind.config.js`, scroll down to `fontFamily`, and add a new font:
 
 ```js
 fontFamily: {
-  baros: [
-    'Baros',
+  barosan: [
+    'Barosan',
     '-apple-system',
     '"Segoe UI"',
     'sans-serif',
@@ -121,18 +121,18 @@ Simply add the `font-baros` class on every element where you want text to be ren
 For example, you can add it on a heading:
 
 ```html
-<h2 class="font-baros">An article title</h2>
+<h2 class="font-barosan">An article title</h2>
 ```
 
 With [CSS inlining](/docs/css-inlining/) enabled, that would result in:
 
 ```html
-<h2 style="font-family: Baros, -apple-system, 'Segoe UI', sans-serif;">An article title</h2>
+<h2 style="font-family: Barosan, -apple-system, 'Segoe UI', sans-serif;">An article title</h2>
 ```
 
 ## Advanced use
 
-Repeatedly writing that `font-baros` class on all elements isn't just impractical, 
+Repeatedly writing that `font-barosan` class on all elements isn't just impractical, 
 it also increases HTML file size (especially when inlining), which then leads to [Gmail clipping](https://github.com/hteumeuleu/email-bugs/issues/41).
 
 We can make use of Tailwind's `screen` variants and an Outlook `font-family` fallback to reduce bloat and write less code 👌
@@ -141,7 +141,7 @@ Use the `all` screen included in Maizzle and add it to your outermost<sup>1</sup
 
 ```html
 {% block template %}
-<table class="all:font-baros">
+<table class="all:font-barosan">
   <!-- ... -->
 </table>
 {% endblock %}
@@ -152,8 +152,8 @@ This will tuck the `font-family` away in an `@media` query:
 ```css
 /* Compiled CSS. Maizzle replaces escaped \: with - */
 @media screen {
-  .all-font-baros {
-    font-family: Baros, -apple-system, "Segoe UI", sans-serif !important;
+  .all-font-barosan {
+    font-family: Barosan, -apple-system, "Segoe UI", sans-serif !important;
   }
 }
 ```
@@ -184,10 +184,10 @@ To avoid this, you can wrap the `@font-face` declaration in a `@media` query, so
 ```css
 @media screen { /* or `@screen all {}` if you prefer Tailwind directives */
   @font-face {
-    font-family: 'Baros';
+    font-family: 'Barosan';
     font-style: normal;
     font-weight: 400;
-    src: local('Baros Regular'), local('Baros-Regular'), url(https://example.com/fonts/baros.woff2) format('woff2');
+    src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
   }
 }
 ```
@@ -201,17 +201,17 @@ Instead, import both the regular and bold versions of your font:
 
 ```css
 @font-face {
-  font-family: 'Baros';
+  font-family: 'Barosan';
   font-style: normal;
   font-weight: 400;
-  src: local('Baros Regular'), local('Baros-Regular'), url(https://example.com/fonts/baros.woff2) format('woff2');
+  src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
 }
 
 @font-face {
-  font-family: 'Baros';
+  font-family: 'Barosan';
   font-style: normal;
   font-weight: 700;
-  src: local('Baros Bold'), local('Baros-Bold'), url(https://example.com/fonts/baros-bold.woff2) format('woff2');
+  src: local('Barosan Bold'), local('Barosan-Bold'), url(https://example.com/fonts/barosan-bold.woff2) format('woff2');
 }
 ```
 
