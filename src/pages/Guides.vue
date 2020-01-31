@@ -3,10 +3,20 @@
     <main>
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
-        <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
-          <div v-html="$page.doc.content"/>
-        </article>
-        <table-of-contents :page="$page.doc" title="On this page:" />
+        <div class="px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
+          <h1 class="text-black font-semibold leading-tight text-4xl pb-6">Maizzle Tutorials</h1>
+          <p class="leading-code text-gray-700">Learn how to create HTML emails with Tailwind CSS in Maizzle.</p>
+          <hr class="border-0 bg-gray-200">
+          <ul>
+            <li v-for="edge in $page.tutorials.edges" :key="edge.node.id" class="pb-8">
+              <h2 class="text-2xl font-semibold leading-tight mb-4">
+                <g-link :to="edge.node.path">{{ edge.node.title }}</g-link>
+              </h2>
+              <p class="leading-code text-gray-700 mb-4">{{ excerpt(edge.node) }}</p>
+              <g-link :to="edge.node.path" class="text-ocean no-underline hover:text-ocean-darker">Read more &rarr;</g-link>
+            </li>
+          </ul>
+        </div>
       </section>
     </main>
   </Layout>
@@ -16,8 +26,8 @@
 import config from '~/.temp/config.js'
 import Layout from '~/layouts/NoTransition'
 import scrollToElement from 'scroll-to-element'
-import DocsHeader from '@/components/DocsHeader'
 import TableOfContents from '@/components/TableOfContents'
+import DocsHeader from '@/components/DocsHeader'
 
 import links from '@/data/docs-links.yml'
 
@@ -47,21 +57,17 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.$page.doc.title,
+      title: 'Home',
       meta: [
-        {
-          key: 'description',
-          name: 'description',
-          content: this.description(this.$page.doc)
-        },
-        { property: "og:title", content: this.$page.doc.title },
-        { property: "og:type", content: 'article' },
-        { property: "og:description", content: this.description(this.$page.doc) },
+        { property: "og:type", content: 'website' },
+        { property: "og:title", content: 'Home' },
+        { property: "og:description", content: this.$static.metadata.siteDescription },
+        { property: "og:url", content: this.$static.metadata.siteUrl },
         { property: "og:image", content: this.ogImageUrl },
-        { property: "og:url", content: `${this.config.siteUrl}${this.$page.doc.path}/` },
+
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: this.$page.doc.title },
-        { name: "twitter:description", content: this.description(this.$page.doc) },
+        { name: "twitter:title", content: 'Home' },
+        { name: "twitter:description", content: this.$static.metadata.siteDescription },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
         { name: "twitter:image", content: this.ogImageUrl },
@@ -90,7 +96,7 @@ export default {
     })
   },
   methods: {
-    description(post, length, clamp) {
+    excerpt(post, length, clamp) {
       if (post.description) {
         return post.description
       }
@@ -128,17 +134,34 @@ export default {
 </script>
 
 <page-query>
-query Doc ($path: String) {
-  doc (path: $path) {
-    path
-    title
-    content
-    description
-    headings {
-      depth
-      value
-      anchor
+query Tutorials ($page: Int) {
+  tutorials: allTutorial (page: $page, perPage: 2) @paginate {
+    totalCount
+    pageInfo {
+      totalPages
+      currentPage
+    }
+    edges {
+      node {
+        id
+        title
+        timeToRead
+        datetime: date (format: "YYYY-MM-DD HH:mm:ss")
+        content
+        description
+        path
+      }
     }
   }
 }
 </page-query>
+
+<static-query>
+query {
+  metadata {
+    siteName
+    siteUrl
+    siteDescription
+  }
+}
+</static-query>

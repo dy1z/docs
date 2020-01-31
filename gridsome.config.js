@@ -27,6 +27,13 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/guides/**/*.md',
+        typeName: 'Tutorial',
+      }
+    },
+    {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: 'UA-123145832-1'
@@ -42,6 +49,7 @@ module.exports = {
 
   templates: {
     Doc: '/docs/:slug',
+    Tutorial: '/guides/:slug',
   },
 
   chainWebpack: config => {

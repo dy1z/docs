@@ -4,9 +4,10 @@
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
         <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
-          <div v-html="$page.doc.content"/>
+          <h1 v-html="$page.tutorial.title" class="tracking-tight" />
+          <div v-html="$page.tutorial.content"/>
         </article>
-        <table-of-contents :page="$page.doc" title="On this page:" />
+        <table-of-contents :page="$page.tutorial" title="In this guide:" />
       </section>
     </main>
   </Layout>
@@ -47,21 +48,21 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.$page.doc.title,
+      title: this.$page.tutorial.title,
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.description(this.$page.doc)
+          content: this.description(this.$page.tutorial)
         },
-        { property: "og:title", content: this.$page.doc.title },
+        { property: "og:title", content: this.$page.tutorial.title },
         { property: "og:type", content: 'article' },
-        { property: "og:description", content: this.description(this.$page.doc) },
+        { property: "og:description", content: this.description(this.$page.tutorial) },
         { property: "og:image", content: this.ogImageUrl },
-        { property: "og:url", content: `${this.config.siteUrl}${this.$page.doc.path}/` },
+        { property: "og:url", content: `${this.config.siteUrl}${this.$page.tutorial.path}/` },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: this.$page.doc.title },
-        { name: "twitter:description", content: this.description(this.$page.doc) },
+        { name: "twitter:title", content: this.$page.tutorial.title },
+        { name: "twitter:description", content: this.description(this.$page.tutorial) },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
         { name: "twitter:image", content: this.ogImageUrl },
@@ -128,8 +129,8 @@ export default {
 </script>
 
 <page-query>
-query Doc ($path: String) {
-  doc (path: $path) {
+query Tutorial ($path: String) {
+  tutorial (path: $path) {
     path
     title
     content
