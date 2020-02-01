@@ -44,12 +44,12 @@ Next, we must import it in `main.css`:
 
 ```css
 @import "custom/reset";
-@tailwind components;
+@import "tailwindcss/components";
 
 /* Import our typography component */
 @import "custom/typography";
 
-@tailwind utilities;
+@import "tailwindcss/utilities";
 @import "custom/utilities";
 ```
 
@@ -72,7 +72,7 @@ fontFamily: {
 Now we can use it:
 
 ```html
-<h1 class="all-font-lato">Headline using custom webfont</h1>
+<h1 class="all:font-lato">Headline using custom webfont</h1>
 ```
 
 ### Push to head block

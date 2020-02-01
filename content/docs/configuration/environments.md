@@ -8,7 +8,7 @@ description: "Define distinct build scenarios for your HTML email workflow, each
 
 When developing HTML emails, you might want to use different data and automations in your local and production environments. 
 
-For example, you don't need inlining or CSS purging when developing an email on your machine, but you'll want _both_ enabled for the final, production-ready emails.
+For example, you don't need CSS inlining or purging when developing on your machine, but you'll want _both_ enabled for the final, production-ready emails.
 
 Inspired by [Jigsaw](https://jigsaw.tighten.co/)'s approach, Maizzle makes this easy by allowing you to create custom build environments through additional `config.[env].js` files.
 
@@ -18,7 +18,7 @@ Think of environments as 'build scenarios':
 
 > When I run `maizzle build [environment]`, should X happen? Should CSS be inlined? Should my HTML be minified? Do I need some data to be available for the templates?
 
-For example, let's define a _production_ environment, by creating a new file named `config.production.js`:
+For example, let's define a _production_ environment, by creating a new file named `config.production.js`, in the project root:
 
 ```js
 // config.production.js
@@ -29,7 +29,10 @@ module.exports = {
 }
 ```
 
-`config.production.js` will be merged _on top_ of `config.js`, so you only need to specify the config values that you are changing for the _production_ build.
+### Merging
+
+Any new environment you create will be merged _on top_ of the base `config.js` when you build for that environment.
+So in the case above, you only need to specify the config values that you are _changing_ in the `production` environment.
 
 ## Environment builds
 
@@ -51,9 +54,9 @@ This output path is, of course, [configurable](/docs/build-paths/#path).
 
 Maizzle comes with three environment configs:
 
-1. local
-2. staging
-3. production
+1. `local`
+2. `staging`
+3. `production`
 
 ### Local
 
@@ -67,11 +70,11 @@ Build command:
 maizzle build
 ```
 
-This has the fastest build time, since there is almost no post-processing.
+This has the fastest build time, since there is almost no post-processing going on.
 
 ### Staging
 
-`config.staging.js` is setup to output human-friendly email code. 
+`config.staging.js` is setup to output production-ready email code, formatted with humans in mind. 
 
 CSS purging and inlining are enabled, but code it prettified so that other people get nicely-formatted, more readable code.
 

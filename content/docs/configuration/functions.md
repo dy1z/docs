@@ -1,7 +1,7 @@
 ---
 title: "Functions"
 slug: "functions"
-description: "Programatically configure Maizzle by using other Node.js packages or writing your own custom functions"
+description: "Programatically configure Maizzle or use the output of other Node.js packages as variables in your Templates"
 ---
 
 # Config Variables and Functions

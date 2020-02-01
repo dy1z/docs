@@ -47,7 +47,7 @@ module.exports = {
 
 ## Accessibility
 
-The `<title>` tag is needed in order to give screen reader users context. 
+The `<title>` tag helps give screen reader users some context. 
 
-It also helps when viewing the email in a browser (like your email's online version), by setting the title on the browser's tab.
+It's also useful when viewing the email in a browser (like your email's webversion), by showing the title in the browser's tab.
 

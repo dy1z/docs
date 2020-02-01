@@ -26,7 +26,7 @@ By default, code will be indented with 2 spaces.
 
 [pretty](https://www.npmjs.com/package/pretty) is used to format your code.
 
-Under the hood, [js-beautify](https://www.npmjs.com/package/js-beautify) is used, which means that you can use any of its CSS and HTML Beautifier options in your Maizzle `pretty {}` config object.
+Under the hood, `pretty` uses [js-beautify](https://www.npmjs.com/package/js-beautify), which means that you can use any of its CSS and HTML Beautifier options in your Maizzle `pretty {}` config object.
 
 Maybe you prefer tabs for indentation?
 
@@ -38,7 +38,6 @@ module.exports = {
     indent_with_tabs: true,
     // ...
   },
-  // ...
 }
 ```
 

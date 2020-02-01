@@ -82,7 +82,7 @@ permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">
-    <code class="shiki-inline">permalink</code> must be a <em>file</em> path, to be used only in the Template's Front Matter.
+    <code class="shiki-inline">permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.
   </div>
 </div>
 
@@ -110,7 +110,7 @@ build: {
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the file does not exist, rendering will fail and the script will exit.</div>
+  <div class="text-gray-600">If the file does not exist, build will fail and the script will exit.</div>
 </div>
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
@@ -119,7 +119,7 @@ build: {
 
 ## templates
 
-Paths related to your Templates.
+Options to define your Template's `source` directories and file extensions to look for.
 
 ```js
 templates: {
@@ -130,7 +130,7 @@ templates: {
 
 ### source
 
-Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors to preserve.
+Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors.
 
 It can be a string:
 
@@ -151,7 +151,7 @@ templates: {
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Remember, Maizzle will copy these folders over to the <code class="shiki-inline">destination.path</code> directory, with everything inside them.</div>
+  <div class="text-gray-600">Remember, Maizzle will copy these folders over to the <code class="shiki-inline">destination.path</code> directory, with <em>everything</em> inside them.</div>
 </div>
 
 ### filetypes
@@ -166,7 +166,7 @@ templates: {
 },
 ```
 
-This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory.
+This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory - it will not try to parse them.
 
 You can define `filetypes` as an array, or as a pipe-delimited list of strings.
 
@@ -196,16 +196,17 @@ Paths to your [main CSS file](/docs/tailwindcss/#maincss), that will be compiled
 
 Path to the Tailwind CSS config file to use.
 
-You can use this to customize Tailwind for any build scenario.
+You can use this to specify a Tailwind config file for any build scenario.
 
-For example, you might want to:
+For example, you might want to use a separate Tailwind config, where you:
 
-- define fewer theming options for an environment (faster CSS compilation)
-- disable `!important` in ⚡4email templates
+- define fewer theming options (faster CSS compilation)
+- disable `!important` (like in ⚡4email templates)
 - use different Tailwind plugins
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Since Tailwind CSS is compiled <em>only once</em>, before Templates are built, using <code class="shiki-inline">build.tailwind.config</code> in Front Matter will have no effect.</div>
+  <div class="font-semibold mb-2">No effect in Front Matter</div>
+  <div class="text-gray-600">Since Tailwind CSS is compiled only once, <em>before</em> Templates are built, using <code class="shiki-inline">build.tailwind.config</code> in Front Matter will have no effect.</div>
 </div>
 
 ## assets
@@ -256,3 +257,7 @@ Use the `path` key to define a base path for Nunjucks to use - extends, includes
 ### tags
 
 Customize the default syntax for Nunjucks blocks, variables, and comments.
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Careful! Angle brackets for Nunjucks tags like <code class="shiki-inline">&lt;</code> and <code class="shiki-inline">&gt;</code> can trip up the minifier or inliner. Both <a href="https://github.com/Automattic/juice#juicecodeblocks" target="_blank" ref="noopener noreferrer">Juice</a> and <a href="https://github.com/kangax/html-minifier#options-quick-reference" target="_blank" rel="noopener noreferrer">html-minifier</a> have options to mitigate this.</div>
+</div>

@@ -75,20 +75,11 @@ styleToAttribute: {
 </table>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Some email clients only support certain styles through HTML attributes, completely ignoring CSS properties.</div>
-</div>
-
-
 ### applySizeAttribute
 
-Specify an array of tag names that should receive `width=""` and `height=""` attributes. 
+Specify an array of tag names that the inliner should add `width=""` and `height=""` attributes to.
 
 These are passed to Juice, which will add any inline width and height CSS rules it finds as HTML attributes, but only for the tags specified here.
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Some email clients only support attribute-based widths and heights on certain tags, so you can use this for better compatibility.</div>
-</div>
 
 ### excludedProperties
 

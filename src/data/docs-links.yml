@@ -46,7 +46,7 @@
       path: /docs/title/
     - title: Google Fonts
       path: /docs/google-fonts/
-    - title: BrowserSync
+    - title: Browsersync
       path: /docs/browsersync/
     - title: Build Paths
       path: /docs/build-paths/

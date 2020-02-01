@@ -55,6 +55,15 @@ title: Preventing widow words
 {% endblock %}
 ```
 
+That will output:
+
+```html
+<div>
+  <p>Ullamco aliqua labore do proident commodo officia&ampnbsp;excepteur.</p>
+  <p>Reprehenderit dolore deserunt elit reprehenderit cillum nostrud do laborum&ampnbsp;et.</p>
+</div>
+```
+
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Enable it globally by adding it to your Layout's <code class="shiki-inline">&lt;body&gt;</code> tag.</div>
+  <div class="text-gray-600">Enable <code class="shiki-inline">prevent-widows</code> globally by adding it to your Layout's <code class="shiki-inline">&lt;body&gt;</code> tag.</div>
 </div>

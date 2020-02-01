@@ -8,7 +8,7 @@ description: "Import components into your HTML emails and render them with custo
 
 Components are supercharged [Partials](/docs/partials/): they allow you to pass content and data to the file that you are importing into your Template.
 
-## Creating
+## Create
 
 Let's create a VML background image component, to which we can pass data about the image, and the HTML to be overlayed on top of it.
 
@@ -23,12 +23,14 @@ We might imagine something like this:
 <!--[if mso]></div></v:rect><![endif]-->
 ```
 
-We would like to access data being sent to the Component under the `data` variable. The 'body' of the Component or, in our case, the HTML to be overlayed, we will access under the `content` variable.
+We would like to access data being sent to the Component under the `data` variable. 
+The 'body' of the Component or, in our case, the HTML to be overlayed, will be accessible under the `content` variable.
 
+Save the Component to `src/components/vmlbg.njk`
 
-## Importing
+## Import
 
-Save the Component to `src/components/vmlbg.njk` and import it into a Template:
+Import the Component you just created in a Template, with the `{% component %}` tag:
 
 ```js
 {% component "src/components/vmlbg.njk" %}
@@ -80,4 +82,4 @@ You've just recreated the `vmlbg.njk` Component that Maizzle ships with.
 
 ## File Paths
 
-Just like with Partials, you can keep your Components wherever you'd like. Just make sure to [update the paths](/docs/partials/#paths) so PurgeCSS and BrowserSync know about them.
+Just like with Partials, you can keep your Components wherever you'd like. Just make sure to [update the paths](/docs/partials/#paths) so PurgeCSS and Browsersync know about them.

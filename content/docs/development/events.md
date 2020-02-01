@@ -51,7 +51,7 @@ html = Maizzle.render(str, {
 
 ## Events
 
-These are the available events that you can use in Maizzle.
+These are the events that you can use in Maizzle.
 
 ### afterConfig
 

@@ -20,11 +20,19 @@ module.exports = {
 }
 ```
 
-Adding them to the config will make them available globally, to all Templates.
+You can then use a `<link>` tag to import them in your Layout:
+
+```handlebars
+{% if page.googleFonts %}<link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">{%- endif %}
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">When using the default Starter project, setting <code class="shiki-inline">googleFonts</code> in your config will make Google Fonts available globally, to all Templates.</div>
+</div>
 
 ## Front Matter
 
-Use `googleFonts` in Front Matter, to pull in Google Fonts _only for this template_:
+Use the `googleFonts` key in the Front Matter of a Template to import Google Fonts _only in this Template_:
 
 ```handlebars
 ---
@@ -38,13 +46,7 @@ googleFonts: "Roboto|Hind+Madurai&amp;subset=latin-ext"
 
 ## Tailwind CSS utility
 
-The `googleFonts` option only inserts the `<link>` tag, as you can see in the Starter:
-
-```handlebars
-{% if page.googleFonts %}<!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet"><!--<![endif]-->{%- endif %}
-```
-
-You still need to register the utilities in your `tailwind.config.js`.
+After defining which Google Fonts to import, you need to register the `fontFamily` utilities in your `tailwind.config.js`.
 
 For example, let's register an utility for Open Sans:
 
@@ -68,7 +70,7 @@ theme: {
 
 _Now_ we can use the `font-open-sans` utility class.
 
-## Use in your template
+## Avoid inlining
 
 Email clients that support web fonts don't require the `font-family` CSS to be inlined in your HTML. Therefore, we can make use of the `all` breakpoint and tuck the class inside a `@media screen {}` query. 
 
@@ -77,7 +79,10 @@ This way, Juice doesn't inline it, and we also shave off some bytes 😎
 For example:
 
 ```html
-<h1 class="all:font-open-sans">Headline text</h1>
+<div class="all:font-open-sans">
+  <h1>Lorem ipsum</h1>
+  <p>Labore exercitation consequat tempor quis eu nulla amet.</p>
+</div>
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">

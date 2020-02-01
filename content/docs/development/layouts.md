@@ -8,7 +8,7 @@ description: "See how to use layouts with Nunjucks templating inheritance to bui
 
 Layouts are the foundation of any email template in Maizzle.
 
-Use them to define markup that doesn't need to change often, like `doctype`, and `<head>` or `<body>` tags, with all the necessary child tags, like `<meta>`.
+Besides the standard parent-child templating relation, you can use Layouts to define markup that doesn't need to change often, like `doctype`, and `<head>` or `<body>` tags, with all the necessary child tags, like `<meta>`.
 
 ## Creating Layouts
 
@@ -27,7 +27,7 @@ Simply create a `mylayout.njk` file in there, and add a minimal boilerplate with
 </body>
 ``` 
 
-You can use it as a Layout that your Templates can [extend](/docs/templates/#extending-layouts).
+You can use this as a Layout that your Templates can [extend](/docs/templates/#extending-layouts).
 
 ## Default Layout
 
@@ -37,7 +37,7 @@ The `build.layout` file path will be used as the default Layout for any Template
 // config.js
 module.exports = {
   build: {
-    layout: 'src/layouts/default.njk', // or master.html, master.email, master.blaster...
+    layout: 'src/layouts/default.njk',
     // ...
   }
   // ...
@@ -71,6 +71,10 @@ It looks for a block with the same name in every template that [extends](/docs/t
 
 Read more about blocks, in the [Nunjucks documentation &nearr;](https://mozilla.github.io/nunjucks/templating.html#template-inheritance)
 
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">You cannot use a block name other than <code class="shiki-inline">template</code></div>
+</div>
+
 ## Variables
 
 Variables from your environment config or from the Template's own Front Matter are available in a Layout under the `page` object:
@@ -83,4 +87,14 @@ The compiled Tailwind CSS for the current Template is available under `css` :
 
 ```html
 {% if css %}<style>{{ css }}</style>{% endif %}
+```
+
+The environment name is available under the `env` object. You can use it to output stuff based on the `build` command you ran.
+
+For example:
+
+```html
+{% if env == 'production' %}
+  <p>This text will show when running `maizzle build production`</p>
+{% endif %}
 ```

@@ -42,7 +42,8 @@ Maizzle consists of:
 - the Framework
 - a Starter project
 
-When developing emails in Maizzle, you run a CLI command inside your Starter project directory root. That simply asks the Framework to build the emails inside your current project, based on config files it finds in there.
+When developing emails in Maizzle, you run a CLI command inside your Starter project directory root. 
+That simply asks the Framework to build the emails inside your current project, based on config files it finds in there.
 
 With that in mind:
 

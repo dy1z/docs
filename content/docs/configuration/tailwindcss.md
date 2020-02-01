@@ -14,7 +14,13 @@ Because they are poorly supported in email, `rem` units have been replaced with 
 
 ## !important
 
-The `important` option needs to be `true`, in order for the responsive utilities to actually override inlined CSS:
+Emails still need to use inline CSS, most notably for these reasons:
+
+- Outlook only reads the first class in a `class=""` attribute, and ignores the rest. 
+  So it'll only use `a` from `class="a b"`
+- Some email clients don't support embedded CSS (i.e. in `<style>`)
+
+Because of this, the `important` option is set to `true`, in order for the responsive utilities to actually override inlined CSS:
 
 ```js
 // tailwind.config.js
@@ -26,29 +32,6 @@ module.exports = {
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">This applies only to <code class="shiki-inline">&lt;head&gt;</code> CSS, inlined CSS will not contain <code class="shiki-inline">!important</code></div>
 </div>
-
-### amp4email
-
-⚡4email doesn't support inline CSS, so there's no reason to enable `!important`.
-
-Use the [`tailwind.config`](/docs/build-paths/#tailwind) option in your environment config to define a path to a _custom_ Tailwind CSS config file, where you disable the option:
-
-```js
-// config.amp.js
-build : {
-  tailwind: {
-    css: 'src/assets/css/main.css',
-    config: 'tailwind.amp.js',
-  },
-},
-
-// tailwind.amp.js
-module.exports = {
-  important: false,
-}
-```
-
-Now you can run the `maizzle amp command`
 
 ## Separator
 
@@ -65,15 +48,16 @@ Maizzle will convert that to `sm-w-1-2` in your compiled template:
 module.exports = {
   separator: ':',
   theme: {
-    spacing: {
-      '1/2': '50%',
+    width: {
+      '1/2': '50%', // w-1-2
+      '50%': '50%', // w-50pc
     }
   }
 }
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Maizzle only converts <code class="shiki-inline">:</code> and <code class="shiki-inline">/</code> in your classes. If you use other special characters, like <code class="shiki-inline">%</code>  it is your responsibility to convert them.</div>
+  <div class="text-gray-600">Maizzle normalizes only <code class="shiki-inline">:</code>, <code class="shiki-inline">/</code>, and <code class="shiki-inline">%</code> in your class names. If you use other special characters, it is your responsibility to convert them.</div>
 </div>
 
 ## Screens
@@ -89,16 +73,16 @@ screens: {
 },
 ```
 
-- **all** 
+### @screen all
   
-  This creates an `@media screen {}` query. All its utility classes are prefixed with `all-` - you can use it for things like: 
+This creates an `@media screen {}` query. You can use it for things like: 
     
-    - defining (web) font stacks for modern email clients 
-    - preventing Juice from inlining a utility class
+- defining (web) font stacks for modern email clients 
+- preventing Juice from inlining a utility class
 
-- **sm** 
+### @screen sm
 
-  The breakpoint for mobile devices, adjust as needed.
+A breakpoint for mobile devices, adjust as needed.
 
 More on screens, in the [Tailwind CSS docs &nearr;](https://tailwindcss.com/docs/responsive-design)
 

@@ -1,7 +1,7 @@
 ---
 title: "Language"
 slug: "language"
-description: "Define a global language attribute for your HTML emails, to improve accessibility"
+description: "Define a global language attribute value for your HTML emails, to improve accessibility"
 ---
 
 # Language
@@ -16,7 +16,7 @@ module.exports = {
 }
 ```
 
-You can use this in the `lang=""` attribute on your `<html>` tag:
+You can use this in the `lang=""` attribute on your Layout's `<html>` tag:
 
 ```html
 <html lang="{{ page.language or 'en' }}">
@@ -24,13 +24,13 @@ You can use this in the `lang=""` attribute on your `<html>` tag:
 
 ## Front Matter
 
-Use Front Matter to specify the `language` for each template:
+Use Front Matter to define it in a Template:
 
 ```handlebars
 ---
+language: ro
 title: "Verificare adresă de email"
 preheader: "Te rugăm să ne confirmi adresa de email"
-language: ro
 ---
 
 {% block template %}

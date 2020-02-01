@@ -15,7 +15,7 @@ The common type of button, built with a table. For an extra touch, let's add rou
 ```html
 <table>
   <tr>
-    <th class="bg-indigo-500 hover-bg-indigo-600 rounded" style="mso-padding-alt: 12px 48px;">
+    <th class="bg-indigo-500 hover:bg-indigo-600 rounded" style="mso-padding-alt: 12px 48px;">
       <a href="https://maizzle.com" class="block text-white text-sm leading-full py-12 px-48 no-underline">Button</a>
     </th>
   </tr>
@@ -35,8 +35,8 @@ To make it more interesting, let's also change the background on hover:
 ```html
 <table>
   <tr>
-    <th class="border-2 border-indigo-500 hover-bg-indigo-500 block rounded" style="mso-padding-alt: 12px 48px;">
-      <a href="https://maizzle.com" class="block text-sm text-indigo-500 all-hover-text-white leading-full py-12 px-48 no-underline">Button</a>
+    <th class="border-2 border-indigo-500 hover:bg-indigo-500 block rounded" style="mso-padding-alt: 12px 48px;">
+      <a href="https://maizzle.com" class="block text-sm text-indigo-500 hover:text-white leading-full py-12 px-48 no-underline">Button</a>
     </th>
   </tr>
 </table>
@@ -53,7 +53,7 @@ Pill buttons use a larger border-radius value. Remember, Outlook doesn't support
 ```html
 <table>
   <tr>
-    <th class="bg-indigo-500 hover-bg-indigo-600 shadow-md rounded-full" style="mso-padding-alt: 12px 48px;">
+    <th class="bg-indigo-500 hover:bg-indigo-600 shadow-md rounded-full" style="mso-padding-alt: 12px 48px;">
       <a href="https://maizzle.com" class="block text-sm text-white leading-full py-12 px-48 no-underline">Button</a>
     </th>
   </tr>

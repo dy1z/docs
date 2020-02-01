@@ -1,7 +1,7 @@
 ---
 title: "Base Config"
 slug: "configuration"
-description: "All Maizzle configuration options, from the default config.js file"
+description: "All Maizzle configuration options, from the development config.js file"
 ---
 
 # Base Config
@@ -69,7 +69,7 @@ module.exports = {
     ocd: true,
   },
   minify: {
-    removeEmptyAttributes: true,
+    enabled: false,
   },
   browsersync: {
     port: 3000,

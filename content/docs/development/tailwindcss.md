@@ -28,9 +28,7 @@ module.exports = {
       css: 'src/assets/css/main.css',
       // ...
     }
-    // ...
   }
-  // ...
 }
 ```
 
@@ -40,16 +38,12 @@ Add custom CSS files anywhere under `src/assets/css`.
 
 Maizzle adds the following ones in `src/assets/css/custom` :
 
-- `reset.css`
+- `reset.css` - browser and email client CSS resets.
 
-  This contains browser and email client CSS resets.
-
-- `utilities.css`
-
-  Add here any custom utility classes that Tailwind CSS doesn't provide.
+- `utilities.css` - custom utility classes that Tailwind CSS doesn't provide.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Files that you <code class="shiki-inline">@import</code> in <code class="shiki-inline">main.css</code> must be relative to <code class="shiki-inline">src/assets/css</code>. This is required for <code class="shiki-inline">postcss-import</code> to work.</div>
+  <div class="text-gray-600">Files that you <code class="shiki-inline">@import</code> in <code class="shiki-inline">main.css</code> must be relative to <code class="shiki-inline">src/assets/css</code>.</div>
 </div>
 
 ### Plugins
@@ -60,13 +54,13 @@ Maizzle currently includes the [tailwindcss-gradients](https://www.npmjs.com/pac
 
 ## CSS purging
 
-When running `maizzle build [env]`, if `[env]` is specified and is not set to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove any unused classes from the CSS that is being injected into the template currently being rendered.
+When running `maizzle build [env]`, if `[env]` is specified and is not equal to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
 
 This is needed so that the CSS inliner and `email-comb` (which run _after_ the purging step) receive as little CSS as possible to parse. 
 
 _It greatly improves build speed._
 
-To make sure the Tailwind CSS classes that you use in your emails are not purged, pass layouts and any partials or components directory paths to the `purgeCSS.content` config key, as an array of file globs:
+To make sure the Tailwind CSS classes that you use in your emails are not purged, pass Layouts and any Partial or Component directory paths to the `purgeCSS.content` config key, as an array of file globs:
 
 ```js
 // config.js
@@ -80,9 +74,7 @@ module.exports = {
       ],
       // ...
     },
-    // ...
   }
-  // ...
 }
 ```
 
@@ -131,7 +123,7 @@ However, Maizzle will merge those with `postcss-merge-longhand`, so we get this:
 
 This results in smaller HTML size, reducing the risk of Gmail clipping your email.
 
-As mentioned, this works for `padding`, `margin`, and `border`. Using shorthand CSS for these is well supported in email clients and will make your HTML lighter, but the shorthand border is particularly useful because it's the only way Outlook will render it properly.
+Using shorthand CSS for these is well supported in email clients and will make your HTML lighter, but the shorthand border is particularly useful because it's the only way Outlook will render it properly.
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">For shorthand CSS to work with <code class="shiki-inline">padding</code> or <code class="shiki-inline">margin</code>, you need to specify property values for all four sides. For borders, keep reading.</div>

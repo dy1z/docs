@@ -100,7 +100,7 @@ Use the `all` screen breakpoint utility to prevent Juice from inlining your grad
 ```html
 <table class="w-full">
   <tr>
-    <td class="bg-blue-500 all-bg-gradient-b-black-transparent">
+    <td class="bg-blue-500 all:bg-gradient-b-black-transparent">
       <!-- ... -->
     </td>
   </tr>

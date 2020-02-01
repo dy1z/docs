@@ -54,10 +54,6 @@ In Maizzle, we named it `template`:
 
 Everything that is inside that block will be output into the Template's Layout, wherever a `{% block template %}{% endblock %}` is found.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">You don't <em>have</em> to name your block <code class="shiki-inline">template</code>. Feel free to use your own identifier, but make sure its name matches the one in your Layout.</div>
-</div>
-
 ### Multiple Blocks
 
 Your Templates can use as many blocks as you need. 
@@ -157,14 +153,14 @@ layout: src/templates/first.njk
 {% endblock %}
 ```
 
-But this won't:
+But this doesn't:
 
 ```yaml
 ---
 layout: src/templates/first.njk
 ---
 
-{% block content %}
+{% block content %} # Maizzle only uses 'template' blocks
  # ...
 {% endblock %}
 ```
@@ -192,7 +188,7 @@ title: "This month's news from Maizzle"
 
 ## Archiving
 
-Maizzle will only compile templates found in your `build.templates.source` path.
+Maizzle will only compile templates found in your `build.templates.source` path(s).
 
 However, if you create a lot of emails, your builds can start to slow down, since all templates are rebuilt every time you run the `build` command.
 

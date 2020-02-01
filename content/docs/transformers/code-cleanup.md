@@ -6,7 +6,7 @@ description: "Define settings for HTML and CSS email code optimization and clean
 
 # Code Cleanup
 
-Cleaning up your HTML email results in smaller file sizes, which translates to faster email sendouts, faster opens (think slow 3G), and snappier time to interactive. 
+Cleaning up your HTML email results in smaller file sizes, which translates to faster email sendouts, faster opens (think slow 3G), and snappier paint times.
 
 Also, Gmail will clip your email [around 102KB](https://github.com/hteumeuleu/email-bugs/issues/41), so anything past that mark won't even be in the DOM (which can lead to unexpected results like tracking pixel not loaded or, worse, hidden unsubscribe links).
 
@@ -121,7 +121,7 @@ cleanup: {
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Special characters like <code class="shiki-inline">%</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code class="shiki-inline">:</code> and <code class="shiki-inline">/</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself - you can do that in the <a href="/docs/events/#afterrender">afterRender()</a> Event.</div>
+  <div class="text-gray-600">Characters like <code class="shiki-inline">$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code class="shiki-inline">:</code>, <code class="shiki-inline">/</code> and <code class="shiki-inline">%</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself - you can do that in the <a href="/docs/events/#afterrender">afterRender()</a> Event.</div>
 </div>
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
@@ -142,7 +142,6 @@ cleanup: {
     enabled: true,
     // ...
   }
-  // ...
 }
 ```
 
@@ -157,7 +156,6 @@ cleanup: {
     whitelist: ['.External*', '.ReadMsgBody', '.yshortcuts', '.Mso*', '#*'],
     // ...
   }
-  // ...
 }
 ```
 
@@ -181,7 +179,6 @@ cleanup: {
     ],
     // ...
   },
-  // ...
 }
 ```
 
@@ -196,7 +193,6 @@ cleanup: {
     removeHTMLComments: false,
     // ...
   }
-  // ...
 }
 ```
 
@@ -215,7 +211,6 @@ cleanup: {
     removeCSSComments: false,
     // ...
   }
-  // ...
 }
 ```
 
@@ -254,7 +249,6 @@ cleanup: {
     doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
     // ...
   }
-  // ...
 }
 ```
 
@@ -271,7 +265,6 @@ cleanup: {
     uglifyClassNames: true,
     // ...
   }
-  // ...
 }
 ```
 
