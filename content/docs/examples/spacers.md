@@ -15,7 +15,7 @@ Here's how easy it is to create simple, yet reliable spacers for your emails, us
 This is the simplest spacer you can use in an HTML email.
 
 ```html
-<div class="leading-64 sm:h-32">&zwnj&zwnj;;</div>
+<div class="leading-64 sm:h-32">&amp;zwnj;</div>
 ```
 
 How it works:
@@ -25,7 +25,7 @@ How it works:
 3. We use `&zwnj;` to add something inside, so it can take up height reliably in all email clients
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Feel free to use <code class="shiki-inline">&&zwnj;nbsp;</code> instead of <code class="shiki-inline">&zwnj&zwnj;;</code>, both work just fine.</div>
+  <div class="text-gray-600">Feel free to use <code class="shiki-inline">&&zwnj;nbsp;</code> instead of <code class="shiki-inline">&amp;zwnj;</code>, both work just fine.</div>
 </div>
 
 ## Row
