@@ -34,8 +34,8 @@ module.exports = {
     },
     replaceStrings: false,
     keepOnlyAttributeSizes: {
-      width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-      height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+      width: [],
+      height: [],
     },
     preferBgColorAttribute: false,
     sixHex: false,
@@ -307,9 +307,21 @@ module.exports = {
 
 ## keepOnlyAttributeSizes
 
-Define for which elements should Maizzle only keep attribute sizes, like `width=""` and `height=""`. Elements in these arrays will have their inline CSS widths and heights removed.
+Define for which elements should Maizzle keep _only_ attribute sizes, like `width=""` and `height=""`. Elements in these arrays will have their inline CSS widths and heights removed.
 
-Since most email clients support attribute sizes, the Starter config is set to remove inline CSS sizes for the following elements:
+It's set to empty arrays by default, so that no elements are affected:
+
+```js
+cleanup: {
+  keepOnlyAttributeSizes: {
+    width: [],
+    height: [],
+  },
+  // ...
+}
+```
+
+You can add HTML elements like this:
 
 ```js
 cleanup: {
@@ -320,6 +332,14 @@ cleanup: {
   // ...
 }
 ```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></div>
+</div>
 
 ## preferBgColorAttribute
 

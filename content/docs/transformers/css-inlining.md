@@ -22,8 +22,8 @@ module.exports = {
       'vertical-align': 'valign',
     },
     applySizeAttribute: {
-      width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-      height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+      width: [],
+      height: [],
     },
     excludedProperties: null,
   },
@@ -77,9 +77,23 @@ styleToAttribute: {
 
 ### applySizeAttribute
 
-Specify an array of tag names that the inliner should add `width=""` and `height=""` attributes to.
+Specify an array of HTML tag names for which the inliner should duplicate inline CSS widths and heights as `width=""` and `height=""` attributes.
 
 These are passed to Juice, which will add any inline width and height CSS rules it finds as HTML attributes, but only for the tags specified here.
+
+Example:
+
+```js
+module.exports = {
+  inlineCSS: {
+    applySizeAttribute: {
+      width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+      height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+    },
+    ///
+  },
+}
+```
 
 ### excludedProperties
 

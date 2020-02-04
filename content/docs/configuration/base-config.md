@@ -27,8 +27,8 @@ module.exports = {
       'vertical-align': 'valign',
     },
     applySizeAttribute: {
-      width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-      height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+      width: [],
+      height: [],
     },
     excludedProperties: null,
   },
@@ -47,8 +47,8 @@ module.exports = {
     },
     replaceStrings: false,
     keepOnlyAttributeSizes: {
-      width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-      height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+      width: [],
+      height: [],
     },
     preferBgColorAttribute: false,
   },
