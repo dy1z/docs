@@ -14,9 +14,9 @@ To get a better understanding of how Maizzle builds your emails, here's a step-b
 
 A configuration object is computed by merging your environment config on top of the base `config.js`.
 
-For example, running `maizzle build staging` will look for `config.staging.js` in your project's root, and merge it on top of `config.js`.
+For example, running `maizzle build production` will look for `config.production.js` in your project's root, and merge it on top of `config.js`.
 
-If `config.staging.js` is not found, or of you're simply running `maizzle build`, only the base `config.js` will be used.
+If `config.production.js` is not found, or of you're simply running `maizzle build`, only the base `config.js` will be used.
 
 ## 2. Compile Tailwind CSS
 

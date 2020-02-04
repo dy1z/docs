@@ -11,7 +11,7 @@ Maizzle can pretty print your HTML email code.
 Need to send HTML to a human? Enable `prettify` in your config:
 
 ```js
-// config.staging.js
+// config.production.js
 module.exports = {
   prettify: {
     enabled: true,

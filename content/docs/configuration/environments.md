@@ -52,17 +52,16 @@ This output path is, of course, [configurable](/docs/build-paths/#path).
 
 ## Starter environments
 
-Maizzle comes with three environment configs:
+Maizzle comes with two environment configs:
 
 1. `local`
-2. `staging`
 3. `production`
 
 ### Local
 
 The base `config.js` is tailored to local development.
 
-CSS purging and inlining are disabled, so you can quickly prototype your emails with all of Tailwind's classes at your disposal.
+CSS purging, inlining, and most other Transformers are disabled, so you can quickly prototype your emails with all of Tailwind's classes at your disposal.
 
 Build command: 
 
@@ -72,21 +71,19 @@ maizzle build
 
 This has the fastest build time, since there is almost no post-processing going on.
 
-### Staging
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">To get fast development builds, don't enable inlining or cleanup options here.</div>
+</div>
 
-`config.staging.js` is setup to output production-ready email code, formatted with humans in mind. 
-
-CSS purging and inlining are enabled, but code it prettified so that other people get nicely-formatted, more readable code.
-
-Build command: 
-
-```sh
-maizzle build staging
-```
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">This file can also be named <code class="shiki-inline">config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</div>
+</div>
 
 ### Production
 
-`config.production.js` enables most post-processing options, such as CSS inlining and purging, and even email-safe HTML minification.
+`config.production.js` is configured to output production-ready email code, formatted with humans in mind. 
+
+CSS purging and inlining are enabled, but code is prettified so that you can share nicely-formatted, more readable code with other people.
 
 Build command: 
 

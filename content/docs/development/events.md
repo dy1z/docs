@@ -179,14 +179,13 @@ module.exports = {
 },
 ```
 
-Using it with the [default Starter](https://github.com/maizzle/maizzle), `maizzle build staging` will output:
+Using it with the [default Starter](https://github.com/maizzle/maizzle), `maizzle build production` will output:
 
 ```js
 [
-  'build_staging/amp-carousel.html',
-  'build_staging/images/maizzle.png',
-  'build_staging/newsletter.html',
-  'build_staging/transactional.html'
+  'build_production/images/maizzle.png',
+  'build_production/promotional.html',
+  'build_production/transactional.html'
 ]
 ```
 
