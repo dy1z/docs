@@ -19,7 +19,7 @@ Open a terminal window and run the `new` command:
 maizzle new syntax-highlight
 ```
 
-That will create a `syntax-highlight` at your current location, clone the [Starter](https://github.com/maizzle/maizzle) in it and install NPM dependencies for you.
+That will create a `syntax-highlight` folder at your current location, clone the [Starter](https://github.com/maizzle/maizzle) in it, and install NPM dependencies for you.
 
 OK, now open the `syntax-highlight` folder in your editor.
 
