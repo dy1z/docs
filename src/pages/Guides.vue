@@ -57,16 +57,16 @@ export default {
   },
   metaInfo () {
     return {
-      title: 'Home',
+      title: 'Guides',
       meta: [
         { property: "og:type", content: 'website' },
-        { property: "og:title", content: 'Home' },
+        { property: "og:title", content: 'Guides' },
         { property: "og:description", content: this.$static.metadata.siteDescription },
         { property: "og:url", content: this.$static.metadata.siteUrl },
         { property: "og:image", content: this.ogImageUrl },
 
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: 'Home' },
+        { name: "twitter:title", content: 'Guides' },
         { name: "twitter:description", content: this.$static.metadata.siteDescription },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
