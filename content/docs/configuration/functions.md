@@ -1,7 +1,7 @@
 ---
 title: "Functions"
 slug: "functions"
-description: "Programatically configure Maizzle or use the output of other Node.js packages as variables in your Templates"
+description: "Programatically configure Maizzle or use the output of other Node.js packages as variables in your email templates"
 ---
 
 # Config Variables and Functions

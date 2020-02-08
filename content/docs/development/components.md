@@ -1,7 +1,7 @@
 ---
 title: "Components"
 slug: "components"
-description: "Import components into your HTML emails and render them with custom slot content and data"
+description: "Import components into your HTML email templates and render them with custom slot content and data"
 ---
 
 # Components
@@ -18,9 +18,9 @@ We might imagine something like this:
 <!--[if mso]>
 <v:image src="{{ data.src or 'https://via.placeholder.com/600x400' }}" xmlns:v="urn:schemas-microsoft-com:vml" style="width:{{ data.width or 600 }}px;height:{{ data.height or 400 }}px;" />
 <v:rect fill="false" stroke="false" style="position:absolute;width:{{ data.width or 600 }}px;height:{{ data.height or 400 }}px;">
-<div><![endif]-->
+<v:textbox inset="0,0,0,0"><div><![endif]-->
 {{ content }}
-<!--[if mso]></div></v:rect><![endif]-->
+<!--[if mso]></div></v:textbox></v:rect><![endif]-->
 ```
 
 We would like to access data being sent to the Component under the `data` variable. 

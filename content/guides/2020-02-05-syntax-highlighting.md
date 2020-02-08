@@ -1,7 +1,7 @@
 ---
 title: "How to add syntax highlighting to HTML emails"
 slug: "syntax-highlight-code-html-emails"
-description: "Using PrismJS, Markdown fenced code blocks, and Events in Maizzle to add syntax highlighting to HTML emails."
+description: "Using PrismJS, Markdown fenced code blocks, and Events in Maizzle to add syntax highlighting to HTML emails"
 date: 2020-02-05
 ---
 

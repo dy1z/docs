@@ -1,7 +1,7 @@
 ---
 title: "Commands"
 slug: "commands"
-description: "Commands for developing HTML email templates locally and building them for production"
+description: "CLI commands for developing HTML email templates locally and building them for production"
 ---
 
 # CLI commands

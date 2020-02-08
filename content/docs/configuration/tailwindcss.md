@@ -1,7 +1,7 @@
 ---
 title: "Tailwind CSS Config"
 slug: "tailwindcss-config"
-description: "Tailwind CSS email-tailored configuration in Maizzle"
+description: "See how the Tailwind CSS configuration is customized for email development in Maizzle"
 ---
 
 # Tailwind CSS Config

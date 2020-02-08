@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 slug: "introduction"
-description: "Get started with the Maizzle Email Framework"
+description: "Getting started with the Maizzle Email Framework"
 ---
 
 # What is Maizzle?
@@ -61,7 +61,6 @@ Maizzle comes with Tailwind CSS configured for a _desktop-first_ responsive appr
 ```js
 screens: {
   all: {'raw': 'screen'},
-  xs: {'max': '480px'},
   sm: {'max': '600px'},
 },
 ```
