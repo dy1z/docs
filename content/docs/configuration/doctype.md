@@ -16,7 +16,7 @@ module.exports = {
 }
 ```
 
-You then reference this in your master [Layout](/docs/layouts/), from the `page` object:
+You then reference this in a [Layout](/docs/layouts/), from the `page` object:
 
 ```html
 <!DOCTYPE {{ page.doctype or 'html' }}>

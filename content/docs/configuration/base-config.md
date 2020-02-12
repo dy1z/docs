@@ -105,7 +105,6 @@ module.exports = {
       path: 'build_local',
       extension: 'html',
     },
-    layout: 'src/layouts/master.njk',
     templates: {
       source: 'src/templates',
       filetypes: 'html|njk|nunjucks',
