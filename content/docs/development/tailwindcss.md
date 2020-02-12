@@ -96,7 +96,11 @@ title: Confirm your email
 preheader: Please verify your email address with us
 ---
 
-<div class="col">test</div>
+{% extends "src/layouts/default.njk" %}
+
+{% block template %}
+  <div class="col">test</div>
+{% endblock %}
 ```
 
 Let's use `@apply` to compose a `col` class by  extracting two padding utilities: 
@@ -168,6 +172,8 @@ Use `{% block head %}` to push a `<style tailwind>` tag to the template's `<head
 title: Using Tailwind CSS directives inside a template
 ---
 
+{% extends "src/layouts/default.njk" %}
+
 {% block head %}
 <style tailwind>
   a {
@@ -179,6 +185,10 @@ title: Using Tailwind CSS directives inside a template
     }
   }
 </style>
+{% endblock %}
+
+{% block template %}
+  <!-- template content... -->
 {% endblock %}
 ```
 
@@ -193,6 +203,8 @@ Add a `data-embed` attribute to that `<style>` tag, to prevent it from being inl
 title: Preventing in-template embedded CSS from being inlined
 ---
 
+{% extends "src/layouts/default.njk" %}
+
 {% block head %}
 <style tailwind data-embed>
   /* This CSS will not be inlined */
@@ -202,6 +214,10 @@ title: Preventing in-template embedded CSS from being inlined
   }
 </style>
 {% endblock %}
+
+{% block template %}
+  <!-- template content... -->
+{% endblock %} 
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">

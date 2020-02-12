@@ -43,6 +43,7 @@ const html = Maizzle.render(`html string`, options)
   beforeRender() {},
   afterRender() {},
   afterTransformers() {},
+  afterBuild() {},
 }
 ```
 
@@ -58,9 +59,13 @@ const html = Maizzle.render(`html string`, options)
 
 | Option | Required | Type | Default | Description |
 | --- | --- | --- | --- | --- |
-| `config` | Yes | Object | null | A complete Maizzle config object. |
+| `config` | Yes | Object | `null` | A complete Maizzle config object. |
 
 Besides `tailwind` and `maizzle`, as you can see you can also pass certain functions to the `options` object. These are lifecycle hooks, also called [Events](/docs/events/) in Maizzle.
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">The other options listed above, like <code class="shiki-inline">afterConfig() {}</code>, are <a href="/docs/events/">Events</a>.</div>
+</div>
 
 ## Example
 
@@ -69,8 +74,9 @@ const Maizzle = require('@maizzle/framework')
 
 let str = `---
 title: Using Maizzle on the server
-layout: src/layouts/master.njk
 ---
+
+{% extends "src/layouts/default.njk" %}
 
 {% block template %}
 <table>
@@ -111,9 +117,10 @@ You can use [Nunjucks templating](https://mozilla.github.io/nunjucks/templating.
 
 ## Env Config
 
-You should always provide the `render()` method with a _full_ Maizzle config object.
+You must provide the `render()` method with a _full_ Maizzle config object.
 
-This means that if you want to use the default `config.production.js` that Maizzle comes with (which only contains options that need to be different from the base config), you should first merge it with the base `config.js` and provide _that_ in the options object of the `render()` method.
+This means that if you want to use the default `config.production.js` that Maizzle comes with (which only contains options that need to be different from the base config), 
+you need to first merge it with the base `config.js` and provide _that_ in the options object of the `render()` method.
 
 We can do this with the [`deepmerge`](https://www.npmjs.com/package/deepmerge) package.
 
@@ -137,8 +144,9 @@ const maizzleConfig = deepmerge(require('./config'), require('./config.productio
 
 let str = `---
 title: Using Maizzle on the server
-layout: src/layouts/master.njk
 ---
+
+{% extends "src/layouts/default.njk" %}
 
 {% block template %}
 <table>

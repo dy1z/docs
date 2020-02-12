@@ -27,53 +27,14 @@ Simply create a `mylayout.njk` file in there, and add a minimal boilerplate with
 </body>
 ``` 
 
-You can use this as a Layout that your Templates can [extend](/docs/templates/#extending-layouts).
-
-## Default Layout
-
-The `build.layout` file path will be used as the default Layout for any Template that does not explicitly [extend a Layout](/docs/templates/#extending-layouts):
-
-```js
-// config.js
-module.exports = {
-  build: {
-    layout: 'src/layouts/default.njk',
-    // ...
-  }
-  // ...
-}
-```
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">We use the <code class="shiki-inline">.njk</code> file extension for clarity, but you are free to use any extension.</div>
-</div>
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If that Layout file does not exist, rendering will fail and the script will exit.</div>
-</div>
-
-
-### AMP For Email
-
-Maizzle includes an `amp4email.njk` Layout. It's basically the default Layout, with a few tags adapted to the AMP HTML for Email requirements.
-
-Check out the [⚡4email example &rarr;](/docs/amp4email/)
+You can use this as a Layout that your Templates [extend](/docs/templates/#extending-layouts).
 
 ## Template Blocks
 
-A Layout simply pulls in a Nunjucks `{% block %}` named `template`:
-
-```
-{% block template %}{% endblock %}
-```
-
-It looks for a block with the same name in every template that [extends](/docs/templates/#extends) this layout, inside your [templates directory](/docs/build-paths/#templates).
+In the example above, the Layout simply pulls in a Nunjucks `{% block %}` named `template` - 
+it looks for a block with the same name in every Template that [extends](/docs/templates/#extends) it.
 
 Read more about blocks, in the [Nunjucks documentation &nearr;](https://mozilla.github.io/nunjucks/templating.html#template-inheritance)
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">You cannot use a block name other than <code class="shiki-inline">template</code></div>
-</div>
 
 ## Variables
 
@@ -89,9 +50,9 @@ The compiled Tailwind CSS for the current Template is available under `css` :
 {% if css %}<style>{{ css }}</style>{% endif %}
 ```
 
-The environment name is available under the `env` object. You can use it to output stuff based on the `build` command you ran.
+The environment name is available under `env`. You can use it to output stuff based on the `build` command you ran.
 
-For example:
+For example, we could use `env` to output some content only when running the `maizzle build production` command:
 
 ```html
 {% if env == 'production' %}

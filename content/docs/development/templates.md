@@ -40,7 +40,7 @@ Each of those variables will be available under the `page` object, which means y
 
 For a Layout to render a Template's body, that body must be wrapped in a Nunjucks block that has the same name in both the Template and the Layout.
  
-In Maizzle, we named it `template`:
+In the Starter, we named it `template`:
 
 ```html
 {% block template %}
@@ -52,54 +52,46 @@ In Maizzle, we named it `template`:
 {% endblock %}
 ```
 
-Everything that is inside that block will be output into the Template's Layout, wherever a `{% block template %}{% endblock %}` is found.
+Everything that is inside that block will be output into the Layout that the Template extends, wherever a `{% block template %}{% endblock %}` is found.
 
 ### Multiple Blocks
 
 Your Templates can use as many blocks as you need. 
 
-For example, Maizzle uses a `head` block in its master Layout, allowing you to insert additional tags into the `<head>`, right from the Template.
+For example, Maizzle uses a `head` block in its default Layout, allowing you to insert additional tags into the `<head>`, right from the Template.
 
 ## Extending Layouts
 
-A Template can specify a Layout to extend, in Front Matter:
+A Template can specify a Layout to extend. 
+The `{% extends %}` Nunjucks tag is used to extend a Layout, and it must be placed after the Front Matter:
 
-```yaml
+```handlebars
 ---
-layout: "src/layouts/custom.njk"
+title: Weekly Newsletter
 ---
+
+{% extends "src/layouts/default.njk" %}
+
+{% block template %}
+<table>
+  <tr>
+    <td>...</td>
+  </tr>
+</table>
+{% endblock %}
 ```
 
-The value must be a path relative to the root of the project. 
+The path provided in `{% extends %}` must be relative to the root of the project. 
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If that file doesn't exist, the build will fail with a <code class="shiki-inline">Template render error</code>.</div>
+  <div class="text-gray-600">If there is no file at that path, the build will fail with a <code class="shiki-inline">Template render error</code></div>
 </div>
-
-### Default Layout
-
-You don't _have_ to explicitly extend a Layout. 
-
-If no `layout` key is found in Front Matter, Maizzle will try to use the Layout defined in your environment config:
-
-```js
-// config.js
-module.exports = {
-  build: {
-    layout: 'src/layouts/master.njk',
-    // ...
-  }
-  // ...
-}
-```
-
-Likewise, if `build.layout` points to a file that doesn't exist, the build will fail.
 
 ### How Extending Works
 
 When a Template _extends_ a Layout, the `{% block template %}{% endblock %}` section in the Layout being extended is replaced with the contents of the Template's _own_ `{% block template %}`.
 
-Read more about template inheritance, in the [Nunjucks docs &nearr;](https://mozilla.github.io/nunjucks/templating.html#template-inheritance)
+Read more about inheritance, in the [Nunjucks docs &nearr;](https://mozilla.github.io/nunjucks/templating.html#template-inheritance)
 
 
 ## Extending Templates
@@ -108,62 +100,36 @@ A Template can also extend another Template 🤯
 
 For example, imagine `src/templates/first.njk` :
 
-```yaml
+```handlebars
 ---
-layout: src/layouts/default.njk
+title: "1st Template"
 ---
 
+{% extends "src/layouts/default.njk" %}
+
 {% block template %}
-Parent Template
-{% block button %}First{% endblock %}
+  1st Template
+  {% block button %}First Button{% endblock %}
 {% endblock %}
 ```
 
 We could then extend it in `src/templates/second.njk` :
 
-```yaml
+```handlebars
 ---
-layout: src/templates/first.njk
+title: "2nd Template"
 ---
 
+{% extends "src/templates/first.njk" %}
+
 {% block template %}
-{% block button %}Second{% endblock %}
+  {% block button %}Second Button{% endblock %}
 {% endblock %}
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">You can also use super() in the <code class="shiki-inline">{% block template %}</code> of <code class="shiki-inline">second.njk</code>.</div>
+  <div class="text-gray-600">You can also use <a href="https://mozilla.github.io/nunjucks/templating.html#super" target="_blank" rel="noopener noreferrer"><code class="shiki-inline">{{ super() }}</code></a> in the <code class="shiki-inline">{% block template %}</code> of <code class="shiki-inline">second.njk</code>.</div>
 </div>
-
-### Inheritance Gotchas
-
-1\. When extending a Template from another Template, you must always specify the `layout` you're extending - in both templates.
-
-2\. You must always use the `template` keyword for your main template block: both in all Templates that extend a Template, _and_ in your Layout.
-
-So this works:
-
-```yaml
----
-layout: src/templates/first.njk
----
-
-{% block template %}
- # ...
-{% endblock %}
-```
-
-But this doesn't:
-
-```yaml
----
-layout: src/templates/first.njk
----
-
-{% block content %} # Maizzle only uses 'template' blocks
- # ...
-{% endblock %}
-```
 
 ## Basic Example
 
@@ -171,9 +137,10 @@ Here's a very basic Template example:
 
 ```handlebars
 ---
-layout: src/layouts/master.njk
 title: "This month's news from Maizzle"
 ---
+
+{% extends "src/layouts/default.njk" %}
 
 {% block template %}
 <table class="w-full">
@@ -205,6 +172,8 @@ Simply enable it in your Template's Front Matter:
 title: This template will also have a plaintext version
 plaintext: true
 ---
+
+{% extends "src/layouts/default.njk" %}
 
 {% block template %}
   ...

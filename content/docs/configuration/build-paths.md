@@ -18,7 +18,6 @@ module.exports = {
       path: 'build_local',
       extension: 'html',
     },
-    layout: 'src/layouts/master.njk',
     templates: {
       source: 'src/templates',
       filetypes: 'html|njk|nunjucks',
@@ -97,25 +96,6 @@ destination: {
   extension: 'blade.php',
 },
 ```
-
-## layout
-
-Path to the file that you want to use as the [default Layout](/docs/templates/#default-layout). 
-This will be used for all templates that do not specify a Layout to extend in their Front Matter.
-
-```js
-build: {
-  layout: 'src/layouts/master.njk',
-},
-```
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the file does not exist, build will fail and the script will exit.</div>
-</div>
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">You can <a href="/docs/templates/#extending-layouts">override this from a Template</a>, with the <code class="shiki-inline">layout</code> Front Matter key.</div>
-</div>
 
 ## templates
 
