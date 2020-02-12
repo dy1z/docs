@@ -6,13 +6,13 @@ description: "Use AMP for Email in Maizzle to easily create interactive HTML ema
 
 # ⚡4email
 
-Maizzle includes a Layout and a Template so you can get started with AMP for Email.
+You can easily get started with AMP for Email in Maizzle.
 
 For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.com/amphtml-email/introduction/hello_world/)
 
 ## Layout
 
-`amp4email.njk` is just the default Layout, adjusted for AMP for Email's requirements:
+⚡4email requires some special markup, so let's create an `amp4email.njk` Layout:
 
 ```html
 <!DOCTYPE {{ page.doctype or 'html' }}>
@@ -38,15 +38,14 @@ For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.c
 
 ## Template
 
-An ⚡4email Template is also provided.
-
-`amp-carousel.njk` includes a basic AMP carousel example:
+Let's create `src/templates/amp-carousel.njk`, where we add a basic AMP carousel:
 
 ```handlebars
 ---
-layout: src/layouts/amp4email.njk
 title:  ⚡4email example - Carousel
 ---
+
+{% extends "src/layouts/amp4email.njk" %}
 
 {% block head %}
 <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
@@ -89,16 +88,19 @@ module.exports = {
 
 ```yaml
 ---
-layout: src/layouts/amp4email.njk
 title:  ⚡4email example - Carousel
 inlineCSS:
   enabled: false
 ---
+
+{% extends "src/layouts/amp4email.njk" %}
+
+# ...
 ```
 
 ## !important
 
-Since inline styles aren't supported in AMP for Email, we don't need `!important` added to our CSS. This can be easily turned off in the `tailwind.config.js`:
+Since inline styles aren't supported in AMP for Email, we cannot have `!important` added to our CSS. This can be easily turned off in `tailwind.config.js`:
 
 ```js
 module.exports = {
@@ -107,11 +109,12 @@ module.exports = {
 }
 ```
 
-However, you might need to turn it off _only_ for AMP templates.
+However, you might want to turn it off _only_ for AMP templates.
 
-You can do this with a build environment:
+You can do this with a custom build environment:
 
-1. Create `config.amp.js`:
+1. Create a folder at `src/templates/amp` and only keep ⚡4email templates here.
+2. Create `config.amp.js`:
 
   ```js
   module.exports = {
@@ -119,13 +122,16 @@ You can do this with a build environment:
       destination: {
         path: 'build_amp',
       },
+      templates: {
+        source: 'src/templates/amp',
+      },
       tailwind: {
         config: 'tailwind.amp.js',
       },
     },
   }
   ```
-2. Duplicate `tailwind.config.js` to `tailwind.amp.js`, and disable important:
+3. Duplicate `tailwind.config.js` to `tailwind.amp.js`, and disable `important`:
 
   ```js
   module.exports = {
@@ -133,4 +139,4 @@ You can do this with a build environment:
     // ...
   }
   ```
-3. Run `maizzle build amp` to build your ⚡4email templates.
+4. Run `maizzle build amp` to build your ⚡4email templates.
