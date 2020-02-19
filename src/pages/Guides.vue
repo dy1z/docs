@@ -62,13 +62,13 @@ export default {
         { key: 'description', name: "description", content: 'Learn how to code responsive HTML email templates with Maizzle and Tailwind CSS.' },
 
         { property: "og:type", content: 'website' },
-        { property: "og:title", content: 'Guides' },
+        { property: "og:title", content: 'Guides | Maizzle - Framework for Rapid Email Prototyping' },
         { property: "og:description", content: 'Learn how to code responsive HTML email templates with Maizzle and Tailwind CSS.' },
         { property: "og:url", content: this.$static.metadata.siteUrl },
         { property: "og:image", content: this.ogImageUrl },
 
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: 'Guides' },
+        { name: "twitter:title", content: 'Guides | Maizzle - Framework for Rapid Email Prototyping' },
         { name: "twitter:description", content: 'Learn how to code responsive HTML email templates with Maizzle and Tailwind CSS.' },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
