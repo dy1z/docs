@@ -15,11 +15,11 @@ Imagine a two column layout, with text on the left and an image on the right:
 ```html
 <table class="w-full">
   <tr>
-    <td class="sm:inline-block w-1-2 sm:w-full px-8">
+    <td class="sm:inline-block w-1/2 sm:w-full px-8">
       <p class="text-2xl font-hairline font-sans text-black">Left text</p>
       <p class="text-grey-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore aspernatur.</p>
     </td>
-    <td class="sm:inline-block w-1-2 sm:w-full px-8">
+    <td class="sm:inline-block w-1/2 sm:w-full px-8">
       <img src="https://picsum.photos/600/600">
     </td>
   </tr>
@@ -33,13 +33,13 @@ However, using Maizzle's custom table display utilities, we can reverse the colu
 ```html
 <table class="w-full">
   <tr>
-    <td class="w-1-2 sm:table-footer-group px-8">
+    <td class="w-1/2 sm:table-footer-group px-8">
       <div class="sm:px-8">
         <h2 class="text-2xl font-hairline font-sans text-black">Left text</h2>
         <p class="text-grey-dark mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore aspernatur.</p>
       </div>
     </td>
-    <td class="w-1-2 sm:table-header-group px-8">
+    <td class="w-1/2 sm:table-header-group px-8">
       <div class="sm:px-8">
         <img src="https://picsum.photos/600/600">
       </div>
@@ -62,17 +62,17 @@ In a similar fashion, we can reorder a 3+ column layout:
 ```html
 <table class="w-full">
   <tr class="sm:w-full sm:table">
-    <td class="w-1-3 sm:table-footer-group px-8">
+    <td class="w-1/3 sm:table-footer-group px-8">
       <div class="sm:px-8">
         <h2 class="text-xl font-hairline font-sans text-black">Last on mobile</h2>
       </div>
     </td>
-    <td class="w-1-3 sm:table-footer-group px-8">
+    <td class="w-1/3 sm:table-footer-group px-8">
       <div class="sm:px-8">
         <h2 class="text-xl font-hairline font-sans text-black">Second on mobile</h2>
       </div>
     </td>
-    <td class="w-1-3 sm:table-caption sm:w-full px-8">
+    <td class="w-1/3 sm:table-caption sm:w-full px-8">
       <h2 class="text-xl font-hairline font-sans text-black">First on mobile</h2>
     </td>
   </tr>
