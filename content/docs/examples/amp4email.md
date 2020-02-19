@@ -22,13 +22,13 @@ For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.c
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <style amp4email-boilerplate>body{visibility:hidden}</style>
   {% if page.title %}<title>{{ page.title }}</title>{% endif %}
-  {% if page.googleFonts %}<!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet"><!--<![endif]-->{%- endif %}
+  {% if page.googleFonts %}<link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">{%- endif %}
   {% if css %}<style amp-custom>{{ css }}</style>{% endif %}
   {% block head %}{% endblock %}
 </head>
 <body {% if page.bodyClass %}class="{{ page.bodyClass }}"{% endif %}>
 {% if page.preheader %}
-  <div class="hidden text-0 leading-0">{{ page.preheader }}</div>
+  <div class="hidden">{{ page.preheader }}</div>
 {% endif %}
 
 {% block template %}{% endblock %}
