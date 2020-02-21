@@ -137,11 +137,25 @@ it also increases HTML file size (especially when inlining), which then leads to
 
 We can make use of Tailwind's `screen` variants and an Outlook `font-family` fallback to reduce bloat and write less code 👌
 
-Use the `all` screen included in Maizzle and add it to your outermost<sup>1</sup> element:
+First, let's register a new `@media` query:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    screens: {
+      screen: {'raw': 'screen'},
+      sm: {'max': '600px'},
+    },
+  }
+}
+```
+
+We can now use it on the outermost<sup>1</sup> element:
 
 ```html
 {% block template %}
-<table class="all:font-barosan">
+<table class="screen:font-barosan">
   <!-- ... -->
 </table>
 {% endblock %}
@@ -152,7 +166,7 @@ This will tuck the `font-family` away in an `@media` query:
 ```css
 /* Compiled CSS. Maizzle replaces escaped \: with - */
 @media screen {
-  .all-font-barosan {
+  .screen-font-barosan {
     font-family: Barosan, -apple-system, "Segoe UI", sans-serif !important;
   }
 }
@@ -182,7 +196,7 @@ Custom fonts aren't supported in Outlook 2007-2016 - these email clients will fa
 To avoid this, you can wrap the `@font-face` declaration in a `@media` query, so that Outlook will ignore it:
 
 ```css
-@media screen { /* or `@screen all {}` if you prefer Tailwind directives */
+@media screen {
   @font-face {
     font-family: 'Barosan';
     font-style: normal;

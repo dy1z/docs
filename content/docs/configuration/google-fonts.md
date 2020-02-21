@@ -63,23 +63,36 @@ theme: {
     ],
     // ...
   },
-  // ...
 }
-// ...
 ```
 
 _Now_ we can use the `font-open-sans` utility class.
 
 ## Avoid inlining
 
-Email clients that support web fonts don't require the `font-family` CSS to be inlined in your HTML. Therefore, we can make use of the `all` breakpoint and tuck the class inside a `@media screen {}` query. 
+Email clients that support web fonts don't require the `font-family` CSS to be inlined in your HTML. 
+Therefore, we can make use of Tailwind's breakpoints and tuck the class inside an `@media screen {}` query. 
 
 This way, Juice doesn't inline it, and we also shave off some bytes 😎
 
-For example:
+First, we register a `screen` breakpoint:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    screens: {
+      screen: {'raw': 'screen'},
+      sm: {'max': '600px'},
+    },
+  }
+}
+```
+
+We can now use it in the HTML:
 
 ```html
-<div class="all:font-open-sans">
+<div class="screen:font-open-sans">
   <h1>Lorem ipsum</h1>
   <p>Labore exercitation consequat tempor quis eu nulla amet.</p>
 </div>
