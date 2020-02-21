@@ -15,22 +15,17 @@ For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.c
 ⚡4email requires some special markup, so let's create an `amp4email.njk` Layout:
 
 ```html
-<!DOCTYPE {{ page.doctype or 'html' }}>
-<html ⚡4email {% if page.htmlClass %}class="{{ page.htmlClass }}"{% endif %} lang="{{ page.language or 'en' }}">
+<!doctype html>
+<html ⚡4email>
 <head>
   <meta charset="{{ page.charset or 'utf8' }}">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <style amp4email-boilerplate>body{visibility:hidden}</style>
-  {% if page.title %}<title>{{ page.title }}</title>{% endif %}
   {% if page.googleFonts %}<link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">{%- endif %}
   {% if css %}<style amp-custom>{{ css }}</style>{% endif %}
   {% block head %}{% endblock %}
 </head>
 <body {% if page.bodyClass %}class="{{ page.bodyClass }}"{% endif %}>
-{% if page.preheader %}
-  <div class="hidden">{{ page.preheader }}</div>
-{% endif %}
-
 {% block template %}{% endblock %}
 </body>
 </html>
@@ -41,10 +36,6 @@ For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.c
 Let's create `src/templates/amp-carousel.njk`, where we add a basic AMP carousel:
 
 ```handlebars
----
-title:  ⚡4email example - Carousel
----
-
 {% extends "src/layouts/amp4email.njk" %}
 
 {% block head %}
@@ -88,7 +79,6 @@ module.exports = {
 
 ```yaml
 ---
-title:  ⚡4email example - Carousel
 inlineCSS:
   enabled: false
 ---
