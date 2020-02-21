@@ -29,4 +29,4 @@ module.exports = {
 }
 ```
 
-All files and folders at the `build.assets.source` path will be copied to the `build.destination.path` directory.
+Everything inside `build.assets.source` will be copied to the `build.assets.destination` directory, which is relative to `build.destination.path`
