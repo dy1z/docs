@@ -6,12 +6,15 @@
         <div class="px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
           <h1 class="text-black font-semibold leading-tight text-4xl pb-6">Maizzle Tutorials</h1>
           <p class="leading-code text-gray-700">Learn how to create HTML emails with Tailwind CSS in Maizzle.</p>
-          <hr class="border-0 bg-gray-200">
+          <hr class="mb-16 border-0 bg-gray-200">
           <ul>
-            <li v-for="edge in $page.tutorials.edges" :key="edge.node.id" class="pb-8">
-              <h2 class="text-2xl font-semibold leading-tight mb-4">
-                <g-link :to="edge.node.path">{{ edge.node.title }}</g-link>
-              </h2>
+            <li v-for="edge in $page.tutorials.edges" :key="edge.node.id" class="pb-8 mb-8 border-b border-gray-100">
+              <header class="mb-4">
+                <h2 class="text-2xl font-semibold leading-tight mb-0 text-black hover:text-gray-700">
+                  <g-link :to="edge.node.path">{{ edge.node.title }}</g-link>
+                </h2>
+                <time :datetime="edge.node.datetime" class="text-sm text-gray-500">{{ formatDate(edge.node.datetime, 'MMMM D, YYYY') }}</time>
+              </header>
               <p class="leading-code text-gray-700 mb-4">{{ excerpt(edge.node) }}</p>
               <g-link :to="edge.node.path" class="text-ocean no-underline hover:text-ocean-darker">Read more &rarr;</g-link>
             </li>
@@ -23,6 +26,7 @@
 </template>
 
 <script>
+import moment from "moment"
 import config from '~/.temp/config.js'
 import Layout from '~/layouts/NoTransition'
 import scrollToElement from 'scroll-to-element'
@@ -109,6 +113,9 @@ export default {
 
       return text.length > length ? `${ text.slice(0, length)}${clamp}` : text
     },
+    formatDate(from, to) {
+      return moment(from).format(to)
+    },
     scrollTo (target) {
       this.activeToc = target.href
 
@@ -137,7 +144,7 @@ export default {
 
 <page-query>
 query Tutorials ($page: Int) {
-  tutorials: allTutorial (page: $page, perPage: 2) @paginate {
+  tutorials: allTutorial (page: $page, perPage: 6) @paginate {
     totalCount
     pageInfo {
       totalPages

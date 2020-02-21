@@ -18,7 +18,6 @@
 </template>
 
 <script>
-
 export default {
   props: ['showOnMobile', 'links'],
   name: 'Navigation',

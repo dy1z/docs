@@ -1,7 +1,7 @@
 ---
 title: "Using custom web fonts in Maizzle email templates"
 slug: "custom-web-fonts-html-emails-font-face"
-description: "See how you can register custom web fonts in your email templates, and learn how to use them efficiently through Tailwind CSS utilities"
+description: "See how you can register custom web fonts in your email templates, and learn how to use them efficiently through Tailwind CSS utilities."
 date: 2020-01-31
 ---
 

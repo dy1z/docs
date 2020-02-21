@@ -4,7 +4,12 @@
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
         <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
-          <h1 v-html="$page.tutorial.title" class="tracking-tight" />
+          <header class="flex flex-col-reverse">
+            <h1 v-html="$page.tutorial.title" class="tracking-tight" />
+            <time :datetime="$page.tutorial.datetime" class="text-sm text-gray-600">
+              {{ formatDate($page.tutorial.datetime, 'MMMM D, YYYY') }}
+            </time>
+          </header>
           <div v-html="$page.tutorial.content"/>
         </article>
         <table-of-contents :page="$page.tutorial" title="In this guide:" />
@@ -14,6 +19,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import config from '~/.temp/config.js'
 import Layout from '~/layouts/NoTransition'
 import scrollToElement from 'scroll-to-element'
@@ -102,6 +108,9 @@ export default {
 
       return text.length > length ? `${ text.slice(0, length)}${clamp}` : text
     },
+    formatDate(from, to) {
+      return moment(from).format(to)
+    },
     scrollTo (target) {
       this.activeToc = target.href
 
@@ -131,6 +140,7 @@ export default {
 <page-query>
 query Tutorial ($path: String) {
   tutorial (path: $path) {
+    datetime: date (format: "YYYY-MM-DD HH:mm:ss")
     path
     title
     content
