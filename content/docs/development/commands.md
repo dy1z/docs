@@ -94,14 +94,14 @@ The full config is based on the [Starter's `config.js`](https://github.com/maizz
 ### make:layout
 
 ```sh
-maizzle make:layout [filename] --directory?
+maizzle make:layout <filename> --directory?
 ```
 
 Scaffolds a new Layout based on the [Starter's default Layout](https://github.com/maizzle/maizzle/blob/master/src/layouts/default.njk). 
 
 | Argument | Required | Default | Description
 | --- | --- | --- | --- |
-| `[filename]` | yes |  n/a | Name of the file to create, including extension, i.e. `layout.njk`
+| `<filename>` | yes |  n/a | Name of the file to create, including extension, i.e. `layout.njk`
 
 | Option | Shorthand | Description
 | --- | --- | --- |
@@ -137,11 +137,15 @@ maizzle make:layout master.njk -d=../global-layouts
 
 ### make:template
 
+```sh
+maizzle make:template <filename> --directory?
+```
+
 Scaffolds a new Template.
 
 | Argument | Required | Default | Description
 | --- | --- | --- | --- |
-| `[filename]` | yes |  n/a | Name of the file to create, including extension, i.e. `template.njk`
+| `<filename>` | yes |  n/a | Name of the file to create, including extension, i.e. `template.njk`
 
 | Option | Shorthand | Description
 | --- | --- | --- |
