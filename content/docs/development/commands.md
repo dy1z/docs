@@ -47,6 +47,118 @@ So you can basically clone any repo into any system path, which means you can us
   <div class="text-gray-600"><code class="shiki-inline">[repo]</code> must be a valid Git repository URL (.git extension included).</div>
 </div>
 
+### make:config
+
+```sh
+maizzle make:config <env> --full?
+```
+
+Scaffolds a new `config.<env>.js` in the project root.
+
+| Argument | Required | Default | Description
+| --- | --- | --- | --- |
+| `<env>` | yes |  n/a | Environment name to use for the config
+
+| Option | Shorthand | Description
+| --- | --- | --- |
+| `--full` | `-f` |  Output a full config
+
+The `<env>` argument is an environment name, i.e. `staging`.
+
+For example, let's scaffold `config.staging.js`:
+
+```sh
+maizzle make:config staging
+```
+
+By default, a minimal config is output, which only defines `build.destination.path`:
+
+```js
+module.exports = {
+  build: {
+    destination: {
+      path: 'build_staging',
+    },
+  },
+}
+```
+
+If you want a full config, use the `--full` option:
+
+```sh
+maizzle make:config staging --full
+```
+
+The full config is based on the [Starter's `config.js`](https://github.com/maizzle/maizzle/blob/master/config.js), with comments removed.
+
+### make:layout
+
+```sh
+maizzle make:layout [filename] --directory?
+```
+
+Scaffolds a new Layout based on the [Starter's default Layout](https://github.com/maizzle/maizzle/blob/master/src/layouts/default.njk). 
+
+| Argument | Required | Default | Description
+| --- | --- | --- | --- |
+| `[filename]` | yes |  n/a | Name of the file to create, including extension, i.e. `layout.njk`
+
+| Option | Shorthand | Description
+| --- | --- | --- |
+| `--directory` | `-d` |  Directory where Layout file should be output
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If no <code class="shiki-inline">--directory</code> is provided, Layout file will be output in <code class="shiki-inline">src/layouts</code> relative to where you executed the command.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If the path provided in the <code class="shiki-inline">--directory</code> option does not exist, it will be created.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If the resulting file already exists, Layout scaffolding will be aborted and an error will be thrown - file will not be overwritten.</div>
+</div>
+
+Examples:
+
+```sh
+# scaffold a Layout in src/layouts
+maizzle make:layout my-layout.njk
+
+# use a custom directory
+maizzle make:layout amp-layout.njk --directory=src/layouts/amp
+
+# the above is the same as
+maizzle make:layout amp-layout.njk -d=src/layouts/amp
+
+# paths can be relative to project root, i.e. one level above
+maizzle make:layout master.njk -d=../global-layouts
+```
+
+### make:template
+
+Scaffolds a new Template.
+
+| Argument | Required | Default | Description
+| --- | --- | --- | --- |
+| `[filename]` | yes |  n/a | Name of the file to create, including extension, i.e. `template.njk`
+
+| Option | Shorthand | Description
+| --- | --- | --- |
+| `--directory` | `-d` |  Directory where Template file should be output
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If no <code class="shiki-inline">--directory</code> is provided, Template file will be output in <code class="shiki-inline">src/templates</code> relative to where you executed the command.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If the path provided in the <code class="shiki-inline">--directory</code> option does not exist, it will be created.</div>
+</div>
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">If the resulting file already exists, Template scaffolding will be aborted and an error will be thrown - file will not be overwritten.</div>
+</div>
+
 ## Development
 
 CLI commands for developing emails with Maizzle.
