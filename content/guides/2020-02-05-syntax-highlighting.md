@@ -119,7 +119,7 @@ module.exports = {
 }
 ```
 
-Next, we'll be using the [`afterConfig`](/docs/events/#afterconfig) event, which allows us to programmatically set config options.
+Next, we'll be using the [`beforeCreate`](/docs/events/#beforecreate) event, which allows us to programmatically set config options.
 Add it inside an `events` object, in `config.js`:
 
 ```js
@@ -128,7 +128,7 @@ const Prism = require('prismjs')
 module.exports = {
   // ...
   events: {
-    async afterConfig(config) {
+    async beforeCreate(config) {
       config.markdown.highlight = (code, lang, callback) => {
         return Prism.highlight(code, Prism.languages[lang], lang)
       }
@@ -137,7 +137,7 @@ module.exports = {
 }
 ```
 
-Inside the `afterConfig()` function, we define a `highlight` function for the Markdown renderer and have it use PrismJS for highlighting code blocks. 
+Inside the `beforeCreate()` function, we define a `highlight` function for the Markdown renderer and have it use PrismJS for highlighting code blocks. 
 
 This function must `return` the highlighted code as an HTML string - take a look at the [marked.js docs](https://marked.js.org/#/USING_ADVANCED.md#options) for an explanation of all the Markdown renderer options.
 
