@@ -53,6 +53,44 @@ html = Maizzle.render(str, {
 
 These are the events that you can use in Maizzle.
 
+The following events are CLI-only, meaning you can only use them in the `events: {}` object in your `config.js`:
+
+- [`beforeCreate`](#beforecreate)
+- [`afterBuild`](#afterbuild)
+
+The rest of the events run every time a Template is compiled. Unless you need access to the Template-specific config, or to its HTML, consider using the ones above instead:
+
+- [`afterConfig`](#afterconfig)
+- [`beforeRender`](#beforerender)
+- [`afterRender`](#afterrender)
+- [`afterTransformers`](#aftertransformers)
+
+### beforeCreate
+
+Runs after the [Environment](/docs/environments/) config has been computed, but before Templates are processed.
+Exposes the config object so you can further customize it.
+
+For example, let's use a custom highlight function for Markdown fenced code blocks:
+
+```js
+const Prism = require('prismjs')
+
+module.exports = {
+  // ...
+  events: {
+    async beforeCreate(config) {
+      config.markdown.highlight = (code, lang, callback) => {
+        return Prism.highlight(code, Prism.languages[lang], lang)
+      }
+    },
+  },
+}
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Use <code class="shiki-inline">beforeCreate</code> if you need to your config manipulation to run only <em>once</em>.</div>
+</div>
+
 ### afterConfig
 
 Runs right after your Template-specific config has been generated.
@@ -73,6 +111,10 @@ module.exports = {
   },
 },
 ```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600"><code class="shiki-inline">afterConfig</code> runs for each template that is going to be compiled. For performance reasons, you should use it only if you need access to the <em>Template</em> config (which includes variables from the template's Front Matter).</div>
+</div>
 
 ### beforeRender
 
