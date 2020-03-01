@@ -1,10 +1,9 @@
 .markdown {
+  @apply text-gray-700;
 
   ::selection {
     @apply bg-yellow-markdown-highlight text-black;
   }
-
-  @apply text-gray-700;
 
   h1, h2, h3, h4, h5, h6 {
     @apply text-black font-semibold leading-tight;
@@ -69,8 +68,7 @@
   }
 
   pre {
-    cursor: text;
-    @apply bg-gradient-l-code overflow-auto scrolling-touch break-normal p-4 mb-4 -ml-20 pl-20 border border-l-0 border-gradient-l-grey-code;
+    @apply p-4 mb-4 -ml-20 pl-20 border border-l-0 overflow-auto scrolling-touch break-normal cursor-text bg-gradient-l-code border-gradient-l-grey-code;
   }
 
   code {
@@ -78,7 +76,7 @@
 
     &.shiki {
       @apply bg-gradient-l-code text-gray-700 !important;
-      @apply block overflow-auto scrolling-touch break-normal p-4 mb-4 -ml-20 pl-20 border border-l-0 border-gradient-l-grey-code;
+      @apply block p-4 mb-4 -ml-20 pl-20 border border-l-0 overflow-auto scrolling-touch break-normal border-gradient-l-grey-code;
     }
   }
 
@@ -127,7 +125,7 @@
 }
 
 a .shiki-inline {
-  color: inherit !important;
+  @apply text-inherit !important;
 }
 
 .label {
