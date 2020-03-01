@@ -360,18 +360,18 @@ module.exports = {
         'tl': 'to top left',
       },
     },
-    linearGradients: {
-      colors: gradients,
-      directions: {
-        't': 'to top',
-        'tr': 'to top right',
-        'r': 'to right',
-        'br': 'to bottom right',
-        'b': 'to bottom',
-        'bl': 'to bottom left',
-        'l': 'to left',
-        'tl': 'to top left',
-      },
+    linearGradientColors: {
+      ...gradients,
+    },
+    linearGradientDirections: {
+      't': 'to top',
+      'tr': 'to top right',
+      'r': 'to right',
+      'br': 'to bottom right',
+      'b': 'to bottom',
+      'bl': 'to bottom left',
+      'l': 'to left',
+      'tl': 'to top left',
     },
     lineHeight: {
       none: '1',
@@ -733,7 +733,8 @@ module.exports = {
     justifyContent: ['responsive'],
     letterSpacing: ['responsive'],
     linearBorderGradients: ['responsive', 'hover'],
-    linearGradients: ['responsive', 'hover'],
+    linearGradientColors: ['responsive', 'hover'],
+    linearGradientDirections: ['responsive', 'hover'],
     lineHeight: ['responsive'],
     listStylePosition: ['responsive'],
     listStyleType: ['responsive'],
@@ -789,7 +790,7 @@ module.exports = {
   },
   corePlugins: {},
   plugins: [
-    require('tailwindcss-gradients')(),
+    require('tailwindcss-gradients'),
     require('tailwindcss-border-gradients')(),
   ],
 }
