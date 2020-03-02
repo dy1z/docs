@@ -24,7 +24,7 @@ Open a terminal window and run the `new` command:
 maizzle new font-face-project
 ```
 
-That will create a `font-face-project` at your current location.
+That will create a `font-face-project` directory at your current location.
 
 Once it finishes installing dependencies, open the folder in your favourite editor. 
 
