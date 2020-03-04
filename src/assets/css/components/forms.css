@@ -2,6 +2,10 @@
 
 input#search {
   caret-color: theme('colors.ocean');
+
+  &::-webkit-search-cancel-button {
+    @apply hidden;
+  }
 }
 
 @screen sm {
