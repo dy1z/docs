@@ -131,6 +131,55 @@ title: "2nd Template"
   <div class="text-gray-600">You can also use <a href="https://mozilla.github.io/nunjucks/templating.html#super" target="_blank" rel="noopener noreferrer"><code class="shiki-inline">{{ super() }}</code></a> in the <code class="shiki-inline">{% block template %}</code> of <code class="shiki-inline">second.njk</code>.</div>
 </div>
 
+## Variables
+
+Just as with [Layouts](/docs/layouts/#variables), variables from your [environment config](/docs/environments/) or from the Template's Front Matter are available on the `page` object:
+
+```handlebars
+---
+text: "The following block will show only if `config.inlineCSS.enabled` is `true`"
+---
+
+{% extends "src/layouts/default.njk" %}
+
+{% block template %}
+  {{ page.text }}
+  {% if page.inlineCSS.enabled === true %}
+    <p>Inlining is enabled</p>
+  {% endif %}
+{% endblock %}
+```
+
+### Tag Conflicts
+
+Other templating engines also use the `{{ }}` syntax.
+
+If you want to output any of the special Nunjucks tags like `{{` or `{%` in your template, use the `{% raw %}` block:
+
+```handlebars
+{% extends "src/layouts/default.njk" %}
+
+{% block template %}
+  <!-- Wrapping a single variable -->
+  <a href="{% raw %}{{ unsubLink }}{% endraw %}">Unsubscribe</a>
+
+  <!-- Wrapping an entire section - anything inside will be ignored by Nunjucks -->
+  {% raw %}
+  <table>
+    {{#each users}}
+    <tr data-user="{{ this.id }}">
+      <td>{{ this.first_name }} {{ this.last_name }}</td>
+    </tr>
+    {{/each}}
+  </table>
+  {% endraw %}
+{% endblock %}
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Need Twig compatibility? You can also use the <code class="shiki-inline">{% verbatim %}</code> tag, it does the same thing as <code class="shiki-inline">{% raw %}</code>.</div>
+</div>
+
 ## Basic Example
 
 Here's a very basic Template example:
