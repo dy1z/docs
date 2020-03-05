@@ -49,15 +49,16 @@ module.exports = {
   separator: ':',
   theme: {
     width: {
-      '1/2': '50%', // w-1-2
+      '2/5': '40%', // w-2-5
       '50%': '50%', // w-50pc
+      '2.5': '0.625rem', // w-2_5
     }
   }
 }
 ```
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Maizzle normalizes only <code class="shiki-inline">:</code>, <code class="shiki-inline">/</code>, and <code class="shiki-inline">%</code> in your class names. If you use other special characters, it is your responsibility to convert them.</div>
+  <div class="text-gray-600">Maizzle normalizes only <code class="shiki-inline">:</code> <code class="shiki-inline">/</code> <code class="shiki-inline">.</code> and <code class="shiki-inline">%</code> in your class names. If you use other special characters, it is your responsibility to convert them.</div>
 </div>
 
 ## Screens
