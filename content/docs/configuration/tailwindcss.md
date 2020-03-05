@@ -63,23 +63,15 @@ module.exports = {
 
 ## Screens
 
-A custom set of `@media` query breakpoints is defined.
+Maizzle uses a desktop-first approach with `max-width`, instead of Tailwind's default mobile-first with `min-width`. 
 
-Maizzle uses a desktop-first approach with `max-width`, instead of Tailwind's default mobile-first with `min-width`. Of course, you're free to adjust these as you like:
+Of course, you're free to adjust this as you like:
 
 ```js
 screens: {
-  all: {'raw': 'screen'},
   sm: {'max': '600px'},
 },
 ```
-
-### @screen all
-  
-This creates an `@media screen {}` query. You can use it for things like: 
-    
-- defining (web) font stacks for modern email clients 
-- preventing Juice from inlining a utility class
 
 ### @screen sm
 
@@ -89,7 +81,4 @@ More on screens, in the [Tailwind CSS docs &nearr;](https://tailwindcss.com/docs
 
 ## Plugins
 
-Maizzle comes with the [tailwindcss-gradients](https://www.npmjs.com/package/tailwindcss-gradients) plugin.
-See the [Gradients docs](/docs/gradients/) for examples showing how to configure and use it.
-
-Of course, you can add any plugin you want, like [CSS grid](https://www.npmjs.com/package/tailwindcss-grid) or [border image gradients](https://www.npmjs.com/package/tailwindcss-border-gradients).
+You can of course use any Tailwind plugin, please [see the docs](https://tailwindcss.com/docs/configuration#plugins).
