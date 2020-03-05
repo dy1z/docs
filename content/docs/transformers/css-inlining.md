@@ -90,7 +90,7 @@ module.exports = {
       width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
       height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
     },
-    ///
+    //
   },
 }
 ```
@@ -121,7 +121,6 @@ module.exports = {
     }
     // ..
   },
-  // ...
 }
 ```
 
