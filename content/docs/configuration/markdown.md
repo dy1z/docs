@@ -8,35 +8,71 @@ description: "Use Markdown in your HTML email templates. GitHub Flavored Markdow
 
 Maizzle supports Markdown in your email templates.
 
-[Marked.js](https://github.com/markedjs/marked) is used together with Nunjucks, and you can even fully configure it, either from your environment config, or through Front Matter, for each Template.
+[Marked.js](https://github.com/markedjs/marked) is used together with PostHTML and you can fully configure it, either from your environment config, or through Front Matter for each Template.
 
-## Nunjucks Tags
+## Tags
 
-Markdown content needs to be added inside special Nunjucks tags, in order to be rendered by Marked. Under the hood, [nunjucks-markdown](https://www.npmjs.com/package/nunjucks-markdown) is used. 
+You can use one of two custom tags to add Markdown to your emails:
 
-### Block
-
-Use the `{% markdown %}` Nunjucks block tag to add Markdown to your emails:
-
-```md
-{% markdown %}
-
-  ### A level 3 heading
-
-  Lorem ipsum dolor sit amet...
-
-  And a [link](https://maizzle.com)
-
-{% endmarkdown %}
+```html
+<markdown>This Markdown will be **compiled** to HTML</markdown>
+<md>There's also a _shorter_ version of the tag above.</md>
 ```
 
-### Import
+Result: 
 
-Already have Markdown somewhere in a file? You can import it:
-
-```sh
-{% markdown 'src/partials/markdown.md' %}
+```html
+<p>This Markdown will be <strong>compiled</strong> to HTML</p>
+<p>There's also a <em>shorter</em> version of the tag above.</p>
 ```
+
+## Attributes
+
+Use attributes if you need the element wrapping your Markdown to be preserved:
+
+```html
+<div markdown>This Markdown will be **compiled** to HTML</div>
+<p md>There's also a _shorter_ version of the tag above.</p>
+```
+
+Result: 
+
+```html
+<div>
+  <p>This Markdown will be <strong>compiled</strong> to HTML</p>
+</div>
+<p>There's also a <em>shorter</em> version of the tag above.</p>
+```
+
+## Importing files
+
+Already have Markdown somewhere in a file? Import it with Nunjucks:
+
+```handlebars
+<md>
+  {% include 'post.md' %}
+</md>
+```
+
+## Nesting
+
+You can even nest Markdown inside child elements:
+
+```html
+<body markdown>
+  <div>
+
+    | Head | row |
+    |------|-----|
+    | Data | row |
+
+  </div>
+</body>
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Nesting requires extra empty lines around Markdown, like in the <code class="shiki-inline">&lt;div&gt;</code> above.</div>
+</div>
 
 ## GFM
 
@@ -100,3 +136,77 @@ markdown:
 <div class="bg-gray-100 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
   <div class="text-gray-600">JavaScript is not supported in Front Matter, so you can't use <code class="shiki-inline">highlight</code>, <code class="shiki-inline">renderer</code>, or <code class="shiki-inline">sanitizer</code> here.</div>
 </div>
+
+## Gotchas
+
+There are some situations where Markdown might not work as expected, or requires some additional work on your side.
+
+### Unclosed Tags
+
+Because Maizzle uses [`cheerio`](https://github.com/cheeriojs/cheerio) in some of its Transformers that run after the Markdown Transformer, something like this:
+
+```handlebars
+<md>`<div>`</md>
+```
+
+... will be compiled to:
+
+```html
+<p><code><div></div></code></p>
+```
+
+Basically, `cheerio` will automatically close any unclosed tags.
+
+### Classes
+
+If you have fenced code blocks like this in your Markdown:
+
+```markdown
+```html
+  <div>Lorem ipsum</div>
+&zwnj;```
+```
+
+... then `config.markdown.langPrefix` needs to be whitelisted inside `removeUnusedCSS`:
+
+```js
+// config.production.js
+module.exports = {
+  cleanup: {
+    removeUnusedCSS: {
+      enabled: true,
+      whitelist: ['.language-*'],
+    },
+    // ...
+  }
+}
+```
+
+### IDs
+
+When using the `headerIds` option:
+
+```js
+// config.js
+module.exports = {
+  markdown: {
+    headerIds: true,
+    // ...
+  },
+}
+```
+
+... you also need to whitelist IDs with `email-comb`:
+
+```js
+// config.production.js
+module.exports = {
+  cleanup: {
+    removeUnusedCSS: {
+      enabled: true,
+      whitelist: ['.language-*', '#*'],
+    },
+    // ...
+  }
+}
+```
