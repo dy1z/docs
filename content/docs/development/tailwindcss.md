@@ -48,8 +48,7 @@ Maizzle adds the following ones in `src/assets/css/custom` :
 
 ### Plugins
 
-To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to your `tailwind.config.js`.
-Maizzle currently includes the [tailwindcss-gradients](https://www.npmjs.com/package/tailwindcss-gradients) plugin, for CSS `background-image` gradients.
+To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`.
 
 
 ## CSS purging
@@ -165,7 +164,7 @@ With Tailwind's `@apply`, that means you can do something like this:
 
 You can use Tailwind CSS, including directives like `@apply`, right inside a template.
 
-Use `{% block head %}` to push a `<style tailwind>` tag to the template's `<head>`:
+Use `{% block head %}` to push a `<style postcss>` tag to the template's `<head>`:
 
 ```handlebars
 ---
@@ -175,7 +174,7 @@ title: Using Tailwind CSS directives inside a template
 {% extends "src/layouts/default.njk" %}
 
 {% block head %}
-<style tailwind>
+<style postcss>
   a {
     @apply text-blue-500;
   }
@@ -192,7 +191,7 @@ title: Using Tailwind CSS directives inside a template
 {% endblock %}
 ```
 
-[posthtml-content](https://github.com/posthtml/posthtml-content) is used to parse the contents of any `<style>` tag that has a `tailwind` attribute - the contents are compiled with Tailwind CSS.
+[posthtml-content](https://github.com/posthtml/posthtml-content) is used to parse the contents of any `<style>` tag that has a `postcss` attribute - the contents are compiled with PostCSS.
 
 ### Prevent inlining
 
@@ -206,7 +205,7 @@ title: Preventing in-template embedded CSS from being inlined
 {% extends "src/layouts/default.njk" %}
 
 {% block head %}
-<style tailwind data-embed>
+<style postcss data-embed>
   /* This CSS will not be inlined */
   img {
     border: 0;
