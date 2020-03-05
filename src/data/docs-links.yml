@@ -59,8 +59,6 @@
 
 - name: Transformers
   items:
-    - title: PostHTML
-      path: /docs/posthtml/
     - title: CSS Inlining
       path: /docs/css-inlining/
     - title: Code Cleanup
@@ -71,6 +69,10 @@
       path: /docs/base-image-url/
     - title: URL Parameters
       path: /docs/url-parameters/
+    - title: Prevent Widows
+      path: /docs/prevent-widows/
+    - title: Transform Content
+      path: /docs/transform-content/
     - title: Prettify
       path: /docs/prettify/
     - title: Minify
