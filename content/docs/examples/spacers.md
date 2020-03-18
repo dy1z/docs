@@ -53,3 +53,21 @@ The Row spacer, but as a full `<table>`.
   </tr>
 </table>
 ```
+
+## Semantic
+
+We can use an `<hr>` to create a semantic Spacer.
+
+```html
+<p>Paragraph about the weather</p>
+<hr class="border-0 text-white my-64 min-h-full">
+<p>Paragraph about my day at work</p>
+```
+
+How it works:
+
+- we hide the line by resetting the border 
+- we give it the same color as the background of the page, for Outlook
+- we define height with top and bottom margins
+
+The `min-h-full` class is used to get it working in Apple email clients.
