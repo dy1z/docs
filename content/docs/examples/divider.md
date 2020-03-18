@@ -6,103 +6,93 @@ description: "Create dividers or horizontal rules for your HTML email template i
 
 # Divider
 
-Similar to Spacers, a Divider provides consistent vertical spacing while allowing visual separation of your content.
+A Divider is basically a thin horizontal line that separates content areas.
 
-A Divider has a thin horizontal line in the middle, which you can style to suit your needs. It can be used anywhere a `<table>` is allowed: before/after other tables, or inside table cells or divs.
+Similar to Spacers, Dividers provide consistent vertical spacing while also offering visual separation of your content.
 
-The spacing above and below the Divider line is defined through the vertical padding of the inner `<td>` element, with Tailwind CSS utilities:
+To create a Divider, we can use a regular `<hr>` element:
 
 ```html
-<table class="w-full">
-  <tr>
-    <td class="py-24">
-      <div class="bg-gray-300 h-px leading-px">&amp;zwnj;</div>
-    </td>
-  </tr>
-</table>
+<hr class="border-0 bg-gray-500 text-gray-500 h-px">
 ```
 
 ## How it works
 
-1. `py-24` adds `24px` top and bottom padding
-2. The `<div>` is the horizontal line: we set its height and line-height to `1px`, and give it a background color
-3. We use a `&zwnj;` to add something inside the `<div>`, so it can take up height
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Feel free to use <code class="shiki-inline">&amp;nbsp;</code> instead of <code class="shiki-inline">&amp;zwnj;</code>, both work just fine 👌</div>
-</div>
-
-## Outlook note
-
-The `<div>` element where we use `leading-px` needs some extra attention for Outlook. Otherwise, it will render thicker than intended 😩
-
-To make Outlook respect the line height you set on elements, Maizzle uses a <abbr title="Microsoft Office">MSO</abbr> proprietary CSS rule in the Starter's [default Layout &nearr;](https://github.com/maizzle/maizzle/blob/6c0951ad7f27f00ee5fa62eacd39a2d858e0991b/src/layouts/default.njk#L18)
-
-```css
-mso-line-height-rule: exactly;
-```
-
-Maizzle also defines a utility class for this, so if you're not using the default Layout you can code your Divider like this:
-
-```html
-<table class="w-full">
-  <tr>
-    <td class="py-24">
-      <div class="bg-gray-300 h-px leading-px mso-leading-exactly">&amp;zwnj;</div>
-    </td>
-  </tr>
-</table>
-```
+1. We first reset the `border-width`, so we can apply our own colors
+2. We use a combination of `background-color` and `color` - the latter is for Outlook (Windows)
+3. Removing the border means the element now has no `height`, so we use `h-px` to set it to `1px`
 
 ## Customization
 
-Use padding utilities on the `<td>` to push and pull the horizontal line as needed.
+You can customize the divider and give it a custom width or height, change its color, the top/bottom space around it, and even its alignment.
 
-For example:
+### Width
 
-```html
-<table class="w-full">
-  <tr>
-    <td class="pt-24 pr-64 pb-48 pl-0">
-      <div class="bg-gray-300 h-px leading-px">&amp;zwnj;</div>
-    </td>
-  </tr>
-</table>
+An `<hr>` goes full width by default, but we can set a custom width.
+
+Let's also use `max-w-full`, to make it responsive:
+
+```js
+// tailwind.config.js
+module.exports = {
+  spacing: {
+    // ...,
+    '400': '400px',
+  }
+}
 ```
 
-Need a thicker divider hairline? Bump up the `height` and `line-height`:
 
 ```html
-<table class="w-full">
-  <tr>
-    <td class="pt-24 pr-64 pb-48 pl-0">
-      <div class="bg-gray-300 h-4 leading-4">&amp;zwnj;</div>
-    </td>
-  </tr>
-</table>
+<hr class="border-0 bg-gray-500 text-gray-500 h-px w-400 max-w-full">
 ```
 
-Shorter Divider on mobile devices? Use the `sm` breakpoint:
+Need a custom width for mobile devices? Use the `sm` breakpoint:
 
 ```html
-<table class="w-full">
-  <tr>
-    <td class="py-24 px-16 sm:py-12 sm:px-8">
-      <div class="bg-gray-300 h-px leading-px">&amp;zwnj;</div>
-    </td>
-  </tr>
-</table>
+<hr class="border-0 bg-gray-500 text-gray-500 h-px sm:w-64">
 ```
+
+### Margin
+
+You can customize top and bottom spacing with CSS margins.
+
+For example, let's add `32px` to the top and bottom:
+
+```html
+<hr class="border-0 bg-gray-500 text-gray-500 h-px my-32">
+```
+
+Need uneven spacing?
+
+```html
+<hr class="border-0 bg-gray-500 text-gray-500 h-px mt-16 mb-32">
+```
+
+<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-gray-600">Note that <code class="shiki-inline">&lt;hr&gt;</code> elements come with margins by default, so you might want to set a custom one or reset it with <code class="shiki-inline">m-0</code>. For example, Chrome resets to <code class="shiki-inline">8px</code>.</div>
+</div>
+
+### Alignment
+
+You can use the `align` attribute to align a Divider.
+
+```html
+<hr align="right" class="border-0 bg-gray-500 text-gray-500 h-px mt-16 mb-32">
+```
+
+By default, it will be centered.
 
 ### Vertical
 
-Need a vertical Divider?
+For a vertical Divider, simply use a narrow width and a bigger height:
 
 ```html
-<table>
-  <tr>
-    <td class="bg-black w-px h-64"></td>
-  </tr>
-</table>
+<hr class="border-0 bg-gray-500 text-gray-500 w-px h-64 m-0">
 ```
 
+## Other notes
+
+This page initially documented [table-based Dividers](https://github.com/maizzle/docs/blob/5f0d8f04abf5049a1ca6eae542094b9c14f492d8/content/docs/examples/divider.md).
+
+We are now recommending an `<hr>`-based Divider, following Mark Robbins' excellent [goodemailcode.com](https://www.goodemailcode.com/email-code/hr) examples.
