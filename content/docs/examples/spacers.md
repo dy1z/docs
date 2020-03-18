@@ -38,10 +38,6 @@ Use this one directly inside a `<table>`:
 </tr>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">By default, Maizzle will remove the inlined CSS <code class="shiki-inline">height: 64px;</code> and replace it with a <code class="shiki-inline">height="64"</code> attribute.</div>
-</div>
-
 ## Table
 
 The Row spacer, but as a full `<table>`.
