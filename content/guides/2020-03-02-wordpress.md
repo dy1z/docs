@@ -1,7 +1,7 @@
 ---
 title: "How to use the WordPress API to create a newsletter from your posts"
 slug: "wordpress-api-posts-email-newsletter"
-description: "Learn how to use the WordPress API and Maizzle to create a newsletter with your latest posts."
+description: "Learn how to use the WordPress API and Maizzle to create an HTML email newsletter with your latest posts."
 date: 2020-03-02
 ---
 

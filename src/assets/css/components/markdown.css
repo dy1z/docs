@@ -81,7 +81,7 @@
   }
 
   kbd {
-    @apply inline-block font-mono bg-gray-300 border border-gray text-gray-700 text-xxs;
+    @apply inline-block font-mono bg-gray-300 border text-gray-700 text-xxs;
     border-radius: 3px;
     box-shadow: 0 1px 0 rgba(135,149,161,0.4), 0 0 0 2px #fff inset;
     line-height: 1.4;
