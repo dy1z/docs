@@ -28,8 +28,7 @@
   @apply font-normal block mt-2 text-gray-600;
 }
 
-.text-gradient-l-ocean-light {
-  @apply bg-gradient-l-ocean-light;
+.text-gradient {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

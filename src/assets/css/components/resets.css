@@ -1,5 +1,7 @@
 ::selection {
   @apply bg-black text-white;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 .navigation a.active {
