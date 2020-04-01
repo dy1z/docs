@@ -73,7 +73,7 @@ module.exports = {
                 'src/**/*.vue',
                 'src/**/*.js'
               ],
-              defaultExtractor: content => content.match(/[\w-/:%]+(?<!:)/g) || [],
+              defaultExtractor: content => content.match(/[\w-/:.%]+(?<!:)/g) || [],
               whitelistPatterns: [/shiki/, /a(lgoli)?a/]
             }),
           ])
