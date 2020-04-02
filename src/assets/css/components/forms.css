@@ -36,6 +36,7 @@ input[type="search"] {
   }
 }
 
+/*! purgecss start ignore */
 #search-mobile ~ .ds-dropdown-menu {
   left: -30px !important;
   top: 100% !important;
@@ -44,3 +45,4 @@ input[type="search"] {
     @apply left-8;
   }
 }
+/*! purgecss end ignore */
