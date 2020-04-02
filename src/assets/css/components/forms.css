@@ -39,7 +39,7 @@ input[type="search"] {
 /*! purgecss start ignore */
 #search-mobile ~ .ds-dropdown-menu {
   left: -30px !important;
-  top: 100% !important;
+  @apply min-w-full max-w-full top-full !important;
 
   &::before {
     @apply left-8;
