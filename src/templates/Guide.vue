@@ -3,16 +3,16 @@
     <main>
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
-        <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
+        <article class="markdown px-4 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
           <header class="flex flex-col-reverse">
-            <h1 v-html="$page.tutorial.title" class="tracking-tight" />
-            <time :datetime="$page.tutorial.datetime" class="text-sm text-gray-600">
-              {{ formatDate($page.tutorial.datetime, 'MMMM D, YYYY') }}
+            <h1 v-html="$page.guide.title" class="tracking-tight" />
+            <time :datetime="$page.guide.datetime" class="text-sm text-gray-600">
+              {{ formatDate($page.guide.datetime, 'MMMM D, YYYY') }}
             </time>
           </header>
-          <div v-html="$page.tutorial.content"/>
+          <div v-html="$page.guide.content"/>
         </article>
-        <table-of-contents :page="$page.tutorial" title="In this guide:" />
+        <table-of-contents :page="$page.guide" title="In this guide:" />
       </section>
     </main>
   </Layout>
@@ -54,21 +54,21 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.$page.tutorial.title,
+      title: this.$page.guide.title,
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.description(this.$page.tutorial)
+          content: this.description(this.$page.guide)
         },
-        { property: "og:title", content: this.$page.tutorial.title },
+        { property: "og:title", content: this.$page.guide.title },
         { property: "og:type", content: 'article' },
-        { property: "og:description", content: this.description(this.$page.tutorial) },
+        { property: "og:description", content: this.description(this.$page.guide) },
         { property: "og:image", content: this.ogImageUrl },
-        { property: "og:url", content: `${this.config.siteUrl}${this.$page.tutorial.path}/` },
+        { property: "og:url", content: `${this.config.siteUrl}${this.$page.guide.path}/` },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: this.$page.tutorial.title },
-        { name: "twitter:description", content: this.description(this.$page.tutorial) },
+        { name: "twitter:title", content: this.$page.guide.title },
+        { name: "twitter:description", content: this.description(this.$page.guide) },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
         { name: "twitter:image", content: this.ogImageUrl },
@@ -138,8 +138,8 @@ export default {
 </script>
 
 <page-query>
-query Tutorial ($path: String) {
-  tutorial (path: $path) {
+query Guide ($path: String) {
+  guide (path: $path) {
     datetime: date (format: "YYYY-MM-DD HH:mm:ss")
     path
     title

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="py-12 md:py-20 lg:py-24">
+    <div class="py-12 md:py-20 lg:pb-24 lg:-mt-12">
       <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <svg class="absolute top-full right-0 sm:left-0 mx-auto transform -translate-y-1/4 xl:-translate-y-96 opacity-75" width="404" height="404" fill="none" viewBox="0 0 404 404">
           <defs>

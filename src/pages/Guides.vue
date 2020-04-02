@@ -3,14 +3,14 @@
     <main>
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
-        <div class="px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
-          <h1 class="text-black font-semibold leading-tight text-4xl pb-6">Maizzle Tutorials</h1>
+        <div class="px-4 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
+          <h1 class="text-black font-semibold leading-tight text-4xl pb-6 font-inter">Maizzle Guides</h1>
           <p class="leading-code text-gray-700">Learn how to create HTML emails with Tailwind CSS in Maizzle.</p>
           <hr class="mb-16 border-0 bg-gray-200">
           <ul>
-            <li v-for="edge in $page.tutorials.edges" :key="edge.node.id" class="pb-8 mb-8 border-b border-gray-100">
+            <li v-for="edge in $page.guides.edges" :key="edge.node.id" class="pb-8 mb-8 border-b border-gray-100">
               <header class="mb-4">
-                <h2 class="text-2xl font-semibold leading-tight mb-0 text-black hover:text-gray-700">
+                <h2 class="text-2xl font-semibold font-inter leading-tight mb-0 text-black hover:text-gray-700">
                   <g-link :to="edge.node.path">{{ edge.node.title }}</g-link>
                 </h2>
                 <time :datetime="edge.node.datetime" class="text-sm text-gray-500">{{ formatDate(edge.node.datetime, 'MMMM D, YYYY') }}</time>
@@ -29,35 +29,13 @@
 import moment from "moment"
 import config from '~/.temp/config.js'
 import Layout from '~/layouts/NoTransition'
-import scrollToElement from 'scroll-to-element'
-import TableOfContents from '@/components/TableOfContents'
 import DocsHeader from '@/components/DocsHeader'
-
 import links from '@/data/docs-links.yml'
 
-function addScrollTo(el) {
-  el.preventDefault()
-  let href = el.target.getAttribute('href')
-
-  scrollToElement(href, {
-    offset: -110,
-    ease: 'out-expo',
-    duration: 400
-  })
-
-  history.pushState ? history.pushState(null, null, href) : location.hash = href
-}
-
 export default {
-  data() {
-    return {
-      scrollTargets: []
-    }
-  },
   components: {
     Layout,
     DocsHeader,
-    TableOfContents,
   },
   metaInfo () {
     return {
@@ -80,27 +58,6 @@ export default {
       ],
     }
   },
-  updated () {
-    const vm = this
-    this.$nextTick(function () {
-      if (vm.$route.hash) {
-        vm.scrollTo(this.$route.hash)
-      }
-      vm.scrollTargets = document.querySelectorAll('h2 a, h3 a')
-      vm.scrollTargets.forEach(el => {
-        document.addEventListener ? el.addEventListener('click', addScrollTo, false) : el.attachEvent('onclick', addScrollTo)
-      })
-    })
-  },
-  mounted () {
-    const vm = this
-    this.$nextTick(function () {
-      vm.scrollTargets = document.querySelectorAll('h2 a, h3 a')
-      vm.scrollTargets.forEach(el => {
-        document.addEventListener ? el.addEventListener('click', addScrollTo, false) : el.attachEvent('onclick', addScrollTo)
-      })
-    })
-  },
   methods: {
     excerpt(post, length, clamp) {
       if (post.description) {
@@ -115,17 +72,6 @@ export default {
     },
     formatDate(from, to) {
       return moment(from).format(to)
-    },
-    scrollTo (target) {
-      this.activeToc = target.href
-
-      target = target.el ? target.el : target
-
-      scrollToElement(target, {
-        offset: -110,
-        ease: 'out-expo',
-        duration: 400
-      })
     },
   },
   computed: {
@@ -143,8 +89,8 @@ export default {
 </script>
 
 <page-query>
-query Tutorials ($page: Int) {
-  tutorials: allTutorial (page: $page, perPage: 6) @paginate {
+query Guides ($page: Int) {
+  guides: allGuide (page: $page, perPage: 6) @paginate {
     totalCount
     pageInfo {
       totalPages

@@ -1,5 +1,5 @@
 <template>
-  <Layout class="bg-white leading-normal">
+  <Layout class="bg-white leading-normal font-inter">
     <main>
       <hero />
       <highlights />

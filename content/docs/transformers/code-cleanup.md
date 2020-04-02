@@ -120,8 +120,8 @@ cleanup: {
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Characters like <code class="shiki-inline">$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code class="shiki-inline">:</code>, <code class="shiki-inline">/</code> and <code class="shiki-inline">%</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself - you can do that in the <a href="/docs/events/#afterrender">afterRender()</a> Event.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Characters like <code class="shiki-inline">$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code class="shiki-inline">:</code>, <code class="shiki-inline">/</code> and <code class="shiki-inline">%</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself - you can do that in the <a href="/docs/events/#afterrender">afterRender()</a> Event.</div>
 </div>
 
 <div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">

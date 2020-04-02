@@ -83,8 +83,7 @@ module.exports = {
         'xl-cards': '0 20px 25px -5px rgba(67, 152, 238, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        'source-sans': ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
+        inter: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         xxxs: '.625rem',
@@ -136,6 +135,9 @@ module.exports = {
       },
       minWidth: {
         '24': '6rem',
+      },
+      zIndex: {
+        '-1': '-1',
       },
     },
   },

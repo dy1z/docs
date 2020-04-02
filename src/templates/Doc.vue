@@ -3,7 +3,7 @@
     <main>
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
-        <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
+        <article class="markdown px-4 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
           <div v-html="$page.doc.content"/>
         </article>
         <table-of-contents :page="$page.doc" title="On this page:" />

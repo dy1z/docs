@@ -9,5 +9,5 @@
 }
 
 .toc .active {
-  @apply text-black cursor-default;
+  @apply bg-gradient-l-ocean-dark cursor-default;
 }

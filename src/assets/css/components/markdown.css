@@ -1,12 +1,8 @@
 .markdown {
-  @apply text-gray-700;
-
-  ::selection {
-    @apply bg-yellow-markdown-highlight text-black;
-  }
+  @apply text-cool-gray-700;
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-black font-semibold leading-tight;
+    @apply text-black font-semibold font-inter leading-tight;
   }
 
   h1 {
@@ -43,7 +39,7 @@
   }
 
   p {
-    @apply mb-4;
+    @apply mb-4 text-lg;
     line-height: 1.8;
   }
 
@@ -65,19 +61,6 @@
 
   abbr[title] {
     @apply border-b border-dotted cursor-help no-underline;
-  }
-
-  pre {
-    @apply p-4 mb-4 -ml-20 pl-20 border border-l-0 overflow-auto scrolling-touch break-normal cursor-text bg-gradient-l-code border-gradient-l-grey-code;
-  }
-
-  code {
-    @apply text-sm leading-code font-mono;
-
-    &.shiki {
-      @apply bg-gradient-l-code text-gray-700 !important;
-      @apply block p-4 mb-4 -ml-20 pl-20 border border-l-0 overflow-auto scrolling-touch break-normal border-gradient-l-grey-code;
-    }
   }
 
   kbd {
@@ -119,31 +102,22 @@
   }
 }
 
-.shiki-inline {
-  @apply bg-gray-100 text-gray-700 text-xs leading-normal !important;
-  @apply border border-gray-200 rounded px-2 py-1;
-}
-
-a .shiki-inline {
-  @apply text-inherit !important;
-}
-
-h2 .shiki-inline,
-h3 .shiki-inline,
-h4 .shiki-inline {
-  @apply mr-1;
-}
-
 .label {
   @apply align-text-top inline-block pt-px px-1 mt-1 text-xs font-mono uppercase text-white rounded;
 }
 
 hr {
-  @apply h-px bg-gray-300 my-8;
+  @apply h-px bg-cool-gray-300 border-0 my-8;
 }
 
 @screen sm {
   .markdown  {
+    h2, h3, h4, h5, h6 {
+      > a {
+        @apply hidden;
+      }
+    }
+
     table {
       @apply table;
     }
@@ -156,6 +130,10 @@ hr {
 
 @screen lg {
   .markdown {
+    p {
+      @apply text-base;
+    }
+
     table {
       @apply w-full;
     }

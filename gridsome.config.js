@@ -11,9 +11,7 @@ module.exports = {
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       plugins: [
-        ['gridsome-plugin-remark-shiki', {
-          theme: 'quietlight'
-        }]
+        '@gridsome/remark-prismjs'
       ]
     }
   },
@@ -30,7 +28,7 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'content/guides/**/*.md',
-        typeName: 'Tutorial',
+        typeName: 'Guide',
       }
     },
     {
@@ -49,7 +47,7 @@ module.exports = {
 
   templates: {
     Doc: '/docs/:slug',
-    Tutorial: '/guides/:slug',
+    Guide: '/guides/:slug',
   },
 
   chainWebpack: config => {

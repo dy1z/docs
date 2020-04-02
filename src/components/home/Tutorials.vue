@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="mt-6 grid gap-16 border-t-2 border-gray-100 pt-10 lg:grid-cols-2 lg:col-gap-5 lg:row-gap-12">
-          <div v-for="edge in $static.tutorials.edges" :key="edge.node.id">
+          <div v-for="edge in $static.guides.edges" :key="edge.node.id">
             <p class="text-sm leading-5 text-gray-500">
               <time :datetime="edge.node.datetime">{{ formatDate(edge.node.datetime, 'MMMM D, YYYY') }}</time>
             </p>
@@ -34,7 +34,7 @@
             </g-link>
             <div class="mt-3">
               <g-link :to="edge.node.path" class="group text-base leading-6 font-semibold text-gradient bg-gradient-l-ocean-dark">
-                Read tutorial <span class="group-hover:ml-1 transition-all duration-150">&rarr;</span>
+                Read more <span class="group-hover:ml-1 transition-all duration-150">&rarr;</span>
               </g-link>
             </div>
           </div>
@@ -48,7 +48,7 @@
 import moment from 'moment'
 
 export default {
-  name: 'Tutorials',
+  name: 'Guides',
   methods: {
     formatDate(from, to) {
       return moment(from).format(to)
@@ -58,8 +58,8 @@ export default {
 </script>
 
 <static-query>
-query Tutorials ($page: Int) {
-  tutorials: allTutorial (page: $page, perPage: 6) @paginate {
+query Guides ($page: Int) {
+  guides: allGuide (page: $page, perPage: 6) @paginate {
     totalCount
     pageInfo {
       totalPages
