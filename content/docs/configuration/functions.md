@@ -10,12 +10,14 @@ Since Maizzle is fully configured in JavaScript, you can programatically set con
 
 ## Variables
 
-Here's a very basic example of using variables in config options:
+You can define variables and then use them in the config.
+
+Here's a very basic example:
 
 ```js
 // config.js
 
-// Define additional paths for PurgeCSS to scan
+// We define an array of additional paths for PurgeCSS to scan
 let extraPurgePaths = [
   './src/2019/clients/**/*.*',
   '../up/a/level/**/*.*'
@@ -51,8 +53,28 @@ module.exports = {
   foo: foo(), // invoke function defined above
   bar: function() {
     // do stuff and return
+    return 'baz'
   }(), // invoke function
+  wha: () => imaginaryLib.render('implicit return 👌'),
 }
 ```
 
-The [dynamic titles](/docs/title/#global-dynamic-titles) example uses a self-invoking function.
+You would access those variables under the `page` object:
+
+```html
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <p>{{ page.foo }}</p>
+    <p>{{ page.bar }}</p>
+    <p>{{ page.wha }}</p>
+  </block>
+</extends>
+```
+
+Result:
+
+```html
+<p>manchu</p>
+<p>baz</p>
+<p>implicit return 👌</p>
+```

@@ -53,7 +53,7 @@ It's done in 2 simple steps:
 1. Use the responsive `table-{...}-group` utilities on each column, to reverse column order on small screens
 2. Wrap the contents of each column in a `<div>` and use it to set padding for mobile. This is required because the CSS properties used to reverse the column order do not support padding
 
-<a href="https://codepen.io/maizzle/pen/dgpxbB?editors=1000" class="rounded bg-gradient-l-ocean-light hover:bg-gradient-l-ocean-dark text-sm font-bold leading-full py-3 px-12 mt-4 inline-flex" target="_blank" rel="nofollow noopener"><span class="text-white">2 col reorder demo on CodePen</span></a>
+<a href="https://codepen.io/maizzle/pen/dgpxbB?editors=1000" class="text-gradient-none rounded bg-gradient-l-ocean-light hover:bg-gradient-l-ocean-dark text-sm text-white font-bold leading-full py-3 px-12 mt-4 inline-flex" target="_blank" rel="nofollow noopener">2 col reorder demo on CodePen</a>
 
 ## Reorder 3+ cols
 
@@ -86,6 +86,6 @@ Only a couple of extra steps:
 - Make the `<tr>` full width on mobile, by adding `sm-w-full` and `sm-table`
 - Use `sm-table-caption` and `sm-w-full` on the column that you want to display first on mobile
 
-<a href="https://codepen.io/maizzle/pen/dgpxLp?editors=1000" class="rounded bg-gradient-l-ocean-light hover:bg-gradient-l-ocean-dark text-sm font-bold leading-full py-3 px-12 mt-4 inline-flex" target="_blank" rel="nofollow noopener"><span class="text-white">3+ col reorder demo on CodePen</span></a>
+<a href="https://codepen.io/maizzle/pen/dgpxLp?editors=1000" class="text-gradient-none rounded bg-gradient-l-ocean-light hover:bg-gradient-l-ocean-dark text-sm text-white font-bold leading-full py-3 px-12 mt-4 inline-flex" target="_blank" rel="nofollow noopener">3+ col reorder demo on CodePen</a>
 
 

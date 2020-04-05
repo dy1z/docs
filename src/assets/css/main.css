@@ -9,5 +9,6 @@
 @import 'components/forms';
 @import 'components/custom';
 @import 'components/markdown';
+@import 'components/prism-custom';
 
 @import 'tailwindcss/utilities';

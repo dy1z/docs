@@ -7,7 +7,7 @@ let gradients = {
   'vscode': ['#2c303b', '#414758'],
   'grey-code': ['#fff', '#f0f0f0'],
   'code': ['#fff', '#f7fafc'],
-  'red-dark': ['#e3342f', '#cc1f1a'],
+  'red-dark': ['#f05252', '#c81e1e'],
   'orange-dark': ['#f6993f', '#de751f'],
   'yellow-dark': ['#ffed4a', '#f2d024'],
   'green-dark': ['#38c172', '#1f9d55'],

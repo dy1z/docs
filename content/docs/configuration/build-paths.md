@@ -14,26 +14,51 @@ Let's first take a look at all the options:
 // config.js
 module.exports = {
   build: {
+    assets: {
+      source: './src/assets/images',
+      destination: 'images',
+    },
     destination: {
       path: 'build_local',
       extension: 'html',
     },
-    templates: {
-      source: 'src/templates',
-      filetypes: 'html|njk|nunjucks',
+    posthtml: {
+      plugins: [],
+      options: {},
+      layouts: {
+        root: './',
+      },
+      modules: {
+        root: './'
+      },
+      templates: {
+        root: 'src/templates',
+        extensions: 'html',
+      },
     },
     tailwind: {
-      css: 'src/assets/css/main.css',
+      css: './src/assets/css/main.css',
       config: 'tailwind.config.js',
-    },
-    assets: {
-      source: 'src/assets/images',
-      destination: 'images',
     },
   },
   // ...
 }
 ```
+
+## assets
+
+Source and destination directories for your asset files.
+
+At build time, `assets.destination` will be created relative to `build.destination`, and everything inside `assets.source` will be copied into it:
+
+```js
+assets: {
+  source: 'src/assets/images',
+  destination: 'images',
+},
+```
+
+You can use it to store _any_ global email assets, not just images.
 
 ## destination
 
@@ -49,42 +74,6 @@ destination: {
 },
 ```
 
-#### permalink
-
-You can override `destination.path` for each Template, with the `permalink` <abbr title="Front Matter">FM</abbr> key:
-
-```handlebars
----
-permalink: path/to/file.html
----
-
-{% block template %}
-  <!-- ... -->
-{% endblock %}
-```
-
-You can use both relative and absolute file paths.
-
-```handlebars
----
-# Relative - output one level above project directory
-permalink: ../newsletter.html
----
-```
-
-```handlebars
----
-# Absolute - output at a specific system location
-permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
----
-```
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">
-    <code class="shiki-inline">permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.
-  </div>
-</div>
-
 ### extension
 
 Define the file extension (without the dot) to be used for all templates that are output. Useful if you need to pass the file to other frameworks or templating languages.
@@ -97,18 +86,143 @@ destination: {
 },
 ```
 
-## templates
+#### permalink
+
+You can override `destination.path` for each Template, with the help of the `permalink` <abbr title="Front Matter">FM</abbr> key:
+
+```html
+---
+permalink: path/to/file.html
+---
+
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
+```
+
+You can use both relative and absolute file paths.
+
+Output one level above project directory:
+
+```html
+---
+permalink: ../newsletter.html
+---
+```
+
+Output at a specific system location:
+
+```html
+---
+permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
+---
+```
+
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</div>
+</div>
+
+## posthtml
+
+Templating-related options.
+
+### plugins
+
+Register any PostHTML plugins you would like to use:
+
+```js
+posthtml: {
+  plugins: [
+    require('posthtml-spaceless')(),
+  ]
+}
+```
+
+Maizzle already comes with the following plugins:
+
+- [`posthtml-extend`](https://github.com/posthtml/posthtml-extend)
+- [`posthtml-include`](https://github.com/posthtml/posthtml-include)
+- [`posthtml-modules`](https://github.com/posthtml/posthtml-modules)
+- [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions)
+
+### options
+
+Pass options to PostHTML.
+
+For example, tell it to ignore `<?php ?>` tags:
+
+```js
+posthtml: {
+  options: {
+    directives: [
+      { name: '?php', start: '<', end: '>' },
+    ],
+  }
+}
+```
+
+### layouts
+
+You can define the path where your Layouts are located:
+
+```js
+posthtml: {
+  layouts: {
+    root: './src/layouts',
+  }
+}
+```
+
+You could then extend layouts by referencing them relative to that path - no need to write out the full path relative to your project root:
+
+```html
+<extends src="base.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
+```
+
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>&lt;extends src="/templates/template.html"&gt;</code>)</div>
+</div>
+
+### modules
+
+Just like with Layouts, you can define a base path for your modules:
+
+```js
+posthtml: {
+  modules: {
+    root: './src/components',
+  }
+}
+```
+
+... so you can reference them relative to that path:
+
+```html
+<module href="module.html">
+  <!-- ... -->
+</module>
+```
+
+### templates
 
 Options to define your Template's `source` directories and file extensions to look for.
 
 ```js
-templates: {
-  source: 'src/templates',
-  filetypes: 'html|njk|nunjucks',
-},
+posthtml: {
+  templates: {
+    root: 'src/templates',
+    filetypes: 'html',
+  },
+}
 ```
 
-### source
+#### root
 
 Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors.
 
@@ -116,8 +230,7 @@ It can be a string:
 
 ```js
 templates: {
-  source: 'src/templates',
-  // ...
+  root: 'src/templates',
 },
 ```
 
@@ -125,35 +238,29 @@ Or an array of strings:
 
 ```js
 templates: {
-  source: ['src/templates', '/path/to/more/templates'],
-  // ...
+  root: ['src/templates', '/path/to/more/templates'],
 },
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Remember, Maizzle will copy these folders over to the <code class="shiki-inline">destination.path</code> directory, with <em>everything</em> inside them.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Remember, Maizzle will copy these folders over to the <code>destination.path</code> directory, with <em>everything</em> inside them.</div>
 </div>
 
-### filetypes
+#### filetypes
 
 Define what file extensions you use for your Templates. 
 
-Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.source` directory for Templates to build.
+`filetypes` can be a string, but it can also be an array or a pipe-delimited list:
 
 ```js
 templates: {
-  filetypes: ['html', 'njk', 'nunjucks'], // or 'html|njk|nunjucks'
+  filetypes: ['html', 'blade.php'], // or even 'html|blade.php'
 },
 ```
 
+Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.source` directory for Templates to build.
+
 This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory - it will not try to parse them.
-
-You can define `filetypes` as an array, or as a pipe-delimited list of strings.
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">While you can use any file extension for your Templates, <code class="shiki-inline">njk</code> is recommended, as it clearly shows that Nunjucks templating is being used.</div>
-</div>
-
 
 ## tailwind
 
@@ -184,60 +291,7 @@ For example, you might want to use a separate Tailwind config, where you:
 - disable `!important` (like in ⚡4email templates)
 - use different Tailwind plugins
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
   <div class="font-semibold mb-2">No effect in Front Matter</div>
-  <div class="text-gray-600">Since Tailwind CSS is compiled only once, <em>before</em> Templates are built, using <code class="shiki-inline">build.tailwind.config</code> in Front Matter will have no effect.</div>
-</div>
-
-## assets
-
-Source and destination directories for your asset files.
-
-At build time, `assets.destination` will be created relative to `build.destination`, and everything inside `assets.source` will be copied into it:
-
-```js
-assets: {
-  source: 'src/assets/images',
-  destination: 'images',
-},
-```
-
-You can use it to store _any_ global email assets, not just images.
-
-## Nunjucks
-
-You can configure the Nunjucks environment by adding a `nunjucks` object.
-
-Currently, Maizzle only supports customizing the `path` and `tags` for Nunjucks:
-
-```js
-// config.js
-module.exports = {
-  build: {
-    // ..
-    nunjucks: {
-      path: '/Code/emails/project-name',
-      tags: {
-        blockStart: '<%',
-        blockEnd: '%>',
-        variableStart: '[[',
-        variableEnd: ']]',
-        commentStart: '<#',
-        commentEnd: '#>'
-      }
-    },
-  },
-}
-```
-
-### path
-
-Use the `path` key to define a base path for Nunjucks to use - extends, includes, components will all be referenced relative to it.
-
-### tags
-
-Customize the default syntax for Nunjucks blocks, variables, and comments.
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Careful! Angle brackets for Nunjucks tags like <code class="shiki-inline">&lt;</code> and <code class="shiki-inline">&gt;</code> can trip up the minifier or inliner. Both <a href="https://github.com/Automattic/juice#juicecodeblocks" target="_blank" ref="noopener noreferrer">Juice</a> and <a href="https://github.com/kangax/html-minifier#options-quick-reference" target="_blank" rel="noopener noreferrer">html-minifier</a> have options to mitigate this.</div>
+  <div class="text-cool-gray-500">Since Tailwind CSS is compiled only once, <em>before</em> Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
 </div>

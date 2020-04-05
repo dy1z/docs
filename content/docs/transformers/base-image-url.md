@@ -22,14 +22,16 @@ module.exports = {
 
 Override it for a single template, through Front Matter:
 
-```handlebars
+```html
 ---
 baseImageURL: 'https://res.cloudinary.com/user/image/upload/v1234567890/'
 ---
 
-{% block template %}
-  <!-- ... -->
-{% endblock %}
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <img  src="example.jpg">
+  </block>
+</extends>
 ```
 
 ## Trailing slash
@@ -50,7 +52,7 @@ Disable `baseImageURL` by setting its value to an empty string or a falsy value.
 
 Here's an example of how you can do that with Front Matter:
 
-```handlebars
+```js
 ---
 baseImageURL: ''
 ---
@@ -58,7 +60,7 @@ baseImageURL: ''
 
 or
 
-```handlebars
+```js
 ---
 baseImageURL: false
 ---

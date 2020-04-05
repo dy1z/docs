@@ -13,10 +13,9 @@ First, add a `transformContents` object to your Maizzle config:
 
 ```js
 //config.js
-
 module.exports = {
-  // ...
   transformContents: {},
+  // ...
 }
 ```
 
@@ -30,7 +29,6 @@ Example:
 ```js
 //config.js
 module.exports = {
-  // ...
   transformContents: {
     fooreplace: str => str.replace(/foo/g, 'foo bar'),
   }

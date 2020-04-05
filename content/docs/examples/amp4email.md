@@ -12,52 +12,56 @@ For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.c
 
 ## Layout
 
-⚡4email requires some special markup, so let's create an `amp4email.njk` Layout:
+⚡4email requires some special markup, so let's create an `amp4email.html` Layout:
 
 ```html
 <!doctype html>
 <html ⚡4email>
 <head>
-  <meta charset="{{ page.charset or 'utf8' }}">
+  <meta charset="utf-8">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <style amp4email-boilerplate>body{visibility:hidden}</style>
-  {% if page.googleFonts %}<link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">{%- endif %}
-  {% if css %}<style amp-custom>{{ css }}</style>{% endif %}
-  {% block head %}{% endblock %}
+  <if condition="page.googleFonts">
+    <link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">
+  </if>
+  <if condition="page.css">
+    <style amp-custom>{{{ page.css }}}</style>
+  </if>
+  <block name="head"></block>
 </head>
-<body {% if page.bodyClass %}class="{{ page.bodyClass }}"{% endif %}>
-{% block template %}{% endblock %}
+<body>
+  <block name="template"></block>
 </body>
 </html>
 ```
 
 ## Template
 
-Let's create `src/templates/amp-carousel.njk`, where we add a basic AMP carousel:
+Let's create `src/templates/amp-carousel.html`, where we add a basic AMP carousel:
 
-```handlebars
-{% extends "src/layouts/amp4email.njk" %}
+```html
+<extends src="src/layouts/amp4email.html">
+  <block name="head">
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  </block>
 
-{% block head %}
-<script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-{% endblock %}
-
-{% block template %}
-<div class="p-16">
-  <div class="max-w-full">
-    <amp-carousel width="800" height="600" layout="responsive" type="slides">
-      <amp-img src="https://ampbyexample.com/img/image1.jpg" width="800" height="600" alt="a sample image"></amp-img>
-      <amp-img src="https://ampbyexample.com/img/image2.jpg" width="800" height="600" alt="another sample image"></amp-img>
-      <amp-img src="https://ampbyexample.com/img/image3.jpg" width="800" height="600" alt="and another sample image"></amp-img>
-    </amp-carousel>
-  </div>
-</div>
-{% endblock %}
+  <block name="template">
+    <div class="p-16">
+      <div class="max-w-full">
+        <amp-carousel width="600" height="400" layout="responsive" type="slides">
+          <amp-img src="https://ampbyexample.com/img/image1.jpg" width="600" height="400" alt="a sample image"></amp-img>
+          <amp-img src="https://ampbyexample.com/img/image2.jpg" width="600" height="400" alt="another sample image"></amp-img>
+          <amp-img src="https://ampbyexample.com/img/image3.jpg" width="600" height="400" alt="and another sample image"></amp-img>
+        </amp-carousel>
+      </div>
+    </div>
+  </block>
+</extends>
 ```
 
 ### AMP Components
 
-Add any [AMP components](https://ampbyexample.com/amphtml-email/introduction/hello_world/#amp-components) inside the `{% block head %}` tag, as seen above.
+Add any [AMP components](https://ampbyexample.com/amphtml-email/introduction/hello_world/#amp-components) inside the `<block name="head">` tag, as shown above.
 
 ## Disable inlining
 
@@ -82,15 +86,13 @@ module.exports = {
 inlineCSS:
   enabled: false
 ---
-
-{% extends "src/layouts/amp4email.njk" %}
-
-# ...
 ```
 
 ## !important
 
-Since inline styles aren't supported in AMP for Email, we cannot have `!important` added to our CSS. This can be easily turned off in `tailwind.config.js`:
+AMP for Email doesn't support `!important` in CSS, either. 
+
+This can be easily turned off in `tailwind.config.js`:
 
 ```js
 module.exports = {
@@ -99,7 +101,7 @@ module.exports = {
 }
 ```
 
-However, you might want to turn it off _only_ for AMP templates.
+However, you probably want to turn it off _only_ for AMP templates.
 
 You can do this with a custom build environment:
 
@@ -112,8 +114,10 @@ You can do this with a custom build environment:
       destination: {
         path: 'build_amp',
       },
-      templates: {
-        source: 'src/templates/amp',
+      posthtml: {
+        templates: {
+          source: 'src/templates/amp',
+        },
       },
       tailwind: {
         config: 'tailwind.amp.js',

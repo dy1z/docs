@@ -46,11 +46,11 @@ Result:
 
 ## Importing files
 
-Already have Markdown somewhere in a file? Import it with Nunjucks:
+Already have Markdown somewhere in a file? Simply include it:
 
-```handlebars
+```html
 <md>
-  {% include 'post.md' %}
+  <include src="path/to/file.md"></include>
 </md>
 ```
 
@@ -59,19 +59,21 @@ Already have Markdown somewhere in a file? Import it with Nunjucks:
 You can even nest Markdown inside child elements:
 
 ```html
-<body markdown>
-  <div>
+<table markdown>
+  <tr>
+    <td>
 
     | Head | row |
     |------|-----|
     | Data | row |
 
-  </div>
-</body>
+    </td>
+  </tr>
+</table>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Nesting requires extra empty lines around Markdown, like in the <code class="shiki-inline">&lt;div&gt;</code> above.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Nesting requires extra empty lines around Markdown, like in the <code>&lt;div&gt;</code> above.</div>
 </div>
 
 ## GFM
@@ -116,7 +118,7 @@ Need a `baseUrl` for Markdown links, or to enable `headerIds` for a particular T
 
 No problem:
 
-```handlebars
+```html
 ---
 title: Overriding the default Markdown config
 markdown:
@@ -124,17 +126,19 @@ markdown:
   baseUrl: https://github.com
 ---
 
-{% block template %}
-  ...
-{% endblock %}
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">When using <code class="shiki-inline">headerIds</code>, you need to add a whitelist pattern to   <code class="shiki-inline">config.removeUnusedCSS</code> (otherwise they'll be removed).</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">When using <code>headerIds</code>, you need to add a whitelist pattern to   <code>config.removeUnusedCSS</code> (otherwise they'll be removed).</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">JavaScript is not supported in Front Matter, so you can't use <code class="shiki-inline">highlight</code>, <code class="shiki-inline">renderer</code>, or <code class="shiki-inline">sanitizer</code> here.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">JavaScript is not supported in Front Matter, so you can't use functions like <code>highlight</code>, <code>renderer</code>, or <code>sanitizer</code> here.</div>
 </div>
 
 ## Gotchas
@@ -162,9 +166,9 @@ Basically, `cheerio` will automatically close any unclosed tags.
 If you have fenced code blocks like this in your Markdown:
 
 ```markdown
-```html
-  <div>Lorem ipsum</div>
-&zwnj;```
+    ```html
+    <div>Lorem ipsum</div>
+    ```
 ```
 
 ... then `config.markdown.langPrefix` needs to be whitelisted inside `removeUnusedCSS`:
@@ -172,19 +176,16 @@ If you have fenced code blocks like this in your Markdown:
 ```js
 // config.production.js
 module.exports = {
-  cleanup: {
-    removeUnusedCSS: {
-      enabled: true,
-      whitelist: ['.language-*'],
-    },
-    // ...
-  }
+  removeUnusedCSS: {
+    enabled: true,
+    whitelist: ['.language-*'],
+  },
 }
 ```
 
 ### IDs
 
-When using the `headerIds` option:
+When using the `headerIds` option, you also need to whitelist IDs with `email-comb`:
 
 ```js
 // config.js
@@ -193,20 +194,9 @@ module.exports = {
     headerIds: true,
     // ...
   },
-}
-```
-
-... you also need to whitelist IDs with `email-comb`:
-
-```js
-// config.production.js
-module.exports = {
-  cleanup: {
-    removeUnusedCSS: {
-      enabled: true,
-      whitelist: ['.language-*', '#*'],
-    },
-    // ...
-  }
+  removeUnusedCSS: {
+    enabled: true,
+    whitelist: ['.language-*', '#*'],
+  },
 }
 ```

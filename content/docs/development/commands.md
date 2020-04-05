@@ -14,7 +14,7 @@ CLI commands for creating new projects and scaffolding templates or configs.
 
 ### new
 
-```sh
+```bash
 maizzle new [path?] [repo?] --no-deps?
 ```
 
@@ -31,7 +31,7 @@ It accepts two arguments, both optional:
 | --- | --- | --- |
 | `--no-deps` | `-d` | Don't install NPM dependencies
 
-Running it with no arguments will:
+Running it with no arguments (i.e. `maizzle new`) will:
 
 1. Create a `maizzle` directory
 2. Clone the `maizzle/maizzle` repo into it
@@ -39,17 +39,17 @@ Running it with no arguments will:
 
 So you can basically clone any repo into any system path, which means you can use any starter project - not just ours - as long as you can clone it with Git.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the <code class="shiki-inline">[path]</code> directory already exists, scaffolding will be aborted.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If the <code class="shiki-inline">[path]</code> directory already exists, scaffolding will be aborted.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600"><code class="shiki-inline">[repo]</code> must be a valid Git repository URL (.git extension included).</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500"><code class="shiki-inline">[repo]</code> must be a valid Git repository URL (.git extension included).</div>
 </div>
 
 ### make:config
 
-```sh
+```bash
 maizzle make:config <env> --full?
 ```
 
@@ -67,7 +67,7 @@ The `<env>` argument is an environment name, i.e. `staging`.
 
 For example, let's scaffold `config.staging.js`:
 
-```sh
+```bash
 maizzle make:config staging
 ```
 
@@ -85,7 +85,7 @@ module.exports = {
 
 If you want a full config, use the `--full` option:
 
-```sh
+```bash
 maizzle make:config staging --full
 ```
 
@@ -93,7 +93,7 @@ The full config is based on the [Starter's `config.js`](https://github.com/maizz
 
 ### make:layout
 
-```sh
+```bash
 maizzle make:layout <filename> --directory?
 ```
 
@@ -107,37 +107,37 @@ Scaffolds a new Layout based on the [Starter's default Layout](https://github.co
 | --- | --- | --- |
 | `--directory` | `-d` |  Directory where Layout file should be output
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If no <code class="shiki-inline">--directory</code> is provided, Layout file will be output in <code class="shiki-inline">src/layouts</code> relative to where you executed the command.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If no <code class="shiki-inline">--directory</code> path is provided, Layout file will be output in <code class="shiki-inline">src/layouts</code> relative to where you executed the command.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the path provided in the <code class="shiki-inline">--directory</code> option does not exist, it will be created.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If the <code class="shiki-inline">--directory</code> path does not exist, it will be created.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the resulting file already exists, Layout scaffolding will be aborted and an error will be thrown - file will not be overwritten.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If the resulting file already exists, Layout scaffolding will be aborted and an error will be thrown. The file will not be overwritten.</div>
 </div>
 
 Examples:
 
-```sh
+```bash
 # scaffold a Layout in src/layouts
-maizzle make:layout my-layout.njk
+maizzle make:layout my-layout.html
 
 # use a custom directory
-maizzle make:layout amp-layout.njk --directory=src/layouts/amp
+maizzle make:layout amp-layout.html --directory=src/layouts/amp
 
 # the above is the same as
-maizzle make:layout amp-layout.njk -d=src/layouts/amp
+maizzle make:layout amp-layout.html -d=src/layouts/amp
 
 # paths can be relative to project root, i.e. one level above
-maizzle make:layout master.njk -d=../global-layouts
+maizzle make:layout master.html -d=../global-layouts
 ```
 
 ### make:template
 
-```sh
+```bash
 maizzle make:template <filename> --directory?
 ```
 
@@ -151,16 +151,16 @@ Scaffolds a new Template.
 | --- | --- | --- |
 | `--directory` | `-d` |  Directory where Template file should be output
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If no <code class="shiki-inline">--directory</code> is provided, Template file will be output in <code class="shiki-inline">src/templates</code> relative to where you executed the command.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If no <code class="shiki-inline">--directory</code> is provided, Template file will be output in <code class="shiki-inline">src/templates</code> relative to where you executed the command.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the path provided in the <code class="shiki-inline">--directory</code> option does not exist, it will be created.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If the <code class="shiki-inline">--directory</code> path does not exist, it will be created.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If the resulting file already exists, Template scaffolding will be aborted and an error will be thrown - file will not be overwritten.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If the resulting file already exists, Template scaffolding will be aborted and an error will be thrown. The file will not be overwritten.</div>
 </div>
 
 ## Development
@@ -181,20 +181,20 @@ You can make changes to a file, save it, and the browser will automatically relo
 
 This command has the fastest build time, since most Transformers are disabled on purpose for local development, in the base `config.js`.
 
-When developing locally, you have _all_ classes generated by Tailwind CSS at your disposal, so you can rapidly prototype and style emails, even right in the browser.
+When developing locally, you have _all_ classes generated by Tailwind CSS at your disposal, so you can rapidly prototype and style emails, right in the browser.
 
 ### build
 
-```sh
+```bash
 maizzle build [env?]
 ```
 
-`maizzle build` is used to compile your templates and output them to the destination directory. If `[env]` is specified, Maizzle will try to merge `config.[env].js` on top of the [default config](/docs/configuration/).
+`maizzle build` is used to compile your templates and output them to the destination directory. If `[env]` is specified, Maizzle will try to create an environment config by merging `config.[env].js` on top of the [default config](/docs/configuration/).
 
 | Argument | Type | Required | Default | Description
 | --- | --- | --- | --- | --- |
 | `[env]` | string | no |  local | An environment name to use
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If no <code class="shiki-inline">[env]</code> is specified, Maizzle will default to <code class="shiki-inline">local</code> and use <code class="shiki-inline">config.js</code>.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If no <code class="shiki-inline">[env]</code> is specified, Maizzle will default to <code class="shiki-inline">local</code> and use <code class="shiki-inline">config.js</code>.</div>
 </div>

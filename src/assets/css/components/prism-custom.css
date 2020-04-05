@@ -1,0 +1,168 @@
+/**
+ * Dracula Theme originally by Zeno Rocha [@zenorocha]
+ * https://draculatheme.com/
+ *
+ * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  @apply text-cool-gray-600 leading-code text-left whitespace-pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	tab-size: 2;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  @apply p-4 mb-4 rounded-md border border-cool-gray-100 overflow-auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  @apply bg-cool-gray-50;
+}
+
+/* Inline code */
+:not(pre) > code {
+  @apply bg-cool-gray-50 border border-cool-gray-100 text-cool-gray-500 text-sm px-2 py-0.5 whitespace-normal rounded;
+}
+
+a {
+  > code {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @apply bg-gradient-l-ocean-dark;
+  }
+
+  &:hover > code {
+    @apply border-cool-gray-300;
+  }
+}
+
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-cool-gray-400;
+}
+
+.token.punctuation {
+  @apply text-cool-gray-500;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-green-400;
+}
+
+.token.boolean,
+.token.number {
+  @apply text-pink-400;
+}
+
+:not(code[class="language-js"]) .token {
+  &.selector,
+  &.attr-name,
+  &.string,
+  &.char,
+  &.builtin,
+  &.inserted {
+    @apply text-green-400;
+  }
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  @apply text-cool-gray-500;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  @apply text-pink-400;
+}
+
+.token.keyword {
+	color: #8be9fd;
+  @apply text-red-500;
+}
+
+.token.regex,
+.token.important {
+	color: #ffb86c;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+
+code[class="language-js"] {
+  @apply text-ocean;
+
+  .token {
+    &.string {
+      @apply text-green-400;
+    }
+
+    &.property-access {
+      @apply text-red-400;
+
+    }
+  }
+}
+
+code[class="language-yaml"] {
+  .token {
+    &.punctuation {
+      @apply text-cool-gray-400;
+    }
+
+    &.atrule {
+      @apply text-ocean;
+    }
+
+    &.string {
+      @apply text-green-400;
+    }
+
+    &.boolean {
+      @apply text-pink-400 font-normal;
+    }
+  }
+}
+
+code[class="language-html"] {
+  .token {
+    &.attr-name {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @apply bg-gradient-l-ocean-dark;
+    }
+  }
+}

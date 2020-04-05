@@ -14,16 +14,18 @@ Besides the standard parent-child templating relation, you can use Layouts to de
 
 Layouts are typically stored in the `src/layouts` directory.
 
-Simply create a `mylayout.njk` file in there, and add a minimal boilerplate with tags to yield the CSS and the Template body:
+Simply create a `layout.html` file in there, and add a minimal boilerplate with tags to yield the CSS and the Template body:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-  {% if css %}<style>{{ css }}</style>{% endif %}
+  <if condition="page.css">
+    <style>{{{ page.css }}}</style>
+  </if>
 </head>
 <body>
-  {% block template %}{% endblock %}
+  <block name="template"></block>
 </body>
 ``` 
 
@@ -31,31 +33,71 @@ You can use this as a Layout that your Templates [extend](/docs/templates/#exten
 
 ## Template Blocks
 
-In the example above, the Layout simply pulls in a Nunjucks `{% block %}` named `template` - 
-it looks for a block with the same name in every Template that [extends](/docs/templates/#extends) it.
+The Layout above defines where the contents of a block should be yielded. It looks for a `<block name="template">` tag in every Template that [extends](/docs/templates/#extends) it.
 
-Read more about blocks, in the [Nunjucks documentation &nearr;](https://mozilla.github.io/nunjucks/templating.html#template-inheritance)
+Of course, you can use custom names for blocks, like `<block name="content">`.
 
 ## Variables
 
-Variables from your environment config or from the Template's own Front Matter are available in a Layout under the `page` object:
+Variables from your environment config or from the Template's own Front Matter are available in a Layout under the `page` object.
+
+You can use curly braces to output variables:
 
 ```html
-<meta charset="{{ page.charset or 'utf8' }}">
+<meta charset="{{ page.charset || 'utf8' }}">
 ```
 
-The compiled Tailwind CSS for the current Template is available under `css` :
+As you can see, inside curly braces you can write JavaScript expressions. These will be evaluated and the result will be output in your HTML.
+
+### Compiled CSS
+
+The compiled Tailwind CSS for the current Template is available under `page.css` :
 
 ```html
-{% if css %}<style>{{ css }}</style>{% endif %}
+<if condition="page.css">
+  <style>{{{ page.css }}}</style>
+</if>
 ```
 
-The environment name is available under `env`. You can use it to output stuff based on the `build` command you ran.
+### Environment 
 
-For example, we could use `env` to output some content only when running the `maizzle build production` command:
+The environment name is available under `page.env`. You can use it to output stuff based on the `build` command that you ran.
+
+For example, we could use `page.env` to output some content only when running the `maizzle build production` command:
 
 ```html
-{% if env == 'production' %}
+<if condition="page.env === 'production'">
   <p>This text will show when running `maizzle build production`</p>
-{% endif %}
+</if>
 ```
+
+## Root
+
+You can define a path to the directory where your Layouts live:
+
+```js
+// config.js
+module.exports = {
+  build: {
+    posthtml: {
+      layouts: {
+        root: 'src/layouts',
+      }
+    }
+  }
+}
+```
+
+This allows you to specify a `src=""` relative to the path in that `root` key:
+
+```html
+<extends src="base.html">
+  <block name="template">
+    <!--  -->
+  </block>
+</extends>
+```
+
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>src/templates/template.html</code>)</div>
+</div>

@@ -29,13 +29,13 @@ module.exports = {
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">This applies only to <code class="shiki-inline">&lt;head&gt;</code> CSS, inlined CSS will not contain <code class="shiki-inline">!important</code></div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></div>
 </div>
 
 ## Separator
 
-Separators like `:` in `hover:bg-black` or `/` in `w-1/2` need to be \escaped in CSS. 
+Characters like `:` in `hover:bg-black` need to be \escaped in CSS. 
 
 Because some email clients (Gmail 👀) fail to parse selectors with escaped characters, 
 Maizzle normalizes all your CSS selectors and HTML classes, replacing any escaped characters it finds with `-`.
@@ -57,9 +57,26 @@ module.exports = {
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Maizzle normalizes only <code class="shiki-inline">:</code> <code class="shiki-inline">/</code> <code class="shiki-inline">.</code> and <code class="shiki-inline">%</code> in your class names. If you use other special characters, it is your responsibility to convert them.</div>
-</div>
+[`posthtml-safe-class-names`](https://github.com/posthtml/posthtml-safe-class-names) is used to normalize `:` `/` `.` and `%` characters in your class names - these are the safe characters they are replaced with:
+
+
+- `:` is replaced with `-`
+- `\/` is replaced with `-`
+- `%` is replaced with `pc`
+- `.` is replaced with `_`
+
+You can define new replacement mappings (or overwrite existing ones) by adding a `safeClassNames` key to your config.
+
+For example, let's replace `:` with a `_` instead of the default `-`:
+
+```js
+// config.js
+module.exports = {
+  safeClassNames: {
+    ':': '__'
+  },
+}
+```
 
 ## Screens
 
@@ -73,11 +90,7 @@ screens: {
 },
 ```
 
-### @screen sm
-
-A breakpoint for mobile devices, adjust as needed.
-
-More on screens, in the [Tailwind CSS docs &nearr;](https://tailwindcss.com/docs/responsive-design)
+More on screens, in the [Tailwind CSS docs](https://tailwindcss.com/docs/responsive-design).
 
 ## Plugins
 

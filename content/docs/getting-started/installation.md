@@ -14,13 +14,13 @@ Maizzle needs a few tools installed on your machine:
 
 You'll obviously need [Node.js](https://nodejs.org/en/download/) - NPM comes included with it. To check if they're installed, use these commands:
 
-```sh
+```bash
 node -v
 ```
 
 and
 
-```sh
+```bash
 npm -v
 ```
 
@@ -30,7 +30,7 @@ The `maizzle new` command for scaffolding a new project works by cloning a Git r
 
 Check if you have it, by running this command:
 
-```sh
+```bash
 git --version
 ```
 
@@ -43,27 +43,24 @@ Maizzle consists of:
 - a Starter project
 
 When developing emails in Maizzle, you run a CLI command inside your Starter project directory root. 
-That simply asks the Framework to build the emails inside your current project, based on config files it finds in there.
+That simply asks the Framework to build the emails inside your current project, based on config files that it finds in there.
 
 With that in mind:
 
 ### Install the CLI globally
 
-With NPM:
 
-```sh
+```bash
+# With NPM:
 npm install -g @maizzle/cli
-```
 
-With [Yarn](https://yarnpkg.com):
-
-```sh
+# With Yarn:
 yarn global add @maizzle/cli
 ```
 
 ### Create a project
 
-```sh
+```bash
 maizzle new my-project
 ```
 
@@ -71,7 +68,7 @@ That will clone the [Maizzle Starter](https://github.com/maizzle/maizzle) into a
 
 Once that's done, change your current directory to the project root: 
 
-```sh
+```bash
 cd my-project
 ```
 
@@ -79,13 +76,13 @@ Congratulations, you can now start using Maizzle!
 
 Start local email development by running the `serve` command:
 
-```sh
+```bash
 maizzle serve
 ```
 
 Ready for production?
 
-```sh
+```bash
 maizzle build production
 ```
 

@@ -1,41 +1,49 @@
 ---
 title: "Partials"
 slug: "partials"
-description: "Learn how to use Nunjucks includes to import partials in your HTML email templates"
+description: "Learn how to use PostHTML includes to import partials in your HTML email templates"
 ---
 
 # Partials
 
-Partials are files that you can include in a Template with the `{% include %}` tag.
+Partials are separate files that you can pull into a Template.
 
-## Including
+## Syntax
 
-To include a Partial in a Template, use the Nunjucks `{% include %}` tag:
+To include a Partial in a Template, use the `<include>` tag:
 
-```js
-{% block template %}
-  
-  {% include "src/partials/example.njk" %}
-
-{% endblock %}
+```html
+<extends src="layouts/base.html">
+  <block name="template">
+    <include src="src/partials/example.html"></include>
+  </block>
+</extends>
 ```
 
-The path to the Partial file must be:
+The path to the Partial file must be relative to the project root.
 
-- surrounded with quotes
-- relative to the project root
+## Locals
 
-The build will normally fail if the Partial file doesn't exist - if you're unsure whether the Partial will exist at that path at build time, use `ignore missing`:
+You can pass data to partials, with the help of the `locals=""` attribute:
 
-```js
-{% include "src/partials/schrodinger-cat.njk" ignore missing %}
+```html
+<extends src="layouts/base.html">
+  <block name="template">
+    <include 
+      src="src/partials/example.html" 
+      locals='{"text": "Button"}'
+    ></include>
+  </block>
+</extends>
 ```
 
-Read more about includes, in the [Nunjucks docs &nearr;](https://mozilla.github.io/nunjucks/templating.html#include)
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Currently, you can only pass a valid JSON string to <code>locals</code>.</div>
+</div>
 
 ## Paths
 
-Partials live in the `src/partials` directory in Maizzle, but you can keep them wherever you'd like - just be sure to update their `purgeCSS` and `browsersync` paths:
+Partials live in the `src/partials` folder in Maizzle, but you can keep them wherever you'd like - just be sure to update their `purgeCSS` and `browsersync` paths:
 
 ```js
 // config.js
@@ -61,10 +69,8 @@ module.exports = {
 
 [PurgeCSS](/docs/code-cleanup/#purgecss) needs that path, so that any Tailwind CSS classes in your Partials will not be removed when doing code cleanup. Likewise, [Browsersync](/docs/browsersync) needs to know about it so it can automatically reload your page if a Partial changes.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">You need to use file globs in these paths, just as shown above. Using directory paths will make PostCSS fail with a <code class="shiki-inline">EISDIR</code> read error.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">You need to use file globs in these paths, just as shown above. Using directory paths will make PostCSS fail with a <code>EISDIR</code> read error.</div>
 </div>
-
-Otherwise, you can of course include a partial from any location.
 
 

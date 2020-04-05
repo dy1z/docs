@@ -14,33 +14,32 @@ In email, bigger is never better. _Clean up your production emails._
 
 ---
 
-These are the default settings in `config.js` :
+These are the cleanup-related options in `config.js` :
 
 ```js
 // config.js
 module.exports = {
-  cleanup: {
-    purgeCSS: {
-      content: [
-        'src/layouts/**/*.*',
-        'src/partials/**/*.*',
-        'src/components/**/*.*',
-      ],
-      whitelist: [],
-      whitelistPatterns: [],
-    },
-    removeUnusedCSS: {
-      enabled: false,
-    },
-    replaceStrings: false,
-    keepOnlyAttributeSizes: {
-      width: [],
-      height: [],
-    },
-    preferBgColorAttribute: false,
-    sixHex: false,
+  purgeCSS: {
+    content: [
+      'src/layouts/**/*.*',
+      'src/partials/**/*.*',
+      'src/components/**/*.*',
+    ],
+    whitelist: [],
+    whitelistPatterns: [],
   },
-  // ...
+  removeUnusedCSS: {
+    enabled: false,
+  },
+  replaceStrings: false,
+  keepOnlyAttributeSizes: {
+    width: [],
+    height: [],
+  },
+  preferBgColorAttribute: false,
+  removeAttributes: [],
+  safeClassNames: {},
+  sixHex: false,
 }
 ```
 
@@ -59,14 +58,11 @@ However, it can sometimes happen that it purges classes that you actually need -
 To give you control, Maizzle exposes some of its options to your cleanup config:
 
 ```js
-cleanup: {
-  purgeCSS: {
-    content: [], // array of filenames or globs to scan for selectors
-    whitelist: [], // array of strings
-    whitelistPatterns: [], // array of regular expressions
-    extractor: /[\w-/:%]+(?<!:)/g, // regular expression
-  }
-  // ...
+purgeCSS: {
+  content: [], // array of filenames or globs to scan for selectors
+  whitelist: [], // array of strings
+  whitelistPatterns: [], // array of regular expressions
+  extractor: /[\w-/:%]+(?<!:)/g, // regular expression
 }
 ```
 
@@ -75,10 +71,8 @@ cleanup: {
 Use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
 
 ```js
-cleanup: {
-  purgeCSS: {
-    content: ['/Code/emails/project/', 'src/archive/'],
-  }
+purgeCSS: {
+  content: ['/Code/emails/project/', 'src/archive/'],
 }
 ```
 
@@ -87,10 +81,8 @@ cleanup: {
 Use `whitelist` to define an array of class names that you want to preserve:
 
 ```js
-cleanup: {
-  purgeCSS: {
-    whitelist: ['wrapper', 'button--active'],
-  }
+purgeCSS: {
+  whitelist: ['wrapper', 'button--active'],
 }
 ```
 
@@ -99,10 +91,8 @@ cleanup: {
 Use `whitelistPatterns` to define an array of regular expressions that match class names that you want to preserve:
 
 ```js
-cleanup: {
-  purgeCSS: {
-    whitelistPatterns: [/text-red-/, /button/],
-  }
+purgeCSS: {
+  whitelistPatterns: [/text-red-/, /button/],
 }
 ```
 
@@ -113,19 +103,17 @@ If your Tailwind class names include characters not covered by the default extra
 For example, let's make sure we don't purge classes that include a `%` character:
 
 ```js
-cleanup: {
-  purgeCSS: {
-    extractor: /[\w-/:%]+(?<!:)/g
-  }
+purgeCSS: {
+  extractor: /[\w-/:%]+(?<!:)/g
 }
 ```
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Characters like <code class="shiki-inline">$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code class="shiki-inline">:</code>, <code class="shiki-inline">/</code> and <code class="shiki-inline">%</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself - you can do that in the <a href="/docs/events/#afterrender">afterRender()</a> Event.</div>
+  <div class="text-cool-gray-500">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Learn more about these options, in the <a href="https://github.com/FullHuman/postcss-purgecss#options" target="_blank" rel="nofollow noopener">PostCSS Purgecss docs &nearr;</a></div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Learn more about these options, in the <a href="https://github.com/FullHuman/postcss-purgecss#options" target="_blank" rel="nofollow noopener">PostCSS Purgecss docs &nearr;</a></div>
 </div>
 
 ## removeUnusedCSS
@@ -137,11 +125,9 @@ This is where you can configure the [email-comb](https://www.npmjs.com/package/e
 Enables CSS cleanup through `email-comb`:
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    // ...
-  }
+removeUnusedCSS: {
+  enabled: true,
+  // ...
 }
 ```
 
@@ -150,17 +136,15 @@ cleanup: {
 Array of classes or id's that you don't want removed. You can use all [matcher](https://www.npmjs.com/package/matcher) patterns.
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    whitelist: ['.External*', '.ReadMsgBody', '.yshortcuts', '.Mso*', '#*'],
-    // ...
-  }
+removeUnusedCSS: {
+  enabled: true,
+  whitelist: ['.External*', '.ReadMsgBody', '.yshortcuts', '.Mso*', '#*'],
+  // ...
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Resetting email client styles is often done through CSS selectors that do not exist in your email's code - <code class="shiki-inline">whitelist</code> ensures these selectors are not removed.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Resetting email client styles is often done through CSS selectors that do not exist in your email's code - <code>whitelist</code> ensures these selectors are not removed.</div>
 </div>
 
 ### backend
@@ -170,16 +154,14 @@ If you use computed class names, like for example `class="{{ computedRed }} text
 To prevent this from happening, set `backend` to an array of objects that define the start and end delimiters:
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    backend: [
-      { heads: "{{", tails: "}}" }, 
-      { heads: "{%", tails: "%}" }
-    ],
-    // ...
-  },
-}
+removeUnusedCSS: {
+  enabled: true,
+  backend: [
+    { heads: "{{", tails: "}}" }, 
+    { heads: "{%", tails: "%}" }
+  ],
+  // ...
+},
 ```
 
 ### removeHTMLComments
@@ -187,35 +169,27 @@ cleanup: {
 Set to `false` to prevent `email-comb` from removing `<!-- HTML comments -->`.
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    removeHTMLComments: false,
-    // ...
-  }
+removeUnusedCSS: {
+  enabled: true,
+  removeHTMLComments: false,
+  // ...
 }
 ```
-
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">🔥 Adding comments for a colleague or client? Use <code class="shiki-inline">{# Nunjucks comments #}</code> - these are not rendered in the final, compiled email.</div>
-</div>
 
 ### removeCSSComments
 
 Set to `false` to prevent `email-comb` from removing `/* CSS comments */`.
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    removeCSSComments: false,
-    // ...
-  }
+removeUnusedCSS: {
+  enabled: true,
+  removeCSSComments: false,
+  // ...
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If you have <a href="/docs/css-inlining/">CSS inlining</a> enabled, CSS comments will still be removed, even with <code class="shiki-inline">removeCSSComments</code> disabled here.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If you have <a href="/docs/css-inlining/">CSS inlining</a> enabled, CSS comments will still be removed, even with <code>removeCSSComments</code> disabled here.</div>
 </div>
 
 You can use the `data-embed` attribute on a `<style>` tag to disable inlining for CSS inside it, if you need to preserve CSS comments.
@@ -243,12 +217,10 @@ For example, MailChimp uses CSS comments to define styles that are editable in t
 HTML email code often includes Outlook or IE conditional comments, which you probably want to preserve. If the opening tag of a conditional includes any of the strings you list here, `email-comb` will not remove that comment.
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
-    // ...
-  }
+removeUnusedCSS: {
+  enabled: true,
+  doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
+  // ...
 }
 ```
 
@@ -259,12 +231,10 @@ Set this to `true`, to rename all classes and id's in both your `<style>` tags a
 Used in production, it will help trim down your HTML size.
 
 ```js
-cleanup: {
-  removeUnusedCSS: {
-    enabled: true,
-    uglifyClassNames: true,
-    // ...
-  }
+removeUnusedCSS: {
+  enabled: true,
+  uglifyClassNames: true,
+  // ...
 }
 ```
 
@@ -277,32 +247,24 @@ Use the `replaceStrings` option to define key-value pairs of regular expressions
 ```js
 // config.production.js
 module.exports = {
-  cleanup: {
-    replaceStrings: {
-      'find and replace this exact string': 'with this one',
-      '\\s?style=""': '', // remove empty style="" attributes
-    },
-    // ...
+  replaceStrings: {
+    'find and replace this exact string': 'with this one',
+    '\\s?data-src=""': '', // remove empty data-src="" attributes
   },
 }
 ```
-
-This is useful for cleaning up any potentially leftover code like empty `style=""` attributes, or simply replacing any string of text in the final HTML.
 
 Maizzle sets this to `false` in the development config, so that the function doesn't run and build time isn't unnecessarily affected: 
 
 ```js
 // config.js
 module.exports = {
-  cleanup: {
-    replaceStrings: false,
-    // ...
-  },
+  replaceStrings: false,
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Character classes need to be escaped when defining a regular expression for <code class="shiki-inline">replaceStrings</code>. As you can see above, <code class="shiki-inline">\s</code> becomes <code class="shiki-inline">\\s</code>.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Character classes need to be escaped when defining a regular expression for <code>replaceStrings</code>. As you can see above, <code>\s</code> becomes <code>\\s</code>.</div>
 </div>
 
 ## keepOnlyAttributeSizes
@@ -312,33 +274,27 @@ Define for which elements should Maizzle keep _only_ attribute sizes, like `widt
 It's set to empty arrays by default, so that no elements are affected:
 
 ```js
-cleanup: {
-  keepOnlyAttributeSizes: {
-    width: [],
-    height: [],
-  },
-  // ...
-}
+keepOnlyAttributeSizes: {
+  width: [],
+  height: [],
+},
 ```
 
 You can add HTML elements like this:
 
 ```js
-cleanup: {
-  keepOnlyAttributeSizes: {
-    width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-    height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-  },
-  // ...
-}
+keepOnlyAttributeSizes: {
+  width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+  height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+},
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></div>
 </div>
 
 ## preferBgColorAttribute
@@ -346,7 +302,8 @@ cleanup: {
 The `bgcolor=""` attribute is well-supported by email clients. Set this to `true`, to remove any inlined `background-color` CSS properties:
 
 ```js
-cleanup: {
+// config.js
+module.exports = {
   preferBgColorAttribute: true,
   // ...
 }
@@ -356,6 +313,6 @@ cleanup: {
 
 Ensures that all your HEX colors are defined with six digits - some email clients do not support 3-digit HEX colors, like `#fff`. Uses [color-shorthand-hex-to-six-digit &nearr;](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit)
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">For better email client compatibility, this transformer is always enabled.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">For better email client compatibility, this transformer is always enabled.</div>
 </div>

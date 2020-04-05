@@ -39,8 +39,8 @@ Changing these options in your environment config will apply to all Templates wh
 
 Enable automatic CSS inlining. When set to `false`, inlining will not take place and all other settings inside `inlineCSS` will be ignored.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Note: you will need to turn this off when developing <a href="/docs/amp4email/">⚡4email templates</a>.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Note: you will need to turn this off when developing <a href="/docs/amp4email/">⚡4email templates</a>.</div>
 </div>
 
 ### styleToAttribute
@@ -58,7 +58,7 @@ styleToAttribute: {
 ... will transform this:
 
 ```html
-<table class="bg-gray-300">
+<table class="bg-cool-gray-300">
   <tr>
     <td>...</td>
   </tr>
@@ -129,6 +129,6 @@ module.exports = {
 Use the `data-embed` attribute on a `<style>` tag to prevent Juice from inlining the CSS inside it.
 Useful for writing email client CSS hacks, or for preserving CSS comments in tandem with the [`removeCSSComments: false`](/docs/code-cleanup/#removecsscomments) Cleanup option.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Email client CSS hacks will still need to be <a href="/docs/code-cleanup/#whitelist-1">whitelisted</a> with <code class="shiki-inline">email-comb</code>.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Email client CSS hacks will still need to be <a href="/docs/code-cleanup/#whitelist-1">whitelisted</a> with <code class="shiki-inline">email-comb</code>.</div>
 </div>

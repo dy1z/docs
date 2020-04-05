@@ -17,6 +17,8 @@
       path: /docs/layouts/
     - title: Templates
       path: /docs/templates/
+    - title: Plaintext
+      path: /docs/plaintext/
     - title: Partials
       path: /docs/partials/
     - title: Components
@@ -32,18 +34,8 @@
 
 - name: Configuration
   items:
-    - title: Base Config
-      path: /docs/configuration/
     - title: Environments
       path: /docs/environments/
-    - title: Doctype
-      path: /docs/doctype/
-    - title: Language
-      path: /docs/language/
-    - title: Charset
-      path: /docs/charset/
-    - title: Title
-      path: /docs/title/
     - title: Google Fonts
       path: /docs/google-fonts/
     - title: Browsersync

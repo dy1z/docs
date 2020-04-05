@@ -1,4 +1,3 @@
-import '~/assets/css/components/prism-dracula.css'
 import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, { head }) {

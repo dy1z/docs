@@ -37,8 +37,8 @@ When running `maizzle serve` with this setting enabled, Browsersync will open a 
 
 If you set this to `false`, the page opened by Browsersync will be blank, and you'll need to manually navigate to your emails directory.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If using the <code class="shiki-inline">tunnel</code> option for a client demo, use <code class="shiki-inline">directory: false</code>, so they can't freely browse all your emails by going to the root URL.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If using the <code>tunnel</code> option for a client demo, use <code>directory: false</code>, so they can't freely browse all your emails by going to the root URL.</div>
 </div>
 
 ## notify
@@ -55,7 +55,7 @@ See [Browsersync docs](https://browsersync.io/docs/options#option-open) for deta
 
 ## port
 
-Set the server port number - by default, your local development server will be available at <code class="shiki-inline">http&zwnj;://localhost:<strong>3000</strong></code>.
+Set the server port number - by default, your local development server will be available at <code>http&zwnj;://localhost:<strong>3000</strong></code>.
 
 ## tunnel
 
@@ -83,7 +83,7 @@ You can use this option to configure additional watch paths when developing loca
 module.exports = {
   browsersync: {
     watch: [
-      // [...],
+      // ...default paths,
       './src/some-dir',
       'some-file.js',
     ],

@@ -38,12 +38,12 @@ So in the case above, you only need to specify the config values that you are _c
 
 To build your emails for a specific environment, pass the environment name as an argument to the `maizzle build` command:
 
-```sh
+```bash
 maizzle build production
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If a <code class="shiki-inline">config.[env].js</code> is not found, Maizzle will fallback to <code class="shiki-inline">config.js</code></div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If a <code>config.[env].js</code> is not found, Maizzle will fallback to <code>config.js</code></div>
 </div>
 
 By default, running `maizzle build production` will output production-ready emails in a `build_production` folder at the root of the project.
@@ -59,35 +59,35 @@ Maizzle comes with two environment configs:
 
 ### Local
 
-The base `config.js` is tailored to local development.
+The base [`config.js`](https://github.com/maizzle/maizzle/blob/master/config.js) is tailored to local development.
 
 CSS purging, inlining, and most other Transformers are disabled, so you can quickly prototype your emails with all of Tailwind's classes at your disposal.
 
 Build command: 
 
-```sh
+```bash
 maizzle build
 ```
 
 This has the fastest build time, since there is almost no post-processing going on.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">To get fast development builds, don't enable inlining or cleanup options here.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">To get fast development builds, don't enable inlining or cleanup options here.</div>
 </div>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">This file can also be named <code class="shiki-inline">config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">This file can also be named <code>config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</div>
 </div>
 
 ### Production
 
-`config.production.js` is configured to output production-ready email code, formatted with humans in mind. 
+[`config.production.js`](https://github.com/maizzle/maizzle/blob/master/config.production.js) is configured to output production-ready email code, formatted with humans in mind. 
 
 CSS purging and inlining are enabled, but code is prettified so that you can share nicely-formatted, more readable code with other people.
 
 Build command: 
 
-```sh
+```bash
 maizzle build production
 ```
 
@@ -99,7 +99,7 @@ For example, you could create a config file named `config.myclient.js`.
 
 The build command for it would be:
 
-```sh
+```bash
 maizzle build myclient
 ```
 
@@ -107,12 +107,11 @@ maizzle build myclient
 
 You can output content in your emails based on the environment you're building for.
 
-An `env` variable is globally available and it contains the environment name - use it in Layouts, Templates, Partials, or Components:
+The environment name is globally available under the `page.env` variable:
 
-```handlebars
-<!-- src/templates/example.njk -->
-{% if env == 'production' %} 
+```html
+<if condition="page.env === 'production'">
   This will show only when running `maizzle build production` 
-{% endif %}
+</if>
 ```
 

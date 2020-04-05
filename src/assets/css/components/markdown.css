@@ -31,10 +31,16 @@
   }
 
   a {
-    @apply text-ocean no-underline;
+    @apply no-underline;
 
-    &:hover {
-      @apply text-ocean-darker;
+    &:not(.text-gradient-none) {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @apply bg-gradient-l-ocean-dark;
+
+      &:hover {
+        @apply bg-gradient-r-ocean-dark;
+      }
     }
   }
 
@@ -47,7 +53,7 @@
     @apply mb-4 pl-8;
 
     li {
-      @apply mb-2;
+      @apply mb-4;
     }
   }
 
@@ -89,7 +95,7 @@
     @apply block border text-sm mb-4 w-full overflow-x-auto scrolling-touch;
 
     thead {
-      @apply bg-gray-200;
+      @apply bg-cool-gray-100;
     }
 
     th, td {

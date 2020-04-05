@@ -1,6 +1,6 @@
 module.exports = {
   siteName: 'Maizzle',
-  siteDescription: "Maizzle is an email framework that helps you quickly build HTML emails with Tailwind CSS.",
+  siteDescription: "Maizzle is a framework that helps you quickly build HTML emails with Tailwind CSS and advanced, email-specific post-processing.",
   siteUrl: 'https://maizzle.com',
   titleTemplate: `%s | Maizzle - Framework for Rapid Email Prototyping`,
   icon: 'src/favicon.png',
@@ -72,7 +72,7 @@ module.exports = {
                 'src/**/*.js'
               ],
               defaultExtractor: content => content.match(/[\w-/:.%]+(?<!:)/g) || [],
-              whitelistPatterns: [/shiki/, /a(lgoli)?a/]
+              whitelistPatterns: [/a(lgoli)?a/]
             }),
           ])
         }

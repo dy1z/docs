@@ -39,7 +39,9 @@ urlParameters:
   # ...
 ---
 
-{% block template %}
-  ...
-{% endblock %}
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
 ```

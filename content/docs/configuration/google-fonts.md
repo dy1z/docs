@@ -16,32 +16,35 @@ For example, let's pull in Merriweather, and Open Sans with some custom weights:
 // config.js
 module.exports = {
   googleFonts: 'Merriweather|Open+Sans:300,400,700',
-  // ...
 }
 ```
 
 You can then use a `<link>` tag to import them in your Layout:
 
-```handlebars
-{% if page.googleFonts %}<link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">{%- endif %}
+```html
+<if condition="page.googleFonts">
+  <link href="https://fonts.googleapis.com/css?family={{ page.googleFonts }}" rel="stylesheet" media="screen">
+</if>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">When using the default Starter project, setting <code class="shiki-inline">googleFonts</code> in your config will make Google Fonts available globally, to all Templates.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-600">When using the default Starter project, setting <code>googleFonts</code> in your config will make Google Fonts available globally, to all Templates.</div>
 </div>
 
 ## Front Matter
 
 Use the `googleFonts` key in the Front Matter of a Template to import Google Fonts _only in this Template_:
 
-```handlebars
+```html
 ---
 googleFonts: "Roboto|Hind+Madurai&amp;subset=latin-ext"
 ---
 
-{% block template %}
-  ...
-{% endblock %}
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
 ```
 
 ## Tailwind CSS utility
@@ -98,7 +101,7 @@ We can now use it in the HTML:
 </div>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">For this to work, Maizzle sets <code class="shiki-inline">fontFamily: ['responsive']</code>, in your <code class="shiki-inline">tailwind.config.js</code>.</div>
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">For this to work, Maizzle sets <code>fontFamily: ['responsive']</code>, in your <code>tailwind.config.js</code>.</div>
 </div>
 
