@@ -14,12 +14,12 @@ This can be useful for:
 - not having to write required attributes all the time
 - automating email accessiblity
 
-The `applyExtraAttributes` key in your config defines which elements in your emails should receive which attributes with what values:
+The `extraAttributes` key in your config defines which elements in your emails should receive which attributes with what values:
 
 ```js
 // config.js
 module.exports = {
-  applyExtraAttributes: {
+  extraAttributes: {
     table: {
       cellpadding: 0,
       cellspacing: 0,
@@ -46,7 +46,7 @@ Elements that you define here can also be [cheerio](https://github.com/cheeriojs
 For example, let's add a default width to any table that has a `wrapper` class:
 
 ```js
-applyExtraAttributes: {
+extraAttributes: {
   'table.wrapper': {
     width: 600
   }
@@ -59,7 +59,7 @@ applyExtraAttributes: {
 You can also use this to automatically add CSS classes to elements:
 
 ```js
-applyExtraAttributes: {
+extraAttributes: {
   'tr:nth-child(even)': {
     class: 'even'
   },

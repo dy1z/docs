@@ -36,16 +36,16 @@
   items:
     - title: Environments
       path: /docs/environments/
+    - title: Build Config
+      path: /docs/build-config/
+    - title: Tailwind CSS
+      path: /docs/tailwindcss-config/
     - title: Google Fonts
       path: /docs/google-fonts/
     - title: Browsersync
       path: /docs/browsersync/
-    - title: Build Paths
-      path: /docs/build-paths/
     - title: Markdown
       path: /docs/markdown/
-    - title: Tailwind CSS
-      path: /docs/tailwindcss-config/
     - title: Functions
       path: /docs/functions/
 

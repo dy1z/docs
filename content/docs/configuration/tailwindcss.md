@@ -37,11 +37,9 @@ module.exports = {
 
 Characters like `:` in `hover:bg-black` need to be \escaped in CSS. 
 
-Because some email clients (Gmail 👀) fail to parse selectors with escaped characters, 
-Maizzle normalizes all your CSS selectors and HTML classes, replacing any escaped characters it finds with `-`.
+Because some email clients (Gmail 👀) fail to parse selectors with escaped characters, Maizzle normalizes all your CSS selectors and HTML classes, replacing any escaped characters it finds with email-safe alternatives.
 
-So you can safely use Tailwind's awesome default separator and write classes like `sm:w-1/2` - 
-Maizzle will convert that to `sm-w-1-2` in your compiled template:
+So you can safely use Tailwind's awesome default separator and write classes like `sm:w-1/2` - Maizzle will convert that to `sm-w-1-2` in your compiled template:
 
 ```js
 // tailwind.config.js
@@ -57,26 +55,7 @@ module.exports = {
 }
 ```
 
-[`posthtml-safe-class-names`](https://github.com/posthtml/posthtml-safe-class-names) is used to normalize `:` `/` `.` and `%` characters in your class names - these are the safe characters they are replaced with:
-
-
-- `:` is replaced with `-`
-- `\/` is replaced with `-`
-- `%` is replaced with `pc`
-- `.` is replaced with `_`
-
-You can define new replacement mappings (or overwrite existing ones) by adding a `safeClassNames` key to your config.
-
-For example, let's replace `:` with a `_` instead of the default `-`:
-
-```js
-// config.js
-module.exports = {
-  safeClassNames: {
-    ':': '__'
-  },
-}
-```
+You can also [configure the replacement mappings](/docs/code-cleanup#safeclassnames).
 
 ## Screens
 

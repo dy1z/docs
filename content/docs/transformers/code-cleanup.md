@@ -299,15 +299,76 @@ keepOnlyAttributeSizes: {
 
 ## preferBgColorAttribute
 
-The `bgcolor=""` attribute is well-supported by email clients. Set this to `true`, to remove any inlined `background-color` CSS properties:
+If you're inlining your CSS and have `'background-color': 'bgcolor'` in the `styleToAttribute` option of the inliner, you can shave off some bytes by having Maizzle keep just the `bgcolor=""` attribute.
+
+Enable this option to remove any inlined `background-color` CSS properties:
 
 ```js
 // config.js
 module.exports = {
-  preferBgColorAttribute: true,
+  preferBgColorAttribute: {
+    enabled: true,
+  }
   // ...
 }
 ```
+
+You can optionally provide an array of tags that it should remove the `background-color` inline CSS from:
+
+```js
+// config.js
+module.exports = {
+  preferBgColorAttribute: {
+    enabled: true,
+    tags: ['td'], // default: ['body', 'marquee', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr']
+  }
+  // ...
+}
+```
+
+In this case, `background-color` will be removed only from `<td>` elements.
+
+## removeAttributes
+
+You can have Maizzle remove some attributes from your HTML after it's compiled.
+
+```js
+// config.js
+module.exports = {
+  removeAttributes: [
+    { name: 'data-src' }, // remove empty data-src="" attributes
+    { name: 'foo', value: 'bar'}, // remove all foo="bar" attributes
+  ],
+  // ...
+}
+```
+
+Internally, Maizzle uses this to remove any CSS inlining leftovers, like `style=""`.
+
+## safeClassNames
+
+[`posthtml-safe-class-names`](https://github.com/posthtml/posthtml-safe-class-names) is used to normalize `:` `/` `.` and `%` characters in your class names - these are the safe characters they are replaced with:
+
+
+- `:` is replaced with `-`
+- `\/` is replaced with `-`
+- `%` is replaced with `pc`
+- `.` is replaced with `_`
+
+You can define new replacement mappings (or overwrite existing ones) by adding a `safeClassNames` key to your config.
+
+For example, let's replace `:` with a `_` instead of the default `-`:
+
+```js
+// config.js
+module.exports = {
+  safeClassNames: {
+    ':': '__'
+  },
+}
+```
+
+That would turn `sm:w-full` into `sm__w-full`.
 
 ## Six-digit HEX
 

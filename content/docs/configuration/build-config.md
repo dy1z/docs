@@ -1,12 +1,12 @@
 ---
-title: "Build Paths"
-slug: "build-paths"
-description: "Configure build source and destination paths for Maizzle to process and output your email templates"
+title: "Build Config"
+slug: "build-config"
+description: "Configure build settings for Maizzle to use when processing and outputing your HTML email templates."
 ---
 
-# Build Paths
+# Build Config
 
-This is where you define source and destination paths and files for Maizzle to use.
+This is where you can customize the build settings for Maizzle to use.
 
 Let's first take a look at all the options:
 
@@ -295,3 +295,22 @@ For example, you might want to use a separate Tailwind config, where you:
   <div class="font-semibold mb-2">No effect in Front Matter</div>
   <div class="text-cool-gray-500">Since Tailwind CSS is compiled only once, <em>before</em> Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
 </div>
+
+## Build Errors
+
+By default, when a build error occurs, Maizzle will throw an error.
+
+You can configure how build errors are handled when developing with the CLI commands, by adding a `build.fail` key to your config:
+
+```js
+module.exports = {
+  build : {
+    fail: 'silent', // or 'verbose'
+  },
+}
+```
+
+- `silent` will just log the paths to the files it failed build, in the console
+- `verbose` will additionally log the error stack trace
+
+Omitting it or using any other value will throw an error (log stack trace and exit script).
