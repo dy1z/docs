@@ -72,7 +72,7 @@ module.exports = {
                 'src/**/*.js'
               ],
               defaultExtractor: content => content.match(/[\w-/:.%]+(?<!:)/g) || [],
-              whitelistPatterns: [/a(lgoli)?a/]
+              whitelistPatterns: [/token/, /a(lgoli)?a/]
             }),
           ])
         }
