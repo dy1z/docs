@@ -43,7 +43,25 @@ You can pass data to partials, with the help of the `locals=""` attribute:
 
 ## Paths
 
-Partials live in the `src/partials` folder in Maizzle, but you can keep them wherever you'd like - just be sure to update their `purgeCSS` and `browsersync` paths:
+Partials are referenced relative to the project root, but you can change that by simply adding the `build.includes` config key: 
+
+```js
+module.exports = {
+  build: {
+    includes: {
+      root: './src/partials'
+    }
+  }
+}
+```
+
+You can now write just the file name relative to that `partials` directory:
+
+```html
+<include src="example.html"></include>
+```
+
+When changing the path to the partials directory, make sure to update it for `purgeCSS` and `browsersync` as well:
 
 ```js
 // config.js

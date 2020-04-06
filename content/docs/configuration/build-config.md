@@ -22,23 +22,23 @@ module.exports = {
       path: 'build_local',
       extension: 'html',
     },
-    posthtml: {
-      plugins: [],
-      options: {},
-      layouts: {
-        root: './',
-      },
-      modules: {
-        root: './'
-      },
-      templates: {
-        root: 'src/templates',
-        extensions: 'html',
-      },
+    layouts: {
+      root: './',
+    },
+    modules: {
+      root: './'
+    },
+    templates: {
+      root: 'src/templates',
+      extensions: 'html',
     },
     tailwind: {
       css: './src/assets/css/main.css',
       config: 'tailwind.config.js',
+    },
+    posthtml: {
+      plugins: [],
+      options: {},
     },
   },
   // ...
@@ -66,13 +66,15 @@ This allows you to customize the output path and file extension.
 
 ### path
 
-Directory path where Maizzle should output the compiled emails. A Jigsaw-inspired `build_${env}` naming pattern is used by default.
+Directory path where Maizzle should output the compiled emails.
 
 ```js
 destination: {
   path: 'build_local',
 },
 ```
+
+If you omit this key, a Jigsaw-inspired `build_${env}` directory name will be used.
 
 ### extension
 
@@ -86,7 +88,7 @@ destination: {
 },
 ```
 
-#### permalink
+### permalink
 
 You can override `destination.path` for each Template, with the help of the `permalink` <abbr title="Front Matter">FM</abbr> key:
 
@@ -124,53 +126,14 @@ permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
   <div class="text-cool-gray-500"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</div>
 </div>
 
-## posthtml
-
-Templating-related options.
-
-### plugins
-
-Register any PostHTML plugins you would like to use:
-
-```js
-posthtml: {
-  plugins: [
-    require('posthtml-spaceless')(),
-  ]
-}
-```
-
-Maizzle already comes with the following plugins:
-
-- [`posthtml-extend`](https://github.com/posthtml/posthtml-extend)
-- [`posthtml-include`](https://github.com/posthtml/posthtml-include)
-- [`posthtml-modules`](https://github.com/posthtml/posthtml-modules)
-- [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions)
-
-### options
-
-Pass options to PostHTML.
-
-For example, tell it to ignore `<?php ?>` tags:
-
-```js
-posthtml: {
-  options: {
-    directives: [
-      { name: '?php', start: '<', end: '>' },
-    ],
-  }
-}
-```
-
-### layouts
+## layouts
 
 You can define the path where your Layouts are located:
 
 ```js
-posthtml: {
+build: {
   layouts: {
-    root: './src/layouts',
+    root: 'src/layouts',
   }
 }
 ```
@@ -185,82 +148,76 @@ You could then extend layouts by referencing them relative to that path - no nee
 </extends>
 ```
 
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">Maizzle doesn't include this key in the Starter config, you need to add it yourself.</div>
+</div>
+
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
   <div class="text-cool-gray-500">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>&lt;extends src="/templates/template.html"&gt;</code>)</div>
 </div>
 
-### modules
+## templates
 
-Just like with Layouts, you can define a base path for your modules:
-
-```js
-posthtml: {
-  modules: {
-    root: './src/components',
-  }
-}
-```
-
-... so you can reference them relative to that path:
-
-```html
-<module href="module.html">
-  <!-- ... -->
-</module>
-```
-
-### templates
-
-Options to define your Template's `source` directories and file extensions to look for.
+Define your Template's `source` directories and file extensions.
 
 ```js
-posthtml: {
+build: {
   templates: {
     root: 'src/templates',
-    filetypes: 'html',
+    extensions: 'html',
   },
 }
 ```
 
 #### root
 
-Define the path to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors.
+Define the path(s) to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors.
 
 It can be a string:
 
 ```js
-templates: {
-  root: 'src/templates',
-},
+build: {
+  templates: {
+    root: 'src/templates',
+  },
+}
 ```
 
 Or an array of strings:
 
 ```js
-templates: {
-  root: ['src/templates', '/path/to/more/templates'],
-},
+build: {
+  templates: {
+    root: ['src/templates', '/path/to/more/templates'],
+  },
+}
 ```
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-cool-gray-500">Remember, Maizzle will copy these folders over to the <code>destination.path</code> directory, with <em>everything</em> inside them.</div>
 </div>
 
-#### filetypes
+#### extensions
 
 Define what file extensions you use for your Templates. 
 
-`filetypes` can be a string, but it can also be an array or a pipe-delimited list:
+`extensions` can be a string, but it can also be an array or a pipe-delimited list:
 
 ```js
-templates: {
-  filetypes: ['html', 'blade.php'], // or even 'html|blade.php'
-},
+build: {
+  templates: {
+    extensions: ['html', 'blade.php'], // or even 'html|blade.php'
+  },
+}
 ```
 
-Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.source` directory for Templates to build.
+Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.root` directory for Templates to build.
 
 This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory - it will not try to parse them.
+
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">If <code>build.templates.extensions</code> is missing, Maizzle will default to <code>html</code>.</div>
+</div>
 
 ## tailwind
 
@@ -293,8 +250,52 @@ For example, you might want to use a separate Tailwind config, where you:
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
   <div class="font-semibold mb-2">No effect in Front Matter</div>
-  <div class="text-cool-gray-500">Since Tailwind CSS is compiled only once, <em>before</em> Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
+  <div class="text-cool-gray-500">Since Tailwind CSS is compiled only once, <em>before</em> any Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
 </div>
+
+## posthtml
+
+You can pass plugins or options to the templating engine.
+
+### plugins
+
+Register any PostHTML plugins you would like to use:
+
+```js
+build: {
+  posthtml: {
+    plugins: [
+      require('posthtml-spaceless')(),
+    ]
+  }
+}
+```
+
+Maizzle already comes with the following plugins, no need to add them:
+
+- [`posthtml-extend`](https://github.com/posthtml/posthtml-extend)
+- [`posthtml-include`](https://github.com/posthtml/posthtml-include)
+- [`posthtml-modules`](https://github.com/posthtml/posthtml-modules)
+- [`posthtml-fetch`](https://github.com/posthtml/posthtml-fetch)
+- [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions)
+
+### options
+
+Pass options to PostHTML.
+
+For example, tell it to ignore `<?php ?>` tags:
+
+```js
+build: {
+  posthtml: {
+    options: {
+      directives: [
+        { name: '?php', start: '<', end: '>' },
+      ],
+    }
+  }
+}
+```
 
 ## Build Errors
 

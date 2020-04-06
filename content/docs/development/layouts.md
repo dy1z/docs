@@ -79,10 +79,8 @@ You can define a path to the directory where your Layouts live:
 // config.js
 module.exports = {
   build: {
-    posthtml: {
-      layouts: {
-        root: 'src/layouts',
-      }
+    layouts: {
+      root: 'src/layouts',
     }
   }
 }
