@@ -4,8 +4,6 @@ slug: "alerts"
 description: "Create simple, effective attention grabbers in HTML emails with Tailwind CSS in Maizzle"
 ---
 
-import Alert from '~/components/Alert.vue'
-
 # Alerts
 
 Simple, colorful boxes that grab the user's attention.

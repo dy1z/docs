@@ -25,8 +25,11 @@ module.exports = {
     tunnel: false,
     watch: [
       'src/layouts/**/*.*',
+      'src/templates/**/*.*',
       'src/partials/**/*.*',
       'src/components/**/*.*',
+      'src/assets/images/**/*.*',
+      './tailwind.config.js',
     ],
   },
   // ...
@@ -72,8 +75,11 @@ Array of extra paths for Browsersync to watch.
 
 By default, the following paths are watched: 
 
-- All your Template files, as defined in `build.templates.source`
-- All your Asset files, as defined in `build.assets.source`
+- `src/layouts`
+- `src/templates`
+- `src/partials`
+- `src/components`
+- `src/assets/images`
 - `tailwind.config.js`
 
 You can use this option to configure additional watch paths when developing locally:
