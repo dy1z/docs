@@ -4,6 +4,8 @@ slug: "tailwindcss-config"
 description: "See how the Tailwind CSS configuration is customized for email development in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Tailwind CSS Config
 
 Maizzle comes with an email-tailored `tailwind.config.js`
@@ -29,9 +31,7 @@ module.exports = {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></div>
-</div>
+<alert>This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></alert>
 
 ## Separator
 

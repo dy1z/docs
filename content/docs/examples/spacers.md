@@ -4,6 +4,8 @@ slug: "spacers"
 description: "Learn how to create reliable vertical spacing for HTML email with Tailwind CSS in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Spacers
 
 Vertical spacing in HTML emails can be tricky, mainly because of inconsistent support for (and rendering of) margin, padding, and `<br>` tags. 
@@ -31,9 +33,7 @@ We can define a responsive height:
 
 Note that this will only work where `@media` queries are supported.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Feel free to use <code>&amp;nbsp;</code> instead of <code>&amp;zwnj;</code>, both work just fine.</div>
-</div>
+<alert>Feel free to use <code>&amp;nbsp;</code> instead of <code>&amp;zwnj;</code>, both work just fine.</alert>
 
 ## Row
 

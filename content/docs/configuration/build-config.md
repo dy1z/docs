@@ -4,6 +4,8 @@ slug: "build-config"
 description: "Configure build settings for Maizzle to use when processing and outputing your HTML email templates."
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Build Config
 
 This is where you can customize the build settings for Maizzle to use.
@@ -122,9 +124,7 @@ permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
 ---
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</div>
-</div>
+<alert type="warning"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</alert>
 
 ## layouts
 
@@ -148,13 +148,9 @@ You could then extend Layouts by referencing them relative to that path - no nee
 </extends>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Maizzle doesn't include this <code>layouts</code> key in the Starter config.</div>
-</div>
+<alert>Maizzle doesn't include this <code>layouts</code> key in the Starter config.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>&lt;extends src="/templates/template.html"&gt;</code>)</div>
-</div>
+<alert type="danger">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>&lt;extends src="/templates/template.html"&gt;</code>)</alert>
 
 ## templates
 
@@ -193,9 +189,7 @@ build: {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Remember, Maizzle will copy these folders over to the <code>destination.path</code> directory, with <em>everything</em> inside them.</div>
-</div>
+<alert>Remember, Maizzle will copy these folders over to the <code>destination.path</code> directory, with <em>everything</em> inside them.</alert>
 
 #### extensions
 
@@ -215,9 +209,7 @@ Maizzle will only look for files ending in _these_ extensions, when searching yo
 
 This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory - it will not try to parse them.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If <code>build.templates.extensions</code> is missing, Maizzle will default to <code>html</code>.</div>
-</div>
+<alert>If <code>build.templates.extensions</code> is missing, Maizzle will default to <code>html</code>.</alert>
 
 ## tailwind
 
@@ -248,10 +240,10 @@ For example, you might want to use a separate Tailwind config, where you:
 - disable `!important` (like in ⚡4email templates)
 - use different Tailwind plugins
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="font-semibold mb-2">No effect in Front Matter</div>
-  <div class="text-cool-gray-500">Since Tailwind CSS is compiled only once, <em>before</em> any Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
-</div>
+<alert type="warning">
+  <div class="font-semibold mb-2 text-gray-800">No effect in Front Matter</div>
+  <div>Since Tailwind CSS is compiled only once, <em>before</em> any Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
+</alert>
 
 ## posthtml
 

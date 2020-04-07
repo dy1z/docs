@@ -4,6 +4,8 @@ slug: "google-fonts"
 description: "Easily import and use Google Fonts in your HTML email templates"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Google Fonts
 
 Maizzle supports Google Fonts out-of-the-box, and it's very easy to use. 
@@ -27,9 +29,7 @@ You can then use a `<link>` tag to import them in your Layout:
 </if>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-600">When using the default Starter project, setting <code>googleFonts</code> in your config will make Google Fonts available globally, to all Templates.</div>
-</div>
+<alert>When using the default Starter project, setting <code>googleFonts</code> in your config will make Google Fonts available globally, to all Templates.</alert>
 
 ## Front Matter
 
@@ -101,7 +101,5 @@ We can now use it in the HTML:
 </div>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">For this to work, Maizzle sets <code>fontFamily: ['responsive']</code>, in your <code>tailwind.config.js</code>.</div>
-</div>
+<alert>For this to work, Maizzle sets <code>fontFamily: ['responsive']</code>, in your <code>tailwind.config.js</code>.</alert>
 

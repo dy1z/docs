@@ -4,6 +4,8 @@ slug: "templates"
 description: "Learn how to create HTML emails with template inheritance in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Templates
 
 Templates in Maizzle contain the body of your email templates.
@@ -32,9 +34,7 @@ Each of those variables will be available under the `page` object, which means y
 <p>{{ page.title }}</p>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If you want to use Front Matter, it must be defined at the very top of your Template, on the first line - it will not work otherwise.</div>
-</div>
+<alert type="warning">If you want to use Front Matter, it must be defined at the very top of your Template, on the first line - it will not work otherwise.</alert>
 
 ## Extending Layouts
 
@@ -52,9 +52,7 @@ preheader: The Weekly Newsletter
 
 The path provided in the `src=""` attribute must be relative to the path in `build.layouts.root` from your config. 
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If there is no file at that path, the build will fail with a <code>Template render error</code></div>
-</div>
+<alert type="warning">If there is no file at that path, the build will fail with a <code>Template render error</code></alert>
 
 ### How Extending Works
 

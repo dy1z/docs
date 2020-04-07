@@ -4,6 +4,8 @@ slug: "environments"
 description: "Define distinct build scenarios for your HTML email workflow, each with their own settings"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Environments
 
 When developing HTML emails, you might want to use different data and automations in your local and production environments. 
@@ -42,9 +44,7 @@ To build your emails for a specific environment, pass the environment name as an
 maizzle build production
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If a <code>config.[env].js</code> is not found, Maizzle will fallback to <code>config.js</code></div>
-</div>
+<alert>If a <code>config.[env].js</code> is not found, Maizzle will fallback to <code>config.js</code></alert>
 
 By default, running `maizzle build production` will output production-ready emails in a `build_production` folder at the root of the project.
 
@@ -71,13 +71,9 @@ maizzle build
 
 This has the fastest build time, since there is almost no post-processing going on.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">To get fast development builds, don't enable inlining or cleanup options here.</div>
-</div>
+<alert>To get fast development builds, don't enable inlining or cleanup options here.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">This file can also be named <code>config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</div>
-</div>
+<alert>This file can also be named <code>config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</alert>
 
 ### Production
 

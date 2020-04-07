@@ -4,6 +4,8 @@ slug: "events"
 description: "Use lifecycle hooks to hook into the email build process at specific points in time"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Events
 
 When compiling your email templates, Maizzle goes through a series of steps, like generating a Template config, rendering, or applying Transformers. 
@@ -62,9 +64,7 @@ These always run, every time a Template is compiled:
 - [`afterRender`](#afterrender)
 - [`afterTransformers`](#aftertransformers)
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If you don't need to manipulate a Template's unique config or its HTML, consider using one of the CLI-only Events instead.</div>
-</div>
+<alert>If you don't need to manipulate a Template's unique config or its HTML, consider using one of the CLI-only Events instead.</alert>
 
 ### beforeCreate
 
@@ -88,9 +88,7 @@ module.exports = {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Use <code>beforeCreate</code> if you need to your config manipulation to run only <em>once</em>.</div>
-</div>
+<alert>Use <code>beforeCreate</code> if you need to your config manipulation to run only <em>once</em>.</alert>
 
 ### beforeRender
 
@@ -122,9 +120,7 @@ Then, you'd render it in your HTML, like so:
 </if>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500"><code>beforeRender</code> runs for each template that is going to be compiled. For performance reasons, you should use it only if you need access to the <em>Template</em> config (which includes variables from the template's Front Matter).</div>
-</div>
+<alert><code>beforeRender</code> runs for each template that is going to be compiled. For performance reasons, you should use it only if you need access to the <em>Template</em> config (which includes variables from the template's Front Matter).</alert>
 
 ### afterRender
 
@@ -149,9 +145,7 @@ module.exports = {
 },
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">You must always return the <code>html</code> when using <code>afterRender()</code>.</div>
-</div>
+<alert type="warning">You must always return the <code>html</code> when using <code>afterRender()</code>.</alert>
 
 ### afterTransformers
 
@@ -182,9 +176,7 @@ module.exports = {
 },
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">You must always return the <code>html</code> when using <code>afterTransformers()</code>.</div>
-</div>
+<alert type="warning">You must always return the <code>html</code> when using <code>afterTransformers()</code>.</alert>
 
 ### afterBuild
 
@@ -212,6 +204,4 @@ Using it with the [Starter](https://github.com/maizzle/maizzle), `maizzle build 
 ]
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">The <code>afterBuild</code> event is available only when using the <code>maizzle build</code> CLI command, so it will only work if added to the <code>events</code> object in your environment config.</div>
-</div>
+<alert type="warning">The <code>afterBuild</code> event is available only when using the <code>maizzle build</code> CLI command, so it will only work if added to the <code>events</code> object in your environment config.</alert>

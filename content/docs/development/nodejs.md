@@ -4,6 +4,8 @@ slug: "nodejs"
 description: "Use Maizzle in Node.js on the server to compile a string to an HTML email, styled with Tailwind CSS"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Use in Node.js
 
 You can use Maizzle in your Node.js app, to compile a string to an HTML email.
@@ -22,9 +24,7 @@ Then, call the `render()` method, passing it a string and an options object:
 const html = Maizzle.render(`html string`, options)
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Of course, your <code>html string</code> can use Front Matter and templating tags, so you can extend <a href="/docs/layouts/">Layouts</a>, include <a href="/docs/partials/">Partials</a>, or use <a href="/docs/components/">Components</a>.</div>
-</div>
+<alert>Of course, your <code>html string</code> can use Front Matter and templating tags, so you can extend <a href="/docs/layouts/">Layouts</a>, include <a href="/docs/partials/">Partials</a>, or use <a href="/docs/components/">Components</a>.</alert>
 
 ### Options
 
@@ -46,9 +46,7 @@ const html = Maizzle.render(`html string`, options)
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500"><code>options</code> is not required: when ommited, Maizzle will the defaults below.</div>
-</div>
+<alert><code>options</code> is not required: when ommited, Maizzle will the defaults below.</alert>
 
 ###### tailwind
 
@@ -68,9 +66,7 @@ The Maizzle environment configuration object.
 | --- | --- | --- | --- |
 | `config` | Object | `{}` | A Maizzle config object. |
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">The other options listed above, like <code>afterConfig() {}</code>, are <a href="/docs/events/">Events</a>.</div>
-</div>
+<alert>The other options listed above, like <code>afterConfig() {}</code>, are <a href="/docs/events/">Events</a>.</alert>
 
 ## Example
 
@@ -116,9 +112,7 @@ Maizzle.render(
 
 You can use templating tags when using Maizzle in Node.js.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Paths to Layouts or any includes/modules in your string to be rendered must be relative to the location where you execute the script.</div>
-</div>
+<alert type="danger">Paths to Layouts or any includes/modules in your string to be rendered must be relative to the location where you execute the script.</alert>
 
 ## Gotchas
 
@@ -154,9 +148,7 @@ Maizzle.render('html string',
 ).then(html => console.log(html))
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">You can use any name for <code>env</code> (except <code>local</code>, which does nothing).</div>
-</div>
+<alert>You can use any name for <code>env</code> (except <code>local</code>, which does nothing).</alert>
 
 ### Transformers
 

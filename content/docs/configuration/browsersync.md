@@ -4,6 +4,8 @@ slug: "browsersync"
 description: "Develop emails locally with Browsersync and have the browser automatically refresh the page when you update an email template"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Browsersync
 
 When running the `maizzle serve` command, Maizzle uses [Browsersync](https://browsersync.io/) to start a local server and open a directory listing of your emails in your default browser.
@@ -37,9 +39,7 @@ When running `maizzle serve` with this setting enabled, Browsersync will open a 
 
 If you set this to `false`, the page opened by Browsersync will be blank, and you'll need to manually navigate to your emails directory.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If using the <code>tunnel</code> option for a client demo, use <code>directory: false</code>, so they can't freely browse all your emails by going to the root URL.</div>
-</div>
+<alert type="warning">If using the <code>tunnel</code> option for a client demo, use <code>directory: false</code>, so they can't freely browse all your emails by going to the root URL.</alert>
 
 ## notify
 

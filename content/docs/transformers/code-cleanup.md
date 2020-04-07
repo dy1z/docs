@@ -4,6 +4,8 @@ slug: "code-cleanup"
 description: "Define settings for HTML and CSS email code optimization and cleanup"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Code Cleanup
 
 Cleaning up your HTML email results in smaller file sizes, which translates to faster email sendouts, faster opens (think slow 3G), and snappier paint times.
@@ -95,13 +97,9 @@ purgeCSS: {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, you need to <a href="#safeclassnames">rewrite</a> them yourself.</div>
-</div>
+<alert type="warning">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, you need to <a href="#safeclassnames">rewrite</a> them yourself.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Learn more about these options, in the <a href="https://github.com/FullHuman/postcss-purgecss#options" target="_blank" rel="nofollow noopener">PostCSS Purgecss docs &nearr;</a></div>
-</div>
+<alert>Learn more about these options, in the <a href="https://github.com/FullHuman/postcss-purgecss#options" target="_blank" rel="nofollow noopener">PostCSS Purgecss docs &nearr;</a></alert>
 
 ## removeUnusedCSS
 
@@ -130,9 +128,7 @@ removeUnusedCSS: {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Resetting email client styles is often done through CSS selectors that do not exist in your email's code - <code>whitelist</code> ensures these selectors are not removed.</div>
-</div>
+<alert>Resetting email client styles is often done through CSS selectors that do not exist in your email's code - <code>whitelist</code> ensures these selectors are not removed.</alert>
 
 ### backend
 
@@ -175,9 +171,7 @@ removeUnusedCSS: {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If you have <a href="/docs/css-inlining/">CSS inlining</a> enabled, CSS comments will still be removed, even with <code>removeCSSComments</code> disabled here.</div>
-</div>
+<alert type="warning">If you have <a href="/docs/css-inlining/">CSS inlining</a> enabled, CSS comments will still be removed, even with <code>removeCSSComments</code> disabled here.</alert>
 
 You can use the `data-embed` attribute on a `<style>` tag to disable inlining for CSS inside it, if you need to preserve CSS comments.
 
@@ -250,9 +244,7 @@ module.exports = {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Character classes need to be escaped when defining a regular expression for <code>replaceStrings</code>. As you can see above, <code>\s</code> becomes <code>\\s</code>.</div>
-</div>
+<alert type="warning">Character classes need to be escaped when defining a regular expression for <code>replaceStrings</code>. As you can see above, <code>\s</code> becomes <code>\\s</code>.</alert>
 
 ## keepOnlyAttributeSizes
 
@@ -276,13 +268,9 @@ keepOnlyAttributeSizes: {
 },
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</div>
-</div>
+<alert>This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></div>
-</div>
+<alert type="warning">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></alert>
 
 ## preferBgColorAttribute
 
@@ -361,6 +349,4 @@ That would turn `sm:w-full` into `sm__w-full`.
 
 Ensures that all your HEX colors are defined with six digits - some email clients do not support 3-digit HEX colors, like `#fff`. Uses [color-shorthand-hex-to-six-digit &nearr;](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit)
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">For better email client compatibility, this transformer is always enabled.</div>
-</div>
+<alert>For better email client compatibility, this transformer is always enabled.</alert>

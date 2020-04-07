@@ -18,17 +18,27 @@ module.exports = {
 
   plugins: [
     {
-      use: '@gridsome/source-filesystem',
+      use: '@gridsome/vue-remark',
       options: {
-        path: 'content/docs/**/*.md',
+        baseDir: './content/docs',
+        route: '/docs/:slug',
         typeName: 'Doc',
+        template: './src/templates/Doc.vue',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ],
       }
     },
     {
-      use: '@gridsome/source-filesystem',
+      use: '@gridsome/vue-remark',
       options: {
-        path: 'content/guides/**/*.md',
+        baseDir: './content/guides',
+        route: '/guides/:slug',
         typeName: 'Guide',
+        template: './src/templates/Guide.vue',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ],
       }
     },
     {
@@ -44,11 +54,6 @@ module.exports = {
       }
     },
   ],
-
-  templates: {
-    Doc: '/docs/:slug',
-    Guide: '/guides/:slug',
-  },
 
   chainWebpack: config => {
     config.module

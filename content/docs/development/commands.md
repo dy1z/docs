@@ -4,6 +4,8 @@ slug: "commands"
 description: "CLI commands for developing HTML email templates locally and building them for production"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # CLI commands
 
 The CLI tool includes commands for scaffolding, developing, and building your emails.
@@ -40,9 +42,7 @@ maizzle build [env?]
 | --- | --- | --- | --- | --- |
 | `[env]` | string | no |  `local` | An environment name to use
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If no <code>[env]</code> is specified, Maizzle will default to <code>local</code> and use <code>config.js</code>.</div>
-</div>
+<alert>If no <code>[env]</code> is specified, Maizzle will default to <code>local</code> and use <code>config.js</code>.</alert>
 
 ## Scaffolding
 
@@ -87,13 +87,9 @@ Want to use a different folder name than `starter-amp4email`?
 maizzle new https://github.com/maizzle/starter-amp4email.git amp-emails
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If the <code>[path]</code> directory already exists, scaffolding will be aborted.</div>
-</div>
+<alert>If the <code>[path]</code> directory already exists, scaffolding will be aborted.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500"><code>[repo]</code> must be a valid Git repository URL (.git extension included).</div>
-</div>
+<alert type="warning"><code>[repo]</code> must be a valid Git repository URL (.git extension included).</alert>
 
 ### make:config
 
@@ -155,17 +151,11 @@ Scaffolds a new Layout based on the [Starter's default Layout](https://github.co
 | --- | --- | --- |
 | `--directory` | `-d` |  Directory where Layout file should be output
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If no <code>--directory</code> path is provided, Layout file will be output in <code>src/layouts</code> relative to where you executed the command.</div>
-</div>
+<alert>If no <code>--directory</code> path is provided, Layout file will be output in <code>src/layouts</code> relative to where you executed the command.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If the <code>--directory</code> path does not exist, it will be created.</div>
-</div>
+<alert>If the <code>--directory</code> path does not exist, it will be created.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If the resulting file already exists, Layout scaffolding will be aborted and an error will be thrown. The file will not be overwritten.</div>
-</div>
+<alert type="warning">If the resulting file already exists, Layout scaffolding will be aborted and an error will be thrown. The file will not be overwritten.</alert>
 
 Examples:
 
@@ -199,14 +189,8 @@ Scaffolds a new Template.
 | --- | --- | --- |
 | `--directory` | `-d` |  Directory where Template file should be output
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If no <code>--directory</code> is provided, Template file will be output in <code>src/templates</code> relative to where you executed the command.</div>
-</div>
+<alert>If no <code>--directory</code> is provided, Template file will be output in <code>src/templates</code> relative to where you executed the command.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If the <code>--directory</code> path does not exist, it will be created.</div>
-</div>
+<alert>If the <code>--directory</code> path does not exist, it will be created.</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If the resulting file already exists, Template scaffolding will be aborted and an error will be thrown. The file will not be overwritten.</div>
-</div>
+<alert type="warning">If the resulting file already exists, Template scaffolding will be aborted and an error will be thrown. The file will not be overwritten.</alert>

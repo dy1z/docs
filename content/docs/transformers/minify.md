@@ -4,6 +4,8 @@ slug: "minify"
 description: "Minify your HTML email code so that your production emails weigh even less and you avoid Gmail clipping."
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Minify Email Code
 
 Use the `minify` option to trim down the HTML size of your production emails. 
@@ -44,6 +46,4 @@ module.exports = {
 
 Checkout the full list of [html-crush options](https://www.npmjs.com/package/html-crush#optional-options-object).
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Minifying email code can lead to unexpected results if not done properly. Make sure you know what you're doing, and always test your emails!</div>
-</div>
+<alert type="warning">Minifying email code can lead to unexpected results if not done properly. Make sure you know what you're doing, and always test your emails!</alert>

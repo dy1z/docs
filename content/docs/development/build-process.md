@@ -4,6 +4,8 @@ slug: "build-process"
 description: "See how the build process works and how Maizzle builds your emails"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Build process
 
 When you run `maizzle build`, your templates go through a series of events that compile them to plain HTML and apply various, email-specific transformations.
@@ -24,21 +26,13 @@ Tailwind CSS is compiled, and various [PostCSS](https://postcss.org/) plugins ar
 
 When you specify a build environment, i.e. `maizzle build production`, PurgeCSS removes any unused classes from the compiled CSS. It scans all your source folders and any other, custom sources that you specify, and removes any unused CSS from the compiled CSS that will be passed to the final template.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">
-    Yes, <a href="/docs/code-cleanup/#removeunusedcss"><code>email-comb</code></a> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.
-  </div>
-</div>
+<alert>Yes, <a href="/docs/code-cleanup/#removeunusedcss"><code>email-comb</code></a> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.</alert>
 
 ## Clean destination
 
 The destination directory that you have defined under `build.destination.path` in your environment config is deleted.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">
-    Be careful when customizing this path, so you don't end up deleting important directories and files on your machine.
-  </div>
-</div>
+<alert type="warning">Be careful when customizing this path, so you don't end up deleting important directories and files on your machine.</alert>
 
 ## Copy sources
 

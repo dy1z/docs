@@ -4,6 +4,8 @@ slug: "buttons"
 description: "Learn how to create simple buttons for your HTML email templates in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Buttons
 
 Buttons in HTML email can be created with simple table structures with an anchor inside, or advanced techniques involving <abbr title="Vector Markup Language">VML</abbr> or even `mso-` CSS, for fully-clickable buttons in Outlook and Windows 10 Mail 🤯
@@ -49,7 +51,7 @@ To make it more interesting, let's also change the background on hover:
 ```
 
 <div class="mt-8 mb-4 items-center flex">
-  Example: <button class="ml-8 rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 text-sm text-indigo-500 hover:text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</a>
+  Example: <button class="ml-8 rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 text-sm text-indigo-500 hover:text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
 </div>
 
 ### Pill
@@ -67,7 +69,7 @@ Pill buttons use a larger border-radius value. Remember, Outlook doesn't support
 ```
 
 <div class="mt-8 mb-4 items-center flex">
-  Example: <button class="ml-8 rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</a>
+  Example: <button class="ml-8 rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
 </div>
 
 ### Look & feel
@@ -90,9 +92,7 @@ However, VML buttons are fixed in size and require you add the URL in two places
 
 ### Semantic (CSS)
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Credit goes to <a href="https://twitter.com/M_J_Robbins" target="_blank" rel="nofollow noopener noreferrer">@M_J_Robbins</a> for this technique.</div>
-</div>
+<alert>Credit goes to <g-link href="https://twitter.com/M_J_Robbins">@M_J_Robbins</g-link> for this technique.</alert>
 
 We can use a smart combination of basic and Outlook-specific CSS properties to get fully clickable buttons in HTML - no VML required!
 
@@ -115,6 +115,4 @@ It's just a simple `<a>` tag, but with some nifty workarounds for Outlook's lack
 - the first `<i>` uses double the `pt` that the `<span>` uses
 - finally, the width of the `&nbsp;` character is reset (as in, canceled) through the `mso-font-width` property
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Line breaks and spaces between tags in the example above might render the button larger, although it would be barely visible. If you want your button to be a precise size, just remove them.</div>
-</div>
+<alert>Line breaks and spaces between tags in the example above might render the button larger, although it would be barely visible. If you want your button to be a precise size, just remove them.</alert>

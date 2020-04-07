@@ -4,6 +4,8 @@ slug: "markdown"
 description: "Use Markdown in your HTML email templates. GitHub Flavored Markdown included, too."
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Markdown
 
 Maizzle supports Markdown in your email templates.
@@ -121,13 +123,9 @@ That will output:
 </p>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">When using <code>headerIds</code>, you need to add a <a href="#classes">whitelist pattern</a> to  <code>config.removeUnusedCSS</code> (otherwise they'll be removed).</div>
-</div>
+<alert>When using <code>headerIds</code>, you need to add a <a href="#classes">whitelist pattern</a> to  <code>config.removeUnusedCSS</code> (otherwise they'll be removed).</alert>
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">JavaScript is not supported in Front Matter, so you can't use functions like <code>highlight</code>, <code>renderer</code>, or <code>sanitizer</code> here.</div>
-</div>
+<alert type="danger">JavaScript is not supported in Front Matter, so you can't use functions like <code>highlight</code>, <code>renderer</code>, or <code>sanitizer</code> here.</alert>
 
 ## Gotchas
 

@@ -4,7 +4,9 @@
       path: /docs/introduction/
     - title: Installation
       path: /docs/installation/
-    - title: Tutorials
+    - title: Starters
+      path: /starters/
+    - title: Guides
       path: /guides/
 
 - name: Development

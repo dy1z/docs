@@ -4,6 +4,8 @@ slug: "layouts"
 description: "See how to use layouts with Nunjucks templating inheritance to build your HTML emails"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Layouts
 
 Layouts are the foundation of any email template in Maizzle.
@@ -96,6 +98,4 @@ This allows you to specify a `src=""` relative to the path in that `root` key:
 </extends>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>src/templates/template.html</code>)</div>
-</div>
+<alert type="danger">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>src/templates/template.html</code>)</alert>

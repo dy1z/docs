@@ -4,6 +4,8 @@ slug: "tailwindcss"
 description: "Learn how to use Tailwind CSS to create HTML email templates with CSS utility classes"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Tailwind CSS
 
 Maizzle uses the [Tailwind CSS](https://tailwindcss.com) framework, so you can rapidly prototype email templates with utility classes instead of having to write inline styles.
@@ -42,9 +44,7 @@ Maizzle adds the following ones in `src/assets/css/custom` :
 
 - `utilities.css` - custom utility classes that Tailwind CSS doesn't provide.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Files that you <code>@import</code> in <code>main.css</code> must be relative to <code>src/assets/css</code></div>
-</div>
+<alert type="warning">Files that you <code>@import</code> in <code>main.css</code> must be relative to <code>src/assets/css</code></alert>
 
 ### Plugins
 
@@ -77,9 +77,7 @@ module.exports = {
 }
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Don't pass directory paths here, because PostCSS will fail.</div>
-</div>
+<alert type="warning">Don't pass directory paths here, because PostCSS will fail.</alert>
 
 ## Shorthand CSS
 
@@ -123,9 +121,7 @@ This results in smaller HTML size, reducing the risk of [Gmail clipping your ema
 
 Using shorthand CSS for these is well supported in email clients and will make your HTML lighter, but the shorthand border is particularly useful because it's the only way Outlook will render it properly.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">For shorthand CSS to work with <code>padding</code> or <code>margin</code>, you need to specify property values for all four sides. For borders, keep reading.</div>
-</div>
+<alert>For shorthand CSS to work with <code>padding</code> or <code>margin</code>, you need to specify property values for all four sides. For borders, keep reading.</alert>
 
 ### Shorthand borders
 
@@ -201,9 +197,7 @@ Next, use that block in a Template:
 
 [posthtml-content](https://github.com/posthtml/posthtml-content) is used to parse the contents of any `<style>` tag that has a `postcss` attribute - the contents are compiled with PostCSS.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">The <code>postcss</code> attribute is only required if you want the CSS to be compiled with PostCSS - for example, when using Tailwind CSS syntax. If you're just writing regular CSS syntax, you don't need to include this attribute.</div>
-</div>
+<alert>The <code>postcss</code> attribute is only required if you want the CSS to be compiled with PostCSS - for example, when using Tailwind CSS syntax. If you're just writing regular CSS syntax, you don't need to include this attribute.</alert>
 
 ### Prevent inlining
 
@@ -227,6 +221,4 @@ When adding a `<style>` tag inside a Template, you can prevent all rules inside 
 </extends>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Although it won't be inlined, the CSS will still be processed by <a href="/docs/code-cleanup/#removeunusedcss">email-comb</a>.</div>
-</div>
+<alert>Although it won't be inlined, the CSS will still be processed by <a href="/docs/code-cleanup/#removeunusedcss">email-comb</a>.</alert>

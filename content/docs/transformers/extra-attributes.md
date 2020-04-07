@@ -4,6 +4,8 @@ slug: "extra-attributes"
 description: "Automatically add attributes to your HTML emails. Write less code and easily improve accessibility."
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Extra Attributes
 
 Maizzle can automatically add attributes to HTML elements in your email templates.
@@ -35,9 +37,7 @@ module.exports = {
 
 By default, Maizzle makes your `<table>` accessible, resets its spacing, and ensures that an empty `alt=""` attribute is added to images that don't have it.
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Attributes will be added only if they're not already present on the element.</div>
-</div>
+<alert>Attributes will be added only if they're not already present on the element.</alert>
 
 ## Cheerio selectors
 

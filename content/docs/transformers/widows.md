@@ -4,6 +4,8 @@ slug: "prevent-widows"
 description: "Use PostHTML to transform your HTML email templates"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Prevent Widow Words
 
 Maizzle uses [prevent-widows](https://github.com/bashaus/prevent-widows) to help prevent widow words in your email templates. 
@@ -30,6 +32,4 @@ That will output:
 </div>
 ```
 
-<div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Enable <code>prevent-widows</code> globally by adding it to your Layout's <code>&lt;body&gt;</code> tag.</div>
-</div>
+<alert>Enable <code>prevent-widows</code> globally by adding it to your Layout's <code>&lt;body&gt;</code> tag.</alert>
