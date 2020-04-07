@@ -91,7 +91,7 @@
     }
   }
 
-  table {
+  table:not(.example) {
     @apply block border text-sm mb-4 w-full overflow-x-auto scrolling-touch;
 
     thead {

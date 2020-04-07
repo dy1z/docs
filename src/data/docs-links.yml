@@ -80,6 +80,8 @@
       path: /docs/divider/
     - title: Buttons
       path: /docs/buttons/
+    - title: Alerts
+      path: /docs/alerts/
     - title: Reverse Stack
       path: /docs/reverse-stack/
     - title: ⚡4email
