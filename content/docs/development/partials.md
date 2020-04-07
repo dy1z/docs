@@ -13,7 +13,7 @@ Partials are separate files that you can pull into a Template.
 To include a Partial in a Template, use the `<include>` tag:
 
 ```html
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="template">
     <include src="src/partials/example.html"></include>
   </block>
@@ -27,7 +27,7 @@ The path to the Partial file must be relative to the project root.
 You can pass data to partials, with the help of the `locals=""` attribute:
 
 ```html
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="template">
     <include 
       src="src/partials/example.html" 

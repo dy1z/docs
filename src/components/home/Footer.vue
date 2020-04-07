@@ -45,9 +45,10 @@
           </g-link>
         </div>
         <div class="mt-8">
-          <p class="text-center text-base leading-6 text-gray-400">
-            &copy; 2020 Maizzle - Made with <span class="text-red-500">❤</span> for email, <g-link to="https://github.com/maizzle/maizzle" class="text-gradient bg-gradient-l-ocean-dark">open sourced</g-link> under the MIT license.
+          <p class="text-center text-sm leading-6 text-gray-400">
+            &copy; {{ new Date().getFullYear() }} Maizzle - Made with <span class="text-red-500">❤</span> for email, <g-link to="https://github.com/maizzle/maizzle" class="text-gradient bg-gradient-l-ocean-dark hover:bg-gradient-r-ocean-dark">open sourced</g-link> under the MIT license.
           </p>
+          <p class="text-center text-sm leading-6 text-gray-400">Website built with <g-link to="https://gridsome.org/" class="text-gradient bg-gradient-l-ocean-dark  hover:bg-gradient-r-ocean-dark">Gridsome</g-link>, <g-link to="https://tailwindui.com/" class="text-gradient bg-gradient-l-ocean-dark  hover:bg-gradient-r-ocean-dark">Tailwind UI</g-link>, and <g-link to="https://github.com/refactoringui/heroicons" class="text-gradient bg-gradient-l-ocean-dark  hover:bg-gradient-r-ocean-dark">Heroicons</g-link></p>
         </div>
       </div>
     </div>

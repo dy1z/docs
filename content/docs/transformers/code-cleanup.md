@@ -19,23 +19,10 @@ These are the cleanup-related options in `config.js` :
 ```js
 // config.js
 module.exports = {
-  purgeCSS: {
-    content: [
-      'src/layouts/**/*.*',
-      'src/partials/**/*.*',
-      'src/components/**/*.*',
-    ],
-    whitelist: [],
-    whitelistPatterns: [],
-  },
-  removeUnusedCSS: {
-    enabled: false,
-  },
+  purgeCSS: {},
+  removeUnusedCSS: {},
   replaceStrings: false,
-  keepOnlyAttributeSizes: {
-    width: [],
-    height: [],
-  },
+  keepOnlyAttributeSizes: {},
   preferBgColorAttribute: false,
   removeAttributes: [],
   safeClassNames: {},
@@ -100,16 +87,16 @@ purgeCSS: {
 
 If your Tailwind class names include characters not covered by the default extractor, use this option to specify a custom one.
 
-For example, let's make sure we don't purge classes that include a `%` character:
+For example, let's make sure we don't purge classes that include a `!` character:
 
 ```js
 purgeCSS: {
-  extractor: /[\w-/:%]+(?<!:)/g
+  extractor: /[\w-/:.%!]+(?<!:)/g
 }
 ```
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, you need to <a href="/docs/tailwindcss-config/#separator">rewrite</a> them yourself.</div>
+  <div class="text-cool-gray-500">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, you need to <a href="#safeclassnames">rewrite</a> them yourself.</div>
 </div>
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
@@ -313,7 +300,7 @@ module.exports = {
 }
 ```
 
-You can optionally provide an array of tags that it should remove the `background-color` inline CSS from:
+You can optionally provide an array of tag names that it should remove the `background-color` inline CSS from:
 
 ```js
 // config.js

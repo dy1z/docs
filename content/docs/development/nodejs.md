@@ -54,19 +54,19 @@ const html = Maizzle.render(`html string`, options)
 
 Pass in a custom Tailwind CSS configuration, or a pre-compiled CSS string.
 
-| Option | Required | Type | Default | Description |
-| --- | --- | --- | --- | --- |
-| `config` | No | Object | `{}` | A Tailwind CSS config object. |
-| `css` | No | String | <span class="font-mono text-cool-gray-500">@tailwind components; @tailwind utilities;</span> | A string with CSS in PostCSS syntax. Gets compiled with Tailwind CSS. To use Tailwind, you should at least use _@tailwind utilities_ |
-| `compiled` | No | String | (empty string) | A pre-compiled CSS string, to use as-is. This will skip compilation, resulting in faster render speed. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `config` | Object | `{}` | A Tailwind CSS config object. |
+| `css` | String | <span class="font-mono text-cool-gray-500">@tailwind components; @tailwind utilities;</span> | A string with CSS in PostCSS syntax. Gets compiled with Tailwind CSS. To use Tailwind, you should at least use _@tailwind utilities_ |
+| `compiled` | String | (empty string) | A pre-compiled CSS string, to use as-is. This will skip compilation, resulting in faster render speed. |
 
 ###### maizzle
 
 The Maizzle environment configuration object.
 
-| Option | Required | Type | Default | Description |
-| --- | --- | --- | --- | --- |
-| `config` | No | Object | `{}` | A Maizzle config object. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `config` | Object | `{}` | A Maizzle config object. |
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-cool-gray-500">The other options listed above, like <code>afterConfig() {}</code>, are <a href="/docs/events/">Events</a>.</div>

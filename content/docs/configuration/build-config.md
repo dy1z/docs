@@ -25,7 +25,7 @@ module.exports = {
     layouts: {
       root: './',
     },
-    modules: {
+    includes: {
       root: './'
     },
     templates: {
@@ -138,7 +138,7 @@ build: {
 }
 ```
 
-You could then extend layouts by referencing them relative to that path - no need to write out the full path relative to your project root:
+You could then extend Layouts by referencing them relative to that path - no need to write out the full path relative to your project root:
 
 ```html
 <extends src="base.html">
@@ -149,7 +149,7 @@ You could then extend layouts by referencing them relative to that path - no nee
 ```
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-cool-gray-500">Maizzle doesn't include this key in the Starter config, you need to add it yourself.</div>
+  <div class="text-cool-gray-500">Maizzle doesn't include this <code>layouts</code> key in the Starter config.</div>
 </div>
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
@@ -201,12 +201,12 @@ build: {
 
 Define what file extensions you use for your Templates. 
 
-`extensions` can be a string, but it can also be an array or a pipe-delimited list:
+`extensions` can be a string, but it can also be an array or a pipe|delimited list:
 
 ```js
 build: {
   templates: {
-    extensions: ['html', 'blade.php'], // or even 'html|blade.php'
+    extensions: ['html', 'blade.php'], // can also do 'html|blade.php'
   },
 }
 ```

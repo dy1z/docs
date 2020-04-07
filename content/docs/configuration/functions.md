@@ -6,7 +6,7 @@ description: "Programatically configure Maizzle or use the output of other Node.
 
 # Config Variables and Functions
 
-Since Maizzle is fully configured in JavaScript, you can programatically set config options and make data available to your Templates.
+Maizzle is fully configured in JavaScript, so you can programatically set config options or process and make data available to your Templates.
 
 ## Variables
 

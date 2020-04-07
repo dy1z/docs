@@ -16,7 +16,7 @@
             Supercharge your email workflow
           </h3>
           <p class="mt-4 max-w-3xl mx-auto sm:text-center text-xl leading-7 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in, accusamus quisquam.
+            Maizzle empowers you with modern web development tools, enabling fast prototyping while keeping your entire team on-brand.
           </p>
         </div>
 
@@ -29,7 +29,7 @@
               Who said CSS frameworks should only be used for websites?
             </p>
             <p class="mt-3 text-base leading-7 text-gray-500">
-              Maizzle uses the <g-link to="https://tailwindcss.com" class="text-gradient bg-gradient-l-ocean-dark hover:bg-gradient-r-ocean-dark">Tailwind CSS</g-link> framework, so you can rapidly prototype HTML emails just by adding classes to your markup.
+              Maizzle uses the <g-link to="https://tailwindcss.com" class="text-gradient bg-gradient-l-ocean-dark hover:bg-gradient-r-ocean-dark">Tailwind CSS</g-link> framework, so you can rapidly prototype beautiful, on-brand HTML emails. Forget about writing inline styles.
             </p>
 
             <ul class="mt-10">
@@ -37,9 +37,7 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                      </svg>
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                     </div>
                   </div>
                   <div class="ml-4">
@@ -54,9 +52,7 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-                      </svg>
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
                   </div>
                   <div class="ml-4">
@@ -71,9 +67,7 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                      </svg>
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
                     </div>
                   </div>
                   <div class="ml-4">
@@ -115,8 +109,7 @@
     <span class="text-gradient bg-gradient-l-ocean-dark">px</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'1px'</span><span class="text-cool-gray-500">,</span>
     <span class="text-green-400">'0'</span><span class="text-cool-gray-500">:</span> <span class="text-orange-400">0</span><span class="text-cool-gray-500">,</span>
     <span class="text-green-400">'2'</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'2px'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-green-400">'4'</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'4px'</span><span class="text-cool-gray-500">,</span>
-  </code></pre>
+    <span class="text-green-400">'4'</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'4px'</span><span class="text-cool-gray-500">,</span></code></pre>
               </div>
             </div>
           </div>
@@ -146,15 +139,13 @@
                   <div class="flex">
                     <div class="flex-shrink-0">
                       <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                       </div>
                     </div>
                     <div class="ml-4">
                       <h5 class="text-lg leading-6 font-medium text-gray-900">Bring Your Own HTML</h5>
                       <p class="mt-2 text-base leading-6 text-gray-500">
-                        No need to learn custom syntax: you write your own, real HTML. You're not forced to use hardcoded components.
+                        No need to learn custom syntax: you write real HTML. Use your existing templates, they'll just work.
                       </p>
                     </div>
                   </div>
@@ -163,33 +154,13 @@
                   <div class="flex">
                     <div class="flex-shrink-0">
                       <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="ml-4">
-                      <h5 class="text-lg leading-6 font-medium text-gray-900">Custom abstractions</h5>
-                      <p class="mt-2 text-base leading-6 text-gray-500">
-                        Prefer using components like <code class="shiki-inline">&lt;row&gt;</code> or <code class="shiki-inline">&lt;column&gt;</code>?
-                        You can define your own, or use the ones provided by default.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li class="mt-10">
-                  <div class="flex">
-                    <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                       </div>
                     </div>
                     <div class="ml-4">
                       <h5 class="text-lg leading-6 font-medium text-gray-900">Supercharged by PostHTML</h5>
                       <p class="mt-2 text-base leading-6 text-gray-500">
-                        Write text editor-friendly markup for extending layouts, conditionals, and even loops! PostHTML supercharges your markup and enables you to write complex logic with zero JavaScript knowledge.
+                        PostHTML gives your HTML superpowers, enabling you to write complex logic with simple markup. All in HTML.
                       </p>
                     </div>
                   </div>
@@ -232,10 +203,10 @@
               Build Environments
             </h4>
             <p class="mt-3 text-lg leading-7 text-gray-500">
-              Custom build scenarios, easily configured through JavaScript.
+              Custom build scenarios, easily configured in JavaScript.
             </p>
             <p class="mt-3 text-base leading-7 text-gray-500">
-              Using fake data locally, but fetching from an API in production? Prettified markup for your colleagues? All possible.
+              Using fake data locally, but fetching from an API in production? Prettified email markup for your colleagues? All possible.
             </p>
 
             <ul class="mt-10">
@@ -243,9 +214,7 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                      </svg>
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
                     </div>
                   </div>
                   <div class="ml-4">
@@ -260,15 +229,13 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-                      </svg>
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                     </div>
                   </div>
                   <div class="ml-4">
                     <h5 class="text-lg leading-6 font-medium text-gray-900">Opt-in Transformers</h5>
                     <p class="mt-2 text-base leading-6 text-gray-500">
-                      Choose which transformations Maizzle applies to your HTML emails on a build environment-basis.
+                      Choose which post-processing transformations Maizzle applies to your HTML emails on a build environment-basis.
                     </p>
                   </div>
                 </div>
@@ -277,15 +244,14 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                      </svg>
+                      <!-- <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg> -->
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                     </div>
                   </div>
                   <div class="ml-4">
                     <h5 class="text-lg leading-6 font-medium text-gray-900">Override from Template</h5>
                     <p class="mt-2 text-base leading-6 text-gray-500">
-                      Override the environment config for each HTML email template, through Front Matter variables.
+                      Create unique environment configurations for each HTML email template, through Front Matter variables.
                     </p>
                   </div>
                 </div>
@@ -307,18 +273,18 @@
                 <pre class="leading-code text-base"><code><span class="text-cool-gray-300 italic">// config.production.js</span>
 <span class="text-red-400">module</span><span class="text-blue-700">.</span><span class="text-gradient bg-gradient-l-ocean-dark">exports</span> <span class="text-blue-500">=</span> <span class="text-cool-gray-400">{</span>
   <span class="text-gradient bg-gradient-l-ocean-dark">build</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-  <span class="text-gradient bg-gradient-l-ocean-dark">assets</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">source</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/images'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'images'</span><span class="text-cool-gray-500">,</span>
-  <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-  <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">path</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'build_production'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">extension</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'html'</span><span class="text-cool-gray-500">,</span>
-  <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-  <span class="text-gradient bg-gradient-l-ocean-dark">tailwind</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">css</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/css/main.css'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">config</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'tailwind.config.js'</span><span class="text-cool-gray-500">,</span>
-  <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span></code></pre>
+    <span class="text-gradient bg-gradient-l-ocean-dark">assets</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">source</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/images'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'images'</span><span class="text-cool-gray-500">,</span>
+    <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
+    <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">path</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'build_production'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">extension</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'html'</span><span class="text-cool-gray-500">,</span>
+    <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
+    <span class="text-gradient bg-gradient-l-ocean-dark">tailwind</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">css</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/css/main.css'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">config</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'tailwind.config.js'</span><span class="text-cool-gray-500">,</span>
+    <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span></code></pre>
               </div>
             </div>
           </div>

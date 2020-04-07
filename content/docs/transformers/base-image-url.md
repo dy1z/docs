@@ -48,9 +48,7 @@ Mind the trailing slash on your URL, this influences how you reference images:
 
 ## Disabling
 
-Disable `baseImageURL` by setting its value to an empty string or a falsy value.
-
-Here's an example of how you can do that with Front Matter:
+If you have `baseImageURL` set globally (i.e. in your config), you can disable it for a Template by setting its value to an empty string or a falsy value:
 
 ```js
 ---

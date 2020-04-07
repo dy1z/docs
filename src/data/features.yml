@@ -86,7 +86,7 @@
   path: /docs/browsersync/#tunnel
   description: Use tunneling to live-share a configurable URL to a Maizzle project that you're working on, with a colleague or a client.
 
-- title: BrowserSync
+- title: Browsersync
   path: /docs/browsersync/
   description: Run the <code class="shiki-inline py-px">maizzle serve</code> command to develop emails locally and have the browser automatically refresh for you when you make changes.
 

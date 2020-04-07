@@ -90,7 +90,7 @@ Because utility classes map one-to-one with CSS properties, this normally doesn'
 Consider this template:
 
 ```html
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="template">
     <div class="col">test</div>
   </block>
@@ -179,7 +179,7 @@ First, add a `<block name="head">` inside your Layout's `<head>` tag:
 Next, use that block in a Template:
 
 ```html
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="head">
     <style postcss>
       a {
@@ -210,7 +210,7 @@ Next, use that block in a Template:
 When adding a `<style>` tag inside a Template, you can prevent all rules inside it from being inlined by using a `data-embed` attribute:
 
 ```html
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="head">
     <style postcss data-embed>
       /* This rule will not be inlined */

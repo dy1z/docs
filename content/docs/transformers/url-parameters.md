@@ -20,7 +20,7 @@ module.exports = {
     utm_campaign: 'Campaign Name',
     utm_medium: 'email',
     custom_parameter: 'foo',
-    '1stOfAugust': 'bar',
+    '1stOfApril': 'bar',
   }
   // ...
 }
@@ -30,13 +30,12 @@ module.exports = {
 
 Of course, you can define URL parameters at a Template level, through Front Matter:
 
-```handlebars
+```html
 ---
 title: "These URL params are unique to this template"
 urlParameters:
   utm_source: custom
   utm_campaign: "Pre-launch August"
-  # ...
 ---
 
 <extends src="src/layouts/base.html">

@@ -1,7 +1,7 @@
 <template>
   <section>
-    <div class="bg-white">
-      <div class="max-w-screen-lg bg-gradient-bl-ocean-dark shadow-2xl rounded-lg mx-4 sm:mx-auto text-center py-12 px-4 relative z-10 transition-transform duration-150 transform lg:hover:scale-105 sm:px-6 lg:py-32 lg:px-8">
+    <div class="bg-white mx-4">
+      <div class="max-w-screen-lg bg-gradient-bl-ocean-dark shadow-2xl rounded-lg mx-auto text-center py-12 px-4 relative z-10 transition-transform duration-150 transform lg:hover:scale-105 sm:px-6 lg:py-32 lg:px-8">
         <h2 class="text-3xl leading-9 font-extrabold tracking-tight text-white sm:text-4xl sm:leading-10">
           Start building awesome emails
         </h2>

@@ -52,7 +52,7 @@ This output path is, of course, [configurable](/docs/build-paths/#path).
 
 ## Starter environments
 
-Maizzle comes with two environment configs:
+Maizzle comes with two Environment configs:
 
 1. `local`
 3. `production`
@@ -95,12 +95,12 @@ maizzle build production
 
 You can create as many build environments as you need, and name them as you like.
 
-For example, you could create a config file named `config.myclient.js`. 
+For example, create a config file named `config.shopify.js`, that you would use to build only the templates from the `src/clients/shopify` folder.
 
 The build command for it would be:
 
 ```bash
-maizzle build myclient
+maizzle build shopify
 ```
 
 ## Template conditionals

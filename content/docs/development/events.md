@@ -51,7 +51,7 @@ html = Maizzle.render(str, {
 
 These are the Events that you can use in Maizzle.
 
-The following events are CLI-only - they run only when added inside the `events: {}` object in your `config.js` and when you run one of the [build commands](/docs/commands/):
+The following Events are CLI-only - they run only when added inside the `events: {}` object in your `config.js` and when you run one of the [build commands](/docs/commands/):
 
 - [`beforeCreate`](#beforecreate)
 - [`afterBuild`](#afterbuild)
@@ -94,7 +94,7 @@ module.exports = {
 
 ### beforeRender
 
-Runs after the Template's config has been computed, but just before it is rendered. 
+Runs after the Template's config has been computed, but just before it is compiled. 
 It exposes the Template's config, so you can further manipulate it.
 
 For (a silly) example, let's fetch data from an API and set it as the preheader text:
@@ -116,7 +116,7 @@ module.exports = {
 Then, you'd render it in your HTML, like so:
 
 ```html
-<!-- layouts/base.html -->
+<!-- layouts/master.html -->
 <if condition="page.preheader">
   <div class="hidden">{{ page.preheader }}</div>
 </if>
@@ -131,11 +131,9 @@ Then, you'd render it in your HTML, like so:
 Runs after the Template has been compiled, but before any Transfomers have been applied.
 Exposes the rendered `html` string and the `config`.
 
-You can use it to alter the HTML, even before CSS inlining takes place. 
-It's also your last chance to modify any Transformer-related settings in your config.
+It's your last chance to alter the HTML or any settings in your config, before Transformers process your email template.
 
-For example, let's assume that for some reason we change our mind and want to disable inlining. 
-Oh, and we also want to rewrite all call-to-action labels (maybe they're coming from an external source, like a database?):
+For example, let's disable CSS inlining:
 
 ```js
 // config.js
@@ -143,8 +141,9 @@ module.exports = {
   events: {
     afterRender(html, config) {
       config.inlineCSS.enabled = false
+      
       // must always return the `html`
-      return html.replace(/Confirm email/g, 'Confirm your email')
+      return html
     },    
   },
 },
@@ -160,7 +159,7 @@ Runs after all Transformers have been applied, just before the final HTML is ret
 
 Same as `afterRender()`, it exposes the `html` and the `config`, so you can do further adjustments to the HTML, or read some config settings.
 
-For example, maybe you don't like the minifier that Maizzle includes, and you had it disabled in your config so that you can use your own once the Template has been compiled:
+For example, maybe you don't like the minifier that Maizzle includes, and you disabled it in your config so that you can use your own after the Template has been compiled:
 
 ```js
 // config.js
@@ -203,7 +202,7 @@ module.exports = {
 },
 ```
 
-Using it with the [default Starter](https://github.com/maizzle/maizzle), `maizzle build production` will output:
+Using it with the [Starter](https://github.com/maizzle/maizzle), `maizzle build production` will output:
 
 ```js
 [

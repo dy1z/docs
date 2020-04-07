@@ -6,7 +6,7 @@ description: "See how the build process works and how Maizzle builds your emails
 
 # Build process
 
-When you run `maizzle build`, your templates go through a series of events that compile them to plain HTML, and apply various, email-specific transformations.
+When you run `maizzle build`, your templates go through a series of events that compile them to plain HTML and apply various, email-specific transformations.
 
 To get a better understanding of how Maizzle builds your emails, here's a step-by-step guide of what's going on under the hood:
 
@@ -14,19 +14,19 @@ To get a better understanding of how Maizzle builds your emails, here's a step-b
 
 A global configuration object is computed by merging your environment config on top of the base `config.js`.
 
-For example, running `maizzle build production` will tell Maizzle to look for `config.production.js` in your project's root and merge it on top of `config.js`.
+For example, running `maizzle build production` will tell Maizzle to look for `config.production.js` at your current location, and merge it on top of `config.js`.
 
-Otherwise if you're simply running the `maizzle build` or `maizzle serve` commands, only the base `config.js` will be used.
+Otherwise, if you're simply running the `maizzle build` or `maizzle serve` commands, only the base `config.js` will be used.
 
 ## Compile Tailwind CSS
 
-Tailwind CSS is compiled, using settings from the config determined above. Various [PostCSS](https://postcss.org/) plugins are enabled depending on the build environment and your config.
+Tailwind CSS is compiled, and various [PostCSS](https://postcss.org/) plugins are enabled depending on the build environment and your config.
 
 When you specify a build environment, i.e. `maizzle build production`, PurgeCSS removes any unused classes from the compiled CSS. It scans all your source folders and any other, custom sources that you specify, and removes any unused CSS from the compiled CSS that will be passed to the final template.
 
 <div class="bg-cool-gray-50 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
   <div class="text-cool-gray-500">
-    Yes, <code class="shiki-inline">email-comb</code> (which we use in Code Cleanup) can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.
+    Yes, <a href="/docs/code-cleanup/#removeunusedcss"><code>email-comb</code></a> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.
   </div>
 </div>
 
@@ -34,21 +34,29 @@ When you specify a build environment, i.e. `maizzle build production`, PurgeCSS 
 
 The destination directory that you have defined under `build.destination.path` in your environment config is deleted.
 
+<div class="bg-cool-gray-50 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
+  <div class="text-cool-gray-500">
+    Be careful when customizing this path, so you don't end up deleting important directories and files on your machine.
+  </div>
+</div>
+
 ## Copy sources
 
-Your source Templates are copied over to the destination directory that you have defined in your `config`. This is so that we can then process them in place.
+Your source Templates are copied over to the `build.destination.path`. 
+
+This is done so that we can then process the files in-place, which makes it easier to preserve your directory structure.
 
 ## beforeCreate()
 
-The [`beforeCreate`](/docs/events/#beforecreate) event is triggered, giving you access to the global configuration object, before Maizzle loops over your Templates to compile them.
+The [`beforeCreate`](/docs/events/#beforecreate) event (CLI-only) is triggered, giving you access to the config before Maizzle loops over your Templates to compile them.
 
 ## Compile templates
 
-Each Template is parsed and compiled in place, in your destination directory:
+Each Template is parsed and compiled in-place, in your destination directory:
 
 1. Maizzle reads the Template file
 
-2. It extracts its Front Matter (FM)
+2. It extracts its Front Matter
 
 3. A unique Template `config` is computed by merging the Template's Front Matter keys with the Environment `config`
   
@@ -64,10 +72,10 @@ Each Template is parsed and compiled in place, in your destination directory:
 
   The order of events is exactly as follows, and *they all happen (or not) depending on how you've configured them in your Environment config or in the Template's Front Matter*:
 
-    - escaped characters in `<head>` and `<body>` CSS are replaced with email-safe alternatives
+    - escaped characters in `<head>` and `<body>` CSS classes are replaced with email-safe alternatives
     - [posthtml-content](https://github.com/posthtml/posthtml-content) is used to transform content marked with custom attributes. By default, it looks for any `<style postcss>` tag in the Template. If it finds any, it tries to compile the contents with PostCSS. Useful if you need to use Tailwind CSS inside a style block right in your Template.
-    - [posthtml-markdown](https://github.com/OzymandiasTheGreat/posthtml-markdown) is used to compile Markdown
-    - [prevent-widows](https://github.com/bashaus/prevent-widows) looks for any `prevent-widows` attribute on any tag. When it finds one, it will replace the last space in your text with a `&nbsp;`.
+    - [posthtml-md2html](https://github.com/posthtml/posthtml-md2html) is used to compile Markdown
+    - [prevent-widows](https://github.com/bashaus/prevent-widows) looks for tags containing the `prevent-widows` attribute. When it finds one, it will replace the last space in your text with a `&nbsp;`.
     - [Juice](https://github.com/Automattic/juice) inlines CSS
     - [email-comb](https://www.npmjs.com/package/email-comb) removes any unused CSS
     - attributes are removed based on your config. By default, Maizzle cleans up any empty `style=""` attributes.
@@ -78,7 +86,7 @@ Each Template is parsed and compiled in place, in your destination directory:
     - [`urlParameters`](/docs/url-parameters/) are added to links
     - ensure six digit HEX color codes (see [package](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit))
     - [pretty](https://www.npmjs.com/package/pretty) is used to prettify your code
-    - [html-minifier](https://www.npmjs.com/package/html-minifier) minifies HTML/CSS, and removes empty attributes
+    - [html-crush](https://www.npmjs.com/package/html-crush) minifies your email code
     - strings are replaced based on your [`replaceStrings`](/docs/code-cleanup/#replacestrings) definitions
 
 8. [`afterTransformers`](/docs/events/#aftertransformers) event is triggered

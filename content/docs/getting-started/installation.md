@@ -26,7 +26,7 @@ npm -v
 
 ### Git
 
-The `maizzle new` command for scaffolding a new project works by cloning a Git repo. So it needs [Git](https://help.github.com/en/articles/set-up-git#setting-up-git) installed. 
+The `maizzle new` command for scaffolding a new project works by cloning a Git repository, so you'll also need to have [Git](https://help.github.com/en/articles/set-up-git#setting-up-git) installed. 
 
 Check if you have it, by running this command:
 
@@ -38,24 +38,20 @@ git --version
 
 Maizzle consists of:
 
-- a CLI tool
+- a <abbr title="Command Line Interface">CLI</abbr> tool
 - the Framework
 - a Starter project
 
-When developing emails in Maizzle, you run a CLI command inside your Starter project directory root. 
-That simply asks the Framework to build the emails inside your current project, based on config files that it finds in there.
+When developing emails on your local machine with Maizzle, you simply run a CLI command inside your Starter project directory root. 
+
+That command asks the Framework to build the emails inside your current project, based on config files that it finds in there.
 
 With that in mind:
 
 ### Install the CLI globally
 
-
 ```bash
-# With NPM:
 npm install -g @maizzle/cli
-
-# With Yarn:
-yarn global add @maizzle/cli
 ```
 
 ### Create a project
@@ -74,7 +70,7 @@ cd my-project
 
 Congratulations, you can now start using Maizzle! 
 
-Start local email development by running the `serve` command:
+Start local email development by running the [`serve`](/docs/commands/#serve) command:
 
 ```bash
 maizzle serve

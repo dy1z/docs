@@ -114,10 +114,8 @@ You can do this with a custom build environment:
       destination: {
         path: 'build_amp',
       },
-      posthtml: {
-        templates: {
-          source: 'src/templates/amp',
-        },
+      templates: {
+        source: 'src/templates/amp',
       },
       tailwind: {
         config: 'tailwind.amp.js',

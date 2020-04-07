@@ -15,7 +15,7 @@ Simply enable it in your config or the Template's Front Matter:
 plaintext: true
 ---
 
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="template">
     <!-- ... -->
   </block>
@@ -37,7 +37,7 @@ You can output plaintext-only content with the `<plaintext>` tag:
 plaintext: true
 ---
 
-<extends src="layouts/base.html">
+<extends src="src/layouts/base.html">
   <block name="template">
     This text shows in both the HTML and the plaintext versions.
     <plaintext>This will be available only in the plaintext version</plaintext>
