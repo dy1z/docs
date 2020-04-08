@@ -24,17 +24,24 @@ pre[class*="language-"] {
   @apply bg-cool-gray-50 border border-cool-gray-100 text-cool-gray-500 text-sm px-2 py-0.5 whitespace-normal rounded;
 }
 
-a {
-  > code {
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    @apply bg-gradient-l-ocean-dark;
-  }
+a > code {
+  @apply text-ocean;
+}
 
-  &:hover > code {
-    @apply border-cool-gray-300;
+@screen sm {
+  a {
+    > code {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @apply bg-gradient-l-ocean-dark;
+    }
+
+    &:hover > code {
+      @apply border-cool-gray-300;
+    }
   }
 }
+
 
 .token.comment,
 .token.prolog,

@@ -31,17 +31,7 @@
   }
 
   a {
-    @apply no-underline;
-
-    &:not(.text-gradient-none) {
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      @apply bg-gradient-l-ocean-dark;
-
-      &:hover {
-        @apply bg-gradient-r-ocean-dark;
-      }
-    }
+    @apply no-underline text-ocean;
   }
 
   p {
@@ -121,6 +111,18 @@ hr {
     h2, h3, h4, h5, h6 {
       > a {
         @apply hidden;
+      }
+    }
+
+    a {
+      &:not(.text-gradient-none) {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        @apply bg-gradient-l-ocean-dark;
+
+        &:hover {
+          @apply bg-gradient-r-ocean-dark;
+        }
       }
     }
 
