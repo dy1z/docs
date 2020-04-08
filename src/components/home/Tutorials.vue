@@ -14,8 +14,8 @@
             </div>
           </div>
           <div class="mt-6 lg:mt-0">
-            <g-link to="/guides/" class="block px-4 py-1.5 text-sm leading-6 font-medium rounded-md text-white bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out transform hover:scale-105">
-              View all <span class="ml-1">&rarr;</span>
+            <g-link to="/guides/" class="group text-base leading-6 font-semibold text-gradient bg-gradient-l-ocean-dark">
+              Read more <span class="group-hover:ml-1 transition-all duration-150">&rarr;</span>
             </g-link>
           </div>
         </div>

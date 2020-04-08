@@ -16,7 +16,7 @@
             Supercharge your email workflow
           </h3>
           <p class="mt-4 max-w-3xl mx-auto sm:text-center text-xl leading-7 text-gray-500">
-            Maizzle empowers you with modern web development tools, enabling fast prototyping while keeping your entire team on-brand.
+            Maizzle empowers you with modern web development tools, enabling fast email prototyping while keeping your entire team on-brand.
           </p>
         </div>
 
@@ -145,7 +145,7 @@
                     <div class="ml-4">
                       <h5 class="text-lg leading-6 font-medium text-gray-900">Bring Your Own HTML</h5>
                       <p class="mt-2 text-base leading-6 text-gray-500">
-                        No need to learn custom syntax: you write real HTML. Use your existing templates, they'll just work.
+                        No need to learn custom syntax or adapt your templates to it. Use your existing HTML, it'll just work.
                       </p>
                     </div>
                   </div>
@@ -160,7 +160,7 @@
                     <div class="ml-4">
                       <h5 class="text-lg leading-6 font-medium text-gray-900">Supercharged by PostHTML</h5>
                       <p class="mt-2 text-base leading-6 text-gray-500">
-                        PostHTML gives your HTML superpowers, enabling you to write complex logic with simple markup. All in HTML.
+                        PostHTML gives your HTML superpowers, enabling you to write complex logic with simple, text editor-friendly markup.
                       </p>
                     </div>
                   </div>
@@ -251,7 +251,7 @@
                   <div class="ml-4">
                     <h5 class="text-lg leading-6 font-medium text-gray-900">Override from Template</h5>
                     <p class="mt-2 text-base leading-6 text-gray-500">
-                      Create unique environment configurations for each HTML email template, through Front Matter variables.
+                      Define or override data for each template just before it's compiled, through YAML Front Matter variables.
                     </p>
                   </div>
                 </div>

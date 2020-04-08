@@ -133,8 +133,14 @@ module.exports = {
       maxHeight: {
         sm: '30rem',
       },
+      minHeight: {
+        '128': '32rem',
+      },
       minWidth: {
         '24': '6rem',
+      },
+      opacity: {
+        '90': 0.90,
       },
       zIndex: {
         '-1': '-1',

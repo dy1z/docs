@@ -4,6 +4,7 @@
       <hero />
       <highlights />
       <features />
+      <starters />
       <tutorials />
       <testimonials />
       <bottom-cta />
@@ -18,6 +19,7 @@ import config from '~/.temp/config.js'
 import Hero from '~/components/home/Hero.vue'
 import Highlights from '~/components/home/Highlights.vue'
 import Features from '~/components/home/Features.vue'
+import Starters from '~/components/home/Starters.vue'
 import Tutorials from '~/components/home/Tutorials.vue'
 import Testimonials from '~/components/home/Testimonials.vue'
 import BottomCta from '~/components/home/BottomCta.vue'
@@ -28,6 +30,7 @@ export default {
     Hero,
     Highlights,
     Features,
+    Starters,
     Tutorials,
     Testimonials,
     BottomCta,

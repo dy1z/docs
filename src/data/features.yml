@@ -7,7 +7,7 @@
   description: Quickly build HTML emails with CSS utility classes. You won't need to write inline CSS for most of the time.
 
 - title: Starters
-  path: /docs/starters/
+  path: /starters/
   description: Free, open source email templates built with Maizzle. Simply clone a repository and start building your HTML emails.
 
 - title: Build System
