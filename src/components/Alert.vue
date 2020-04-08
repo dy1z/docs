@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-cool-gray-50 border-l-4 p-4 mb-4 text-md"
+    class="alert"
     :class="classes"
     role="alert"
   >
@@ -37,3 +37,13 @@ export default {
   },
 }
 </script>
+
+<style>
+  .alert {
+    @apply bg-cool-gray-50 border-l-4 p-4 mb-4 text-base;
+
+    p:last-child {
+      @apply mb-0 !important;
+    }
+  }
+</style>

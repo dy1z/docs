@@ -5,6 +5,10 @@ description: "Using PrismJS, Markdown fenced code blocks, and Events in Maizzle 
 date: 2020-02-05
 ---
 
+import Alert from '~/components/Alert.vue'
+
+<alert>This tutorial was updated on April 8, 2020 to use PostHTML syntax.</alert>
+
 If you want to show a block of code in an HTML email _and_ have it look nice, it usually involves a lot of manual work: escaping, formatting, tokenizing, styling tokens...
 
 With Maizzle however, we can use JavaScript libraries to do that work for us 💅
@@ -15,7 +19,7 @@ Let's create a new Maizzle project.
 
 Open a terminal window and run the `new` command:
 
-```sh
+```bash
 maizzle new syntax-highlight
 ```
 
@@ -23,64 +27,69 @@ That will create a `syntax-highlight` folder at your current location, clone the
 
 OK, now open the `syntax-highlight` folder in your editor.
 
-## Markdown
+## Install PrismJS
 
-We'll use Markdown to add our code block to the email template. 
+First, let's install the [`posthtml-prism`](https://github.com/posthtml/posthtml-prism) plugin, which we'll use to automatically highlight our code blocks:
 
-We _could_ manually add `<pre>` and `<code>` tags, but with Markdown the code is automatically formatted (escaped) for us.
-We can even add our own sanitizer function.
-
-Edit your template and add a [`{% markdown %}`](/docs/markdown/#block) tag somewhere in your content (anywhere a `<pre>` element would be allowed).
-
-We'll be using the [Promotional template](https://github.com/maizzle/maizzle/blob/master/src/templates/promotional.njk) from Maizzle, so we'll add the markdown block right after the `<p>` from the first article:
-
-```handlebars
-<p class="m-0 mb-24">For example, here's a block of JavaScript code:</p>
-{% markdown %}
-```js
-function foo(bar) {
-    var a = 42,
-        b = 'Prism';
-    return a + bar(b);
-}
-`&zwnj;``
-{% endmarkdown %}
+```bash
+npm i posthtml-prism
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">
-    <p>There's a hidden <code class="shiki-inline">&amp;zwnj;</code> character in the closing of the fenced code block above (in <code class="shiki-inline">```</code> above <code class="shiki-inline">{% endmarkdown %}</code>). This is needed for nesting fenced code blocks on this page. If you're copy-pasting the example above, make sure to delete and replace all <code class="shiki-inline">```</code> with your own.</p>
-  </div>
-</div>
+Next, make sure it's used in our build process:
 
-Now run `maizzle serve` to start the development server, and open `http://localhost:3000/promotional.html` in a browser. 
+```js
+// config.js
+module.exports = {
+  build: {
+    posthtml: {
+      plugins: [
+        require('posthtml-prism')(),
+      ],
+    },
+  }
+}
+```
+
+## Add code block
+
+Add a block of code in your template, like so:
+
+```html
+<pre>
+  <code class="language-javascript">
+  function foo(bar) {
+    var a = 42,
+      b = 'Prism';
+    return a + bar(b);
+  }
+  </code>
+</pre>
+```
+
+<alert>Notice how we added the <code>language-javascript</code> class on the <code>&lt;code&gt;</code> tag - this is required in order to get language-specific syntax highlighting.</alert>
+
+Now run `maizzle serve` to start the development server, open `http://localhost:3000/` in a browser, and navigate to the template. 
 
 You'll see something like this:
 
-<img src="https://res.cloudinary.com/maizzle/image/upload/v1580899257/guides/syntax-no-highlight.png" alt="Code without syntax highlighting">
+<pre class="mb-4"><code><span>function</span> <span>foo</span><span>(</span><span>bar</span><span>)</span> <span>{</span>
+  <span>var</span> a <span>=</span> <span>42</span><span>,</span>
+    b <span>=</span> <span>'Prism'</span><span>;</span>
+  <span>return</span> a <span>+</span> <span>bar</span><span>(</span>b<span>)</span><span>;</span>
+<span>}</span></code></pre>
 
-Not very pretty, is it?
+If you view the source, you'll notice a lot of `<span>` tags. This means it worked, and Prism has tokenized our code block.
 
-Let's use PrismJS to make it look better.
+But it's not very pretty, is it?
 
-## PrismJS
+## Theming
 
-Install the PrismJS library in your project by running this command in the terminal at your project's root:
-
-```sh
-npm install prismjs
-```
-
-### Theme
-
-We'll also need a PrismJS theme to make the code block pretty.
+We need a Prism theme to make the code block pretty.
 Choose one of the default themes, or see [prism-themes](https://github.com/PrismJS/prism-themes) for more.
 
-We'll go with the [Synthwave '84 Theme](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-synthwave84.css), here's how it looks like:
+For this tutorial, we'll go with a Tailwind adaptation the [Synthwave '84 Theme](https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode).
 
-<img src="https://res.cloudinary.com/maizzle/image/upload/v1580895198/guides/synthwave84-prism.png" width="255" class="mb-4" alt="Synthwave '84 theme preview">
-
-Save [prism-synthwave84.css](https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-synthwave84.css) to the `src/assets/css/custom` directory in your project, 
+Save [prism-synthwave84.css](https://raw.githubusercontent.com/maizzle/example-syntax-highlight/master/src/assets/css/custom/prism-synthwave84.css) to the `src/assets/css/custom` directory in your project, 
 and import it in your `src/assets/css/main.css`:
 
 ```css
@@ -104,54 +113,9 @@ and import it in your `src/assets/css/main.css`:
 @import "custom/utilities";
 ```
 
-We'll get back to the `prism-synthwave84.css` file later.
+Next, we need to make sure that our Prism theme CSS is not purged at build time.
 
-## Events
-
-In order to use PrismJS to highlight fenced code blocks in our email template, we'll use [Events](/docs/events/) in Maizzle. 
-First, we need to `require` PrismJS, so edit `config.js`:
-
-```js
-const Prism = require('prismjs')
-
-module.exports = {
-  // ...
-}
-```
-
-Next, we'll be using the [`beforeCreate`](/docs/events/#beforecreate) event, which allows us to programmatically set config options.
-Add it inside an `events` object, in `config.js`:
-
-```js
-const Prism = require('prismjs')
-
-module.exports = {
-  // ...
-  events: {
-    async beforeCreate(config) {
-      config.markdown.highlight = (code, lang, callback) => {
-        return Prism.highlight(code, Prism.languages[lang], lang)
-      }
-    },
-  },
-}
-```
-
-Inside the `beforeCreate()` function, we define a `highlight` function for the Markdown renderer and have it use PrismJS for highlighting code blocks. 
-
-This function must `return` the highlighted code as an HTML string - take a look at the [marked.js docs](https://marked.js.org/#/USING_ADVANCED.md#options) for an explanation of all the Markdown renderer options.
-
-If we run `maizzle build` again, we see our code looking the same. 
-
-_Why is it not working?_
-
-If you look at the source code, you'll see PrismJS _did_ do something - it tokenized the code, which is just a fancy way of saying it wrapped pieces of text in `<span>` tags.
-
-We don't notice any difference, because of CSS purging and clean-up in Maizzle.
-
-Since we're not actually using any of them in our `.njk` template file, CSS classes from `prism-synthwave84.css` are purged (ignored).
-
-We can fix this by telling the library that does this purging ([postcss-purgecss](/docs/code-cleanup/#purgecss)) to ignore this file, by wrapping its contents in comments, like so:
+We can do this by wrapping its contents in special comments:
 
 ```css
 /*! purgecss start ignore */
@@ -159,14 +123,13 @@ We can fix this by telling the library that does this purging ([postcss-purgecss
 /*! purgecss start ignore */
 ```
 
-Now, running `maizzle build` will finally show us we're making some progress:
+Now, running `maizzle build` will yield the result we expected:
 
-<img src="https://res.cloudinary.com/maizzle/image/upload/v1580902472/guides/syntax-partial-highlight.png" class="mb-4" alt="Partial syntax highlighting">
-
-We're almost there, we just need to customize the Synthwave '84 theme a bit. 
-
-With PrismJS, we don't really need any `class="language-xxxx"`, so we can remove those selectors from the CSS. 
-Take a look at the [final `prism-synthwave84.css`](https://github.com/maizzle/example-syntax-highlight/blob/master/src/assets/css/custom/prism-synthwave84.css) file.
+<pre style="padding: 24px; margin-bottom: 24px; overflow: auto; font-family: Menlo, Consolas, monospace; font-size: 16px; text-align: left; white-space: pre; background-image: linear-gradient(to bottom, #2a2139 75%, #34294f); color: #f92aad; hyphens: none; tab-size: 2; text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3; word-break: normal; word-spacing: normal; word-wrap: normal; background-color: #2a2139;"><code class="language-javascript"><span style="color: #f4eee4; text-shadow: 0 0 2px #393a33, 0 0 8px #f39f0575, 0 0 2px #f39f0575;">function</span> <span style="color: #fdfdfd; text-shadow: 0 0 2px #001716, 0 0 3px #03edf975, 0 0 5px #03edf975, 0 0 8px #03edf975;">foo</span><span style="color: #cccccc;">(</span><span style="color: #f92aad;">bar</span><span style="color: #cccccc;">)</span> <span style="color: #cccccc;">{</span>
+  <span style="color: #f4eee4; text-shadow: 0 0 2px #393a33, 0 0 8px #f39f0575, 0 0 2px #f39f0575;">var</span> <span style="color:#f92aad;">a</span> <span style="color: #67cdcc;">=</span> <span style="color: #e2777a;">42</span><span style="color: #cccccc;">,</span>
+    <span style="color: #f92aad;">b</span> <span style="color: #67cdcc;">=</span> <span style="color: #f87c32;">'Prism'</span><span style="color: #cccccc;">;</span>
+  <span style="color: #f4eee4; text-shadow: 0 0 2px #393a33, 0 0 8px #f39f0575, 0 0 2px #f39f0575;">return</span> <span style="color: #f92aad;">a</span> <span style="color: #67cdcc;">+</span> <span style="color: #fdfdfd; text-shadow: 0 0 2px #001716, 0 0 3px #03edf975, 0 0 5px #03edf975, 0 0 8px #03edf975;">bar</span><span style="color: #cccccc;">(</span><span style="color: #f92aad;">b</span><span style="color: #cccccc;">)</span><span style="color: #cccccc;">;</span>
+<span style="color: #cccccc;">}</span></code></pre>
 
 ## Compatibility
 
@@ -187,48 +150,39 @@ Fix it by adding the following CSS at the beginning of `prism-synthwave84.css`:
 }
 ```
 
+Make sure you've registered that `all` screen with Tailwind:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    screens: {
+      all: {'raw': 'screen'},
+      sm: {'max': '600px'},
+    },
+  }
+  // ...
+}
+```
+
 ### Outlook
 
-Padding on `<pre>` doesn't work in Outlook, and we'll also see a `line-height` issue.
+Padding on `<pre>` doesn't work in Outlook.
 
-We can fix these by wrapping `{% markdown %}` tags inside a table that we only show in Outlook. We then style this table inline, like so:
+We can fix this by wrapping `<pre>` inside a table that we only show in Outlook. We then style this table inline, like so:
 
-```handlebars
+```html
 <!--[if mso]><table width="100%"><tr><td style="background: #2a2139; padding: 24px;"><![endif]-->
-{% markdown %}
-```js
-function foo(bar) {
+<pre>
+  <code class="language-javascript">
+  function foo(bar) {
     var a = 42,
-        b = 'Prism';
+      b = 'Prism';
     return a + bar(b);
-}
-`&zwnj;``
-{% endmarkdown %}
+  }
+  </code>
+</pre>
 <!--[if mso]></td></tr></table><![endif]-->
-```
-
-## Inline code blocks
-
-We can adjust the Synthwave '84 theme to style `inline code`, too.
-
-Change this:
-
-```css
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-}
-```
-
-to this:
-
-```css
-/* Inline code */
-:not(pre) > code {
-  @apply bg-gray-100 border border-solid border-gray-300 text-red-400 text-sm px-8 py-4 rounded whitespace-normal;
-}
 ```
 
 ## Production build
@@ -236,13 +190,12 @@ to this:
 We've been working with `config.js` until now, which is configured for local development.
 This means CSS isn't inlined, and most email optimizations are off.
 
-When you're satisfied with the dev preview, run `maizzle build production` and use the `build_production/promotional.html` file for sending.
+When you're satisfied with the dev preview, run `maizzle build production` and use the template inside the `build_production/` directory for sending.
 
 ## Resources
 
 - [Repository](https://github.com/maizzle/example-syntax-highlight) for this tutorial
-- [PrismJS](https://prismjs.com/)
+- [posthtml-prism](https://github.com/posthtml/posthtml-prism) plugin
+- [PrismJS](https://prismjs.com/) library
 - [Synthwave '84](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-synthwave84.css) theme
-- [Markdown in email](/docs/markdown/)
-- Maizzle [Events](/docs/events/)
 - Testing: [Email on Acid](https://www.emailonacid.com/), [SendTest.Email](https://sendtest.email)

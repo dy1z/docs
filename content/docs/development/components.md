@@ -6,20 +6,43 @@ description: "Import components into your HTML email templates and render them w
 
 # Components
 
-Components are supercharged [Partials](/docs/partials/): they allow you to pass content and data to the file that you are importing into your Template.
+Components are supercharged [Partials](/docs/partials/): besides data, they also allow you to pass content to the file that you are importing into your Template.
 
 ## Syntax
 
-To import a module, you need to use the `<module>` tag:
+To import a component, you need to use the `<component>` tag:
 
 ```html
 <extends src="src/layouts/base.html">
   <block name="template">
-    <module href="src/components/module.html">
-      Content to pass inside module...
-    </module>
+    <component src="src/components/example.html">
+      Content to pass inside component...
+    </component>
   </block>
 </extends>
+```
+
+### Customization
+
+Customize the tag and attribute names in `build.components`:
+
+```js
+module.exports = {
+  build: {
+    components: {
+      tag: 'module',
+      attribute: 'href',
+    }
+  }
+}
+```
+
+You can now use it like this:
+
+```html
+<module href="src/components/example.html">
+  Content to pass inside component...
+</module>
 ```
 
 ## Example
@@ -44,13 +67,13 @@ Save the Component to `src/components/vmlbg.html` and import it into a Template,
 ```html
 <extends src="src/layouts/base.html">
   <block name="template">
-    <module 
-      href="/components/vmlbg.html"
+    <component 
+      src="/components/vmlbg.html"
       locals='{"src": "https://example.com/image.jpg", "width": 600, "height": 400}'>
       <div>
         Overlayed HTML!
       </div>
-    </module>
+    </component>
   </block>
 </extends>
 ```

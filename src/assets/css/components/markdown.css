@@ -2,7 +2,7 @@
   @apply text-cool-gray-700;
 
   h1, h2, h3, h4, h5, h6 {
-    @apply break-all text-black font-semibold font-inter leading-tight;
+    @apply text-black font-semibold font-inter leading-tight;
   }
 
   h1 {
@@ -11,7 +11,7 @@
 
   h2 { @apply text-2xl; }
   h3 { @apply text-base; }
-  h4 { @apply text-sm; }
+  h4 { @apply text-sm break-all; }
 
   h2, h3, h4, h5, h6 {
     @apply py-6 inline-flex items-center relative;
@@ -126,7 +126,7 @@ hr {
       }
     }
 
-    table {
+    table:not(.example) {
       @apply table;
     }
 

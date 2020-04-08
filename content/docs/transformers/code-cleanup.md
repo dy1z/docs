@@ -44,14 +44,18 @@ However, it can sometimes happen that it purges classes that you actually need -
 <div class="text-{{ computedTextSizeName }}">...</div>
 ``` 
 
-To give you control, Maizzle exposes some of its options to your cleanup config:
+To give you control, Maizzle exposes some of its options to your cleanup config.
+
+Add a `purgeCSS` key to your config, to customize its settings:
 
 ```js
-purgeCSS: {
-  content: [], // array of filenames or globs to scan for selectors
-  whitelist: [], // array of strings
-  whitelistPatterns: [], // array of regular expressions
-  extractor: /[\w-/:%]+(?<!:)/g, // regular expression
+module.exports = {
+  purgeCSS: {
+    content: [], // array of filenames or globs to scan for selectors
+    whitelist: [], // array of strings
+    whitelistPatterns: [], // array of regular expressions
+    extractor: /[\w-/:%]+(?<!:)/g, // regular expression
+  }
 }
 ```
 

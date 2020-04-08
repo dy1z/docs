@@ -19,14 +19,14 @@
       path: /docs/layouts/
     - title: Templates
       path: /docs/templates/
-    - title: Plaintext
-      path: /docs/plaintext/
     - title: Partials
       path: /docs/partials/
     - title: Components
       path: /docs/components/
     - title: Assets
       path: /docs/assets/
+    - title: Plaintext
+      path: /docs/plaintext/
     - title: Tailwind CSS
       path: /docs/tailwindcss/
     - title: Node.js

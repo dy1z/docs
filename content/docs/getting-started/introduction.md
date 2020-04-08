@@ -67,9 +67,9 @@ module.exports = {
 
 ## Configure It Out!
 
-Maizzle is configured through JavaScript files.
+Maizzle is configured in JavaScript.
 
-Besides basic things like "_should inlining be enabled?_" or "_do we minify the HTML?_", you can even pass options to the Markdown renderer, or choose where on your machine the compiled HTML should be output.
+Besides basic things like "_should inlining be enabled?_" or "_do we need to minify the HTML?_", you can even pass options to the Markdown renderer, or choose where on your machine the compiled HTML should be output.
 
 Being JavaScript, you can even do advanced things in your config, like pulling data from an API and passing it to a template, or `require()` some NPM package to further transform your markup or data.
 

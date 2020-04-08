@@ -10,7 +10,7 @@
               {{ formatDate($page.guide.datetime, 'MMMM D, YYYY') }}
             </time>
           </header>
-          <div v-html="$page.guide.content"/>
+          <VueRemarkContent />
         </article>
         <table-of-contents :page="$page.guide" title="In this guide:" />
       </section>

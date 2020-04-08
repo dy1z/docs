@@ -5,6 +5,8 @@ description: "Learn how to add CSS background image gradients with Outlook VML f
 date: 2020-02-21
 ---
 
+import Alert from '~/components/Alert.vue'
+
 [Many](https://www.campaignmonitor.com/css/color-background/css-gradients/) email clients support CSS background gradients.
 
 In this tutorial, you will learn how to use the [tailwindcss-gradients](https://www.npmjs.com/package/tailwindcss-gradients) plugin to add colorful gradients to your HTML email templates. 
@@ -16,22 +18,23 @@ Let's start by creating a new Maizzle project.
 
 Open a terminal window and run the `new` command:
 
-```sh 
+```bash
 maizzle new example-gradients
 ```
 
 That will create an `example-gradients` folder at your current location, clone the [Starter](https://github.com/maizzle/maizzle) in it, and install NPM dependencies for you.
 
-Next, we said we'll use the `tailwindcss-gradients` plugin, so let's go ahead and install it. 
+We said we'll use the `tailwindcss-gradients` plugin, so let's go ahead and install it. 
+
 First, `cd` into the project directory:
 
-```sh
+```bash
 cd example-gradients
 ```
 
 Next, install the plugin using NPM:
 
-```sh
+```bash
 npm install tailwindcss-gradients
 ```
 
@@ -100,9 +103,7 @@ module.exports = {
 
 Run `maizzle build` again and you should now see only 64 utility classes generated.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Many other types of gradients can be generated (although not all are supported in email). See all <code class="shiki-inline">tailwindcss-gradients</code> <a href="https://github.com/benface/tailwindcss-gradients" target="_blank" rel="nofollow noopener noreferrer">configuration options &nearr;</a></div>
-</div>
+<alert><code>tailwindcss-gradients</code> can generate many other types of gradients (although not all are supported in email). See all <g-link to="https://github.com/benface/tailwindcss-gradients">configuration options</g-link>.</alert>
 
 ### Use in HTML
 
@@ -122,7 +123,7 @@ We also specify a background color first, so that email clients that don't suppo
 
 ## Outlook VML
 
-Outlook for Windows doesn't support CSS gradients, but we can use VML.
+Outlook for Windows doesn't support CSS gradients, but we can use <abbr title="Vector Markup Language">VML</abbr>.
 
 You need to add it right after the element with the CSS gradient class:
 
@@ -144,13 +145,11 @@ You need to add it right after the element with the CSS gradient class:
 
 As you can see, you need to set a fixed width on the `<v:rect>` element - it is recommended instead of using `mso-width-percent: 1000;`, as that is pretty buggy (especially in Outlook 2013). 
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">The width of the <code class="shiki-inline">&lt;v:rect&gt;</code> element needs to match the width of its parent element (in our case, the <code class="shiki-inline">&lt;td&gt;</code>).</div>
-</div>
+<alert>The width of the <code>&lt;v:rect&gt;</code> element needs to match the width of its parent element (in our case, the <code>&lt;td&gt;</code>).</alert>
 
 ### Body gradient
 
-We can also add a gradient to the entire 'body' of the email, and have it work in Outlook, too!
+We can also add a gradient to the body of the email - Outlook support included.
 
 To achieve this, we:
 
