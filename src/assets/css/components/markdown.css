@@ -14,7 +14,7 @@
   h4 { @apply text-sm break-all; }
 
   h2, h3, h4, h5, h6 {
-    @apply py-6 inline-flex items-center relative;
+    @apply my-6 inline-flex items-center relative;
 
     > a {
       @apply hidden text-gray-700 h-full absolute inset-x-0 -ml-8;
