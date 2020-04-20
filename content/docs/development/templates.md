@@ -146,7 +146,7 @@ Here's a very basic Template example:
 
 ## Tags
 
-Tags that you can use for templating logic in Maizzle. These are all provided by the [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions) plugin.
+Maizzle includes some special tags designed to help you with templating logic.
 
 ### Conditionals
 
@@ -203,6 +203,66 @@ Example:
 <otherwise>
   <p>We are probably developing locally.</p>
 </otherwise>
+```
+
+### Outlook
+
+You can have content that will only show up in Outlook on Windows:
+
+```html
+<outlook>
+  <div>Show this in all Outlook versions</div>
+</outlook>
+```
+
+That will output:
+
+```html
+<!--[if mso|ie]>
+  <div>Show this in all Outlook versions</div>
+<![endif]-->
+```
+
+Of course, there's also a tag for showing content everywhere _but_ in Outlook:
+
+```html
+<not-outlook>
+  <div>All Outlooks will ignore this</div>
+</not-outlook>
+```
+
+Result:
+
+```html
+<!--[if !mso]><!-->
+  <div>All Outlooks will ignore this</div>
+<!--<![endif]-->
+```
+
+You can do many more things with it (like targeting or excluding specific Outlook versions) - see the [`posthtml-mso`](https://www.npmjs.com/package/posthtml-mso) plugin documentation.
+
+###### Custom Outlook tag
+
+Of course, you can customize the `<outlook>` tag name:
+
+```js
+module.exports = {
+  build: {
+    posthtml: {
+      outlook: {
+        tag: 'mso'
+      }
+    }
+    // ...
+  }
+}
+```
+
+You'd then use it like this:
+
+```html
+<mso only="2013">Show only in Outlook 2013</mso>
+<not-mso>Hide from all Outlooks</not-mso>
 ```
 
 ### Switch
@@ -369,7 +429,7 @@ Example:
 
 ### Fetch
 
-You can fetch and display remote content in your email templates.
+You can fetch and display remote content in your email templates:
 
 ```html
 <fetch url="https://jsonplaceholder.typicode.com/users">
@@ -379,7 +439,7 @@ You can fetch and display remote content in your email templates.
 </fetch>
 ```
 
-Inside the tag, you have access to the `{{ response }}` variable.
+Inside the tag, you have access to a `{{ response }}` variable.
 
 [`posthtml-fetch`](https://github.com/posthtml/posthtml-fetch) is used, and you can pass options to it.
 
@@ -392,7 +452,6 @@ module.exports = {
       fetch: {
         tags: ['get'],
         attribute: 'resource'
-        got: {} // options to pass to got
       }
     }
   }
@@ -513,11 +572,11 @@ If you want to output the curly braces as they are, so you can evaluate them at 
 
 ## Archiving
 
-Maizzle will only compile templates found in your `build.templates.root` path(s), that use the extension defined in `build.templates.extensions`.
+Maizzle will only compile templates found in path(s) you have defined in `build.templates.root`, and which use the extension defined in `build.templates.extensions`.
 
-However, if you create a lot of emails, your builds can start to slow down, since all templates are rebuilt every time you run the `build` command.
+If you create a lot of emails, your builds can start to slow down, since all templates are rebuilt every time you run the `build` command.
 
 You can archive Templates in two ways:
 
-1. Move them to a directory outside that path, so they don't get copied over to the destination directory (recommended).
+1. Move them to a directory other than those defined in `build.templates.root`, so they don't get copied over to the destination directory (recommended).
 2. Change their file extension to something that is not defined in `build.templates.extensions`. They will still be copied over to the destination, but Maizzle will not try to compile them.
