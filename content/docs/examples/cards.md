@@ -11,7 +11,7 @@ The traditional content block for showing article excerpts, like those from a bl
 ## Rounded with Shadow
 
 <div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
-  <table class="example w-1/2 font-sans shadow-xl rounded">
+  <table class="example w-4/5 sm:w-3/5 lg:w-1/2 font-sans shadow-xl rounded">
     <tr>
       <td>
         <img class="rounded-tl rounded-tr" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&h=300&q=80" alt="">
