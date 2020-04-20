@@ -20,6 +20,10 @@ The common type of button.
 
 For an extra touch, let's add rounded corners and a hover effect:
 
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button class="mt-4 sm:mt-0 rounded bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
+</div>
+
 ```html
 <table>
   <tr>
@@ -30,15 +34,15 @@ For an extra touch, let's add rounded corners and a hover effect:
 </table>
 ```
 
-<div class="mt-8 mb-4 items-center flex flex-wrap">
-  Here's how that would look like: <button class="mt-4 sm:mt-0 sm:ml-8 rounded bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
-</div>
-
 ### Outlined
 
 No background color, so it inherits its container's background (white in our case). We add a colored border to the table cell to create the outline.
 
 To make it more interesting, let's also change the background on hover:
+
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button class="rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 text-sm text-indigo-500 hover:text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
+</div>
 
 ```html
 <table>
@@ -50,13 +54,13 @@ To make it more interesting, let's also change the background on hover:
 </table>
 ```
 
-<div class="mt-8 mb-4 items-center flex">
-  Example: <button class="ml-8 rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 text-sm text-indigo-500 hover:text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
-</div>
-
 ### Pill
 
 Pill buttons use a larger border-radius value. Remember, Outlook doesn't support this:
+
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button class="rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
+</div>
 
 ```html
 <table>
@@ -67,10 +71,6 @@ Pill buttons use a larger border-radius value. Remember, Outlook doesn't support
   </tr>
 </table>
 ```
-
-<div class="mt-8 mb-4 items-center flex">
-  Example: <button class="ml-8 rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
-</div>
 
 ### Look & feel
 
@@ -98,12 +98,21 @@ We can use a smart combination of basic and Outlook-specific CSS properties to g
 
 Here's the Filled button, fully clickable in Outlook:
 
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button 
+    class="block py-4 px-6 text-sm leading-none no-underline text-white rounded bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+    <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i><![endif]-->
+      <span style="mso-text-raise: 13pt;">Read more</span>
+    <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i><![endif]-->
+  </button>
+</div>
+
 ```html
 <a 
   href="https://maizzle.com/"
-  class="inline-block p-16 text-sm leading-none no-underline p-16 text-white rounded bg-indigo-500 hover:bg-indigo-600">
+  class="inline-block py-16 px-24 text-sm leading-none no-underline text-white rounded bg-indigo-500 hover:bg-indigo-600">
   <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i><![endif]-->
-    <span style="mso-text-raise:13pt;">Read more</span>
+    <span style="mso-text-raise: 13pt;">Read more</span>
   <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i><![endif]-->
 </a>
 ```
@@ -115,4 +124,4 @@ It's just a simple `<a>` tag, but with some nifty workarounds for Outlook's lack
 - the first `<i>` uses double the `pt` that the `<span>` uses
 - finally, the width of the `&nbsp;` character is reset (as in, canceled) through the `mso-font-width` property
 
-<alert>Line breaks and spaces between tags in the example above might render the button larger, although it would be barely visible. If you want your button to be a precise size, just remove them.</alert>
+<alert>Line breaks and spaces between tags in the example above might render the button larger (although barely noticeable). If you want your button to be a precise size, just remove them.</alert>
