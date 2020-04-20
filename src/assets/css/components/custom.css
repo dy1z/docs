@@ -10,11 +10,11 @@
   .bg-image-none {
     background-image: none;
   }
-}
 
-.text-gradient {
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  .text-gradient {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .scrollbar-w-3 {
