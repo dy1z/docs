@@ -84,6 +84,8 @@
       path: /docs/alerts/
     - title: Cards
       path: /docs/cards/
+    - title: Grids
+      path: /docs/grids/
     - title: Reverse Stack
       path: /docs/reverse-stack/
     - title: ⚡4email
