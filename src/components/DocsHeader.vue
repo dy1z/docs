@@ -140,7 +140,7 @@ export default {
       sidebarOpen: false,
     }
   },
-  created() {
+  mounted() {
     const focusHandler = e => {
       if (e.keyCode === 191) {
         e.preventDefault()
@@ -153,8 +153,7 @@ export default {
     this.$once('hook:destroyed', () => {
       document.removeEventListener('keydown', focusHandler)
     })
-  },
-  mounted() {
+
     import('docsearch.js').then(({ default: docsearch }) => {
       docsearch({
         apiKey: 'c7603070a20bbe64119b839d9e3b46da',
