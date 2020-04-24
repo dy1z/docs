@@ -24,6 +24,15 @@ module.exports = {
       path: 'build_local',
       extension: 'html',
     },
+    browsersync: {
+      directory: true,
+      notify: false,
+      open: false,
+      port: 3000,
+      tunnel: false,
+      ui: {port: 3001},
+      watch: [],
+    },
     layouts: {
       root: './',
     },
@@ -41,6 +50,9 @@ module.exports = {
     posthtml: {
       plugins: [],
       options: {},
+    },
+    postcss: {
+      plugins: [],
     },
   },
   // ...
@@ -125,6 +137,100 @@ permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
 ```
 
 <alert type="warning"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</alert>
+
+## browsersync
+
+When running the `maizzle serve` command, Maizzle uses [Browsersync](https://browsersync.io/) to start a local server and open a directory listing of your emails in your default browser.
+
+You can then make changes to your emails, save them, and watch the browser automatically refresh the page for you.
+
+### directory
+
+Type: `boolean`
+<br>
+Default: `true`
+
+When running `maizzle serve` with this setting enabled, Browsersync will open a file explorer in your browser, starting at the root of the build directory.
+
+If you set this to `false`, the page opened by Browsersync will be blank, and you'll need to manually navigate to your emails directory.
+
+<alert type="warning">If using the <code>tunnel</code> option for a client demo, use <code>directory: false</code>, so they can't freely browse all your emails by going to the root URL.</alert>
+
+### notify
+
+Type: `boolean`
+<br>
+Default: `false`
+
+Toggle Browsersync's annoying pop-over notifications. Off by default ✌
+
+### open
+
+Type: `boolean`
+<br>
+Default: `false`
+
+Decide which URL to open automatically when Browsersync starts. 
+
+Can be `true`, `local`, `external`, `ui`, `ui-external`, `tunnel` or `false`
+
+See [Browsersync docs](https://browsersync.io/docs/options#option-open) for details.
+
+### port
+
+Type: `integer`
+<br>
+Default: `3000`
+
+Set the server port number - by default, your local development server will be available at <code>http&zwnj;://localhost:<strong>3000</strong></code>.
+
+### tunnel
+
+Type: `boolean|string`
+<br>
+Default: `false`
+
+When set to `true`, Maizzle will enable localhost tunneling in Browsersync, so you can live-share a URL to an email that you're working on right now, with a colleague or a client. Under the hood, [localtunnel.me](https://localtunnel.me) will be used.
+
+Both parties see the same thing, and scrolling is synced, too.
+
+You can also use a string instead of a boolean - for example `tunnel: 'mybrand'`. In this case, Browsersync will attempt to use a custom subdomain for the URL, i.e. `https://mybrand.localtunnel.me`.
+If that subdomain is unavailable, you will be allocated a random name as usual.
+
+### ui
+
+Type: `object|boolean`
+<br>
+Default: `{port: 3001}`
+
+Browsersync includes a user-interface that is accessed via a separate port, and which allows control over all devices, push sync updates and much more.
+
+You can disable it by setting it to `false`.
+
+### watch
+
+Array of extra paths for Browsersync to watch.
+
+By default, all files in your `src` folder and the default `tailwind.config.js` file are watched.
+
+You can use this option to configure additional watch paths when developing locally:
+
+```js
+// config.js
+module.exports = {
+  build: {
+    browsersync: {
+      watch: [
+        './some/folder',
+        'some-file.js',
+      ],
+    },
+  },
+  // ...
+}
+```
+
+When a file in any of these watch paths is updated, Browsersync will trigger a rebuild and will also refresh the browser page.
 
 ## layouts
 
@@ -285,6 +391,20 @@ build: {
         { name: '?php', start: '<', end: '>' },
       ],
     }
+  }
+}
+```
+
+## postcss
+
+You can add extra PostCSS plugins:
+
+```js
+build: {
+  postcss: {
+    plugins: [
+      require('autoprefixer')()
+    ]
   }
 }
 ```

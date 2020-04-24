@@ -39,7 +39,26 @@ You can pass data to partials, with the help of the `locals=""` attribute:
 </extends>
 ```
 
-<alert>Currently, you can only pass a valid JSON string to <code>locals</code>.</alert>
+Need to send variables to the partial?
+
+Simply pass in the `page` object:
+
+```html
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <include 
+      src="src/partials/example.html" 
+      locals="{{ page }}"
+    ></include>
+  </block>
+</extends>
+```
+
+... and then you'll be able to reference it in the partial:
+
+```html
+<p>{{ page.title || 'Fallback title' }}</p>
+```
 
 ## Paths
 
@@ -88,5 +107,3 @@ module.exports = {
 [PurgeCSS](/docs/code-cleanup/#purgecss) needs that path, so that any Tailwind CSS classes in your Partials will not be removed when doing code cleanup. Likewise, [Browsersync](/docs/browsersync) needs to know about it so it can automatically reload your page if a Partial changes.
 
 <alert type="danger">You need to use file globs in these paths, just as shown above. Using directory paths will make PostCSS fail with a <code>EISDIR</code> read error.</alert>
-
-

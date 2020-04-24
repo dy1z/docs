@@ -16,11 +16,11 @@
 
 - title: JavaScript Configs
   path: /docs/configuration/
-  description: Maizzle's config files are JavaScript objects, so you can even <code class="shiki-inline py-px">require()</code> packages or fetch data from an API.
+  description: Maizzle's config files are JavaScript objects, so you can even <code class="py-px">require()</code> packages or fetch data from an API.
 
 - title: Use in Node.js
   path: /docs/server-side/
-  description: Require Maizzle in your application and use the <code class="shiki-inline py-px">render()</code> method to compile a template to an HTML string.
+  description: Require Maizzle in your application and use the <code class="py-px">render()</code> method to compile a template to an HTML string.
 
 - title: Build Environments
   path: /docs/environments/
@@ -87,8 +87,8 @@
   description: Use tunneling to live-share a configurable URL to a Maizzle project that you're working on, with a colleague or a client.
 
 - title: Browsersync
-  path: /docs/browsersync/
-  description: Run the <code class="shiki-inline py-px">maizzle serve</code> command to develop emails locally and have the browser automatically refresh for you when you make changes.
+  path: /docs/build-config/#browsersync
+  description: Run the <code class="py-px">maizzle serve</code> command to develop emails locally and have the browser automatically refresh for you when you make changes.
 
 - title: ⚡4email
   path: /docs/amp4email/

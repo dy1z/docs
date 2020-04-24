@@ -56,7 +56,7 @@ Pass in a custom Tailwind CSS configuration, or a pre-compiled CSS string.
 | --- | --- | --- | --- |
 | `config` | Object | `{}` | A Tailwind CSS config object. |
 | `css` | String | <span class="font-mono text-cool-gray-500">@tailwind components; @tailwind utilities;</span> | A string with CSS in PostCSS syntax. Gets compiled with Tailwind CSS. To use Tailwind, you should at least use _@tailwind utilities_ |
-| `compiled` | String | (empty string) | A pre-compiled CSS string, to use as-is. This will skip compilation, resulting in faster render speed. |
+| `compiled` | String | (empty string) | A pre-compiled CSS string, to use as-is. This will skip Tailwind compilation, resulting in faster render speed. |
 
 ###### maizzle
 
@@ -66,7 +66,7 @@ The Maizzle environment configuration object.
 | --- | --- | --- | --- |
 | `config` | Object | `{}` | A Maizzle config object. |
 
-<alert>The other options listed above, like <code>afterConfig() {}</code>, are <a href="/docs/events/">Events</a>.</alert>
+<alert>The other options listed above, like <code>beforeRender() {}</code>, are <a href="/docs/events/">Events</a>.</alert>
 
 ## Example
 
@@ -137,15 +137,13 @@ This could break rendering in some clients, such as Gmail.
 To avoid this, always specify the environment name:
 
 ```js
-Maizzle.render('html string',
-  {
-    maizzle: {
-      config: {
-        env: 'node',
-      },
-    }
+Maizzle.render('html string', {
+  maizzle: {
+    config: {
+      env: 'node',
+    },
   }
-).then(html => console.log(html))
+}).then(html => console.log(html))
 ```
 
 <alert>You can use any name for <code>env</code> (except <code>local</code>, which does nothing).</alert>

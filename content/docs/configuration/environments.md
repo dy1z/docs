@@ -25,16 +25,21 @@ For example, let's define a _production_ environment, by creating a new file nam
 ```js
 // config.production.js
 module.exports = {
-  doctype: `html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"`,
-  language: 'ro',
-  // ...
+  build: {
+    destination: {
+      path: 'build_production',
+    },
+  }
 }
 ```
 
+Here, we specify that the files we build when running `maizzle build production` should be output to a `build_production` folder relative to the project root.
+
 ### Merging
 
-Any new environment you create will be merged _on top_ of the base `config.js` when you build for that environment.
-So in the case above, you only need to specify the config values that you are _changing_ in the `production` environment.
+Any new environment you create will be merged _on top_ of the base `config.js` when you run the build command for that environment.
+
+So in the case above, you only need to specify the config values that you are _changing_ for the `production` environment.
 
 ## Environment builds
 
@@ -44,7 +49,7 @@ To build your emails for a specific environment, pass the environment name as an
 maizzle build production
 ```
 
-<alert>If a <code>config.[env].js</code> is not found, Maizzle will fallback to <code>config.js</code></alert>
+<alert type="warning">If a <code>config.[env].js</code> is not found, the build will fail.</alert>
 
 By default, running `maizzle build production` will output production-ready emails in a `build_production` folder at the root of the project.
 
@@ -110,4 +115,3 @@ The environment name is globally available under the `page.env` variable:
   This will show only when running `maizzle build production` 
 </if>
 ```
-

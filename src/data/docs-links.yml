@@ -19,6 +19,8 @@
       path: /docs/layouts/
     - title: Templates
       path: /docs/templates/
+    - title: Tags
+      path: /docs/tags/
     - title: Partials
       path: /docs/partials/
     - title: Components
@@ -44,8 +46,6 @@
       path: /docs/tailwindcss-config/
     - title: Google Fonts
       path: /docs/google-fonts/
-    - title: Browsersync
-      path: /docs/browsersync/
     - title: Markdown
       path: /docs/markdown/
     - title: Functions

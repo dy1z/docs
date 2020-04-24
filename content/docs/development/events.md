@@ -24,16 +24,16 @@ To use events when developing locally with the CLI commands, add them inside an 
 module.exports = {
   events: {
     beforeCreate(config) {
-      //
+      // do stuff with config
     },
-    // other events...
+    // some other event...
   }
 },
 ```
 
 ### Node.js
 
-To use Events in a Node context, add them inside the `options` object that you pass to the `render()` method:
+To use Events in a Node context, add them inside the second argument that you pass to the `render()` method:
 
 ```js
 const Maizzle = require('@maizzle/framework')
@@ -42,11 +42,11 @@ let html = `some HTML string...`
 html = Maizzle.render(str, {
     tailwind: {},
     maizzle: {},
-    beforeRender(nunjucks, config) {
-      // ..
+    beforeRender(config) {
+      // ...
     },
   }
-).then(result => console.log(result))
+).then(html => console.log(html))
 ```
 
 ## Events
@@ -169,7 +169,6 @@ module.exports = {
         return Minifier.minify(html)
       }
   
-      // must always return the `html`
       return html
     },
   },

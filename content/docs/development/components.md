@@ -91,6 +91,42 @@ Result:
 <!--[if mso]></div></v:textbox></v:rect><![endif]-->
 ```
 
+## Variables
+
+You can also pass variables to a component.
+
+Let's reimagine the example above, with the image data defined in Front Matter:
+
+```html
+---
+image:
+  src: https://example.com/image.jpg
+  width: 600
+  height: 400
+---
+
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <component src="/components/vmlbg.html" locals="{{ page }}">
+      <div>
+        Overlayed HTML!
+      </div>
+    </component>
+  </block>
+</extends>
+```
+
+Since we're just making the `page` object available to the component, we need to update the variable references:
+
+```html
+<!--[if mso]>
+<v:image src="{{ page.image.src || 'https://via.placeholder.com/600x400' }}" xmlns:v="urn:schemas-microsoft-com:vml" style="width:{{ page.image.width || 600 }}px;height:{{ page.image.height || 400 }}px;" />
+<v:rect fill="false" stroke="false" style="position:absolute;width:{{ page.image.width || 600 }}px;height:{{ page.image.height || 400 }}px;">
+<v:textbox inset="0,0,0,0"><div><![endif]-->
+<content></content>
+<!--[if mso]></div></v:textbox></v:rect><![endif]-->
+```
+
 ## File Paths
 
 Just like with Partials, you can keep your Components wherever you'd like. Just make sure to [update the paths](/docs/partials/#paths) so PurgeCSS and Browsersync know about them.

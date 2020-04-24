@@ -24,8 +24,6 @@ module.exports = {
   purgeCSS: {},
   removeUnusedCSS: {},
   replaceStrings: false,
-  keepOnlyAttributeSizes: {},
-  preferBgColorAttribute: false,
   removeAttributes: [],
   safeClassNames: {},
   sixHex: false,
@@ -249,63 +247,6 @@ module.exports = {
 ```
 
 <alert type="warning">Character classes need to be escaped when defining a regular expression for <code>replaceStrings</code>. As you can see above, <code>\s</code> becomes <code>\\s</code>.</alert>
-
-## keepOnlyAttributeSizes
-
-Define for which elements should Maizzle keep _only_ attribute sizes, like `width=""` and `height=""`. Elements in these arrays will have their inline CSS widths and heights removed.
-
-It's set to empty arrays by default, so that no elements are affected:
-
-```js
-keepOnlyAttributeSizes: {
-  width: [],
-  height: [],
-},
-```
-
-You can add HTML elements like this:
-
-```js
-keepOnlyAttributeSizes: {
-  width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-  height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-},
-```
-
-<alert>This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</alert>
-
-<alert type="warning">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></alert>
-
-## preferBgColorAttribute
-
-If you're inlining your CSS and have `'background-color': 'bgcolor'` in the `styleToAttribute` option of the inliner, you can shave off some bytes by having Maizzle keep just the `bgcolor=""` attribute.
-
-Enable this option to remove any inlined `background-color` CSS properties:
-
-```js
-// config.js
-module.exports = {
-  preferBgColorAttribute: {
-    enabled: true,
-  }
-  // ...
-}
-```
-
-You can optionally provide an array of tag names that it should remove the `background-color` inline CSS from:
-
-```js
-// config.js
-module.exports = {
-  preferBgColorAttribute: {
-    enabled: true,
-    tags: ['td'], // default: ['body', 'marquee', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr']
-  }
-  // ...
-}
-```
-
-In this case, `background-color` will be removed only from `<td>` elements.
 
 ## removeAttributes
 

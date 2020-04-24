@@ -48,12 +48,13 @@ Maizzle adds the following ones in `src/assets/css/custom` :
 
 ### Plugins
 
-To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`.
+To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`. 
+See the [Tailwind docs](https://tailwindcss.com/docs/configuration#plugins).
 
 
 ## CSS purging
 
-When running `maizzle build [env]`, if `[env]` is specified and is not equal to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
+When running `maizzle build [env]`, if `[env]` is not equal to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
 
 This is needed so that the CSS inliner and `email-comb` (which run _after_ the purging step) receive as little CSS as possible to parse. 
 

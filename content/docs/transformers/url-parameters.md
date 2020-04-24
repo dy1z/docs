@@ -16,6 +16,10 @@ To add the same parameters to all URLs in all Templates, use your environment co
 // config.production.js
 module.exports = {
   urlParameters: {
+    _options: {
+      tags: ['a'], 
+      qs: {},
+    },
     utm_source: 'maizzle',
     utm_campaign: 'Campaign Name',
     utm_medium: 'email',
@@ -44,3 +48,37 @@ urlParameters:
   </block>
 </extends>
 ```
+
+## Options
+
+You can define a few options.
+
+### tags
+
+Type: `array`
+<br>
+Default: `['a']`
+
+Array of tag names to process. Only URLs inside `href=""` attributes of tags in this array will be processed.
+
+### qs
+
+Options to pass to the [query-string](https://github.com/sindresorhus/query-string#stringifyobject-options) library.
+
+For example, you can disable encoding:
+
+```js
+module.exports = {
+  urlParameters: {
+    _options: {
+      qs: {
+        encode: false
+      },
+    },
+    foo: '@Bar@',
+  }
+  // ...
+}
+```
+
+`@Bar@` will not be encoded in the URL. 

@@ -35,13 +35,15 @@ You can use this as a Layout that your Templates [extend](/docs/templates/#exten
 
 ## Template Blocks
 
-The Layout above defines where the contents of a block should be yielded. It looks for a `<block name="template">` tag in every Template that [extends](/docs/templates/#extends) it.
+The Layout above uses a `<block>` tag that acts like a 'marker'. 
+
+For each Template that [extends](/docs/templates/#extends) this Layout, that marker is replaced with the contents of the Template's own `<block name="template">` (as long as it has one, obviously).
 
 Of course, you can use custom names for blocks, like `<block name="content">`.
 
 ## Variables
 
-Variables from your environment config or from the Template's own Front Matter are available in a Layout under the `page` object.
+Variables from your [environment config](/docs/environments/) or from the Template's own Front Matter are available in a Layout under the `page` object.
 
 You can use curly braces to output variables:
 
@@ -60,6 +62,8 @@ The compiled Tailwind CSS for the current Template is available under `page.css`
   <style>{{{ page.css }}}</style>
 </if>
 ```
+
+We use 3 curly braces so that we output the variable without escaping it.
 
 ### Environment 
 
