@@ -59,12 +59,7 @@ export default {
 
 <static-query>
 query Guides ($page: Int) {
-  guides: allGuide (page: $page, perPage: 6) @paginate {
-    totalCount
-    pageInfo {
-      totalPages
-      currentPage
-    }
+  guides: allGuide (page: $page, perPage: 6) {
     edges {
       node {
         id

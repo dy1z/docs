@@ -12,15 +12,15 @@
         </svg>
 
         <div class="relative">
-          <h3 class="sm:text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+          <h3 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
             Supercharge your email workflow
           </h3>
-          <p class="mt-4 max-w-3xl mx-auto sm:text-center text-xl leading-7 text-gray-500">
+          <p class="mt-4 mx-auto max-w-3xl text-center lg:text-xl leading-7 text-gray-500">
             Maizzle empowers you with modern web development tools, enabling fast email prototyping while keeping your entire team on-brand.
           </p>
         </div>
 
-        <div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+        <div class="relative mt-16 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div class="relative">
             <h4 class="text-2xl leading-8 font-extrabold text-gray-900 tracking-tight sm:text-3xl sm:leading-9">
               Tailwind CSS
@@ -181,14 +181,14 @@
                 <div class="overflow-x-scroll sm:overflow-hidden">
                   <pre class="leading-code text-base"><code><span class="text-cool-gray-500">&lt;</span><span class="text-green-400">extends</span> <span class="text-gradient bg-gradient-l-ocean-dark">src</span><span class="text-blue-500">=</span><span class="text-pink-400">"layouts/base.html"</span><span class="text-cool-gray-500">&gt;</span>
   <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">block</span> <span class="text-gradient bg-gradient-l-ocean-dark">name</span><span class="text-blue-500">=</span><span class="text-pink-400">"template"</span><span class="text-cool-gray-500">&gt;</span>
-  <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">table</span> <span class="text-gradient bg-gradient-l-ocean-dark">class</span><span class="text-blue-500">=</span><span class="text-pink-400">"w-600 sm:w-full"</span><span class="text-cool-gray-500">&gt;</span>
-    <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">tr</span><span class="text-cool-gray-500">&gt;</span>
-      <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">td</span> <span class="text-gradient bg-gradient-l-ocean-dark">class</span><span class="text-blue-500">=</span><span class="text-pink-400">"text-base text-gray-700"</span><span class="text-cool-gray-500">&gt;</span>
-        <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">h2</span><span class="text-cool-gray-500">&gt;</span><span class="text-cool-gray-600">Article title</span><span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">h2</span><span class="text-cool-gray-500">&gt;</span>
-        <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">p</span><span class="text-cool-gray-500">&gt;</span><span class="text-cool-gray-600">Lorem ipsum dolor sit amet</span><span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">p</span><span class="text-cool-gray-500">&gt;</span>
-      <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">td</span><span class="text-cool-gray-500">&gt;</span>
-    <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">tr</span><span class="text-cool-gray-500">&gt;</span>
-  <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">table</span><span class="text-cool-gray-500">&gt;</span>
+    <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">table</span> <span class="text-gradient bg-gradient-l-ocean-dark">class</span><span class="text-blue-500">=</span><span class="text-pink-400">"w-600 sm:w-full"</span><span class="text-cool-gray-500">&gt;</span>
+      <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">tr</span><span class="text-cool-gray-500">&gt;</span>
+        <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">td</span> <span class="text-gradient bg-gradient-l-ocean-dark">class</span><span class="text-blue-500">=</span><span class="text-pink-400">"text-base text-gray-700"</span><span class="text-cool-gray-500">&gt;</span>
+          <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">h2</span><span class="text-cool-gray-500">&gt;</span><span class="text-cool-gray-600">Article title</span><span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">h2</span><span class="text-cool-gray-500">&gt;</span>
+          <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">p</span><span class="text-cool-gray-500">&gt;</span><span class="text-cool-gray-600">Lorem ipsum dolor sit amet</span><span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">p</span><span class="text-cool-gray-500">&gt;</span>
+        <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">td</span><span class="text-cool-gray-500">&gt;</span>
+      <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">tr</span><span class="text-cool-gray-500">&gt;</span>
+    <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">table</span><span class="text-cool-gray-500">&gt;</span>
   <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">block</span><span class="text-cool-gray-500">&gt;</span>
 <span class="text-cool-gray-500">&lt;/</span><span class="text-green-400">extends</span><span class="text-cool-gray-500">&gt;</span></code></pre>
                 </div>
@@ -214,7 +214,7 @@
                 <div class="flex">
                   <div class="flex-shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-l-ocean-light text-white">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                   </div>
                   <div class="ml-4">

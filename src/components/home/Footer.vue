@@ -14,7 +14,7 @@
             </g-link>
           </div>
           <div class="px-5 py-2">
-            <g-link to="/docs/starters/" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+            <g-link to="/starters/" class="text-base leading-6 text-gray-500 hover:text-gray-900">
               Starters
             </g-link>
           </div>

@@ -10,16 +10,18 @@
             Starters
           </h2>
           <p class="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
+            Get up and running quickly with ready-made Maizzle projects
+            <br>
+            Simply install one and start building your emails
           </p>
         </div>
         <ul class="mt-24 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
           <li
             v-for="edge in $static.starters.edges" :key="edge.node.id"
-            class="group flex flex-col min-h-128 h-full w-full rounded-lg shadow-lg overflow-hidden bg-no-repeat bg-cover"
-            :style="`background-image: url('${edge.node.image}')`"
+            class="relative group flex flex-col rounded-lg shadow-lg mb-4 lg:mb-0"
           >
-            <g-link :to="edge.node.path" class="w-full h-full flex items-center justify-center p-8 bg-gradient-l-ocean-dark opacity-0 group-hover:opacity-90 transition-opacity duration-150">
+            <img :src="edge.node.image" :alt="edge.node.title" class="rounded-lg">
+            <g-link :to="edge.node.path" class="absolute flex items-center justify-center w-full h-full p-8 xl:bg-gradient-l-ocean-dark opacity-0 group-hover:opacity-90 transition-opacity duration-150">
               <h3 class="text-3xl text-white font-bold">{{ edge.node.title }}</h3>
             </g-link>
           </li>
