@@ -1,12 +1,17 @@
 ---
 title: "Netlify Identity"
 slug: "netlify-identity"
+repository: https://github.com/maizzle/starter-netlify-identity.git
 description: "Netlify Identity HTML email templates."
+image: https://res.cloudinary.com/maizzle/image/upload/v1587739921/starters/starter-netlify-identity.jpg
 date: 2019-04-03
 ---
 
-import Alert from '~/components/Alert.vue'
+## Templates
 
-<alert>This tutorial was updated on April 8, 2020 to use PostHTML syntax.</alert>
+The following templates are included:
 
-Et elit enim ad excepteur. Commodo ad pariatur adipisicing laboris. Et et cupidatat veniam cupidatat qui incididunt anim. Id ut eiusmod veniam est proident minim incididunt ut eiusmod cupidatat amet officia elit ipsum. Est in eiusmod ut sunt. Id adipisicing non laboris est nisi Lorem dolore ea. Minim mollit sint aute ea.
+- Invitation
+- Confirmation
+- Email Change
+- Password Recovery

@@ -21,7 +21,7 @@
             class="relative group flex flex-col rounded-lg shadow-lg mb-4 lg:mb-0"
           >
             <img :src="edge.node.image" :alt="edge.node.title" class="rounded-lg">
-            <g-link :to="edge.node.path" class="absolute flex items-center justify-center w-full h-full p-8 xl:bg-gradient-l-ocean-dark opacity-0 group-hover:opacity-90 transition-opacity duration-150">
+            <g-link :to="edge.node.path" class="absolute flex items-center justify-center w-full h-full rounded-lg p-8 xl:bg-gradient-l-ocean-dark opacity-0 group-hover:opacity-90 transition-opacity duration-150">
               <h3 class="text-3xl text-white font-bold">{{ edge.node.title }}</h3>
             </g-link>
           </li>

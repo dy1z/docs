@@ -5,18 +5,25 @@
       <section class="flex xl:w-auto lg:ml-80">
         <div class="px-4 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
           <h1 class="text-black font-semibold leading-tight text-4xl pb-6 font-inter">Maizzle Starters</h1>
-          <p class="leading-code text-gray-700">Learn how to create HTML emails with Tailwind CSS in Maizzle.</p>
+          <p class="leading-code text-gray-700">Get started quickly with ready-made projects. Simply install one with the <code>maizzle new</code> command and start building your emails.</p>
           <hr class="mb-16 border-0 bg-gray-200">
           <ul>
-            <li v-for="edge in $page.starters.edges" :key="edge.node.id" class="pb-8 mb-8 border-b border-gray-100">
-              <header class="mb-4">
-                <h2 class="text-2xl font-semibold font-inter leading-tight mb-0 text-black hover:text-gray-700">
-                  <g-link :to="edge.node.path">{{ edge.node.title }}</g-link>
-                </h2>
-                <time :datetime="edge.node.datetime" class="text-sm text-gray-500">{{ formatDate(edge.node.datetime, 'MMMM D, YYYY') }}</time>
-              </header>
-              <p class="leading-code text-gray-700 mb-4">{{ excerpt(edge.node) }}</p>
-              <g-link :to="edge.node.path" class="text-ocean no-underline hover:text-ocean-darker">Read more &rarr;</g-link>
+            <li v-for="edge in $page.starters.edges" :key="edge.node.id" class="flex pb-8 mb-8 border-b border-gray-100 -mx-4">
+              <figure class="w-3/12 mx-4">
+                <g-link :to="edge.node.path">
+                  <img :src="edge.node.image" :alt="edge.node.title">
+                </g-link>
+              </figure>
+              <div class="w-9/12 mx-4">
+                <header class="mb-4">
+                  <h2 class="text-2xl font-semibold font-inter leading-tight mb-0 text-black hover:text-gray-700">
+                    <g-link :to="edge.node.path">{{ edge.node.title }}</g-link>
+                  </h2>
+                  <time :datetime="edge.node.datetime" class="text-sm text-gray-500">Released {{ formatDate(edge.node.datetime, 'MMMM D, YYYY') }}</time>
+                </header>
+                <p class="leading-code text-gray-700 mb-4">{{ excerpt(edge.node) }}</p>
+                <g-link :to="edge.node.path" class="text-ocean no-underline hover:text-ocean-darker">View Starter &rarr;</g-link>
+              </div>
             </li>
           </ul>
         </div>
@@ -101,7 +108,7 @@ query Starters ($page: Int) {
         id
         title
         datetime: date (format: "YYYY-MM-DD HH:mm:ss")
-        content
+        image
         description
         path
       }
