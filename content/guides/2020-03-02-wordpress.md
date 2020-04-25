@@ -20,12 +20,12 @@ As always, make sure you have [Maizzle CLI](/docs/installation/#install-the-cli-
 Next, open a CLI and run the `new` command to scaffold a new project:
 
 ```sh
-maizzle new example-wordpress
+maizzle new
 ```
 
-This will create an `example-wordpress` folder at your current location, and will also automatically install NPM dependencies for you.
+Follow the steps, using `example-wordpress` as the folder name.
 
-Once it finishes, open the project folder in your favorite editor.
+Once it finishes installing dependencies, open the project in your favorite editor.
 
 ## WordPress API
 
@@ -64,9 +64,7 @@ Let's use the `<fetch>` tag to fetch posts from the CSS-Tricks WordPress API.
 
 ## Use in Template
 
-`promotional.html` in Maizzle displays 6 articles in four different layouts. Above, we're also fetching the latest 6 articles from CSS-Tricks, so it's a perfect fit.
-
-<img class="max-w-sm" src="https://res.cloudinary.com/maizzle/image/upload/v1583155347/guides/wp2email/tribore-coincidence.png" alt="Tribore from Final Space">
+`promotional.html` in Maizzle displays 6 articles in four different layouts. Above, we're also fetching the latest 6 articles from CSS-Tricks, so it's a perfect fit 🙄
 
 ### Featured Post
 

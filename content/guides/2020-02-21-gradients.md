@@ -19,10 +19,10 @@ Let's start by creating a new Maizzle project.
 Open a terminal window and run the `new` command:
 
 ```bash
-maizzle new example-gradients
+maizzle new
 ```
 
-That will create an `example-gradients` folder at your current location, clone the [Starter](https://github.com/maizzle/maizzle) in it, and install NPM dependencies for you.
+Follow the steps, using `example-gradients` as the folder name.
 
 We said we'll use the `tailwindcss-gradients` plugin, so let's go ahead and install it. 
 

@@ -25,17 +25,17 @@ We'll be using the default Maizzle starter, so let's start by creating a new pro
 Open a terminal window and run the `new` command:
 
 ```bash
-maizzle new font-face-project
+maizzle new
 ```
 
-That will create a `font-face-project` directory at your current location.
+Follow the steps, using `example-font-face` as the folder name.
 
-Once it finishes installing dependencies, open the folder in your favourite editor. 
+Once it finishes installing dependencies, open the folder in your favorite editor. 
 
 I use VS Code, so I'll do:
 
 ```bash
-cd font-face-project && code .
+cd example-font-face && code .
 ```
 
 ## Register @font-face

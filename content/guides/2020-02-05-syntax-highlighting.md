@@ -20,12 +20,11 @@ Let's create a new Maizzle project.
 Open a terminal window and run the `new` command:
 
 ```bash
-maizzle new syntax-highlight
+maizzle new 
 ```
 
-That will create a `syntax-highlight` folder at your current location, clone the [Starter](https://github.com/maizzle/maizzle) in it, and install NPM dependencies for you.
-
-OK, now open the `syntax-highlight` folder in your editor.
+Follow the steps, using `syntax-highlight` as the folder name.
+Once it finishes installing dependencies, `cd syntax-highlight` and open it in your editor.
 
 ## Install PrismJS
 
@@ -115,7 +114,7 @@ and import it in your `src/assets/css/main.css`:
 
 Next, we need to make sure that our Prism theme CSS is not purged at build time.
 
-We can do this by wrapping its contents in special comments:
+We can do this by wrapping its contents in special comments for PurgeCSS:
 
 ```css
 /*! purgecss start ignore */
@@ -150,7 +149,7 @@ Fix it by adding the following CSS at the beginning of `prism-synthwave84.css`:
 }
 ```
 
-Make sure you've registered that `all` screen with Tailwind:
+Remember to register that `all` screen with Tailwind:
 
 ```js
 // tailwind.config.js
