@@ -100,7 +100,7 @@ Here's the Filled button, fully clickable in Outlook:
 
 <div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
   <button 
-    class="block py-4 px-6 text-sm leading-none no-underline text-white rounded bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+    class="block py-4 px-6 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
     <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i><![endif]-->
       <span style="mso-text-raise: 13pt;">Read more</span>
     <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i><![endif]-->
@@ -110,7 +110,7 @@ Here's the Filled button, fully clickable in Outlook:
 ```html
 <a 
   href="https://maizzle.com/"
-  class="inline-block py-16 px-24 text-sm leading-none no-underline text-white rounded bg-indigo-500 hover:bg-indigo-600">
+  class="inline-block py-16 px-24 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600">
   <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i><![endif]-->
     <span style="mso-text-raise: 13pt;">Read more</span>
   <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i><![endif]-->
@@ -125,3 +125,15 @@ It's just a simple `<a>` tag, but with some nifty workarounds for Outlook's lack
 - finally, the width of the `&nbsp;` character is reset (as in, canceled) through the `mso-font-width` property
 
 <alert>Line breaks and spaces between tags in the example above might render the button larger (although barely noticeable). If you want your button to be a precise size, just remove them.</alert>
+
+**Tip**: use the [`<outlook>`](/docs/tags/#outlook) tag for cleaner-looking, editor-friendly markup:
+
+```html
+<a 
+  href="https://maizzle.com/"
+  class="inline-block py-16 px-24 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600">
+  <outlook><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i></outlook>
+    <span style="mso-text-raise: 13pt;">Read more</span>
+  <outlook><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i></outlook>
+</a>
+```

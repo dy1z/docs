@@ -1,20 +1,20 @@
 ---
 title: "Transform Content"
-slug: "transform-content"
-description: "Use PostHTML to transform your HTML email templates"
+slug: "transform"
+description: "Use PostHTML to apply transformations to content inside tags from your HTML email templates"
 ---
 
 # Transform Content
 
-Maizzle can use [posthtml-content](https://github.com/posthtml/posthtml-content) to transform your HTML emails.
+You can use [posthtml-content](https://github.com/posthtml/posthtml-content) to transform your HTML emails.
 Use it to do anything you want to content inside elements that you mark with custom attributes.
 
-First, add a `transformContents` object to your Maizzle config:
+First, add a `transform` object to your Maizzle config:
 
 ```js
 //config.js
 module.exports = {
-  transformContents: {},
+  transform: {},
   // ...
 }
 ```
@@ -29,8 +29,8 @@ Example:
 ```js
 //config.js
 module.exports = {
-  transformContents: {
-    fooreplace: str => str.replace(/foo/g, 'foo bar'),
+  transform: {
+    uppercase: str => str.toUpperCase(),
   }
 }
 ```
@@ -38,18 +38,18 @@ module.exports = {
 Template:
 
 ```html
-<p fooreplace>Here is some foo.</p>
+<p uppercase>Here is some foo.</p>
 ```
 
 Result:
 
 ```html
-<p>Here is some foo bar.</p>
+<p>HERE IS SOME FOO BAR.</p>
 ```
 
 Of course, this is just a dumb example - you could imagine more complex scenarios where you pull in packages and do stuff like:
 
 - compile CSS in some `<style>` tag with Sass or others
-- minify only parts of your code
-- highlight code syntax
+- normalize html whitespace in parts of your code
+- create various content filters
 - ...

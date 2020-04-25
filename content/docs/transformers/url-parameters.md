@@ -65,14 +65,14 @@ Array of tag names to process. Only URLs inside `href=""` attributes of tags in 
 
 Options to pass to the [query-string](https://github.com/sindresorhus/query-string#stringifyobject-options) library.
 
-For example, you can disable encoding:
+For example, Maizzle disables encoding by default, but you can enable it:
 
 ```js
 module.exports = {
   urlParameters: {
     _options: {
       qs: {
-        encode: false
+        encode: true
       },
     },
     foo: '@Bar@',
@@ -81,4 +81,8 @@ module.exports = {
 }
 ```
 
-`@Bar@` will not be encoded in the URL. 
+Result:
+
+```
+https://example.com/?foo=%40Bar%40
+```

@@ -1,6 +1,6 @@
 ---
 title: "Prevent Widow Words"
-slug: "prevent-widows"
+slug: "widows"
 description: "Use PostHTML to transform your HTML email templates"
 ---
 

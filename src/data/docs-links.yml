@@ -21,8 +21,6 @@
       path: /docs/templates/
     - title: Tags
       path: /docs/tags/
-    - title: Partials
-      path: /docs/partials/
     - title: Components
       path: /docs/components/
     - title: Assets
@@ -63,10 +61,10 @@
       path: /docs/base-image-url/
     - title: URL Parameters
       path: /docs/url-parameters/
-    - title: Prevent Widows
-      path: /docs/prevent-widows/
-    - title: Transform Content
-      path: /docs/transform-content/
+    - title: Widow Words
+      path: /docs/widows/
+    - title: Transform
+      path: /docs/transform/
     - title: Prettify
       path: /docs/prettify/
     - title: Minify
