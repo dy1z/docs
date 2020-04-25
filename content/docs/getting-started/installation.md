@@ -8,27 +8,23 @@ description: "Installing the Maizzle Email Framework on your machine and creatin
 
 ## Requirements
 
-Maizzle needs a few tools installed on your machine:
+Maizzle needs a few tools installed on your machine.
 
-### Node.js and NPM
+### Node.js
 
-You'll obviously need [Node.js](https://nodejs.org/en/download/) - NPM comes included with it. To check if they're installed, use these commands:
+You'll need [Node.js](https://nodejs.org/en/download/)installed. Either download and install the LTS version from the link, or use this command to check if you already have it:
 
 ```bash
 node -v
 ```
 
-and
-
-```bash
-npm -v
-```
+Maizzle requires at least Node v10.x.
 
 ### Git
 
 The `maizzle new` command for scaffolding a new project works by cloning a Git repository, so you'll also need to have [Git](https://help.github.com/en/articles/set-up-git#setting-up-git) installed. 
 
-Check if you have it, by running this command:
+Check if you already have it by running this command:
 
 ```bash
 git --version
@@ -42,13 +38,15 @@ Maizzle consists of:
 - the Framework
 - a Starter project
 
-When developing emails on your local machine with Maizzle, you simply run a CLI command inside your Starter project directory root. 
+When developing emails on your local machine with Maizzle, you simply run a CLI command inside your Starter project directory. 
 
 That command asks the Framework to build the emails inside your current project, based on config files that it finds in there.
 
 With that in mind:
 
-### Install the CLI globally
+### Install the CLI
+
+Install the CLI tool globally, so you can use the `maizzle` commands anywhere:
 
 ```bash
 npm install -g @maizzle/cli
