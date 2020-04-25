@@ -4,6 +4,8 @@ slug: "installation"
 description: "Installing the Maizzle Email Framework on your machine and creating a new project"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Installing Maizzle
 
 ## Requirements
@@ -12,13 +14,13 @@ Maizzle needs a few tools installed on your machine.
 
 ### Node.js
 
-You'll need [Node.js](https://nodejs.org/en/download/)installed. Either download and install the LTS version from the link, or use this command to check if you already have it:
+You'll need [Node.js](https://nodejs.org/en/download/) installed. Either download and install the LTS version from the link, or use this command to check if you already have it:
 
 ```bash
 node -v
 ```
 
-Maizzle requires at least Node v10.x.
+<alert>Maizzle requires at least Node v10.x.</alert>
 
 ### Git
 
