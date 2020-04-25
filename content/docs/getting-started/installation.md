@@ -57,15 +57,23 @@ npm install -g @maizzle/cli
 ### Create a project
 
 ```bash
-maizzle new my-project
+maizzle new
 ```
 
-That will clone the [Maizzle Starter](https://github.com/maizzle/maizzle) into a directory named `my-project` at your current path, and will automatically run `npm install` to install its NPM dependencies for you.
+This will bring up an interactive prompt which will guide you through the setup:
+
+![maizzle new interactive prompt](https://raw.githubusercontent.com/maizzle/cli/1.0/preview.gif)
+
+Of course, you can also skip the prompt and scaffold a project immediately:
+
+```bash
+maizzle new https://github.com/maizzle/maizzle.git
+```
 
 Once that's done, change your current directory to the project root: 
 
 ```bash
-cd my-project
+cd maizzle
 ```
 
 Congratulations, you can now start using Maizzle! 
