@@ -8,6 +8,8 @@
       path: /starters/
     - title: Guides
       path: /guides/
+    - title: Tools
+      path: /docs/tools/
 
 - name: Development
   items:
