@@ -3,16 +3,24 @@
     <main>
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
-        <article class="markdown px-6 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-2/3 lg:w-full max-w-3xl">
+        <article class="markdown px-4 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-full lg:w-full lg:max-w-3xl">
           <header class="flex flex-col-reverse">
-            <h1 v-html="$page.tutorial.title" class="tracking-tight" />
-            <time :datetime="$page.tutorial.datetime" class="text-sm text-gray-600">
-              {{ formatDate($page.tutorial.datetime, 'MMMM D, YYYY') }}
+            <div class="flex flex-wrap justify-between items-center mb-6">
+              <h1 v-html="`${$page.starter.title} Starter`" class="tracking-tight sm:-mb-6 sm:w-8/12" />
+              <g-link :to="$page.starter.repository">View on GitHub &rarr;</g-link>
+            </div>
+            <time :datetime="$page.starter.datetime" class="text-sm text-gray-600">
+              Released {{ formatDate($page.starter.datetime, 'MMMM D, YYYY') }}
             </time>
           </header>
-          <div v-html="$page.tutorial.content"/>
+          <p>{{ $page.starter.description }}</p>
+          <h2>Installation</h2>
+          <div class="flex items-center whitespace-no-wrap overflow-auto p-4 mb-4 font-mono bg-gradient-b-code border border-cool-gray-100 hover:border-cool-gray-200 rounded text-cool-gray-600">
+            <span class="mr-2 select-none text-cool-gray-400">$</span>
+            <span>maizzle new {{ $page.starter.repository }}</span>
+          </div>
+          <VueRemarkContent />
         </article>
-        <table-of-contents :page="$page.tutorial" title="In this guide:" />
       </section>
     </main>
   </Layout>
@@ -54,21 +62,21 @@ export default {
   },
   metaInfo () {
     return {
-      title: this.$page.tutorial.title,
+      title: `${this.$page.starter.title} Starter`,
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.description(this.$page.tutorial)
+          content: this.description(this.$page.starter)
         },
-        { property: "og:title", content: this.$page.tutorial.title },
+        { property: "og:title", content: `${this.$page.starter.title} Starter` },
         { property: "og:type", content: 'article' },
-        { property: "og:description", content: this.description(this.$page.tutorial) },
+        { property: "og:description", content: this.description(this.$page.starter) },
         { property: "og:image", content: this.ogImageUrl },
-        { property: "og:url", content: `${this.config.siteUrl}${this.$page.tutorial.path}/` },
+        { property: "og:url", content: `${this.config.siteUrl}${this.$page.starter.path}/` },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: this.$page.tutorial.title },
-        { name: "twitter:description", content: this.description(this.$page.tutorial) },
+        { name: "twitter:title", content: `${this.$page.starter.title} Starter` },
+        { name: "twitter:description", content: this.description(this.$page.starter) },
         { name: "twitter:site", content: "@maizzlejs" },
         { name: "twitter:creator", content: "@cossssmin" },
         { name: "twitter:image", content: this.ogImageUrl },
@@ -138,13 +146,15 @@ export default {
 </script>
 
 <page-query>
-query Tutorial ($path: String) {
-  tutorial (path: $path) {
+query Starter ($path: String) {
+  starter (path: $path) {
     datetime: date (format: "YYYY-MM-DD HH:mm:ss")
     path
     title
     content
     description
+    repository
+    image
     headings {
       depth
       value

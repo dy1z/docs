@@ -1,12 +1,8 @@
 .markdown {
-  @apply text-gray-700;
-
-  ::selection {
-    @apply bg-yellow-markdown-highlight text-black;
-  }
+  @apply text-cool-gray-700;
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-black font-semibold leading-tight;
+    @apply text-black font-semibold font-inter leading-tight;
   }
 
   h1 {
@@ -15,10 +11,10 @@
 
   h2 { @apply text-2xl; }
   h3 { @apply text-base; }
-  h4 { @apply text-sm; }
+  h4 { @apply text-sm break-all; }
 
   h2, h3, h4, h5, h6 {
-    @apply py-6 inline-flex items-center relative;
+    @apply my-6 inline-flex items-center relative;
 
     > a {
       @apply hidden text-gray-700 h-full absolute inset-x-0 -ml-8;
@@ -35,15 +31,11 @@
   }
 
   a {
-    @apply text-ocean no-underline;
-
-    &:hover {
-      @apply text-ocean-darker;
-    }
+    @apply no-underline text-ocean;
   }
 
   p {
-    @apply mb-4;
+    @apply mb-4 text-lg;
     line-height: 1.8;
   }
 
@@ -51,7 +43,7 @@
     @apply mb-4 pl-8;
 
     li {
-      @apply mb-2;
+      @apply mb-4;
     }
   }
 
@@ -67,21 +59,8 @@
     @apply border-b border-dotted cursor-help no-underline;
   }
 
-  pre {
-    @apply p-4 mb-4 -ml-20 pl-20 border border-l-0 overflow-auto scrolling-touch break-normal cursor-text bg-gradient-l-code border-gradient-l-grey-code;
-  }
-
-  code {
-    @apply text-sm leading-code font-mono;
-
-    &.shiki {
-      @apply bg-gradient-l-code text-gray-700 !important;
-      @apply block p-4 mb-4 -ml-20 pl-20 border border-l-0 overflow-auto scrolling-touch break-normal border-gradient-l-grey-code;
-    }
-  }
-
   kbd {
-    @apply inline-block font-mono bg-gray-300 border border-gray text-gray-700 text-xxs;
+    @apply inline-block font-mono bg-gray-300 border text-gray-700 text-xxs;
     border-radius: 3px;
     box-shadow: 0 1px 0 rgba(135,149,161,0.4), 0 0 0 2px #fff inset;
     line-height: 1.4;
@@ -102,11 +81,11 @@
     }
   }
 
-  table {
+  table:not(.example) {
     @apply block border text-sm mb-4 w-full overflow-x-auto scrolling-touch;
 
     thead {
-      @apply bg-gray-200;
+      @apply bg-cool-gray-100;
     }
 
     th, td {
@@ -119,32 +98,35 @@
   }
 }
 
-.shiki-inline {
-  @apply bg-gray-100 text-gray-700 text-xs leading-normal !important;
-  @apply border border-gray-200 rounded px-2 py-1;
-}
-
-a .shiki-inline {
-  @apply text-inherit !important;
-}
-
-h2 .shiki-inline,
-h3 .shiki-inline,
-h4 .shiki-inline {
-  @apply mr-1;
-}
-
 .label {
   @apply align-text-top inline-block pt-px px-1 mt-1 text-xs font-mono uppercase text-white rounded;
 }
 
 hr {
-  @apply h-px bg-gray-300 my-8;
+  @apply h-px bg-cool-gray-300 border-0 my-8;
 }
 
 @screen sm {
   .markdown  {
-    table {
+    h2, h3, h4, h5, h6 {
+      > a {
+        @apply hidden;
+      }
+    }
+
+    a {
+      &:not(.text-gradient-none) {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        @apply bg-gradient-l-ocean-dark;
+
+        &:hover {
+          @apply bg-gradient-r-ocean-dark;
+        }
+      }
+    }
+
+    table:not(.example) {
       @apply table;
     }
 
@@ -156,7 +138,11 @@ hr {
 
 @screen lg {
   .markdown {
-    table {
+    p {
+      @apply text-base;
+    }
+
+    table:not(.example) {
       @apply w-full;
     }
   }

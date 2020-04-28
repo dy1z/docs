@@ -4,6 +4,8 @@ slug: "divider"
 description: "Create dividers or horizontal rules for your HTML email template in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Divider
 
 A Divider is basically a thin horizontal line that separates content areas.
@@ -36,8 +38,8 @@ Let's also use `max-w-full`, to make it responsive:
 // tailwind.config.js
 module.exports = {
   spacing: {
-    // ...,
     '400': '400px',
+    // ...,
   }
 }
 ```
@@ -69,9 +71,7 @@ Need uneven spacing?
 <hr class="border-0 bg-gray-500 text-gray-500 h-px mt-16 mb-32">
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Note that <code class="shiki-inline">&lt;hr&gt;</code> elements come with margins by default, so you might want to set a custom one or reset it with <code class="shiki-inline">m-0</code>. For example, Chrome resets to <code class="shiki-inline">8px</code>.</div>
-</div>
+<alert>Note that <code>&lt;hr&gt;</code> elements come with margins by default, so you might want to set a custom one or reset it with <code>m-0</code>. For example, Chrome resets to <code>8px</code>.</alert>
 
 ### Alignment
 

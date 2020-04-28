@@ -4,33 +4,31 @@ slug: "installation"
 description: "Installing the Maizzle Email Framework on your machine and creating a new project"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Installing Maizzle
 
 ## Requirements
 
-Maizzle needs a few tools installed on your machine:
+Maizzle needs a few tools installed on your machine.
 
-### Node.js and NPM
+### Node.js
 
-You'll obviously need [Node.js](https://nodejs.org/en/download/) - NPM comes included with it. To check if they're installed, use these commands:
+You'll need [Node.js](https://nodejs.org/en/download/) installed. Either download and install the LTS version from the link, or use this command to check if you already have it:
 
-```sh
+```bash
 node -v
 ```
 
-and
-
-```sh
-npm -v
-```
+<alert>Maizzle requires at least Node v10.x.</alert>
 
 ### Git
 
-The `maizzle new` command for scaffolding a new project works by cloning a Git repo. So it needs [Git](https://help.github.com/en/articles/set-up-git#setting-up-git) installed. 
+The `maizzle new` command for scaffolding a new project works by cloning a Git repository, so you'll also need to have [Git](https://help.github.com/en/articles/set-up-git#setting-up-git) installed. 
 
-Check if you have it, by running this command:
+Check if you already have it by running this command:
 
-```sh
+```bash
 git --version
 ```
 
@@ -38,54 +36,57 @@ git --version
 
 Maizzle consists of:
 
-- a CLI tool
+- a <abbr title="Command Line Interface">CLI</abbr> tool
 - the Framework
 - a Starter project
 
-When developing emails in Maizzle, you run a CLI command inside your Starter project directory root. 
-That simply asks the Framework to build the emails inside your current project, based on config files it finds in there.
+When developing emails on your local machine with Maizzle, you tipically run a CLI command inside your Starter project directory. 
+
+That command asks the Framework to build the emails inside your current project, based on config files that it finds in there.
 
 With that in mind:
 
-### Install the CLI globally
+### Install the CLI
 
-With NPM:
+Install the CLI tool globally, so the `maizzle` executable gets added to your $PATH:
 
-```sh
+```bash
 npm install -g @maizzle/cli
-```
-
-With [Yarn](https://yarnpkg.com):
-
-```sh
-yarn global add @maizzle/cli
 ```
 
 ### Create a project
 
-```sh
-maizzle new my-project
+```bash
+maizzle new
 ```
 
-That will clone the [Maizzle Starter](https://github.com/maizzle/maizzle) into a directory named `my-project` at your current path, and will automatically run `npm install` to install its NPM dependencies for you.
+This will bring up an interactive prompt which will guide you through the setup:
+
+![maizzle new interactive prompt](https://raw.githubusercontent.com/maizzle/cli/1.0/preview.gif)
+
+Of course, you can also skip the prompt and scaffold a project immediately:
+
+```bash
+maizzle new https://github.com/maizzle/maizzle.git
+```
 
 Once that's done, change your current directory to the project root: 
 
-```sh
-cd my-project
+```bash
+cd maizzle
 ```
 
 Congratulations, you can now start using Maizzle! 
 
-Start local email development by running the `serve` command:
+Start local email development by running the [`serve`](/docs/commands/#serve) command:
 
-```sh
+```bash
 maizzle serve
 ```
 
 Ready for production?
 
-```sh
+```bash
 maizzle build production
 ```
 

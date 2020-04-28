@@ -4,6 +4,8 @@ slug: "environments"
 description: "Define distinct build scenarios for your HTML email workflow, each with their own settings"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Environments
 
 When developing HTML emails, you might want to use different data and automations in your local and production environments. 
@@ -23,28 +25,31 @@ For example, let's define a _production_ environment, by creating a new file nam
 ```js
 // config.production.js
 module.exports = {
-  doctype: `html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"`,
-  language: 'ro',
-  // ...
+  build: {
+    destination: {
+      path: 'build_production',
+    },
+  }
 }
 ```
 
+Here, we specify that the files we build when running `maizzle build production` should be output to a `build_production` folder relative to the project root.
+
 ### Merging
 
-Any new environment you create will be merged _on top_ of the base `config.js` when you build for that environment.
-So in the case above, you only need to specify the config values that you are _changing_ in the `production` environment.
+Any new environment you create will be merged _on top_ of the base `config.js` when you run the build command for that environment.
+
+So in the case above, you only need to specify the config values that you are _changing_ for the `production` environment.
 
 ## Environment builds
 
 To build your emails for a specific environment, pass the environment name as an argument to the `maizzle build` command:
 
-```sh
+```bash
 maizzle build production
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">If a <code class="shiki-inline">config.[env].js</code> is not found, Maizzle will fallback to <code class="shiki-inline">config.js</code></div>
-</div>
+<alert type="warning">If a <code>config.[env].js</code> is not found, the build will fail.</alert>
 
 By default, running `maizzle build production` will output production-ready emails in a `build_production` folder at the root of the project.
 
@@ -52,42 +57,38 @@ This output path is, of course, [configurable](/docs/build-paths/#path).
 
 ## Starter environments
 
-Maizzle comes with two environment configs:
+Maizzle comes with two Environment configs:
 
 1. `local`
 3. `production`
 
 ### Local
 
-The base `config.js` is tailored to local development.
+The base [`config.js`](https://github.com/maizzle/maizzle/blob/master/config.js) is tailored to local development.
 
 CSS purging, inlining, and most other Transformers are disabled, so you can quickly prototype your emails with all of Tailwind's classes at your disposal.
 
 Build command: 
 
-```sh
+```bash
 maizzle build
 ```
 
 This has the fastest build time, since there is almost no post-processing going on.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">To get fast development builds, don't enable inlining or cleanup options here.</div>
-</div>
+<alert>To get fast development builds, don't enable inlining or cleanup options here.</alert>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">This file can also be named <code class="shiki-inline">config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</div>
-</div>
+<alert>This file can also be named <code>config.local.js</code>, if you prefer - Maizzle will pick it up and use it when developing locally.</alert>
 
 ### Production
 
-`config.production.js` is configured to output production-ready email code, formatted with humans in mind. 
+[`config.production.js`](https://github.com/maizzle/maizzle/blob/master/config.production.js) is configured to output production-ready email code, formatted with humans in mind. 
 
 CSS purging and inlining are enabled, but code is prettified so that you can share nicely-formatted, more readable code with other people.
 
 Build command: 
 
-```sh
+```bash
 maizzle build production
 ```
 
@@ -95,24 +96,22 @@ maizzle build production
 
 You can create as many build environments as you need, and name them as you like.
 
-For example, you could create a config file named `config.myclient.js`. 
+For example, create a config file named `config.shopify.js`, that you would use to build only the templates from the `src/clients/shopify` folder.
 
 The build command for it would be:
 
-```sh
-maizzle build myclient
+```bash
+maizzle build shopify
 ```
 
-## Template conditionals
+## Template conditional
 
 You can output content in your emails based on the environment you're building for.
 
-An `env` variable is globally available and it contains the environment name - use it in Layouts, Templates, Partials, or Components:
+The environment name is globally available under the `page.env` variable:
 
-```handlebars
-<!-- src/templates/example.njk -->
-{% if env == 'production' %} 
+```html
+<if condition="page.env === 'production'">
   This will show only when running `maizzle build production` 
-{% endif %}
+</if>
 ```
-

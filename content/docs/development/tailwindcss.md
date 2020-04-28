@@ -4,6 +4,8 @@ slug: "tailwindcss"
 description: "Learn how to use Tailwind CSS to create HTML email templates with CSS utility classes"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Tailwind CSS
 
 Maizzle uses the [Tailwind CSS](https://tailwindcss.com) framework, so you can rapidly prototype email templates with utility classes instead of having to write inline styles.
@@ -12,13 +14,13 @@ For most of the time, you won't be writing CSS anymore 😎
 
 ## Structure
 
-CSS files are stored in `src/assets/css`, and are imported into `main.css`.
+CSS files are typically stored in `src/assets/css`, and are imported in `main.css`.
 
 ### main.css
 
 The `src/assets/css/main.css` file imports Tailwind's utilities and components, and our custom, email-specific resets, components, and utilities.
 
-This is the file Maizzle looks for when compiling Tailwind CSS, and you can configure where it lives and how it's named:
+This is the file that Maizzle looks for when compiling Tailwind CSS, and you can configure where it lives and how it's named:
 
 ```js
 // config.js
@@ -42,18 +44,17 @@ Maizzle adds the following ones in `src/assets/css/custom` :
 
 - `utilities.css` - custom utility classes that Tailwind CSS doesn't provide.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Files that you <code class="shiki-inline">@import</code> in <code class="shiki-inline">main.css</code> must be relative to <code class="shiki-inline">src/assets/css</code>.</div>
-</div>
+<alert type="warning">Files that you <code>@import</code> in <code>main.css</code> must be relative to <code>src/assets/css</code></alert>
 
 ### Plugins
 
-To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`.
+To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`. 
+See the [Tailwind docs](https://tailwindcss.com/docs/configuration#plugins).
 
 
 ## CSS purging
 
-When running `maizzle build [env]`, if `[env]` is specified and is not equal to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
+When running `maizzle build [env]`, if `[env]` is not equal to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
 
 This is needed so that the CSS inliner and `email-comb` (which run _after_ the purging step) receive as little CSS as possible to parse. 
 
@@ -77,11 +78,11 @@ module.exports = {
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Don't pass directory paths here, because PostCSS will fail.</div>
-</div>
+<alert type="warning">Don't pass directory paths here, because PostCSS will fail.</alert>
 
 ## Shorthand CSS
+
+<alert>This section refers to CSS inside <code>&lt;style&gt;</code> tags. For <em>inline</em> CSS shorthand, see the CSS inlining <g-link to="/docs/css-inlining/#mergelonghand">docs</g-link>.</alert>
 
 Maizzle uses [postcss-merge-longhand](https://github.com/cssnano/cssnano/tree/master/packages/postcss-merge-longhand) to rewrite your CSS `padding`, `margin`, and `border` properties in shorthand-form, when possible.
 
@@ -89,17 +90,12 @@ Because utility classes map one-to-one with CSS properties, this normally doesn'
 
 Consider this template:
 
-```handlebars
----
-title: Confirm your email
-preheader: Please verify your email address with us
----
-
-{% extends "src/layouts/default.njk" %}
-
-{% block template %}
-  <div class="col">test</div>
-{% endblock %}
+```html
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <div class="col">test</div>
+  </block>
+</extends>
 ```
 
 Let's use `@apply` to compose a `col` class by  extracting two padding utilities: 
@@ -112,25 +108,23 @@ Let's use `@apply` to compose a `col` class by  extracting two padding utilities
 }
 ```
 
-When building for production, normally that would yield:
+When building with inlining enabled, normally that would yield:
 
 ```html
 <div style="padding-top: 8px; padding-bottom: 8px; padding-left: 4px; padding-right: 4px;">test</div>
 ```
 
-However, Maizzle will merge those with `postcss-merge-longhand`, so we get this:
+However, Maizzle will merge those with [`postcss-merge-longhand`](https://www.npmjs.com/package/postcss-merge-longhand), so we get this:
 
 ```html
 <div style="padding: 8px 4px;">test</div>
 ```
 
-This results in smaller HTML size, reducing the risk of Gmail clipping your email.
+This results in smaller HTML size, reducing the risk of [Gmail clipping your email](https://github.com/hteumeuleu/email-bugs/issues/41).
 
 Using shorthand CSS for these is well supported in email clients and will make your HTML lighter, but the shorthand border is particularly useful because it's the only way Outlook will render it properly.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">For shorthand CSS to work with <code class="shiki-inline">padding</code> or <code class="shiki-inline">margin</code>, you need to specify property values for all four sides. For borders, keep reading.</div>
-</div>
+<alert>For shorthand CSS to work with <code>padding</code> or <code>margin</code>, you need to specify property values for all four sides. For borders, keep reading.</alert>
 
 ### Shorthand borders
 
@@ -157,68 +151,77 @@ With Tailwind's `@apply`, that means you can do something like this:
 ... into this:
 
 ```html
-<div style="border: 1px solid #3490dc;">Border example</div>
+<div style="border: 1px solid #3f83f8;">Border example</div>
 ```
 
 ## Use in Template
 
-You can use Tailwind CSS, including directives like `@apply`, right inside a template.
+You can use Tailwind CSS, including directives like `@apply`, `@responsive`, and even nested syntax, right inside a template.
+You simply need to use a `<block>` to push a `<style postcss>` tag to the Layout being extended.
 
-Use `{% block head %}` to push a `<style postcss>` tag to the template's `<head>`:
+First, add a `<block name="head">` inside your Layout's `<head>` tag:
 
-```handlebars
----
-title: Using Tailwind CSS directives inside a template
----
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <if condition="page.css">
+    <style>{{{ page.css }}}</style>
+  </if>
+  <block name="head"></block>
+</head>
+<body>
+  <block name="template"></block>
+</body>
+```
 
-{% extends "src/layouts/default.njk" %}
+Next, use that block in a Template:
 
-{% block head %}
-<style postcss>
-  a {
-    @apply text-blue-500;
-  }
-  @screen sm {
-    table { 
-      @apply w-full;
-    }
-  }
-</style>
-{% endblock %}
+```html
+<extends src="src/layouts/base.html">
+  <block name="head">
+    <style postcss>
+      a {
+        @apply text-blue-500;
+      }
+      @screen sm {
+        table { 
+          @apply w-full;
+        }
+      }
+    </style>
+  </block>
 
-{% block template %}
-  <!-- template content... -->
-{% endblock %}
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
 ```
 
 [posthtml-content](https://github.com/posthtml/posthtml-content) is used to parse the contents of any `<style>` tag that has a `postcss` attribute - the contents are compiled with PostCSS.
 
+<alert>The <code>postcss</code> attribute is only required if you want the CSS to be compiled with PostCSS - for example, when using Tailwind CSS syntax. If you're just writing regular CSS syntax, you don't need to include this attribute.</alert>
+
 ### Prevent inlining
 
-Add a `data-embed` attribute to that `<style>` tag, to prevent it from being inlined:
+When adding a `<style>` tag inside a Template, you can prevent all rules inside it from being inlined by using a `data-embed` attribute:
 
-```handlebars
----
-title: Preventing in-template embedded CSS from being inlined
----
+```html
+<extends src="src/layouts/base.html">
+  <block name="head">
+    <style postcss data-embed>
+      /* This rule will not be inlined */
+      img {
+        border: 0;
+        @apply leading-full align-middle;
+      }
+    </style>
+  </block>
 
-{% extends "src/layouts/default.njk" %}
-
-{% block head %}
-<style postcss data-embed>
-  /* This CSS will not be inlined */
-  img {
-    border: 0;
-    @apply leading-full align-middle;
-  }
-</style>
-{% endblock %}
-
-{% block template %}
-  <!-- template content... -->
-{% endblock %} 
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Although it won't be inlined, the CSS will still be processed by <a href="/docs/code-cleanup/#removeunusedcss">email-comb</a>.</div>
-</div>
+<alert>Although it won't be inlined, the CSS will still be processed by <a href="/docs/code-cleanup/#removeunusedcss">email-comb</a>.</alert>

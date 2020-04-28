@@ -6,57 +6,61 @@
   path: /docs/tailwindcss/
   description: Quickly build HTML emails with CSS utility classes. You won't need to write inline CSS for most of the time.
 
+- title: Starters
+  path: /starters/
+  description: Free, open source email templates built with Maizzle. Simply clone a repository and start building your HTML emails.
+
 - title: Build System
   path: /docs/build-process/
   description: Simple and fast Node.js build system that takes care of all the transformations necessary for HTML emails.
 
 - title: JavaScript Configs
   path: /docs/configuration/
-  description: Maizzle's config files are JavaScript objects, so you can even <code class="shiki-inline py-px">require()</code> packages or fetch data from an API.
+  description: Maizzle's config files are JavaScript objects, so you can even <code class="py-px">require()</code> packages or fetch data from an API.
 
 - title: Use in Node.js
   path: /docs/server-side/
-  description: Import Maizzle into your application and use the <code class="shiki-inline py-px">render()</code> method to get an HTML string.
+  description: Require Maizzle in your application and use the <code class="py-px">render()</code> method to compile a template to an HTML string.
 
 - title: Build Environments
   path: /docs/environments/
-  description: Distinct configs for any number of build scenarios, from local development to production emails.
+  description: Distinct configurations for any number of build scenarios, from local development to production-ready email templates.
 
 - title: Event Listeners
   path: /docs/events/
-  description: Add functions that hook into the build system, allowing for even greater customization and control.
+  description: Hook your own JavaScript functions at key steps in the build process, for even greater customization and control.
 
-- title: BYOHTML
+- title: BYOHTML™
   path: /docs/introduction/#byohtml
   description: No need to learn custom tags or attributes. Write your own HTML structure, then style it with Tailwind CSS.
 
 - title: Email Optimizations
   path: /docs/code-cleanup/
-  description: HTML email-specific optimizations, that you can customize from your environment config.
+  description: HTML email-specific optimizations, that you can customize from your environment config or for each template in particular.
 
-- title: Nunjucks Templating
+- title: PostHTML Templating
   path: /docs/templates/
-  description: Maizzle uses the fast and highly flexible Nunjucks templating language, created by Mozilla.
+  description: Maizzle uses PostHTML with custom plugins, to give you powerful templating tools.
 
 - title: Markdown
   path: /docs/markdown/
-  description: Markdown is supported out-of-the-box, and you can fully configure it. <abbr title="GitHub Flavored Markdown">GFM</abbr> is enabled by default.
+  description: Markdown is supported out-of-the-box, and it is fully configurable. GitHub Flavored Markdown is enabled by default.
 
 - title: Front Matter
   path: /docs/templates/#front-matter
-  description: Define custom variables or override any configuration keys right from a template, with Front Matter.
+  description: Define custom data or override any configuration options right from a template, with Front Matter variables.
 
 - title: CSS Inlining
   path: /docs/css-inlining/
-  description: Juice is used for email-optimized CSS inlining, and you can customize or even disable it completely.
+  description: Juice is used for email-optimized CSS inlining, and you can fully configure or even disable it completely.
 
 - title: Minify
   path: /docs/minify/
-  description: Optionally enable email-safe code minification, to make your production emails weigh even less.
+  description: Optionally enable and configure email-safe code minification, to make your production HTML emails weigh even less.
 
 - title: Prettify
   path: /docs/prettify/
-  description: Need to send the HTML to a human? Maizzle can prettify the code for you, so it's more readable.
+  description: Need to send an HTML email to a human? Maizzle can pretty print the code for you, so it's more readable.
 
 - title: Uglify Classes
   path: /docs/code-cleanup/#uglifyclassnames
@@ -64,28 +68,28 @@
 
 - title: Image CDN-friendly
   path: /docs/base-image-url/
-  description: Already using a <abbr title="Contend Delivery Network">CDN</abbr> for images? Define a base image URL and Maizzle will prepend it to all image paths.
+  description: Already using a <abbr title="Contend Delivery Network">CDN</abbr> for images? Define a base image URL and Maizzle will prepend it to all image sources in your HTML email.
 
-- title: Link Tracking
+- title: URL Parameters
   path: /docs/url-parameters/
   description: Use Front Matter to specify as many URL parameters as you need - they will all be appended to your links.
 
 - title: Google Fonts
   path: /docs/google-fonts/
-  description: Easily pull in Google Fonts, either globally or just for a single template, then use them with Tailwind classes.
+  description: Easily pull in Google Fonts, either globally or just inside a single template, then use them with Tailwind utility classes.
 
 - title: Plaintext Versions
   path: /docs/templates/#plaintext
-  description: Optionally generate plaintext versions from your HTML emails. Or have your <abbr title="Email Service Provider">ESP</abbr> do it. Your call.
+  description: Optionally generate optimized plaintext versions from your HTML emails. Or have your <abbr title="Email Service Provider">ESP</abbr> do it. Your call.
 
 - title: Localhost Tunneling
   path: /docs/browsersync/#tunnel
-  description: Live-share a configurable URL to an email template that you're working on, with a colleague or a client.
+  description: Use tunneling to live-share a configurable URL to a Maizzle project that you're working on, with a colleague or a client.
 
-- title: BrowserSync
-  path: /docs/browsersync/
-  description: Run the <code class="shiki-inline py-px">maizzle serve</code> command to develop locally and have the browser automatically refresh for you.
+- title: Browsersync
+  path: /docs/build-config/#browsersync
+  description: Run the <code class="py-px">maizzle serve</code> command to develop emails locally and have the browser automatically refresh for you when you make changes.
 
 - title: ⚡4email
   path: /docs/amp4email/
-  description: Create interactive AMP emails with realtime information and inline actions, with the included examples.
+  description: Code interactive AMP emails, with realtime information and inline actions. We even provide a starter project to get you up and running.

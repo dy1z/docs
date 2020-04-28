@@ -4,6 +4,8 @@ slug: "tailwindcss-config"
 description: "See how the Tailwind CSS configuration is customized for email development in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Tailwind CSS Config
 
 Maizzle comes with an email-tailored `tailwind.config.js`
@@ -29,19 +31,15 @@ module.exports = {
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">This applies only to <code class="shiki-inline">&lt;head&gt;</code> CSS, inlined CSS will not contain <code class="shiki-inline">!important</code></div>
-</div>
+<alert>This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></alert>
 
 ## Separator
 
-Separators like `:` in `hover:bg-black` or `/` in `w-1/2` need to be \escaped in CSS. 
+Characters like `:` in `hover:bg-black` need to be \escaped in CSS. 
 
-Because some email clients (Gmail 👀) fail to parse selectors with escaped characters, 
-Maizzle normalizes all your CSS selectors and HTML classes, replacing any escaped characters it finds with `-`.
+Because some email clients (Gmail 👀) fail to parse selectors with escaped characters, Maizzle normalizes all your CSS selectors and HTML classes, replacing any escaped characters it finds with email-safe alternatives.
 
-So you can safely use Tailwind's awesome default separator and write classes like `sm:w-1/2` - 
-Maizzle will convert that to `sm-w-1-2` in your compiled template:
+So you can safely use Tailwind's awesome default separator and write classes like `sm:w-1/2` - Maizzle will convert that to `sm-w-1-2` in your compiled template:
 
 ```js
 // tailwind.config.js
@@ -57,9 +55,7 @@ module.exports = {
 }
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Maizzle normalizes only <code class="shiki-inline">:</code> <code class="shiki-inline">/</code> <code class="shiki-inline">.</code> and <code class="shiki-inline">%</code> in your class names. If you use other special characters, it is your responsibility to convert them.</div>
-</div>
+You can also [configure the replacement mappings](/docs/code-cleanup#safeclassnames).
 
 ## Screens
 
@@ -73,11 +69,7 @@ screens: {
 },
 ```
 
-### @screen sm
-
-A breakpoint for mobile devices, adjust as needed.
-
-More on screens, in the [Tailwind CSS docs &nearr;](https://tailwindcss.com/docs/responsive-design)
+More on screens, in the [Tailwind CSS docs](https://tailwindcss.com/docs/responsive-design).
 
 ## Plugins
 

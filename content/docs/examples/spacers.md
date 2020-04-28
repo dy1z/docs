@@ -4,9 +4,11 @@ slug: "spacers"
 description: "Learn how to create reliable vertical spacing for HTML email with Tailwind CSS in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Spacers
 
-Vertical spacing in HTML emails can be tricky, because of inconsistent support for margin, padding, and `<br>` tags. 
+Vertical spacing in HTML emails can be tricky, mainly because of inconsistent support for (and rendering of) margin, padding, and `<br>` tags. 
 
 Here's how easy it is to create simple, yet reliable spacers for your emails, using basic HTML and Tailwind CSS utility classes.
 
@@ -15,18 +17,23 @@ Here's how easy it is to create simple, yet reliable spacers for your emails, us
 This is the simplest spacer you can use in an HTML email.
 
 ```html
-<div class="leading-64 sm:h-32">&amp;zwnj;</div>
+<div class="leading-64">&zwnj;</div>
 ```
 
 How it works:
 
-1. `leading-64` adds `line-height: 64px;` - the default height, for desktop clients
-2. `sm:h-32` sets `height: 32px;` for the `sm` breakpoint - the responsive height
-3. We use `&zwnj;` to add something inside, so it can take up height reliably in all email clients
+1. `leading-64` sets the height with `line-height: 64px;`
+3. We use `&zwnj;` to add something inside, so the element can take up height reliably in all email clients
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Feel free to use <code class="shiki-inline">&&zwnj;nbsp;</code> instead of <code class="shiki-inline">&amp;zwnj;</code>, both work just fine.</div>
-</div>
+We can define a responsive height:
+
+```html
+<div class="leading-64 sm:h-32">&zwnj;</div>
+```
+
+Note that this will only work where `@media` queries are supported.
+
+<alert>Feel free to use <code>&amp;nbsp;</code> instead of <code>&amp;zwnj;</code>, both work just fine.</alert>
 
 ## Row
 
@@ -34,7 +41,7 @@ Use this one directly inside a `<table>`:
 
 ```html
 <tr>
-  <td class="h-64 sm:h-32"></td>
+  <td class="h-64"></td>
 </tr>
 ```
 
@@ -45,7 +52,7 @@ The Row spacer, but as a full `<table>`.
 ```html
 <table class="w-full">
   <tr>
-    <td class="h-64 sm:h-32"></td>
+    <td class="h-64"></td>
   </tr>
 </table>
 ```

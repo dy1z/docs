@@ -1,5 +1,7 @@
 ::selection {
   @apply bg-black text-white;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 .navigation a.active {
@@ -7,5 +9,5 @@
 }
 
 .toc .active {
-  @apply text-black cursor-default;
+  @apply bg-gradient-l-ocean-dark cursor-default;
 }

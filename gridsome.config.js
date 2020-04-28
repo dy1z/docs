@@ -1,6 +1,6 @@
 module.exports = {
   siteName: 'Maizzle',
-  siteDescription: "Maizzle is an email framework that helps you quickly build HTML emails with Tailwind CSS.",
+  siteDescription: "Maizzle is a framework that helps you quickly build HTML emails with Tailwind CSS and advanced, email-specific post-processing.",
   siteUrl: 'https://maizzle.com',
   titleTemplate: `%s | Maizzle - Framework for Rapid Email Prototyping`,
   icon: 'src/favicon.png',
@@ -11,26 +11,46 @@ module.exports = {
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       plugins: [
-        ['gridsome-plugin-remark-shiki', {
-          theme: 'quietlight'
-        }]
+        '@gridsome/remark-prismjs'
       ]
     }
   },
 
   plugins: [
     {
-      use: '@gridsome/source-filesystem',
+      use: '@gridsome/vue-remark',
       options: {
-        path: 'content/docs/**/*.md',
+        baseDir: './content/docs',
+        route: '/docs/:slug',
         typeName: 'Doc',
+        template: './src/templates/Doc.vue',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ],
       }
     },
     {
-      use: '@gridsome/source-filesystem',
+      use: '@gridsome/vue-remark',
       options: {
-        path: 'content/guides/**/*.md',
-        typeName: 'Tutorial',
+        baseDir: './content/guides',
+        route: '/guides/:slug',
+        typeName: 'Guide',
+        template: './src/templates/Guide.vue',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ],
+      }
+    },
+    {
+      use: '@gridsome/vue-remark',
+      options: {
+        baseDir: './content/starters',
+        route: '/starters/:slug',
+        typeName: 'Starter',
+        template: './src/templates/Starter.vue',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ],
       }
     },
     {
@@ -46,11 +66,6 @@ module.exports = {
       }
     },
   ],
-
-  templates: {
-    Doc: '/docs/:slug',
-    Tutorial: '/guides/:slug',
-  },
 
   chainWebpack: config => {
     config.module
@@ -73,8 +88,8 @@ module.exports = {
                 'src/**/*.vue',
                 'src/**/*.js'
               ],
-              defaultExtractor: content => content.match(/[\w-/:%]+(?<!:)/g) || [],
-              whitelistPatterns: [/shiki/, /a(lgoli)?a/]
+              defaultExtractor: content => content.match(/[\w-/:.%]+(?<!:)/g) || [],
+              whitelistPatterns: [/a(lgoli)?a/]
             }),
           ])
         }

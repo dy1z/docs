@@ -1,37 +1,49 @@
 ---
 title: "Email Code Minification"
 slug: "minify"
-description: "Minify your HTML email code so that your production emails weigh less and you avoid Gmail clipping"
+description: "Minify your HTML email code so that your production emails weigh even less and you avoid Gmail clipping."
 ---
+
+import Alert from '~/components/Alert.vue'
 
 # Minify Email Code
 
 Use the `minify` option to trim down the HTML size of your production emails. 
 
-Minified email code weighs less in KB, resulting in faster sendouts, faster opens, and bandwidth savings on limited mobile plans. Every little bit helps 🙂
+Minified email code weighs less in KB, resulting in faster sendouts, faster opens, and bandwidth savings on limited mobile data plans. Every little bit helps 🙂
 
 Additionally, it reduces the risk of [Gmail clipping](https://github.com/hteumeuleu/email-bugs/issues/41).
 
 ---
 
-Maizzle uses [html-minifier](https://www.npmjs.com/package/html-minifier) and exposes its options to your config - simply enable it and define any other library options in the `minify` config key:
+Maizzle uses [html-crush](https://www.npmjs.com/package/html-crush) and exposes its options to your config. 
+
+Simply enabling it is enough to get you started with email-safe code minification:
 
 ```js
 // config.production.js
 module.exports = {
   minify: {
     enabled: true,
-    minifyCSS: true,
-    maxLineLength: 500,
-    collapseWhitespace: true,
-    processConditionalComments: true,
-    // ...
   },
 }
 ```
 
-Checkout the full [list of html-minifier options &nearr;](https://www.npmjs.com/package/html-minifier#options-quick-reference)
+Of course, you can customize the `html-crush` options:
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-orange-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Minifying email code can lead to unexpected results if not done properly. Make sure you know what you're doing, and always test!</div>
-</div>
+```js
+// config.production.js
+module.exports = {
+  minify: {
+    enabled: true,
+    lineLengthLimit: 500,
+    removeIndentations: true,
+    removeLineBreaks: true,
+    breakToTheLeftOf: [],
+  },
+}
+```
+
+Checkout the full list of [html-crush options](https://www.npmjs.com/package/html-crush#optional-options-object).
+
+<alert type="warning">Minifying email code can lead to unexpected results if not done properly. Make sure you know what you're doing, and always test your emails!</alert>

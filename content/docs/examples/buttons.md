@@ -4,6 +4,8 @@ slug: "buttons"
 description: "Learn how to create simple buttons for your HTML email templates in Maizzle"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Buttons
 
 Buttons in HTML email can be created with simple table structures with an anchor inside, or advanced techniques involving <abbr title="Vector Markup Language">VML</abbr> or even `mso-` CSS, for fully-clickable buttons in Outlook and Windows 10 Mail 🤯
@@ -18,6 +20,10 @@ The common type of button.
 
 For an extra touch, let's add rounded corners and a hover effect:
 
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button class="mt-4 sm:mt-0 rounded bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
+</div>
+
 ```html
 <table>
   <tr>
@@ -28,15 +34,15 @@ For an extra touch, let's add rounded corners and a hover effect:
 </table>
 ```
 
-<div class="mt-8 mb-4 items-center flex flex-wrap">
-  Here's how that would look like: <a href="#" class="mt-4 sm:mt-0 sm:ml-8 rounded bg-indigo-500 hover:bg-indigo-600 text-sm font-bold leading-full py-3 px-12"><span class="text-white">Button</span></a>
-</div>
-
 ### Outlined
 
 No background color, so it inherits its container's background (white in our case). We add a colored border to the table cell to create the outline.
 
 To make it more interesting, let's also change the background on hover:
+
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button class="rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 text-sm text-indigo-500 hover:text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
+</div>
 
 ```html
 <table>
@@ -48,13 +54,13 @@ To make it more interesting, let's also change the background on hover:
 </table>
 ```
 
-<div class="mt-8 mb-4 items-center flex">
-  Example: <a href="#" class="ml-8 rounded border-2 border-indigo-500 hover:border-indigo-600 hover:bg-indigo-600 group text-sm font-bold leading-full py-3 px-12"><span class="text-indigo-500 group-hover:text-white">Button</span></a>
-</div>
-
 ### Pill
 
 Pill buttons use a larger border-radius value. Remember, Outlook doesn't support this:
+
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button class="rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm text-white font-bold leading-full py-3 px-12 focus:outline-none">Button</button>
+</div>
 
 ```html
 <table>
@@ -65,10 +71,6 @@ Pill buttons use a larger border-radius value. Remember, Outlook doesn't support
   </tr>
 </table>
 ```
-
-<div class="mt-8 mb-4 items-center flex">
-  Example: <a href="#" class="ml-8 rounded-full shadow-md bg-indigo-500 hover:bg-indigo-600 text-sm font-bold leading-full py-3 px-12"><span class="text-white">Button</span></a>
-</div>
 
 ### Look & feel
 
@@ -90,20 +92,27 @@ However, VML buttons are fixed in size and require you add the URL in two places
 
 ### Semantic (CSS)
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Credit goes to <a href="https://twitter.com/M_J_Robbins" target="_blank" rel="nofollow noopener noreferrer">@M_J_Robbins</a> for this technique.</div>
-</div>
+<alert>Credit goes to <g-link href="https://twitter.com/M_J_Robbins">@M_J_Robbins</g-link> for this technique.</alert>
 
 We can use a smart combination of basic and Outlook-specific CSS properties to get fully clickable buttons in HTML - no VML required!
 
 Here's the Filled button, fully clickable in Outlook:
 
+<div class="bg-cool-gray-100 flex py-8 justify-center -mb-1">
+  <button 
+    class="block py-4 px-6 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+    <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i><![endif]-->
+      <span style="mso-text-raise: 13pt;">Read more</span>
+    <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i><![endif]-->
+  </button>
+</div>
+
 ```html
 <a 
   href="https://maizzle.com/"
-  class="inline-block p-16 text-sm leading-none no-underline p-16 text-white rounded bg-indigo-500 hover:bg-indigo-600">
+  class="inline-block py-16 px-24 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600">
   <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i><![endif]-->
-    <span style="mso-text-raise:13pt;">Read more</span>
+    <span style="mso-text-raise: 13pt;">Read more</span>
   <!--[if mso]><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i><![endif]-->
 </a>
 ```
@@ -115,6 +124,16 @@ It's just a simple `<a>` tag, but with some nifty workarounds for Outlook's lack
 - the first `<i>` uses double the `pt` that the `<span>` uses
 - finally, the width of the `&nbsp;` character is reset (as in, canceled) through the `mso-font-width` property
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Line breaks and spaces between tags in the example above might render the button larger, although it would be barely visible. If you want your button to be a precise size, just remove them.</div>
-</div>
+<alert>Line breaks and spaces between tags in the example above might render the button larger (although barely noticeable). If you want your button to be a precise size, just remove them.</alert>
+
+**Tip**: use the [`<outlook>`](/docs/tags/#outlook) tag for cleaner-looking, editor-friendly markup:
+
+```html
+<a 
+  href="https://maizzle.com/"
+  class="inline-block py-16 px-24 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600">
+  <outlook><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i></outlook>
+    <span style="mso-text-raise: 13pt;">Read more</span>
+  <outlook><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i></outlook>
+</a>
+```

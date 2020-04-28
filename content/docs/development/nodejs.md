@@ -4,6 +4,8 @@ slug: "nodejs"
 description: "Use Maizzle in Node.js on the server to compile a string to an HTML email, styled with Tailwind CSS"
 ---
 
+import Alert from '~/components/Alert.vue'
+
 # Use in Node.js
 
 You can use Maizzle in your Node.js app, to compile a string to an HTML email.
@@ -22,10 +24,9 @@ Then, call the `render()` method, passing it a string and an options object:
 const html = Maizzle.render(`html string`, options)
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Of course, your <code class="shiki-inline">html string</code> can use Front Matter and Nunjucks templating, so you can extend <a href="/docs/layouts/">Layouts</a>, include <a href="/docs/partials/">Partials</a>, or use <a href="/docs/components/">Components</a>. 
-  <br><br>See <a href="#nunjucks">Nunjucks section</a> below.</div>
-</div>
+<alert>Of course, your <code>html string</code> can use Front Matter and templating tags, so you can even extend <a href="/docs/layouts/">Layouts</a> or use <a href="/docs/components/">Components</a>.</alert>
+
+### Options
 
 `options` is an object with the following structure:
 
@@ -39,33 +40,33 @@ const html = Maizzle.render(`html string`, options)
   maizzle: {
     config: {},
   },
-  afterConfig() {},
   beforeRender() {},
   afterRender() {},
   afterTransformers() {},
-  afterBuild() {},
 }
 ```
 
-###### `tailwind`
+<alert><code>options</code> is not required: when ommited, Maizzle will the defaults below.</alert>
 
-| Option | Required | Type | Default | Description |
-| --- | --- | --- | --- | --- |
-| `config` | Yes | Object | `null` | A Tailwind CSS config object. |
-| `css` | No | String | @tailwind components; @tailwind utilities; | A string with CSS in PostCSS syntax. Gets compiled with Tailwind CSS. To use Tailwind, you should at least use _@tailwind utilities_ |
-| `compiled` | No | String | '' | A CSS string to use as-is. If provided, will override `css`. This will not be compiled with Tailwind, resulting in faster render time. |
+###### tailwind
 
-###### `maizzle`
+Pass in a custom Tailwind CSS configuration, or a pre-compiled CSS string.
 
-| Option | Required | Type | Default | Description |
-| --- | --- | --- | --- | --- |
-| `config` | Yes | Object | `null` | A complete Maizzle config object. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `config` | Object | `{}` | A Tailwind CSS config object. |
+| `css` | String | <span class="font-mono text-cool-gray-500">@tailwind components; @tailwind utilities;</span> | A string with CSS in PostCSS syntax. Gets compiled with Tailwind CSS. To use Tailwind, you should at least use _@tailwind utilities_ |
+| `compiled` | String | (empty string) | A pre-compiled CSS string, to use as-is. This will skip Tailwind compilation, resulting in faster render speed. |
 
-Besides `tailwind` and `maizzle`, as you can see you can also pass certain functions to the `options` object. These are lifecycle hooks, also called [Events](/docs/events/) in Maizzle.
+###### maizzle
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">The other options listed above, like <code class="shiki-inline">afterConfig() {}</code>, are <a href="/docs/events/">Events</a>.</div>
-</div>
+The Maizzle environment configuration object.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `config` | Object | `{}` | A Maizzle config object. |
+
+<alert>The other options listed above, like <code>beforeRender() {}</code>, are <a href="/docs/events/">Events</a>.</alert>
 
 ## Example
 
@@ -76,17 +77,17 @@ let str = `---
 title: Using Maizzle on the server
 ---
 
-{% extends "src/layouts/default.njk" %}
-
-{% block template %}
-<table>
-  <tr>
-    <td class="button">
-      <a href="https://maizzle.com">Confirm email address</a>
-    </td>
-  </tr>
-</table>
-{% endblock %}`
+<extends src="src/layouts/base.html">
+  <block name="template">
+    <table>
+      <tr>
+        <td class="button">
+          <a href="https://maizzle.com">Confirm email address</a>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>`
 
 Maizzle.render(
   str,
@@ -104,69 +105,57 @@ Maizzle.render(
       config: require('./config'),
     }
   }
-).then(html => console.log(html))
+).then(html => console.log(html)).catch(error => console.log(error))
 ```
 
-## Nunjucks
+## Templating
 
-You can use [Nunjucks templating](https://mozilla.github.io/nunjucks/templating.html) to extend a [Layout](/docs/layouts/) or include [Partials](/docs/partials/) or [Components](/docs/components/) when using Maizzle in Node.js.
+You can use templating tags when using Maizzle in Node.js.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-red-dark p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">Paths to Layouts or any includes in your string to be rendered must be relative to the location where you execute the script.</div>
-</div>
+<alert type="danger">Paths to Layouts or any includes/modules in your string to be rendered must be relative to the location where you execute the script.</alert>
 
-## Env Config
+## Gotchas
 
-You must provide the `render()` method with a _full_ Maizzle config object.
+Since the config you can pass to the `render()` method is optional, there are a few gotchas that you need to be aware of.
 
-This means that if you want to use the default `config.production.js` that Maizzle comes with (which only contains options that need to be different from the base config), 
-you need to first merge it with the base `config.js` and provide _that_ in the options object of the `render()` method.
+### Default Tailwind
 
-We can do this with the [`deepmerge`](https://www.npmjs.com/package/deepmerge) package.
+If you don't specify a [config object](#tailwind), Maizzle will try to compile Tailwind using `tailwind.config.js` at your current path.
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">This is also what Maizzle does internally when you run <code class="shiki-inline">maizzle build [env]</code>.</div>
-</div>
+**If the file is not found, Tailwind will be compiled with its [default config](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js).**
 
-1\. First, make sure to install the package in your project:
+The default config is not optimized for HTML email: it uses `rem` units and other settings that are better suited for _web_ design.
 
-```sh
-npm i deepmerge
-```
+### Safe Class Names
 
-2\. Next, create a merged Maizzle config in your script, and pass it to `render()`:
+The `safeClassNames` Transformer runs only when an environment name is specified, and as long as that name is not `local`.
+
+
+If you don't specify it in `maizzle.config`, class names won't be rewritten with email client-safe characters. 
+This could break rendering in some clients, such as Gmail.
+
+To avoid this, always specify the environment name:
 
 ```js
-const deepmerge = require('deepmerge')
-const Maizzle = require('@maizzle/framework')
-// create a full config for production
-const maizzleConfig = deepmerge(require('./config'), require('./config.production'))
-
-let str = `---
-title: Using Maizzle on the server
----
-
-{% extends "src/layouts/default.njk" %}
-
-{% block template %}
-<table>
-  <tr>
-    <td class="rounded text-center bg-blue-500 hover-bg-blue-700 text-white">
-      <a href="https://maizzle.com" class="inline-block py-16 px-24 text-sm font-semibold no-underline text-white">Confirm email address</a>
-    </td>
-  </tr>
-</table>
-{% endblock %}`
-
-Maizzle.render(
-  str,
-  {
-    tailwind: {
-      config: require('./tailwind.config'),
+Maizzle.render('html string', {
+  maizzle: {
+    config: {
+      env: 'node',
     },
-    maizzle: {
-      config: maizzleConfig,
-    }
   }
-).then(html => console.log(html))
+}).then(html => console.log(html))
 ```
+
+<alert>You can use any name for <code>env</code> (except <code>local</code>, which does nothing).</alert>
+
+### Transformers
+
+Transformers, such as CSS inlining or minification, are opt-in: they transform content only when you enable them.
+Since you don't need to pass in a Maizzle config object, this means that most of them will not run.
+
+The following Transformers _always_ run, regardless of your config:
+
+- Markdown
+- Prevent Widows
+- Remove Attributes - removes empty `style` attributes by default
+- Transform Contents - processes CSS with PostCSS inside elements with a `postcss` attribute

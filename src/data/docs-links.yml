@@ -4,8 +4,12 @@
       path: /docs/introduction/
     - title: Installation
       path: /docs/installation/
-    - title: Tutorials
+    - title: Starters
+      path: /starters/
+    - title: Guides
       path: /guides/
+    - title: Tools
+      path: /docs/tools/
 
 - name: Development
   items:
@@ -17,12 +21,16 @@
       path: /docs/layouts/
     - title: Templates
       path: /docs/templates/
-    - title: Partials
-      path: /docs/partials/
+    - title: Tags
+      path: /docs/tags/
     - title: Components
       path: /docs/components/
     - title: Assets
       path: /docs/assets/
+    - title: Plaintext
+      path: /docs/plaintext/
+    - title: Markdown
+      path: /docs/markdown/
     - title: Tailwind CSS
       path: /docs/tailwindcss/
     - title: Node.js
@@ -32,28 +40,14 @@
 
 - name: Configuration
   items:
-    - title: Base Config
-      path: /docs/configuration/
     - title: Environments
       path: /docs/environments/
-    - title: Doctype
-      path: /docs/doctype/
-    - title: Language
-      path: /docs/language/
-    - title: Charset
-      path: /docs/charset/
-    - title: Title
-      path: /docs/title/
-    - title: Google Fonts
-      path: /docs/google-fonts/
-    - title: Browsersync
-      path: /docs/browsersync/
-    - title: Build Paths
-      path: /docs/build-paths/
-    - title: Markdown
-      path: /docs/markdown/
+    - title: Build Config
+      path: /docs/build-config/
     - title: Tailwind CSS
       path: /docs/tailwindcss-config/
+    - title: Google Fonts
+      path: /docs/google-fonts/
     - title: Functions
       path: /docs/functions/
 
@@ -69,10 +63,10 @@
       path: /docs/base-image-url/
     - title: URL Parameters
       path: /docs/url-parameters/
-    - title: Prevent Widows
-      path: /docs/prevent-widows/
-    - title: Transform Content
-      path: /docs/transform-content/
+    - title: Widow Words
+      path: /docs/widows/
+    - title: Transform
+      path: /docs/transform/
     - title: Prettify
       path: /docs/prettify/
     - title: Minify
@@ -86,6 +80,12 @@
       path: /docs/divider/
     - title: Buttons
       path: /docs/buttons/
+    - title: Alerts
+      path: /docs/alerts/
+    - title: Cards
+      path: /docs/cards/
+    - title: Grids
+      path: /docs/grids/
     - title: Reverse Stack
       path: /docs/reverse-stack/
     - title: ⚡4email

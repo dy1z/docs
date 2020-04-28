@@ -5,6 +5,10 @@ description: "See how you can register custom web fonts in your email templates,
 date: 2020-01-31
 ---
 
+import Alert from '~/components/Alert.vue'
+
+<alert>This tutorial was updated on April 8, 2020 to use PostHTML syntax.</alert>
+
 Maizzle already makes it super easy to [use Google Fonts in your email templates](/docs/google-fonts/), but what if you need to use a custom web font? 
 
 Maybe your brand uses a custom type that isn't available through Google Fonts, 
@@ -20,18 +24,18 @@ We'll be using the default Maizzle starter, so let's start by creating a new pro
 
 Open a terminal window and run the `new` command:
 
-```sh
-maizzle new font-face-project
+```bash
+maizzle new
 ```
 
-That will create a `font-face-project` directory at your current location.
+Follow the steps, using `example-font-face` as the folder name.
 
-Once it finishes installing dependencies, open the folder in your favourite editor. 
+Once it finishes installing dependencies, open the folder in your favorite editor. 
 
 I use VS Code, so I'll do:
 
-```sh 
-cd font-face-project && code .
+```bash
+cd example-font-face && code .
 ```
 
 ## Register @font-face
@@ -42,36 +46,10 @@ We'll use `@font-face` to register our custom font family - we can do this in th
 
 ### Add in Template
 
-Open `src/templates/transactional.njk` and add this before `{% block template %}` :
+Open `src/templates/transactional.html` and add this before the `<block name="template">` tag:
 
-```handlebars
-{% block head %}
-<style>
-  @font-face {
-    font-family: 'Barosan';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
-  }
-</style>
-{% endblock %}
-```
-
-Registering the font inside the Template will add a separate `<style>` tag in the compiled email HTML, right after the main one.
-
-### Add in Layout
-
-If you prefer a single `<style>` tag in your email template, you can register the font in the Layout instead. 
-Open `src/layouts/default.njk` and replace this:
-
-```handlebars
-{% if css %}<style>{{ css }}</style>{% endif %}
-```
-
-with this:
-
-```handlebars
-{% if css %}
+```html
+<block name="head">
   <style>
     @font-face {
       font-family: 'Barosan';
@@ -79,18 +57,44 @@ with this:
       font-weight: 400;
       src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
     }
-
-    {{ css }}
   </style>
-{% endif %}
+</block>
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600">
-    <p>You can use the same technique to load font files from Google Fonts - it's currently the only way to get them working in Shopify notifications.</p> 
-    To find out the URL of a Google Font (and actually, its entire <code class="shiki-inline">@font-face</code> CSS) simply access the URL they give you in the browser.
-  </div>
-</div>
+Using the [default Starter](https://github.com/maizzle/maizzle), this will add a separate `<style>` tag in the compiled email HTML, right after the main one.
+
+### Add in Layout
+
+If you prefer a single `<style>` tag in your email template, you can register the font in the Layout instead. 
+Open `src/layouts/master.html` and replace this:
+
+```html
+<if condition="page.css">
+  <style>{{{ page.css }}}</style>
+</if>
+```
+
+with this:
+
+```html
+<if condition="page.css">
+  <style>
+    @font-face {
+      font-family: 'Barosan';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Barosan Regular'), local('Barosan-Regular'), url(https://example.com/fonts/barosan.woff2) format('woff2');
+    }
+    
+    {{{ page.css }}}
+  </style>
+</if>
+```
+
+<alert>
+  <p>You can use the same technique to load font files from Google Fonts - it's currently the only way to get them working in Shopify notifications.</p> 
+  <p>To find out the URL of a Google Font (and actually, its entire <code>@font-face</code> CSS) simply access the URL they give you in the browser.</p>
+</alert>
 
 ## Tailwind utility
 
@@ -137,7 +141,7 @@ it also increases HTML file size (especially when inlining), which then leads to
 
 We can make use of Tailwind's `screen` variants and an Outlook `font-family` fallback to reduce bloat and write less code 👌
 
-First, let's register a new `@media` query:
+First, let's register a new `@media` query - we will call it `screen`:
 
 ```js
 // tailwind.config.js
@@ -154,11 +158,11 @@ module.exports = {
 We can now use it on the outermost<sup>1</sup> element:
 
 ```html
-{% block template %}
-<table class="screen:font-barosan">
-  <!-- ... -->
-</table>
-{% endblock %}
+<block name="template">
+  <table class="screen:font-barosan">
+    <!-- ... -->
+  </table>
+</block>
 ```
 
 This will tuck the `font-family` away in an `@media` query:
@@ -182,13 +186,9 @@ Since Outlook doesn't read `@media` queries, define a fallback<sup>2</sup> for i
 <![endif]-->
 ```
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600"><sup>1</sup> Don't add it to the <code class="shiki-inline">&lt;body&gt;</code> - some email clients remove or replace this tag.</div>
-</div>
+<alert><sup>1</sup> Don't add it to the <code>&lt;body&gt;</code> - some email clients remove or replace this tag.</alert>
 
-<div class="bg-gray-100 border-l-4 border-gradient-b-ocean-light p-4 mb-4 text-md" role="alert">
-  <div class="text-gray-600"><sup>2</sup>  Maizzle includes this fallback in the default Layout.</div>
-</div>
+<alert><sup>2</sup> Maizzle includes this fallback in the <code>master.html</code> Layout.</alert>
 
 ## Outlook bugs
 

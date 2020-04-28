@@ -12,9 +12,8 @@ This way, you can organize your email templates into folders.
 
 ## Global assets
 
-You can define a global email assets folder that will be copied to the build directory.
-
-The Starter sets it to the `src/assets/images` folder by default:
+Additionally, you can also define a global email assets folder that will be copied to the build directory.
+The Starter sets it to the `src/assets/images` directory:
 
 ```js
 // config.js
