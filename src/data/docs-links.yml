@@ -13,8 +13,6 @@
 
 - name: Development
   items:
-    - title: Build process
-      path: /docs/build-process/
     - title: Commands
       path: /docs/commands/
     - title: Layouts
@@ -37,6 +35,8 @@
       path: /docs/nodejs/
     - title: Events
       path: /docs/events/
+    - title: Build Process
+      path: /docs/build-process/
 
 - name: Configuration
   items:
