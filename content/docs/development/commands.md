@@ -60,19 +60,19 @@ The `new` command is used to scaffold and initialize a Maizzle project.
 
 Run it with no arguments and you are presented with an interactive prompt:
 
-<img src="https://github.com/maizzle/cli/raw/1.0/preview.gif" alt="Maizzle interactive prompt" class="mb-4">
+<img src="https://github.com/maizzle/cli/raw/master/preview.gif" alt="Maizzle interactive prompt" class="mb-4">
 
 Alternatively, you can add those arguments manually.
 
 ```bash
-maizzle new <repo> [path] --no-deps?
+maizzle new <starter> [path] --no-deps?
 ```
 
 As you can see, the arguments are similar to those in the `git clone` command.
 
 | Argument | Required | Description
 | --- | --- | --- |
-| `repo` | Yes | Git repository URL for a Maizzle Starter. Must include `.git` extension.
+| `starter` | Yes | Starter name or a Git repository URL.
 | `path` | No | Directory path to create the project into.
 
 The `--no-deps` flag can be used to skip installing NPM dependencies:
@@ -83,16 +83,28 @@ The `--no-deps` flag can be used to skip installing NPM dependencies:
 
 So you can basically clone any repo into any system path, which means you can use any starter project - not just ours - as long as you can clone it with Git.
 
-Need to create a project based on a custom starter?
+Use one of the [original starters](/starters/):
 
 ```bash
-maizzle new https://github.com/maizzle/starter-amp4email.git
+maizzle new amp4email
 ```
 
-Want to use a different folder name than `starter-amp4email`?
+Create from any GitHub repo:
 
 ```bash
-maizzle new https://github.com/maizzle/starter-amp4email.git amp-emails
+maizzle new user/repo
+```
+
+Create from any Git repo:
+
+```bash
+maizzle new https://example.com/some-repo.git
+```
+
+Use a custom folder name:
+
+```bash
+maizzle new maizzle/starter-litmus folder-name
 ```
 
 <alert>If the <code>[path]</code> directory already exists, scaffolding will be aborted.</alert>

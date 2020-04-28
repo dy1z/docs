@@ -26,7 +26,16 @@ maizzle new
 Follow the steps, using `syntax-highlight` as the folder name.
 Once it finishes installing dependencies, `cd syntax-highlight` and open it in your editor.
 
-## Install PrismJS
+We'll be covering two different techniques:
+
+- with a PostHTML plugin
+- with Markdown + PrismJS
+
+## PostHTML
+
+Using a PostHTML plugin, we can write our own `<pre><code>` markup and have the plugin highlight the contents of the `<code>` element.
+
+### Install plugin
 
 First, let's install the [`posthtml-prism`](https://github.com/posthtml/posthtml-prism) plugin, which we'll use to automatically highlight our code blocks:
 
@@ -49,7 +58,7 @@ module.exports = {
 }
 ```
 
-## Add code block
+### Add code block
 
 Add a block of code in your template, like so:
 
@@ -67,9 +76,65 @@ Add a block of code in your template, like so:
 
 <alert>Notice how we added the <code>language-javascript</code> class on the <code>&lt;code&gt;</code> tag - this is required in order to get language-specific syntax highlighting.</alert>
 
+## Markdown
+
+Alternatively, we can also use Markdown to write fenced code blocks and have PrismJS automatically syntax-highlight them.
+
+### Install PrismJS
+
+First, we must install PrismJS:
+
+```bash
+npm i prismjs
+```
+
+### Configure Markdown
+
+Next, we need to configure Maizzle to use PrismJS as a custom highlight function for the Markdown renderer.
+
+We do that in `config.js`:
+
+```js
+const Prism = require('prismjs')
+
+module.exports = {
+  markdown: {
+    markdownit: {
+      highlight: (code, lang) => {
+        lang = lang || 'markup'
+        return Prism.highlight(code, Prism.languages[lang], lang)
+      },
+    }
+  },
+  // ...
+}
+```
+
+### Fenced code block
+
+We can now write code inside a fenced code block in our Template:
+
+```html
+<extends src="src/layouts/master.html">
+  <block name="template">
+    <md>
+      ```js
+      function foo(bar) {
+        var a = 42,
+          b = 'Prism';
+        return a + bar(b);
+      }
+      ```
+    </md>
+  </block>
+</extends>
+```
+
+## Build
+
 Now run `maizzle serve` to start the development server, open `http://localhost:3000/` in a browser, and navigate to the template. 
 
-You'll see something like this:
+Whatever technique you chose, you'll see something like this:
 
 <pre class="mb-4"><code><span>function</span> <span>foo</span><span>(</span><span>bar</span><span>)</span> <span>{</span>
   <span>var</span> a <span>=</span> <span>42</span><span>,</span>
@@ -77,13 +142,13 @@ You'll see something like this:
   <span>return</span> a <span>+</span> <span>bar</span><span>(</span>b<span>)</span><span>;</span>
 <span>}</span></code></pre>
 
-If you view the source, you'll notice a lot of `<span>` tags. This means it worked, and Prism has tokenized our code block.
+If you view the source, you'll notice a lot of `<span>` tags. This means it worked, and PrismJS has tokenized our code block.
 
 But it's not very pretty, is it?
 
 ## Theming
 
-We need a Prism theme to make the code block pretty.
+We need a PrismJS theme to make the code block pretty.
 Choose one of the default themes, or see [prism-themes](https://github.com/PrismJS/prism-themes) for more.
 
 For this tutorial, we'll go with a Tailwind adaptation the [Synthwave '84 Theme](https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode).

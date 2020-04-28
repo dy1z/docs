@@ -10,7 +10,7 @@ import Alert from '~/components/Alert.vue'
 
 Maizzle supports Markdown in your email templates.
 
-[Marked.js](https://github.com/markedjs/marked) is used together with PostHTML and you can fully configure it, either from your environment config, or through Front Matter for each Template.
+[markdown-it](https://github.com/markdown-it/markdown-it) is used together with PostHTML and you can fully configure it, either from your environment config, or through Front Matter for each Template.
 
 ## Tags
 
@@ -46,52 +46,95 @@ Result:
 <p>There's also a <em>shorter</em> version of the tag above.</p>
 ```
 
+### Wrapping tag
+
+Use the `tag=""` attribute to specify a tag name to wrap your Markdown with:
+
+```html
+<md tag="section">This Markdown will be **compiled** to HTML</md>
+```
+
+Result: 
+
+```html
+<section>
+  <p>This Markdown will be <strong>compiled</strong> to HTML</p>
+</section>
+```
+
 ## Importing files
 
 Already have Markdown somewhere in a file? Simply include it:
 
 ```html
-<md>
-  <include src="path/to/file.md"></include>
+<md src="./README.md">
+  # You'll see contents of README.md above this heading
 </md>
 ```
 
-## Nesting
-
-When writing Markdown inside nested elements that are indented, make sure to unindent the Markdown block itself, so it doesn't get treated as a code block:
+Result:
 
 ```html
-<table>
-  <tr>
-    <td markdown>
-
-  | Head | row |
-  |------|-----|
-  | Data | row |
-
-    </td>
-  </tr>
-</table>
+<!-- contents of README.md here -->
+<h1>You'll see contents of README.md above this heading</h1>
 ```
-
-You can use two spaces for indentation at most; Markdown indented with 4 spaces will be treated as a code block.
 
 ## GFM
 
-[GitHub Flavored Markdown](https://github.github.com/gfm/) is supported and enabled by default in Maizzle.
+[GitHub Flavored Markdown](https://github.github.com/gfm/) is supported - the [Tables](https://help.github.com/articles/organizing-information-with-tables/) and [Strikethrough] (https://help.github.com/articles/basic-writing-and-formatting-syntax/#styling-text) extensions are enabled by default.
 
 ## Config
 
-Maizzle uses the [Marked.js defaults](https://marked.js.org/#/USING_ADVANCED.md#options), but you can override them in your config by adding a `markdown` key:
+You can configure `posthtml-markdownit` through the `markdown` config object:
 
 ```js
 // config.js
 module.exports = {
   markdown: {
-    langPrefix: 'lang-', // override the default class name for code tags
+    root: './', // A path relative to which markdown files are imported
+    encoding: 'utf8', // Encoding for imported Markdown files
+    markdownit: {}, // Options passed to markdown-it
+    plugins: [], // Plugins for markdown-it
   },
   // ...
 }
+```
+
+Checkout the options for [`posthtml-markdownit`](https://github.com/posthtml/posthtml-markdownit#options) and [`markdown-it`](https://github.com/markdown-it/markdown-it#init-with-presets-and-options).
+
+## Plugins
+
+There are over 300 plugins for `markdown-it` available on NPM! To use a plugin, `npm install` it first and then add it to `config.js`.
+
+For example, imagine we `npm install`ed [`markdown-it-emoji`](https://www.npmjs.com/package/markdown-it-emoji):
+
+```js
+// config.js
+module.exports = {
+  markdown: {
+    plugins: [
+      {
+        plugin: require('markdown-it-emoji'),
+        options: {} // Options for markdown-it-emoji
+      }
+    ],
+  },
+  // ...
+}
+```
+
+We can now use emojis in markdown:
+
+```html
+<md>
+  You can use emojis :)
+</md>
+```
+
+Result:
+
+```html
+<p>You can use emojis 😃</p>
 ```
 
 ## Front Matter
@@ -103,13 +146,14 @@ For example, let's set a `baseUrl` for Markdown links:
 ```html
 ---
 markdown:
-  baseUrl: https://github.com
+  markdownit:
+    linkify: true
 ---
 
 <extends src="src/layouts/base.html">
   <block name="template">
     <md>
-      [Contribute to Maizzle](maizzle/framework)
+      https://example.com
     </md>
   </block>
 </extends>
@@ -118,30 +162,25 @@ markdown:
 That will output:
 
 ```html
-<p>
-  <a href="https://github.com/maizzle/framework">Contribute to Maizzle</a>
-</p>
+<p><a href="https://example.com">https://example.com</a></p>
 ```
 
-<alert>When using <code>headerIds</code>, you need to add a <a href="#classes">whitelist pattern</a> to  <code>config.removeUnusedCSS</code> (otherwise they'll be removed).</alert>
-
-<alert type="danger">JavaScript is not supported in Front Matter, so you can't use functions like <code>highlight</code>, <code>renderer</code>, or <code>sanitizer</code> here.</alert>
+<alert type="danger">JavaScript is not supported in Front Matter, so you can't use functions here.</alert>
 
 ## Gotchas
 
 There are some situations where Markdown might not work as expected, or requires some additional work on your side.
 
-### Classes
+### Classes and IDs
 
-If you have fenced code blocks like this in your Markdown:
+Classes and IDs added by `markdown-it` or its plugins need to be [whitelisted with `removeUnusedCSS`](/docs/code-cleanup/#whitelist-1), otherwise they will be removed.
 
-```markdown
-    ```html
-    <div>Lorem ipsum</div>
-    ```
-```
+For example, imagine your have fenced code blocks like this in your Markdown:
 
-... then `config.markdown.langPrefix` needs to be whitelisted inside `removeUnusedCSS`:
+<pre class="language-markdown"><code class="language-markdown">```html
+<div>Lorem ipsum</div>```</code></pre>
+
+... then the value of `config.markdown.markdownit.langPrefix` needs to be whitelisted inside `removeUnusedCSS`:
 
 ```js
 // config.production.js
@@ -149,24 +188,6 @@ module.exports = {
   removeUnusedCSS: {
     enabled: true,
     whitelist: ['.lang*'],
-  },
-}
-```
-
-### IDs
-
-When using the `headerIds` option, you also need to whitelist IDs with `email-comb`:
-
-```js
-// config.js
-module.exports = {
-  markdown: {
-    headerIds: true,
-    // ...
-  },
-  removeUnusedCSS: {
-    enabled: true,
-    whitelist: ['.lang*', '#*'],
   },
 }
 ```

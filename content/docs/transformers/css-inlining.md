@@ -23,18 +23,19 @@ module.exports = {
       'text-align': 'align',
       'vertical-align': 'valign',
     },
+    mergeLonghand: false,
     applySizeAttribute: {
       width: [],
       height: [],
-    },
-    excludedProperties: null,
-    preferBgColorAttribute: {
-      enabled: true
     },
     keepOnlyAttributeSizes: {
       width: [],
       height: [],
     },
+    preferBgColorAttribute: {
+      enabled: false,
+    },
+    excludedProperties: null,
   },
   // ...
 }
@@ -82,6 +83,55 @@ styleToAttribute: {
 </table>
 ```
 
+### mergeLonghand
+
+Uses [`posthtml-postcss-merge-longhand`](https://github.com/posthtml/posthtml-postcss-merge-longhand) to rewrite longhand CSS with shorthand syntax. Only works with `margin`, `padding` and `border`, and only when all sides are specified.
+
+Something like this:
+
+```html
+<p class="mx-2 my-4">Example</p>
+```
+
+... instead of becoming this:
+
+```html
+<p style="margin-left: 2px; margin-right: 2px; margin-top: 4px; margin-bottom: 4px;">Example</p>
+```
+
+... becomes this:
+
+```html
+<p style="margin: 4px 2px;">Example</p>
+```
+
+Enable it for all tags:
+
+```js
+// config.js
+module.exports = {
+  inlineCSS: {
+    mergeLonghand: true
+    // ..
+  },
+}
+```
+
+Enable it only for a selection of tags:
+
+```js
+// config.js
+module.exports = {
+  inlineCSS: {
+    mergeLonghand: {
+      enabled: true,
+      tags: ['td', 'div']
+    },
+    // ..
+  },
+}
+```
+
 ### applySizeAttribute
 
 Specify an array of HTML tag names for which the inliner should duplicate inline CSS widths and heights as `width=""` and `height=""` attributes.
@@ -102,15 +152,31 @@ module.exports = {
 }
 ```
 
-### excludedProperties
+### keepOnlyAttributeSizes
 
-Array of CSS property names that should be excluded from the CSS inlining process. Names are considered unique, so you need to specify each one you'd like to exclude. 
+Define for which elements should Maizzle keep _only_ attribute sizes, like `width=""` and `height=""`. Elements in these arrays will have their inline CSS widths and heights removed.
 
-For example:
+It's set to empty arrays by default, so that no elements are affected:
 
 ```js
-'excludedProperties' => ['padding', 'padding-left'],
+keepOnlyAttributeSizes: {
+  width: [],
+  height: [],
+},
 ```
+
+You can add HTML elements like this:
+
+```js
+keepOnlyAttributeSizes: {
+  width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+  height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+},
+```
+
+<alert>This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</alert>
+
+<alert type="warning">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></alert>
 
 ### preferBgColorAttribute
 
@@ -143,49 +209,14 @@ module.exports = {
 
 In this case, `background-color` will be removed only from `<td>` elements.
 
-### keepOnlyAttributeSizes
+### excludedProperties
 
-Define for which elements should Maizzle keep _only_ attribute sizes, like `width=""` and `height=""`. Elements in these arrays will have their inline CSS widths and heights removed.
+Array of CSS property names that should be excluded from the CSS inlining process. Names are considered unique, so you need to specify each one you'd like to exclude. 
 
-It's set to empty arrays by default, so that no elements are affected:
-
-```js
-keepOnlyAttributeSizes: {
-  width: [],
-  height: [],
-},
-```
-
-You can add HTML elements like this:
+For example:
 
 ```js
-keepOnlyAttributeSizes: {
-  width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-  height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-},
-```
-
-<alert>This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</alert>
-
-<alert type="warning">Using only attribute sizes is known to cause <a href="https://www.courtneyfantinato.com/correcting-outlook-dpi-scaling-issues/" target="_blank" rel="noopener noreferrer">scaling issues in Outlook &nearr;</a></alert>
-
-### codeBlocks
-
-An object where each value has a start and end to specify fenced code blocks that should be ignored during parsing and inlining.
-
-```js
-// config.js
-module.exports = {
-  inlineCSS: {
-    codeBlocks: {
-      'ASP': {
-        start: '<%',
-        end: '%>'
-      }
-    }
-    // ..
-  },
-}
+'excludedProperties' => ['padding', 'padding-left'],
 ```
 
 ## Prevent inlining

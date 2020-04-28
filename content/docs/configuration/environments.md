@@ -104,7 +104,7 @@ The build command for it would be:
 maizzle build shopify
 ```
 
-## Template conditionals
+## Template conditional
 
 You can output content in your emails based on the environment you're building for.
 

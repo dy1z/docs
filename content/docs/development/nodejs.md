@@ -24,7 +24,7 @@ Then, call the `render()` method, passing it a string and an options object:
 const html = Maizzle.render(`html string`, options)
 ```
 
-<alert>Of course, your <code>html string</code> can use Front Matter and templating tags, so you can extend <a href="/docs/layouts/">Layouts</a>, include <a href="/docs/partials/">Partials</a>, or use <a href="/docs/components/">Components</a>.</alert>
+<alert>Of course, your <code>html string</code> can use Front Matter and templating tags, so you can even extend <a href="/docs/layouts/">Layouts</a> or use <a href="/docs/components/">Components</a>.</alert>
 
 ### Options
 
@@ -124,7 +124,7 @@ If you don't specify a [config object](#tailwind), Maizzle will try to compile T
 
 **If the file is not found, Tailwind will be compiled with its [default config](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js).**
 
-That config is not adapted to HTML email design: it uses the default `rem` units and `@media` query breakpoints, which are better suited for _web_ design.
+The default config is not optimized for HTML email: it uses `rem` units and other settings that are better suited for _web_ design.
 
 ### Safe Class Names
 

@@ -29,6 +29,8 @@
       path: /docs/assets/
     - title: Plaintext
       path: /docs/plaintext/
+    - title: Markdown
+      path: /docs/markdown/
     - title: Tailwind CSS
       path: /docs/tailwindcss/
     - title: Node.js
@@ -46,8 +48,6 @@
       path: /docs/tailwindcss-config/
     - title: Google Fonts
       path: /docs/google-fonts/
-    - title: Markdown
-      path: /docs/markdown/
     - title: Functions
       path: /docs/functions/
 

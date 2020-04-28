@@ -10,12 +10,12 @@ Maizzle is a framework for HTML email development.
 
 It's powered by [Tailwind CSS](https://tailwindcss.com/) and an email-tailored, custom Node.js build system that enables various transformations necessary for HTML emails.
 
-Unlike MJML or HEML, Maizzle doesn't use any custom tags that expand into email client-friendly, table-based HTML markup.
+Unlike other email frameworks, Maizzle doesn't use any custom tags that expand into email client-friendly, table-based HTML markup.
 Instead, you write your own, _real_ HTML that you style with Tailwind's utility classes.
 
-If you're looking for a framework that offers abstractions like `<row>` and `<column>`, Maizzle might not be the right choice for you.
+If you're looking for a framework that offers abstractions like `<row>` and `<column>`, then Maizzle might not be the right choice for you.
 
-But if you have your own opinions on how an email should be coded and need full control over your markup, then you might want to [give it a try](/docs/installation/) 😉
+But if you need full control over your markup, you might want to [give it a try](/docs/installation/) 😉
 
 ---
 
@@ -44,17 +44,17 @@ Maizzle also uses some [PostCSS](https://postcss.org/) plugins, enabling various
 
 Maizzle doesn't force you to write abstractions such as `<row>` or `<column>`. You code your emails the way you want to, it doesn't get in your way.
 
-Knowing how bad email clients are at rendering HTML, this might sound terrifying to some, but this way you don't need to worry about component markup being locked into the framework core. So you're free to code your emails however you like 💪
+Knowing how bad email clients are at rendering HTML, this might sound terrifying to some, but this way you don't need to worry about markup being locked into the framework core. So you're free to code your emails however you like 💪
 
 _Bring Your Own HTML_ <sup>&trade;</sup>
 
-## Responsiveness
+## Responsive
 
 Because of the lack of standards and the wildly varying CSS support in email clients, there are many techniques that email designers use to code responsive emails.
 
 Since you need to <abbr title="Bring Your Own HTML">BYOHTML</abbr>, Maizzle doesn't have an opinion on how you should code your emails: from _spongy_ to _fluid_ to _responsive_ to _hybrid_, everything is supported, so you're free to use whatever technique you like or need.
 
-Maizzle comes with Tailwind CSS configured for a _desktop-first_ responsive approach, where you define widths and other properties for desktop clients, and then use `@media` queries to override them for mobile clients:
+Maizzle comes with Tailwind CSS configured for a desktop-first _responsive_ approach, where you define widths and other properties for desktop clients, and then use `@media` queries to override them for mobile clients:
 
 ```js
 // tailwind.config.js

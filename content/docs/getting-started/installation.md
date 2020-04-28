@@ -40,7 +40,7 @@ Maizzle consists of:
 - the Framework
 - a Starter project
 
-When developing emails on your local machine with Maizzle, you simply run a CLI command inside your Starter project directory. 
+When developing emails on your local machine with Maizzle, you tipically run a CLI command inside your Starter project directory. 
 
 That command asks the Framework to build the emails inside your current project, based on config files that it finds in there.
 
@@ -48,7 +48,7 @@ With that in mind:
 
 ### Install the CLI
 
-Install the CLI tool globally, so you can use the `maizzle` commands anywhere:
+Install the CLI tool globally, so the `maizzle` executable gets added to your $PATH:
 
 ```bash
 npm install -g @maizzle/cli

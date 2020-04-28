@@ -14,7 +14,7 @@ For most of the time, you won't be writing CSS anymore 😎
 
 ## Structure
 
-CSS files are stored in `src/assets/css`, and are imported into `main.css`.
+CSS files are typically stored in `src/assets/css`, and are imported in `main.css`.
 
 ### main.css
 
@@ -81,6 +81,8 @@ module.exports = {
 <alert type="warning">Don't pass directory paths here, because PostCSS will fail.</alert>
 
 ## Shorthand CSS
+
+<alert>This section refers to CSS inside <code>&lt;style&gt;</code> tags. For <em>inline</em> CSS shorthand, see the CSS inlining <g-link to="/docs/css-inlining/#mergelonghand">docs</g-link>.</alert>
 
 Maizzle uses [postcss-merge-longhand](https://github.com/cssnano/cssnano/tree/master/packages/postcss-merge-longhand) to rewrite your CSS `padding`, `margin`, and `border` properties in shorthand-form, when possible.
 

@@ -112,7 +112,7 @@ We might imagine something like this:
 
 The content of the Component or, in our case, the HTML to be overlayed, will be output in place of the `<content>` tag.
 
-We are referencing variables from the `page` object, so we need to make sure we make them available - we can do that in Front Matter:
+The variables that we are referencing from the `page` object are currently undefined, so we let's create them in Front Matter:
 
 ```html
 ---
