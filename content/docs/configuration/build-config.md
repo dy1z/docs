@@ -346,6 +346,8 @@ For example, you might want to use a separate Tailwind config, where you:
 - disable `!important` (like in ⚡4email templates)
 - use different Tailwind plugins
 
+<alert>If the <code>config</code> key is missing, Maizzle will try loading <code>tailwind.config.js</code> from your project root. If that file is also missing, Tailwind will be compiled using its default settings (which are not email-optimized).</alert>
+
 <alert type="warning">
   <div class="font-semibold mb-2 text-gray-800">No effect in Front Matter</div>
   <div>Since Tailwind CSS is compiled only once, <em>before</em> any Templates are built, using <code>build.tailwind.config</code> in Front Matter will have no effect.</div>
