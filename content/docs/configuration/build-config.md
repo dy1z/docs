@@ -332,7 +332,7 @@ build : {
 
 ### css
 
-Paths to your [main CSS file](/docs/tailwindcss/#maincss), that will be compiled with Tailwind CSS.
+Path to your [main CSS file](/docs/tailwindcss/#maincss), that will be compiled with Tailwind CSS.
 
 ### config
 
