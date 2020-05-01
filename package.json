@@ -17,7 +17,7 @@
     "@gridsome/vue-remark": "^0.1.10",
     "@tailwindcss/ui": "^0.1.4",
     "docsearch.js": "^2.6.3",
-    "gridsome": "^0.7.13",
+    "gridsome": "^0.7.14",
     "gridsome-plugin-remark-shiki": "^0.3.1",
     "scroll-to-element": "^2.0.3"
   },
