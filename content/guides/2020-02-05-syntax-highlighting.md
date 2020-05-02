@@ -76,6 +76,8 @@ Add a block of code in your template, like so:
 
 <alert>Notice how we added the <code>language-javascript</code> class on the <code>&lt;code&gt;</code> tag - this is required in order to get language-specific syntax highlighting.</alert>
 
+<alert type="warning">You need to reset the indentation of code inside the <code>&lt;pre&gt;</code> tag yourself - see the <g-link to="https://github.com/maizzle/example-syntax-highlight/blob/master/src/templates/posthtml.html">posthtml example</g-link> in the tutorial repository.</alert>
+
 ## Markdown
 
 Alternatively, we can also use Markdown to write fenced code blocks and have PrismJS automatically syntax-highlight them.
@@ -207,25 +209,10 @@ This results in code wrapping, instead of showing a horizontal scrollbar.
 Fix it by adding the following CSS at the beginning of `prism-synthwave84.css`:
 
 ```css
-@screen all {
+@media screen {
   pre {
     @apply whitespace-pre !important;
   }
-}
-```
-
-Remember to register that `all` screen with Tailwind:
-
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    screens: {
-      all: {'raw': 'screen'},
-      sm: {'max': '600px'},
-    },
-  }
-  // ...
 }
 ```
 
