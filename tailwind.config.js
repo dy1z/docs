@@ -22,6 +22,18 @@ module.exports = {
   prefix: '',
   important: false,
   separator: ':',
+  purge: {
+    content: [
+      './src/assets/**/*.css',
+      './content/**/*.md',
+      './src/**/*.vue',
+      './src/**/*.js'
+    ],
+    options: {
+      defaultExtractor: content => content.match(/[\w-/:.%]+(?<!:)/g) || [],
+      whitelistPatterns: [/a(lgoli)?a/, /anchor/],
+    }
+  },
   theme: {
     extend: {
       screens: {
