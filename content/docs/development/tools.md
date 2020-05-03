@@ -22,3 +22,10 @@ Know of a tool not listed here? Open an issue and [let us know](https://github.c
 ## Sublime Text
 
 - [Tailwind CSS Autocomplete](https://packagecontrol.io/packages/Tailwind%20CSS%20Autocomplete)
+
+## Web Apps
+
+These are some web apps that you can use with any HTML email, not just the ones that you create with Maizzle.
+
+- [sendtest.email](https://sendtest.email) - send yourself a test HTML/AMP/plaintext email
+- [alter.email](https://alter.email) - inline CSS, remove unused CSS, etc. - powered by Maizzle
