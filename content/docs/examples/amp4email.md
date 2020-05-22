@@ -8,7 +8,7 @@ description: "Use AMP for Email in Maizzle to easily create interactive HTML ema
 
 You can easily get started with AMP for Email in Maizzle.
 
-For a syntax refresher, checkout [AMP by Example &nearr;](https://ampbyexample.com/amphtml-email/introduction/hello_world/)
+For a syntax refresher, checkout the [AMP Email docs](https://amp.dev/documentation/guides-and-tutorials/start/create_email/?format=email) or [AMP Email examples](https://amp.dev/documentation/examples/?format=email).
 
 ## Layout
 
