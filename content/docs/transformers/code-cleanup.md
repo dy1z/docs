@@ -290,6 +290,15 @@ module.exports = {
 
 That would turn `sm:w-full` into `sm__w-full`.
 
+You can prevent Maizzle from rewriting your class names with safe characters, by setting this option to `false`:
+
+```js
+// config.js
+module.exports = {
+  safeClassNames: false,
+}
+```
+
 ## Six-digit HEX
 
 Ensures that all your HEX colors are defined with six digits - some email clients do not support 3-digit HEX colors, like `#fff`. Uses [color-shorthand-hex-to-six-digit &nearr;](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit)

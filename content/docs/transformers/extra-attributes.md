@@ -34,54 +34,43 @@ module.exports = {
 
 By default, Maizzle makes your `<table>` accessible, resets its spacing, and ensures that an empty `alt=""` attribute is added to images that don't have it:
 
-```js
-// config.js
-module.exports = {
-  extraAttributes: {
-    table: {
-      cellpadding: 0,
-      cellspacing: 0,
-      role: 'presentation',
-    },
-    img: {
-      alt: ''
-    }
-  },
-  // ...
-}
-```
-
 <alert>Attributes will be added only if they're not already present on the element.</alert>
 
-## Cheerio selectors
+## Selectors
 
-Elements that you define here can also be [cheerio](https://github.com/cheeriojs/cheerio) selectors.
-
-For example, let's add a default width to any table that has a `wrapper` class:
+Tag, class, id, and attribute selectors are supported:
 
 ```js
 extraAttributes: {
-  'table.wrapper': {
-    width: 600
-  }
+  div: {
+    id: 'new'
+  },
+  '.test': {
+    editable: true
+  },
+  '#test': {
+    'data-foo': 'bar'
+  },
+  '[role]': {
+    'aria-roledescription': 'slide'
+  },
   // ...
 },
 ```
 
-## CSS classes
+## Multiple selectors
 
-You can also use this to automatically add CSS classes to elements:
+Add multiple attributes to multiple elements in one go:
 
 ```js
-extraAttributes: {
-  'tr:nth-child(even)': {
-    class: 'even'
+const attributes = {
+  'div, p': {
+    class: 'test',
   },
-  'tr:nth-child(odd)': {
-    class: 'odd'
+  'div[role=alert], section.alert': {
+    class: 'alert'
   },
-  // ...
-},
+}
 ```
 
 ### Tailwind CSS note
