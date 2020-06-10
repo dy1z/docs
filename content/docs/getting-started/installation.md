@@ -62,7 +62,7 @@ maizzle new
 
 This will bring up an interactive prompt which will guide you through the setup:
 
-![maizzle new interactive prompt](https://raw.githubusercontent.com/maizzle/cli/1.0/preview.gif)
+![maizzle new interactive prompt](https://raw.githubusercontent.com/maizzle/cli/master/preview.gif)
 
 Of course, you can also skip the prompt and scaffold a project immediately:
 
