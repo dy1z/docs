@@ -85,7 +85,7 @@ Each Template is parsed and compiled in-place, in your destination directory:
 
 8. [`afterTransformers`](/docs/events/#aftertransformers) event is triggered
 
-9. The compiled email template is saved at the [configured location](/docs/build-paths/#destination), with the [configured extension](/docs/build-paths/#extension).
+9. The compiled email template is saved at the [configured location](/docs/build-config/#path), with the [configured extension](/docs/build-config/#extension).
 
     9.1 A plaintext version is output at the same location and with the same name, if `plaintext` is set to `true`
 
