@@ -105,7 +105,7 @@ module.exports = {
   events: {
     async beforeRender(config) {
       const url = 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
-      config.preheader = await axios('url').then(result => result.data).catch(error => 'Could not fetch preheader, using default one.')
+      config.preheader = await axios(url).then(result => result.data).catch(error => 'Could not fetch preheader, using default one.')
     },    
   },
 },
