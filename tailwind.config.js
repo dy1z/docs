@@ -31,7 +31,7 @@ module.exports = {
     ],
     options: {
       defaultExtractor: content => content.match(/[\w-/:.%]+(?<!:)/g) || [],
-      whitelistPatterns: [/a(lgoli)?a/, /anchor/],
+      whitelistPatterns: [/a(lgoli)?a/, /anchor/, /carbon/],
     }
   },
   theme: {
