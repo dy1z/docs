@@ -1,22 +1,25 @@
 <template>
-  <aside class="toc hidden md:block lg:hidden xl:block md:w-1/3 xl:w-1/6 lg:pt-24" v-show="title && page.headings.length > 2">
+  <aside class="toc md:w-1/3 xl:max-w-xxs lg:pt-24" v-show="title && page.headings.length > 2">
     <div class="pl-6 fixed sticky top-24 w-full">
-      <div class="overflow-y-auto h-quickies py-8 md:mx-12 xl:mx-0">
-        <h4 class="font-normal text-cool-gray-700 mb-4 mt-2 p-0">{{ title || 'On this page:'}}</h4>
-        <ul class="text-sm">
-          <template v-for="item in page.headings">
-            <li v-if="item.depth > 1 && item.depth < 6" :key="item.anchor" class="mb-2 truncate">
-              <a
-                :href="`${item.anchor}`"
-                @click.prevent="scrollTo(item.anchor)"
-                :class="{'ml-4': item.depth > 2, 'active': item.anchor == activeToc}"
-                class="bg-cool-gray-500 text-gradient hover:bg-gradient-l-ocean-dark scroll-to"
-              >
-                {{ item.value }}
-              </a>
-            </li>
-          </template>
-        </ul>
+      <div class="overflow-y-auto md:h-quickies py-8 md:mx-12 xl:mx-0">
+        <div class="hidden md:block">
+          <h4 class="font-normal text-cool-gray-700 mb-4 mt-2 p-0">{{ title || 'On this page:'}}</h4>
+          <ul class="mb-8 text-sm">
+            <template v-for="item in page.headings">
+              <li v-if="item.depth > 1 && item.depth < 6" :key="item.anchor" class="mb-2 truncate">
+                <a
+                  :href="`${item.anchor}`"
+                  @click.prevent="scrollTo(item.anchor)"
+                  :class="{'ml-4': item.depth > 2, 'active': item.anchor == activeToc}"
+                  class="bg-cool-gray-500 text-gradient hover:bg-gradient-l-ocean-dark scroll-to"
+                >
+                  {{ item.value }}
+                </a>
+              </li>
+            </template>
+          </ul>
+        </div>
+        <component is="script" src="//cdn.carbonads.com/carbon.js?serve=CE7IK2QM&placement=maizzlecom" async id="_carbonads_js"></component>
       </div>
     </div>
   </aside>

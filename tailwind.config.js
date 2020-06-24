@@ -142,6 +142,9 @@ module.exports = {
       margin: (theme, { negative }) => ({
         '1/6': '16.66667%',
       }),
+      maxWidth: {
+        xxs: '16rem',
+      },
       maxHeight: {
         sm: '30rem',
       },

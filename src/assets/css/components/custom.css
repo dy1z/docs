@@ -40,3 +40,7 @@
 .tap-highlight-transparent {
   -webkit-tap-highlight-color: transparent;
 }
+
+.carbon-wrap, .carbon-poweredby {
+  @apply text-cool-gray-500 text-base;
+}

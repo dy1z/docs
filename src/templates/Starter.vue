@@ -21,6 +21,7 @@
           </div>
           <VueRemarkContent />
         </article>
+        <carbon-sidebar />
       </section>
     </main>
   </Layout>
@@ -32,7 +33,7 @@ import config from '~/.temp/config.js'
 import Layout from '~/layouts/NoTransition'
 import scrollToElement from 'scroll-to-element'
 import DocsHeader from '@/components/DocsHeader'
-import TableOfContents from '@/components/TableOfContents'
+import CarbonSidebar from '@/components/CarbonSidebar'
 
 import links from '@/data/docs-links.yml'
 
@@ -58,7 +59,7 @@ export default {
   components: {
     Layout,
     DocsHeader,
-    TableOfContents,
+    CarbonSidebar,
   },
   metaInfo () {
     return {

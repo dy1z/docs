@@ -27,6 +27,7 @@
             </li>
           </ul>
         </div>
+        <carbon-sidebar />
       </section>
     </main>
   </Layout>
@@ -35,14 +36,16 @@
 <script>
 import moment from "moment"
 import config from '~/.temp/config.js'
+import links from '@/data/docs-links.yml'
 import Layout from '~/layouts/NoTransition'
 import DocsHeader from '@/components/DocsHeader'
-import links from '@/data/docs-links.yml'
+import CarbonSidebar from '@/components/CarbonSidebar'
 
 export default {
   components: {
     Layout,
     DocsHeader,
+    CarbonSidebar,
   },
   metaInfo () {
     return {
