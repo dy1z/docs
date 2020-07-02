@@ -144,6 +144,8 @@ When running the `maizzle serve` command, Maizzle uses [Browsersync](https://bro
 
 You can then make changes to your emails, save them, and watch the browser automatically refresh the page for you.
 
+You can use any of the [Browsersync options](https://browsersync.io/docs/options) in your config, and Maizzle comes with a few defaults that you can override:
+
 ### directory
 
 Type: `boolean`
