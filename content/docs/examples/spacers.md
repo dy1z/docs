@@ -28,7 +28,7 @@ How it works:
 We can define a responsive height:
 
 ```html
-<div class="leading-64 sm:h-32">&zwnj;</div>
+<div class="leading-64 sm:leading-32">&zwnj;</div>
 ```
 
 Note that this will only work where `@media` queries are supported.
@@ -41,7 +41,7 @@ Use this one directly inside a `<table>`:
 
 ```html
 <tr>
-  <td class="h-64"></td>
+  <td class="leading-64">&zwnj;</td>
 </tr>
 ```
 
@@ -52,7 +52,7 @@ The Row spacer, but as a full `<table>`.
 ```html
 <table class="w-full">
   <tr>
-    <td class="h-64"></td>
+    <td class="leading-64">&zwnj;</td>
   </tr>
 </table>
 ```
