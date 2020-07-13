@@ -7,28 +7,29 @@
       <div class="relative max-w-7xl mx-auto">
         <div class="text-center">
           <h2 class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-            Starters
+            Premium Templates
           </h2>
           <p class="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
-            Get up and running quickly with ready-made Maizzle projects
+            Kickstart your project with premium email templates
             <br>
-            Simply install one and start building your emails
+            Built with Tailwind CSS in Maizzle 👌
           </p>
         </div>
         <ul class="mt-24 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
           <li
-            v-for="edge in $static.starters.edges" :key="edge.node.id"
+            v-for="edge in $static.templates.edges" :key="edge.node.id"
             class="relative group flex flex-col rounded-lg shadow-lg mb-4 lg:mb-0"
           >
             <img :src="edge.node.image" :alt="edge.node.title" class="rounded-lg">
-            <g-link :to="edge.node.path" class="absolute flex items-center justify-center w-full h-full rounded-lg p-8 xl:bg-gradient-l-ocean-dark opacity-0 xl:group-hover:opacity-90 transition-opacity duration-150">
-              <h3 class="text-3xl text-white font-bold">{{ edge.node.title }}</h3>
+            <g-link :to="edge.node.path" class="absolute flex flex-col items-center justify-center w-full h-full rounded-lg p-8 xl:bg-gradient-l-ocean-dark opacity-0 xl:group-hover:opacity-90 transition-opacity duration-150">
+              <h3 class="text-3xl leading-9 font-bold text-white">{{ edge.node.name }}</h3>
+              <span class="block text-sm italic font-thin text-white">by {{ edge.node.author }}</span>
             </g-link>
           </li>
         </ul>
         <div class="mt-10 max-w-md mx-auto flex justify-center md:mt-32">
-          <g-link to="/starters/" class="group shadow lg:flex justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-            View all Starters <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">&rarr;</span>
+          <g-link to="/templates/" class="group shadow lg:flex justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+            Browse Templates <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">&rarr;</span>
           </g-link>
         </div>
       </div>
@@ -40,7 +41,7 @@
 import moment from 'moment'
 
 export default {
-  name: 'Starters',
+  name: 'Templates',
   methods: {
     formatDate(from, to) {
       return moment(from).format(to)
@@ -50,13 +51,14 @@ export default {
 </script>
 
 <static-query>
-query Starters ($page: Int) {
-  starters: allStarter (page: $page, perPage: 3) {
+query Templates ($page: Int) {
+  templates: allTemplate (page: $page, perPage: 3, order: DESC) {
     edges {
       node {
         id
         image
-        title
+        name
+        author
         path
       }
     }

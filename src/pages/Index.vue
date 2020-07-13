@@ -4,7 +4,7 @@
       <hero />
       <highlights />
       <features />
-      <starters />
+      <templates />
       <tutorials />
       <testimonials />
       <bottom-cta />
@@ -19,7 +19,7 @@ import config from '~/.temp/config.js'
 import Hero from '~/components/home/Hero.vue'
 import Highlights from '~/components/home/Highlights.vue'
 import Features from '~/components/home/Features.vue'
-import Starters from '~/components/home/Starters.vue'
+import Templates from '~/components/home/Templates.vue'
 import Tutorials from '~/components/home/Tutorials.vue'
 import Testimonials from '~/components/home/Testimonials.vue'
 import BottomCta from '~/components/home/BottomCta.vue'
@@ -30,7 +30,7 @@ export default {
     Hero,
     Highlights,
     Features,
-    Starters,
+    Templates,
     Tutorials,
     Testimonials,
     BottomCta,
@@ -75,4 +75,3 @@ query {
   }
 }
 </static-query>
-

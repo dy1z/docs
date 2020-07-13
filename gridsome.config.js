@@ -54,6 +54,18 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/vue-remark',
+      options: {
+        baseDir: './content/templates',
+        route: '/templates/:slug',
+        typeName: 'Template',
+        template: './src/templates/Template.vue',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ],
+      }
+    },
+    {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: 'UA-123145832-1'

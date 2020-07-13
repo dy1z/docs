@@ -96,6 +96,10 @@
       @apply  font-semibold text-left;
     }
   }
+
+  .cta-primary {
+    @apply bg-gradient-l-ocean-light text-white;
+  }
 }
 
 .label {

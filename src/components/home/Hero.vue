@@ -24,7 +24,7 @@
 
       <div class="relative pt-6 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <nav class="relative flex items-center justify-between sm:h-20 md:justify-centers">
+          <nav class="relative flex items-center justify-between sm:h-20">
             <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
               <div class="flex items-center justify-center w-full md:w-auto">
                 <button @click="open = true" type="button" class="tap-highlight-transparent focus:outline-none">
@@ -33,10 +33,10 @@
               </div>
             </div>
             <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-              <g-link to="/docs/introduction/" class="font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Documentation</g-link>
+              <g-link to="/templates/" class="font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Templates</g-link>
+              <g-link to="/docs/introduction/" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Documentation</g-link>
               <g-link to="/guides/" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Guides</g-link>
               <g-link to="/starters/" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Starters</g-link>
-              <g-link to="https://github.com/maizzle" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Contribute</g-link>
             </div>
           </nav>
         </div>
@@ -90,7 +90,7 @@
               Maizzle is a framework that helps you quickly build HTML emails with <br class="hidden xl:inline-block" />Tailwind CSS and advanced, email-specific post-processing.
             </p>
             <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-              <g-link to="/docs/introduction/" class="group rounded-md shadow lg:flex justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+              <g-link to="/docs/introduction/" class="group shadow lg:flex justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                 Get started <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">&rarr;</span>
               </g-link>
             </div>
