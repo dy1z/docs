@@ -10,6 +10,8 @@ import Alert from '~/components/Alert.vue'
 
 Maizzle can automatically create plaintext versions of your HTML emails.
 
+## Front Matter
+
 Simply enable it in your config or the Template's Front Matter:
 
 ```html
@@ -40,7 +42,7 @@ plaintext: true
 <extends src="src/layouts/base.html">
   <block name="template">
     This text shows in both the HTML and the plaintext versions.
-    <plaintext>This will be available only in the plaintext version</plaintext>
+    <plaintext>This will be output only in the plaintext version</plaintext>
   </block>
 </extends>
 ```

@@ -10,5 +10,6 @@
 @import 'components/custom';
 @import 'components/markdown';
 @import 'components/prism-custom';
+@import 'components/carbon-ads';
 
 @import 'tailwindcss/utilities';
