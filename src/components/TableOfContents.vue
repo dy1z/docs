@@ -1,5 +1,5 @@
 <template>
-  <aside class="toc md:w-1/3 xl:max-w-xxs lg:pt-24" v-show="title && page.headings.length > 2">
+  <aside class="toc md:w-1/3 xl:max-w-xs lg:pt-24" v-show="title && page.headings.length > 2">
     <div class="pl-6 fixed sticky top-24 w-full">
       <div class="overflow-y-auto md:h-quickies py-8 md:mx-12 xl:mx-0">
         <div class="hidden md:block">
