@@ -3,10 +3,10 @@
     <main>
       <docs-header :links="links" />
       <section class="flex xl:w-auto lg:ml-80">
-        <article class="markdown px-4 lg:px-16 xl:px-20 pt-24 lg:pt-32 py-8 w-full md:w-full lg:w-full lg:max-w-3xl">
+        <article class="markdown w-full lg:max-w-3xl px-4 lg:px-16 xl:px-20 py-24 lg:pt-32">
           <header class="flex flex-col">
-            <h1 v-html="$page.template.name" class="tracking-tight sm:-mb-6 sm:w-8/12" />
-            <p class="italic">by {{ $page.template.author }}</p>
+            <h1 v-html="$page.template.name" class="tracking-tight -mb-6 sm:w-8/12" />
+            <p class="italic text-gray-500">by {{ $page.template.author }}</p>
           </header>
           <p>{{ $page.template.description }}</p>
           <VueRemarkContent />

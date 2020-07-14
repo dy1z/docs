@@ -3,19 +3,19 @@ title: "E-commerce email templates from Craftingemails"
 name: "eCommerce"
 author: "Craftingemails"
 slug: "ecommerce-email-templates-ce"
-description: "eCommerce email templates for Figma, Sketch, HTML and Shopify"
-image: https://res.cloudinary.com/maizzle/image/upload/v1594639145/templates/ce-ecommerce-email-templates.jpg
+description: "72 eCommerce HTML email templates"
+image: https://res.cloudinary.com/maizzle/image/upload/v1594725964/templates/ce-ecommerce-email-templates.jpg
 date: 2020-07-14
 ---
 
 <div class="mb-8 flex flex-col justify-center items-center group">
   <g-link to="https://craftingemails.com/ecommerce-email-templates">
     <img 
-      src="https://res.cloudinary.com/dxa66e5ic/image/upload/c_scale,f_auto,q_auto:best,w_1120/v1569586302/img-ecommerce-templates-v2_4x.png" 
+      src="https://res.cloudinary.com/maizzle/image/upload/v1594725964/templates/ce-ecommerce-email-templates.jpg" 
       alt="e-commerce, transactional and Shopify notification html email templates"
     >
   </g-link>
-  <g-link to="https://craftingemails.com/ecommerce-email-templates#pricing" class="cta-primary text-gradient-none group shadow justify-center px-8 py-3 -mt-6 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">See pricing <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">→</span></g-link>
+  <g-link to="https://craftingemails.com/ecommerce-email-templates#pricing" class="cta-primary text-gradient-none group shadow justify-center px-8 py-3 -mt-6 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">Choose a package <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">→</span></g-link>
 </div>
 
 We've partnered with Craftingemails to bring you the first premium email template kit built with the Maizzle framework. 
@@ -24,14 +24,13 @@ From purchase receipts and promotional emails, to software releases and coupon e
 
 Checkout the [preview](https://craftingemails.com/full-preview#transactional-emails) or [choose a package](https://craftingemails.com/ecommerce-email-templates#pricing).
 
-There are 3 packages you can choose from:
+There are 3 different packages you can choose from:
 
-- Transactional
-- Shopify
-- Full
+- **Transactional** ($19)
+- **Shopify** ($29)
+- **Full** ($39)
 
-## What's included?
-
+## Full Package
 
 The [Full Package](https://craftingemails.com/ecommerce-email-templates#pricing) includes a total of **72 HTML email templates**, in 3 categories:
 
@@ -39,9 +38,9 @@ The [Full Package](https://craftingemails.com/ecommerce-email-templates#pricing)
 - eCommerce
 - Shopify
 
-### Transactional HTML emails (12)
+### Transactional HTML Emails (12)
 
-The [Transactional Package](https://craftingemails.com/ecommerce-email-templates#pricing), which you can also purchase separately, includes 12 email templates built with startups in mind:
+12 HTML email templates for your app or SaaS business:
 
 1. Confirm Email
 2. Password Reset
@@ -56,26 +55,26 @@ The [Transactional Package](https://craftingemails.com/ecommerce-email-templates
 11. Trial Ending
 12. Account Welcome
 
-### Shopify notification emails (30)
+### Shopify Notification Emails (30)
 
-The [Shopify package](https://craftingemails.com/ecommerce-email-templates#pricing) includes all 28 Shopify notification emails.
+The Full Package includes all 28 Shopify notification emails.
 
-*Full Package Shopify Bonus* - Templates for [Digital Downloads](https://help.shopify.com/en/manual/apps/apps-by-shopify/digital-downloads):
+**Bonus** - Templates for [Digital Downloads](https://help.shopify.com/en/manual/apps/apps-by-shopify/digital-downloads):
 
 - Downloads Ready
 - Attachment Updated
 
-### eCommerce HTML emails (30)
+### eCommerce HTML Emails (30)
 
 The full package _also_ includes all **Shopify notification emails in HTML-only**.
 
 All Liquid language tags have been removed, so you can use them with your own e-commerce platform, outside of Shopify.
 
-### Design system
+### + Design system
 
 You also get the complete Sketch/Figma design system.
 
-### Maizzle project
+### + Maizzle project
 
 The package is provided as a Maizzle project, which includes:
 
@@ -100,6 +99,8 @@ You get free updates forever. Buy once, get updates for the lifetime of the prod
 You can use these templates in an **unlimited number of projects**.
 
 You cannot, however, sell templates that you create based on these templates, or create derivative component libraries, template builders, or any other type of product where the primary purpose is clearly to repackage and redistribute these templates.
+
+For more information, please read the [license](https://craftingemails.com/license).
 
 ---
 

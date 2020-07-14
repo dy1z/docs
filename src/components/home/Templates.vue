@@ -27,7 +27,7 @@
             </g-link>
           </li>
         </ul>
-        <div class="mt-10 max-w-md mx-auto flex justify-center md:mt-32">
+        <div class="flex justify-center max-w-md mx-auto mt-10 md:mt-24">
           <g-link to="/templates/" class="group shadow lg:flex justify-center px-8 py-3 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
             Browse Templates <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">&rarr;</span>
           </g-link>
@@ -52,7 +52,7 @@ export default {
 
 <static-query>
 query Templates ($page: Int) {
-  templates: allTemplate (page: $page, perPage: 3, order: DESC) {
+  templates: allTemplate (page: $page, perPage: 3, order: ASC) {
     edges {
       node {
         id

@@ -22,7 +22,7 @@
                   <span class="text-sm text-gray-500">by {{ edge.node.author }}</span>
                 </header>
                 <p class="leading-code text-gray-700 mb-4">{{ excerpt(edge.node) }}</p>
-                <g-link :to="edge.node.path" class="text-ocean no-underline hover:text-ocean-darker">View Template &rarr;</g-link>
+                <g-link :to="edge.node.path" class="text-ocean no-underline hover:text-ocean-darker">View Product &rarr;</g-link>
               </div>
             </li>
           </ul>
