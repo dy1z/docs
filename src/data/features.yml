@@ -68,7 +68,7 @@
 
 - title: Image CDN-friendly
   path: /docs/base-image-url/
-  description: Already using a <abbr title="Contend Delivery Network">CDN</abbr> for images? Define a base image URL and Maizzle will prepend it to all image sources in your HTML email.
+  description: Already using a <abbr title="Content Delivery Network">CDN</abbr> for images? Define a base image URL and Maizzle will prepend it to all image sources in your HTML email.
 
 - title: URL Parameters
   path: /docs/url-parameters/
