@@ -1,28 +1,24 @@
 ---
 title: "Onboarding email templates from Craftingemails"
-name: "Onboarding"
+name: "Slick"
 author: "Craftingemails"
 slug: "onboarding-email-templates-ce"
-description: "27 onboarding HTML email templates for your business"
+description: "27 SaaS welcome email templates HTML email templates for your business"
 image: https://res.cloudinary.com/maizzle/image/upload/v1594725964/templates/ce-onboarding-email-templates.jpg
 date: 2020-08-05
 ---
 
 <div class="mb-8 flex flex-col justify-center items-center group">
-  <g-link to="https://craftingemails.com/email-templates">
+  <g-link to="https://craftingemails.com/slick-welcome-email-templates">
     <img 
       src="https://res.cloudinary.com/maizzle/image/upload/v1594725964/templates/ce-onboarding-email-templates.jpg" 
       alt="27 onboarding email templates for your business"
     >
   </g-link>
-</div>
-
-<div class="mb-8 flex flex-col justify-center items-center group">
+  <g-link to="https://craftingemails.com/slick-welcome-email-templates" class="cta-primary text-gradient-none group shadow justify-center px-8 py-3 -mt-6 text-base leading-6 font-medium rounded-md text-white hover:text-blue-50 bg-gradient-l-ocean-light focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">Buy now <span class="text-xl ml-1 group-hover:ml-3 transition-all duration-150">→</span></g-link>
 </div>
 
 Responsive email templates for onboarding and welcome series.
-
-**Coming soon!**
 
 ## What's included ?
 

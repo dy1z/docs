@@ -5,7 +5,7 @@
       <section class="flex xl:w-auto lg:ml-80">
         <article class="markdown w-full lg:max-w-3xl px-4 lg:px-16 xl:px-20 py-24 lg:pt-32">
           <header class="flex flex-col">
-            <h1 v-html="$page.template.name" class="tracking-tight -mb-6 sm:w-8/12" />
+            <h1 v-html="$page.template.name" class="tracking-tight -mb-6" />
             <p class="italic text-gray-500">by {{ $page.template.author }}</p>
           </header>
           <p>{{ $page.template.description }}</p>
