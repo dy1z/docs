@@ -29,3 +29,7 @@ These are some web apps that you can use with any HTML email, not just the ones 
 
 - [sendtest.email](https://sendtest.email) - send yourself a test HTML/AMP/plaintext email
 - [alter.email](https://alter.email) - inline CSS, remove unused CSS, etc. - powered by Maizzle
+
+## Plugins
+
+- [tailwindcss-mso](https://github.com/maizzle/tailwindcss-mso) - a Tailwind CSS plugin that generates MSO utilities
