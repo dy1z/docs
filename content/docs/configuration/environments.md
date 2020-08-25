@@ -8,7 +8,7 @@ import Alert from '~/components/Alert.vue'
 
 # Environments
 
-When developing HTML emails, you might want to use different data and automations in your local and production environments. 
+When developing HTML emails, you might want to use different data and automations in your local and production environments.
 
 For example, you don't need CSS inlining or purging when developing on your machine, but you'll want _both_ enabled for the final, production-ready emails.
 
@@ -53,7 +53,7 @@ maizzle build production
 
 By default, running `maizzle build production` will output production-ready emails in a `build_production` folder at the root of the project.
 
-This output path is, of course, [configurable](/docs/build-paths/#path).
+This output path is, of course, [configurable](/docs/build-config/#path).
 
 ## Starter environments
 
@@ -68,7 +68,7 @@ The base [`config.js`](https://github.com/maizzle/maizzle/blob/master/config.js)
 
 CSS purging, inlining, and most other Transformers are disabled, so you can quickly prototype your emails with all of Tailwind's classes at your disposal.
 
-Build command: 
+Build command:
 
 ```bash
 maizzle build
@@ -82,11 +82,11 @@ This has the fastest build time, since there is almost no post-processing going 
 
 ### Production
 
-[`config.production.js`](https://github.com/maizzle/maizzle/blob/master/config.production.js) is configured to output production-ready email code, formatted with humans in mind. 
+[`config.production.js`](https://github.com/maizzle/maizzle/blob/master/config.production.js) is configured to output production-ready email code, formatted with humans in mind.
 
 CSS purging and inlining are enabled, but code is prettified so that you can share nicely-formatted, more readable code with other people.
 
-Build command: 
+Build command:
 
 ```bash
 maizzle build production
@@ -112,6 +112,6 @@ The environment name is globally available under the `page.env` variable:
 
 ```html
 <if condition="page.env === 'production'">
-  This will show only when running `maizzle build production` 
+  This will show only when running `maizzle build production`
 </if>
 ```
