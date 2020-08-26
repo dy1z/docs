@@ -8,7 +8,7 @@ import Alert from '~/components/Alert.vue'
 
 # Events
 
-When compiling your email templates, Maizzle goes through a series of steps, like generating a Template config, rendering, or applying Transformers. 
+When compiling your email templates, Maizzle goes through a series of steps, like generating a Template config, rendering, or applying Transformers.
 
 You can hook into the build process and manipulate it, by using functions that run before or after some of these steps.
 
@@ -92,7 +92,7 @@ module.exports = {
 
 ### beforeRender
 
-Runs after the Template's config has been computed, but just before it is compiled. 
+Runs after the Template's config has been computed, but just before it is compiled.
 It exposes the Template's config, so you can further manipulate it.
 
 For (a silly) example, let's fetch data from an API and set it as the preheader text:
@@ -106,7 +106,7 @@ module.exports = {
     async beforeRender(config) {
       const url = 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
       config.preheader = await axios(url).then(result => result.data).catch(error => 'Could not fetch preheader, using default one.')
-    },    
+    },
   },
 },
 ```
@@ -137,10 +137,10 @@ module.exports = {
   events: {
     afterRender(html, config) {
       config.inlineCSS.enabled = false
-      
+
       // must always return the `html`
       return html
-    },    
+    },
   },
 },
 ```
@@ -168,7 +168,7 @@ module.exports = {
       if (!config.minify.enabled) {
         return Minifier.minify(html)
       }
-  
+
       return html
     },
   },
@@ -179,8 +179,8 @@ module.exports = {
 
 ### afterBuild
 
-Runs after all Templates have been compiled and output to disk. 
-Returns an array with the paths to all the files inside the [`build.destination.path`](/docs/build-paths/#path) directory.
+Runs after all Templates have been compiled and output to disk.
+Returns an array with the paths to all the files inside the [`build.destination.path`](/docs/build-config/#path) directory.
 
 ```js
 // config.js

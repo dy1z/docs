@@ -28,7 +28,7 @@ plaintext: true
 
 A `.txt` file will be output at the same location with the compiled Template.
 
-<alert>Using the <a href="/docs/build-paths/#permalink"><code>permalink</code></a> Front Matter key in your Template? No worries, your plaintext version will be output at the correct location.</alert>
+<alert>Using the <a href="/docs/build-config/#permalink"><code>permalink</code></a> Front Matter key in your Template? No worries, your plaintext version will be output at the correct location.</alert>
 
 ## Show content only in plaintext
 
