@@ -13,11 +13,22 @@ You can pass data and content to them, and they help you organize blocks of mark
 
 ## Syntax
 
-To import a Component, you need to use the `<component>` tag:
+To create a Component, simply create an HTML file with a `<content>` tag:
+
+```html
+<!-- src/components/example.html -->
+<content></content>
+```
+
+The `<content>` tag is where content passed to the Component will be output.
+
+<alert type="info">You can safely omit the <code>&lt;content&gt;</code> tag if you're using Components as includes, and don't actually need to pass any content to them.</alert>
+
+To use a Component in a Template, you can use the `<component>` tag:
 
 ```html
 <component src="src/components/example.html">
-  Content to pass inside component...
+  This text will replace the `content` tag in the Component.
 </component>
 ```
 
@@ -122,7 +133,7 @@ image:
   height: 400
 ---
 
-<extends src="src/layouts/base.html">
+<extends src="src/layouts/master.html">
   <block name="template">
     <component src="src/components/my-component.html">
       <div>
@@ -148,14 +159,43 @@ Result:
 
 ## Variables
 
-Inside a Component, you can access all items under the `page` object (like above).
-
-However, you can instead manually provide data to the Component, in the form of a JSON string that you pass inside a `locals` attribute:
+When creating a Component, you have access to the `page` object:
 
 ```html
-<extends src="src/layouts/base.html">
+<!-- src/components/example.html -->
+<div>
+  The current build environment is: {{ page.env }}
+</div>
+```
+
+However, if you need to pass variables as content to a Component, like this:
+
+```html
+<component src="src/components/vmlbg.html">
+  Current build environment is: {{ page.env }}
+</component>
+```
+
+... you also need to enable the `initial` option in the Component config:
+
+```js
+module.exports = {
+  build: {
+    components: {
+      initial: true,
+    }
+  }
+}
+```
+
+When set to `true`, this will apply plugins to the root file as well, and expressions will be evaluated when passed as content to a Component. This is disabled by default, as it re-applies PostHTML plugins to the file, which can sometimes cause issues.
+
+You can also manually provide data to the Component instead, in the form of a JSON string that you pass inside a `locals` attribute:
+
+```html
+<extends src="src/layouts/master.html">
   <block name="template">
-    <component src="/components/vmlbg.html" locals='{"foo": "bar"}'>
+    <component src="src/components/vmlbg.html" locals='{"foo": "bar"}'>
       <div>
         Foo is {{ foo }}
       </div>
