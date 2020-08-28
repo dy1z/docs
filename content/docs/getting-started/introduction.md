@@ -38,7 +38,7 @@ And depending on your settings, Maizzle can automatically inline CSS.
 
 A custom, email-tailored `tailwind.config.js` is provided - this adapts or disables some of the default Tailwind CSS settings, for optimal email client support.
 
-Maizzle also uses some [PostCSS](https://postcss.org/) plugins, enabling various optimizations (like duplicate `@media` query merging), or conveniences such as writing nested CSS, like in Sass 🤙
+Maizzle also uses some [PostCSS](https://postcss.org/) plugins, enabling various optimizations (like unused CSS purging), or conveniences such as writing nested CSS, like in Sass 🤙
 
 ## BYOHTML
 
