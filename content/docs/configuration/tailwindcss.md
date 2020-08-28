@@ -22,16 +22,18 @@ Emails still need to use inline CSS, most notably for these reasons:
   So it'll only use `a` from `class="a b"`
 - Some email clients don't support embedded CSS (i.e. in `<style>`)
 
-Because of this, the `important` option is set to `true`, in order for the responsive utilities to actually override inlined CSS:
+Because of this, the `important` option is set to `true` by default, so that responsive utilities can actually override inlined CSS.
+
+<alert>This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></alert>
+
+You may disable this by adding the `important` key in your Tailwind config:
 
 ```js
 // tailwind.config.js
 module.exports = {
-  important: true,
+  important: false,
 }
 ```
-
-<alert>This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></alert>
 
 ## Separator
 
@@ -65,7 +67,7 @@ Of course, you're free to adjust this as you like:
 
 ```js
 screens: {
-  sm: {'max': '600px'},
+  sm: {max: '600px'},
 },
 ```
 

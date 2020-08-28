@@ -60,7 +60,7 @@ Maizzle comes with Tailwind CSS configured for a desktop-first _responsive_ appr
 // tailwind.config.js
 module.exports = {
   screens: {
-    sm: {'max': '600px'},
+    sm: {max: '600px'},
   },
 }
 ```

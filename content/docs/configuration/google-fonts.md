@@ -85,8 +85,8 @@ First, we register a `screen` breakpoint:
 module.exports = {
   theme: {
     screens: {
-      screen: {'raw': 'screen'},
-      sm: {'max': '600px'},
+      screen: {raw: 'screen'},
+      sm: {max: '600px'},
     },
   }
 }
@@ -102,4 +102,3 @@ We can now use it in the HTML:
 ```
 
 <alert>For this to work, Maizzle sets <code>fontFamily: ['responsive']</code>, in your <code>tailwind.config.js</code>.</alert>
-
