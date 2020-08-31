@@ -93,7 +93,7 @@ module.exports = {
 ### beforeRender
 
 Runs after the Template's config has been computed, but just before it is compiled.
-It exposes the Template's config, so you can further manipulate it.
+It exposes the Template's config, as well as the HTML.
 
 For (a silly) example, let's fetch data from an API and set it as the preheader text:
 
@@ -103,9 +103,12 @@ const axios = require('axios')
 
 module.exports = {
   events: {
-    async beforeRender(config) {
+    async beforeRender(html, config) {
       const url = 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
       config.preheader = await axios(url).then(result => result.data).catch(error => 'Could not fetch preheader, using default one.')
+
+      // must always return the `html`
+      return html
     },
   },
 },
