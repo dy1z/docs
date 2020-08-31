@@ -274,13 +274,12 @@
                 <pre class="leading-code text-base"><code><span class="text-cool-gray-300 italic">// config.production.js</span>
 <span class="text-red-400">module</span><span class="text-blue-700">.</span><span class="text-gradient bg-gradient-l-ocean-dark">exports</span> <span class="text-blue-500">=</span> <span class="text-cool-gray-400">{</span>
   <span class="text-gradient bg-gradient-l-ocean-dark">build</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">assets</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">source</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/images'</span><span class="text-cool-gray-500">,</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'images'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">path</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'build_production'</span><span class="text-cool-gray-500">,</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">extension</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'html'</span><span class="text-cool-gray-500">,</span>
+    <span class="text-gradient bg-gradient-l-ocean-dark">templates</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">source</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'src/templates'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">path</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'build_production'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">extension</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'html'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
     <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
     <span class="text-gradient bg-gradient-l-ocean-dark">tailwind</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
       <span class="text-gradient bg-gradient-l-ocean-dark">css</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/css/main.css'</span><span class="text-cool-gray-500">,</span>
