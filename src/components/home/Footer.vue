@@ -44,14 +44,6 @@
             </svg>
           </g-link>
         </div>
-        <div class="flex justify-center mt-8">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="RF4DDZAUSH6NE" />
-            <input type="image" class="focus:outline-none" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-            <img alt="" border="0" src="https://www.paypal.com/en_RO/i/scr/pixel.gif" width="1" height="1">
-          </form>
-        </div>
         <div class="mt-8">
           <p class="text-center text-sm leading-6 text-gray-400">
             &copy; {{ new Date().getFullYear() }} Maizzle - Made with <span class="text-red-500">❤</span> for email,
