@@ -16,14 +16,6 @@ Let's first take a look at all the options:
 // config.js
 module.exports = {
   build: {
-    assets: {
-      source: './src/assets/images',
-      destination: 'images',
-    },
-    destination: {
-      path: 'build_local',
-      extension: 'html',
-    },
     browsersync: {
       directory: true,
       notify: false,
@@ -40,8 +32,16 @@ module.exports = {
       root: './'
     },
     templates: {
-      root: 'src/templates',
-      extensions: 'html',
+      filetypes: 'html',
+      source: 'src/templates',
+      destination: {
+        path: 'build_local',
+        extension: 'html',
+      },
+      assets: {
+        source: './src/assets/images',
+        destination: 'images',
+      },
     },
     tailwind: {
       css: './src/assets/css/main.css',
@@ -58,85 +58,6 @@ module.exports = {
   // ...
 }
 ```
-
-## assets
-
-Source and destination directories for your asset files.
-
-At build time, `assets.destination` will be created relative to `build.destination`, and everything inside `assets.source` will be copied into it:
-
-```js
-assets: {
-  source: 'src/assets/images',
-  destination: 'images',
-},
-```
-
-You can use it to store _any_ global email assets, not just images.
-
-## destination
-
-This allows you to customize the output path and file extension.
-
-### path
-
-Directory path where Maizzle should output the compiled emails.
-
-```js
-destination: {
-  path: 'build_local',
-},
-```
-
-If you omit this key, a Jigsaw-inspired `build_${env}` directory name will be used.
-
-### extension
-
-Define the file extension (without the dot) to be used for all templates that are output. Useful if you need to pass the file to other frameworks or templating languages.
-
-For example, let's output [Laravel Blade](https://laravel.com/docs/5.8/blade) files:
-
-```js
-destination: {
-  extension: 'blade.php',
-},
-```
-
-### permalink
-
-You can override `destination.path` for each Template, with the help of the `permalink` <abbr title="Front Matter">FM</abbr> key:
-
-```html
----
-permalink: path/to/file.html
----
-
-<extends src="src/layouts/base.html">
-  <block name="template">
-    <!-- ... -->
-  </block>
-</extends>
-```
-
-You can use both relative and absolute file paths.
-
-Output one level above project directory:
-
-```html
----
-permalink: ../newsletter.html
----
-```
-
-Output at a specific system location:
-
-```html
----
-permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
----
-```
-
-<alert type="warning"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</alert>
 
 ## browsersync
 
@@ -262,62 +183,202 @@ You could then extend Layouts by referencing them relative to that path - no nee
 
 ## templates
 
-Define your Template's `source` directories and file extensions.
+Configure where your Templates live, where they should be output, as well as what file extensions to use/look for and which assets should be copied over in the process.
 
 ```js
 build: {
   templates: {
-    root: 'src/templates',
-    extensions: 'html',
+    filetypes: 'html',
+    source: 'src/templates',
+    destination: {
+      path: 'build_local',
+      extension: 'html',
+    },
+    assets: {
+      source: './src/assets/images',
+      destination: 'images',
+    },
   },
 }
 ```
 
-#### root
-
-Define the path(s) to your [Templates](/docs/templates/). This is where Maizzle looks for templates to compile. It's also used by `postcss-purgecss` when scanning for selectors.
-
-It can be a string:
+Starting with Maizzle `2.0`, you can define multiple `templates` sections:
 
 ```js
 build: {
-  templates: {
-    root: 'src/templates',
-  },
+  templates: [
+    {
+      source: 'src/templates',
+      destination: {
+        path: 'build_local',
+      },
+    },
+    {
+      source: 'src/amp-templates',
+      destination: {
+        path: 'build_amp',
+      },
+    }
+  ]
 }
 ```
 
-Or an array of strings:
-
-```js
-build: {
-  templates: {
-    root: ['src/templates', '/path/to/more/templates'],
-  },
-}
-```
-
-<alert>Remember, Maizzle will copy these folders over to the <code>destination.path</code> directory, with <em>everything</em> inside them.</alert>
-
-#### extensions
+#### filetypes
 
 Define what file extensions you use for your Templates. 
 
-`extensions` can be a string, but it can also be an array or a pipe|delimited list:
+`filetypes` can be a string, but it can also be an array or a pipe|delimited list:
 
 ```js
 build: {
   templates: {
-    extensions: ['html', 'blade.php'], // can also do 'html|blade.php'
+    filetypes: ['html', 'blade.php'], // or 'html|blade.php'
   },
 }
 ```
 
-Maizzle will only look for files ending in _these_ extensions, when searching your `build.templates.root` directory for Templates to build.
+Maizzle will only look for files with these extensions when searching your `build.templates.source` directory for Templates to build.
 
-This means you can keep other files alongside your Templates, and Maizzle will simply copy them over to the build destination directory - it will not try to parse them.
+This means you can keep other files alongside your Templates, and Maizzle will not try to compile them - it will simply copy them over to the build destination directory.
 
-<alert>If <code>build.templates.extensions</code> is missing, Maizzle will default to <code>html</code>.</alert>
+<alert>If <code>build.templates.filetypes</code> is missing, Maizzle will default to <code>html</code>.</alert>
+
+#### source
+
+Define the source directory where Maizzle should look for Templates to compile. It's also used by `postcss-purgecss` when scanning for selectors to preserve.
+
+```js
+build: {
+  templates: {
+    source: 'src/templates',
+  },
+}
+```
+
+<alert>Remember, Maizzle will copy these folders to the <code>templates.destination.path</code> directory, with <em>everything</em> inside them.</alert>
+
+### destination
+
+This allows you to customize the output path and file extension.
+
+###### path
+
+Directory path where Maizzle should output the compiled emails.
+
+```js
+build: {
+  templates: {
+    destination: {
+      path: 'build_local',
+    },
+  },
+}
+```
+
+If you omit this key, a Jigsaw-inspired `build_${env}` directory name will be used.
+
+<alert type="danger">Using multiple <code>templates</code> config blocks? Make sure to have unique <code>destination.path</code> names! Defaulting to <code>build_${env}</code> can result in files with the same name being overwritten.</alert>
+
+###### extension
+
+Define the file extension - without the leading dot - to be used for the compiled templates. 
+For example, let's output [Laravel Blade](https://laravel.com/docs/7.x/blade) files:
+
+```js
+build: {
+  templates: {
+    destination: {
+      path: 'build_laravel',
+      extension: 'blade.php',
+    },
+  },
+}
+```
+
+###### permalink
+
+You can override `destination.path` for each Template, with the help of the `permalink` Front Matter key:
+
+```html
+---
+permalink: path/to/file.html
+---
+
+<extends src="src/layouts/master.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</extends>
+```
+
+You can use both relative and absolute file paths.
+
+Output one level above project directory:
+
+```html
+---
+permalink: ../newsletter.html
+---
+```
+
+Output at a specific system location:
+
+```html
+---
+permalink: C:/Users/Cosmin/Newsletter/2019/12/index.html
+---
+```
+
+<alert type="warning"><code>permalink</code> must be a <em>file</em> path, and can be used only in the Template's Front Matter. Using a directory path will result in a build error.</alert>
+
+### assets
+
+Source and destination directories for your asset files.
+
+At build time, `templates.assets.destination` will be created relative to `templates.destination`, and everything inside `templates.assets.source` will be copied into it:
+
+```js
+build: {
+  templates: {
+    // ...
+    assets: {
+      source: 'src/assets/images',
+      destination: 'images',
+    },
+  }
+}
+```
+
+You can use it to store _any_ files you might need, not just images.
+
+Of course, if using multiple `templates` blocks, you can have different asset configurations for each block:
+
+```js
+build: {
+  templates: [
+    {
+      source: 'src/templates',
+      destination: {
+        path: 'build_basic',
+      },
+      assets: {
+        source: 'src/assets/images',
+        destination: 'images', // assets output to build_basic/images
+      },
+    },
+    {
+      source: 'src/amp-templates',
+      destination: {
+        path: 'build_amp',
+      },
+      assets: {
+        source: 'src/assets/amp',
+        destination: 'media', // assets output to build_amp/media
+      },
+    }
+  ]
+}
+```
 
 ## tailwind
 

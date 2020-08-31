@@ -46,7 +46,7 @@ html = Maizzle.render(str, {
       // ...
     },
   }
-).then(html => console.log(html))
+).then(({html}) => console.log(html))
 ```
 
 ## Events
@@ -180,7 +180,7 @@ module.exports = {
 ### afterBuild
 
 Runs after all Templates have been compiled and output to disk.
-Returns an array with the paths to all the files inside the [`build.destination.path`](/docs/build-config/#path) directory.
+Returns an array with the paths to all the files inside the [`destination.path`](/docs/build-config/#path) directory.
 
 ```js
 // config.js
