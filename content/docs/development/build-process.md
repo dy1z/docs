@@ -30,13 +30,13 @@ When you specify a build environment, i.e. `maizzle build production`, PurgeCSS 
 
 ## Clean destination
 
-The destination directory that you have defined under `build.destination.path` in your environment config is deleted.
+The destination directories that you have defined under `destination.path` in your environment config are deleted.
 
 <alert type="warning">Be careful when customizing this path, so you don't end up deleting important directories and files on your machine.</alert>
 
 ## Copy sources
 
-Your source Templates are copied over to the `build.destination.path`. 
+All of your source Templates are copied over to the `destination.path` directories. 
 
 This is done so that we can then process the files in-place, which makes it easier to preserve your directory structure.
 
@@ -89,7 +89,7 @@ Each Template is parsed and compiled in-place, in your destination directory:
 
     9.1 A plaintext version is output at the same location and with the same name, if `plaintext` is set to `true`
 
-10. Your assets are copied to the destination folder. All files and folders in `build.assets.source` are copied to `build.assets.destination`
+10. Your assets are copied to the destination folder. All files and folders in `assets.source` are copied to `assets.destination`
 
 ## afterBuild()
 

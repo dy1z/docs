@@ -26,9 +26,11 @@ For example, let's define a _production_ environment, by creating a new file nam
 // config.production.js
 module.exports = {
   build: {
-    destination: {
-      path: 'build_production',
-    },
+    templates: {
+      destination: {
+        path: 'build_production'
+      }
+    }
   }
 }
 ```

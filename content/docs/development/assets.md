@@ -19,30 +19,34 @@ The Starter sets it to the `src/assets/images` directory:
 // config.js
 module.exports = {
   build: {
-    assets: {
-      source: 'src/assets/images',
-      destination: 'images',
-    },
-    // ...
+    templates: {
+      // ...
+      assets: {
+        source: 'src/assets/images',
+        destination: 'images'
+      }
+    }
   }
 }
 ```
 
-Everything inside `build.assets.source` will be copied to the `build.assets.destination` directory, which is relative to `build.destination.path`
+Everything inside `assets.source` will be copied to the `assets.destination` directory, which is relative to [`templates.destination.path`](http://localhost:8080/docs/build-config/#path).
 
 ## Multiple paths
 
-You can also define multiple asset source paths, by using an array for `source`:
+You can also define multiple asset paths, by using an array for `source`:
 
 ```js
 // config.js
 module.exports = {
   build: {
-    assets: {
-      source: ['src/assets/images', 'src/fonts'],
-      destination: 'assets',
-    },
-    // ...
+    templates: {
+      // ...
+      assets: {
+        source: ['src/assets/images', 'src/fonts'],
+        destination: 'assets'
+      }
+    }
   }
 }
 ```

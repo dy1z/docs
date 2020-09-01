@@ -46,7 +46,7 @@ html = Maizzle.render(str, {
       // ...
     },
   }
-).then(html => console.log(html))
+).then(({html}) => console.log(html))
 ```
 
 ## Events
@@ -93,7 +93,7 @@ module.exports = {
 ### beforeRender
 
 Runs after the Template's config has been computed, but just before it is compiled.
-It exposes the Template's config, so you can further manipulate it.
+It exposes the Template's config, as well as the HTML.
 
 For (a silly) example, let's fetch data from an API and set it as the preheader text:
 
@@ -103,9 +103,12 @@ const axios = require('axios')
 
 module.exports = {
   events: {
-    async beforeRender(config) {
+    async beforeRender(html, config) {
       const url = 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
       config.preheader = await axios(url).then(result => result.data).catch(error => 'Could not fetch preheader, using default one.')
+
+      // must always return the `html`
+      return html
     },
   },
 },
@@ -180,7 +183,7 @@ module.exports = {
 ### afterBuild
 
 Runs after all Templates have been compiled and output to disk.
-Returns an array with the paths to all the files inside the [`build.destination.path`](/docs/build-config/#path) directory.
+Returns an array with the paths to all the files inside the [`destination.path`](/docs/build-config/#path) directory.
 
 ```js
 // config.js

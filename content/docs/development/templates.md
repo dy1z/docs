@@ -24,7 +24,6 @@ It looks like this:
 ```yaml
 ---
 title: "Please confirm your email address"
-makeItSo: true
 ---
 ```
 
@@ -201,11 +200,11 @@ If you want to output the curly braces as they are, so you can evaluate them at 
 
 ## Archiving
 
-Maizzle will only compile templates found in path(s) you have defined in `build.templates.root`, and which use the extension defined in `build.templates.extensions`.
+Maizzle will only compile templates found in path(s) you have defined in `build.templates.source`, and which use the extension defined in `build.templates.extensions`.
 
 If you create a lot of emails, your builds can start to slow down, since all templates are rebuilt every time you run the `build` command.
 
 You can archive Templates in two ways:
 
-1. Move them to a directory other than those defined in `build.templates.root`, so they don't get copied over to the destination directory (recommended).
-2. Change their file extension to something that is not defined in `build.templates.extensions`. They will still be copied over to the destination, but Maizzle will not try to compile them.
+1. Move them to a directory outside the one defined in `build.templates.source`, so they don't get copied over to the destination directory (recommended).
+2. Change their file extension to something that is not defined in `build.templates.filetypes`. They will still be copied over to the destination, but Maizzle will not try to compile them.

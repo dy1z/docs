@@ -65,15 +65,12 @@ To make sure the Tailwind CSS classes that you use in your emails are not purged
 ```js
 // config.js
 module.exports = {
-  cleanup: {
-    purgeCSS: {
-      content: [
-        'src/layouts/**/*.*',
-        'src/partials/**/*.*',
-        'src/components/**/*.*',
-      ],
-      // ...
-    },
+  purgeCSS: {
+    content: [
+      'src/layouts/**/*.*',
+      'src/partials/**/*.*',
+      'src/components/**/*.*'
+    ]
   }
 }
 ```

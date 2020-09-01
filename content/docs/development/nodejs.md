@@ -21,10 +21,12 @@ const Maizzle = require('@maizzle/framework')
 Then, call the `render()` method, passing it a string and an options object:
 
 ```js
-const html = Maizzle.render(`html string`, options)
+const {html, config} = Maizzle.render(`html string`, options)
 ```
 
-<alert>Of course, your <code>html string</code> can use Front Matter and templating tags, so you can even extend <a href="/docs/layouts/">Layouts</a> or use <a href="/docs/components/">Components</a>.</alert>
+The `render()` method returns an object containing the compiled HTML, and the [environment config](/docs/environments/) computed for this template.
+
+And of course, your `html string` can use Front Matter and templating tags, so you can even extend [Layouts](/docs/layouts/) or use [Components](/docs/components/).
 
 ### Options
 
@@ -105,7 +107,7 @@ Maizzle.render(
       config: require('./config'),
     }
   }
-).then(html => console.log(html)).catch(error => console.log(error))
+).then(({html}) => console.log(html)).catch(error => console.log(error))
 ```
 
 ## Templating
@@ -143,7 +145,7 @@ Maizzle.render('html string', {
       env: 'node',
     },
   }
-}).then(html => console.log(html))
+}).then(({html}) => console.log(html))
 ```
 
 <alert>You can use any name for <code>env</code> (except <code>local</code>, which does nothing).</alert>

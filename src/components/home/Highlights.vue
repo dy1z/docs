@@ -97,19 +97,20 @@
   <span class="text-gradient bg-gradient-l-ocean-dark">important</span><span class="text-cool-gray-500">:</span> <span class="text-orange-400">true</span><span class="text-cool-gray-500">,</span>
   <span class="text-gradient bg-gradient-l-ocean-dark">separator</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">':'</span><span class="text-cool-gray-500">,</span>
   <span class="text-gradient bg-gradient-l-ocean-dark">theme</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-  <span class="text-gradient bg-gradient-l-ocean-dark">screens</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">sm</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span><span class="text-green-400">'max'</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'600px'</span><span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">dark</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span> <span class="text-gradient bg-gradient-l-ocean-dark">raw</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">"(prefers-color-scheme: dark)"</span> <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-  <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-  <span class="text-gradient bg-gradient-l-ocean-dark">colors</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">transparent</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'transparent'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">inherit</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'inherit'</span><span class="text-cool-gray-500">,</span>
-  <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-  <span class="text-gradient bg-gradient-l-ocean-dark">spacing</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">px</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'1px'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-green-400">'0'</span><span class="text-cool-gray-500">:</span> <span class="text-orange-400">0</span><span class="text-cool-gray-500">,</span>
-    <span class="text-green-400">'2'</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'2px'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-green-400">'4'</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'4px'</span><span class="text-cool-gray-500">,</span></code></pre>
+    <span class="text-gradient bg-gradient-l-ocean-dark">screens</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">sm</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span><span class="text-gradient bg-gradient-l-ocean-dark">max</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'600px'</span><span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">dark</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span><span class="text-gradient bg-gradient-l-ocean-dark">raw</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">"(prefers-color-scheme: dark)"</span> <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
+    <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
+    <span class="text-gradient bg-gradient-l-ocean-dark">extend</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">colors</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">transparent</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'transparent'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">inherit</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'inherit'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">spacing</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">px</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'1px'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-orange-400">0</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'0'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-orange-400">2</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'2px'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-orange-400">4</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'4px'</span><span class="text-cool-gray-500">,</span></code></pre>
               </div>
             </div>
           </div>
@@ -273,13 +274,12 @@
                 <pre class="leading-code text-base"><code><span class="text-cool-gray-300 italic">// config.production.js</span>
 <span class="text-red-400">module</span><span class="text-blue-700">.</span><span class="text-gradient bg-gradient-l-ocean-dark">exports</span> <span class="text-blue-500">=</span> <span class="text-cool-gray-400">{</span>
   <span class="text-gradient bg-gradient-l-ocean-dark">build</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">assets</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">source</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/images'</span><span class="text-cool-gray-500">,</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'images'</span><span class="text-cool-gray-500">,</span>
-    <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
-    <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">path</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'build_production'</span><span class="text-cool-gray-500">,</span>
-      <span class="text-gradient bg-gradient-l-ocean-dark">extension</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'html'</span><span class="text-cool-gray-500">,</span>
+    <span class="text-gradient bg-gradient-l-ocean-dark">templates</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">source</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'src/templates'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-gradient bg-gradient-l-ocean-dark">destination</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">path</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'build_production'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-gradient bg-gradient-l-ocean-dark">extension</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'html'</span><span class="text-cool-gray-500">,</span>
+      <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
     <span class="text-cool-gray-400">}</span><span class="text-cool-gray-500">,</span>
     <span class="text-gradient bg-gradient-l-ocean-dark">tailwind</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
       <span class="text-gradient bg-gradient-l-ocean-dark">css</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'./src/assets/css/main.css'</span><span class="text-cool-gray-500">,</span>
