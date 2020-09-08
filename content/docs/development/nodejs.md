@@ -39,9 +39,7 @@ And of course, your `html string` can use Front Matter and templating tags, so y
     css: '',
     compiled: '',
   },
-  maizzle: {
-    config: {},
-  },
+  maizzle: {},
   beforeRender() {},
   afterRender() {},
   afterTransformers() {},
@@ -64,9 +62,9 @@ Pass in a custom Tailwind CSS configuration, or a pre-compiled CSS string.
 
 The Maizzle environment configuration object.
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `config` | Object | `{}` | A Maizzle config object. |
+| Type | Default | Description |
+| --- | --- | --- |
+| Object | `{}` | A Maizzle config object. |
 
 <alert>The other options listed above, like <code>beforeRender() {}</code>, are <a href="/docs/events/">Events</a>.</alert>
 
@@ -75,11 +73,11 @@ The Maizzle environment configuration object.
 ```js
 const Maizzle = require('@maizzle/framework')
 
-let str = `---
+const template = `---
 title: Using Maizzle on the server
 ---
 
-<extends src="src/layouts/base.html">
+<extends src="src/layouts/master.html">
   <block name="template">
     <table>
       <tr>
@@ -92,7 +90,7 @@ title: Using Maizzle on the server
 </extends>`
 
 Maizzle.render(
-  str,
+  template,
   {
     tailwind: {
       config: require('./tailwind.config'),
@@ -103,9 +101,7 @@ Maizzle.render(
         .button a { @apply inline-block py-16 px-24 text-sm font-semibold no-underline text-white; }
       `,
     },
-    maizzle: {
-      config: require('./config'),
-    }
+    maizzle: require('./config.js')
   }
 ).then(({html}) => console.log(html)).catch(error => console.log(error))
 ```
@@ -122,18 +118,18 @@ Since the config you can pass to the `render()` method is optional, there are a 
 
 ### Default Tailwind
 
-If you don't specify a [config object](#tailwind), Maizzle will try to compile Tailwind using `tailwind.config.js` at your current path.
+If you don't specify a [Tailwind config object](#tailwind), Maizzle will try to compile Tailwind using `tailwind.config.js` at your current path.
 
-**If the file is not found, Tailwind will be compiled with its [default config](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js).**
+_If the file is not found, Tailwind will be compiled with its [default config](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js)._
 
-The default config is not optimized for HTML email: it uses `rem` units and other settings that are better suited for _web_ design.
+The default config is not optimized for HTML email: it uses units like `rem` and CSS properties that are used for _web_ design and which have little to no support in the majority of email clients.
 
 ### Safe Class Names
 
 The `safeClassNames` Transformer runs only when an environment name is specified, and as long as that name is not `local`.
 
 
-If you don't specify it in `maizzle.config`, class names won't be rewritten with email client-safe characters. 
+If you don't specify it in the `maizzle` object, class names won't be rewritten with email client-safe characters. 
 This could break rendering in some clients, such as Gmail.
 
 To avoid this, always specify the environment name:
@@ -141,9 +137,7 @@ To avoid this, always specify the environment name:
 ```js
 Maizzle.render('html string', {
   maizzle: {
-    config: {
-      env: 'node',
-    },
+    env: 'node',
   }
 }).then(({html}) => console.log(html))
 ```
