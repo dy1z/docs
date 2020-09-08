@@ -25,11 +25,11 @@ module.exports = {
       ui: {port: 3001},
       watch: [],
     },
-    layouts: {
+    components: {
       root: './',
     },
-    includes: {
-      root: './'
+    layouts: {
+      root: './',
     },
     templates: {
       filetypes: 'html',
@@ -155,7 +155,52 @@ module.exports = {
 
 When a file in any of these watch paths is updated, Browsersync will trigger a rebuild and will also refresh the browser page.
 
+## components
+
+Control where your Components live and how you reference them.
+
+### root
+
+You can define the path where your Components are located:
+
+```js
+build: {
+  components: {
+    root: 'src/components',
+  }
+}
+```
+
+Given `src/components/mycomponent.html`, you may now reference it like this:
+
+```html
+<component src="mycomponent.html"></component>
+```
+
+### tags
+
+Additionally, you may also customize the tag and attribute names:
+
+```js
+build: {
+  components: {
+    tag: 'module',
+    attribute: 'href',
+  }
+}
+```
+
+The above would allow you to pull in Components using the following markup:
+
+```html
+<module href="..."></module>
+```
+
 ## layouts
+
+Control where your Layouts are located, and how you reference them.
+
+### root
 
 You can define the path where your Layouts are located:
 
@@ -170,7 +215,7 @@ build: {
 You could then extend Layouts by referencing them relative to that path - no need to write out the full path relative to your project root:
 
 ```html
-<extends src="base.html">
+<extends src="master.html">
   <block name="template">
     <!-- ... -->
   </block>
@@ -180,6 +225,28 @@ You could then extend Layouts by referencing them relative to that path - no nee
 <alert>Maizzle doesn't include this <code>layouts</code> key in the Starter config.</alert>
 
 <alert type="danger">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>&lt;extends src="/templates/template.html"&gt;</code>)</alert>
+
+### tagName
+
+You may also change the `<extends>` tag name to something custom:
+
+```js
+build: {
+  layouts: {
+    tagName: 'layout',
+  }
+}
+```
+
+This would allow using a `<layout>` tag for extending Layouts:
+
+```html
+<layout src="src/layouts/master.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</layout>
+```
 
 ## templates
 
