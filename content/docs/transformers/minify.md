@@ -44,6 +44,6 @@ module.exports = {
 }
 ```
 
-Checkout the full list of [html-crush options](https://www.npmjs.com/package/html-crush#optional-options-object).
+Checkout the full list of [html-crush options](https://codsen.com/os/html-crush/#optional-options-object).
 
 <alert type="warning">Minifying email code can lead to unexpected results if not done properly. Make sure you know what you're doing, and always test your emails!</alert>
