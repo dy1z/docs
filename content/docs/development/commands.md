@@ -149,15 +149,17 @@ For example, let's scaffold `config.staging.js`:
 maizzle make:config staging
 ```
 
-By default, a minimal config is output, which only defines `build.destination.path`:
+By default, a minimal config is output:
 
 ```js
 module.exports = {
   build: {
-    destination: {
-      path: 'build_staging',
-    },
-  },
+    templates: {
+      destination: {
+        path: 'build_local'
+      }
+    }
+  }
 }
 ```
 
