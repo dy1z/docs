@@ -46,7 +46,7 @@ And of course, your `html string` can use Front Matter and templating tags, so y
 }
 ```
 
-<alert><code>options</code> is not required: when ommited, Maizzle will the defaults below.</alert>
+<alert><code>options</code> is not required: when ommited, Maizzle will use the defaults below.</alert>
 
 ###### tailwind
 
