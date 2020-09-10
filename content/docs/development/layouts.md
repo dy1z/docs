@@ -77,9 +77,71 @@ For example, we could use `page.env` to output some content only when running th
 </if>
 ```
 
-## Root
+## Configuration
 
-You can define a path to the directory where your Layouts live:
+You can add options to `config.js`, to customize the way you use Layouts.
+
+### Encoding
+
+You may specify the encoding used by your Layouts through the `encoding` option:
+
+```js
+// config.js
+module.exports = {
+  build: {
+    layouts: {
+      encoding: 'windows-1250',
+    }
+  }
+}
+```
+
+By default, this is set to `utf8`.
+
+### Blocks
+
+Normally, Template Blocks are defined through the `<block>` tag, as explained above.
+
+However, you may customize this to your liking:
+
+```js
+// config.js
+module.exports = {
+  build: {
+    layouts: {
+      slotTagName: 'slot', // default: 'block'
+      fillTagName: 'fill' // default: 'block'
+    }
+  }
+}
+```
+
+Now you can use `<slot>` tags in the Layout, and `<fill>` tags in your Template:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <if condition="page.css">
+    <style>{{{ page.css }}}</style>
+  </if>
+</head>
+<body>
+  <slot name="template"></slot>
+</body>
+```
+
+```html
+---
+preheader: "A template with a <fill> tag"
+---
+
+<fill name="template"></fill>
+```
+
+### Root
+
+You may define a path to the directory where your Layouts live:
 
 ```js
 // config.js
@@ -95,7 +157,7 @@ module.exports = {
 This allows you to specify a `src=""` relative to the path in that `root` key:
 
 ```html
-<extends src="base.html">
+<extends src="master.html">
   <block name="template">
     <!--  -->
   </block>
@@ -103,3 +165,26 @@ This allows you to specify a `src=""` relative to the path in that `root` key:
 ```
 
 <alert type="danger">If you're extending a file that also extends a file (i.e. when extending a Template), this will not work. Instead, don't define the <code>root</code> key and only use project root-relative paths (i.e. <code>src/templates/template.html</code>)</alert>
+
+### Tag
+
+You may use a tag name other than `extends`:
+
+```js
+// config.js
+module.exports = {
+  build: {
+    layouts: {
+      tagName: 'layout',
+    }
+  }
+}
+```
+
+```html
+<layout src="master.html">
+  <block name="template">
+    <!-- ... -->
+  </block>
+</layout>
+```
