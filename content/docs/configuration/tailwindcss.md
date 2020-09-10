@@ -37,6 +37,14 @@ The `lineHeight` utilities have been extended to include all `spacing` scale val
 <!-- Result: <div style="line-height: 64px">&zwnj;</div> -->
 ```
 
+## Colors
+
+Maizzle uses the more vivid color palette from [Tailwind UI](https://tailwindui.com/documentation#how-tailwindcss-ui-extends-tailwind).
+
+Want to use the original Tailwind colors? Simply remove the `colors` key from `tailwind.config.js`. Since we redefine the originals by _extending_ the default Tailwind config, doing this will revert to the original colors.
+
+<alert>This is subject to change, depending on what new colors Tailwind CSS 2.0 will ship with. In the future, we might remove the <code>colors</code> key from your <code>tailwind.config.js</code> and just use Tailwind's defaults ✌</alert>
+
 ## !important
 
 Emails still need to use inline CSS, most notably for these reasons:
