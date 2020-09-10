@@ -61,8 +61,7 @@ a > code {
 .token.property,
 .token.tag,
 .token.constant,
-.token.symbol,
-.token.deleted {
+.token.symbol {
   @apply text-green-400;
 }
 
@@ -119,6 +118,14 @@ a > code {
 
 .token.entity {
 	cursor: help;
+}
+
+.token.deleted {
+  @apply text-red-500;
+}
+
+.token.unchanged {
+  @apply text-gray-400;
 }
 
 

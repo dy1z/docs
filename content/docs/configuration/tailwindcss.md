@@ -8,11 +8,34 @@ import Alert from '~/components/Alert.vue'
 
 # Tailwind CSS Config
 
-Maizzle comes with an email-tailored `tailwind.config.js`
+Maizzle comes with an email-tailored `tailwind.config.js` that changes a few things for better email client compatibility.
+
+These are the differences from the original Tailwind config.
 
 ## Spacing units
 
-Because they are poorly supported in email, `rem` units have been replaced with `px` ones, with values better suited for email client viewports.
+Because of poor email client support, `rem` units have been replaced with `px`.
+
+This affects the following:
+
+- borderRadius
+- fontSize
+- lineHeight
+- letterSpacing
+- spacing (max/min width and height, width, height, margin, padding, etc)
+
+### Extra spacing
+
+The `spacing` scale also includes all percentage-based utilities, so you can use things like `mb-1/2` or `max-w-3/4` if you ever need to.
+
+### Extended leading
+
+The `lineHeight` utilities have been extended to include all `spacing` scale values, so you can use leading to easily create vertical spacing, like this:
+
+```html
+<div class="leading-64">&zwnj;</div>
+<!-- Result: <div style="line-height: 64px">&zwnj;</div> -->
+```
 
 ## !important
 
@@ -26,7 +49,7 @@ Because of this, the `important` option is set to `true` by default, so that res
 
 <alert>This applies only to <code>&lt;head&gt;</code> CSS, inlined CSS will not contain <code>!important</code></alert>
 
-You may disable this by adding the `important` key in your Tailwind config:
+You may disable this by adding the `important` key to your Tailwind config:
 
 ```js
 // tailwind.config.js
@@ -76,3 +99,28 @@ More on screens, in the [Tailwind CSS docs](https://tailwindcss.com/docs/respons
 ## Plugins
 
 You can of course use any Tailwind plugin, please [see the docs](https://tailwindcss.com/docs/configuration#plugins).
+
+### Disabled
+
+Because CSS variables are poorly supported in email clients, Maizzle's `tailwind.config.js` disables Tailwind's opacity plugins:
+
+- backgroundOpacity
+- borderOpacity
+- divideOpacity
+- placeholderOpacity
+- textOpacity
+
+Additionally, the `animation` core plugin is also disabled, since it is not purged from the CSS and you won't need it in most cases.
+
+If you _do_ need the animation utilties, simply delete the line from `corePlugins` at the bottom of your `tailwind.config.js`:
+
+```diff
+corePlugins: {
+- animation: false,
+  backgroundOpacity: false,
+  borderOpacity: false,
+  divideOpacity: false,
+  placeholderOpacity: false,
+  textOpacity: false,
+},
+```
