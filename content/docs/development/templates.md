@@ -13,11 +13,11 @@ Templates in Maizzle contain the body of your email templates.
 They're made up of two distinct sections:
 
 1. Front Matter
-2. `<extends>` and `<block>` tags
+2. Your HTML
 
 ## Front Matter
 
-Templates can override environment config variables and even define new ones, through YAML-style Front Matter.
+Templates can define variables and even override existing ones in your config, through YAML-style Front Matter.
 
 It looks like this:
 
@@ -27,7 +27,7 @@ title: "Please confirm your email address"
 ---
 ```
 
-Each of those variables will be available under the `page` object, which means you can render them in your Templates, like this:
+Front Matter variables are available under the `page` object, which means you can render them in your Templates, like this:
 
 ```html
 <p>{{ page.title }}</p>
@@ -57,7 +57,7 @@ The path provided in the `src=""` attribute must be relative to the path in `bui
 
 When a Template `<extends>` a Layout, a `<block>` tag with an identical `name=""` attribute is searched for in the Layout being extended. 
 
-If a matching tag is found in the Layout, it will be replaced with the contents of its corresponding `<block>` tag from the Template.
+Each matching tag found in the Layout will be replaced with the contents of its corresponding `<block>` tag from the Template.
 
 ### Extending Templates
 
