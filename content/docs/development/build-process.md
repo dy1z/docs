@@ -68,7 +68,7 @@ Each Template is parsed and compiled in-place, in your destination directory:
 
     - escaped characters in `<head>` and `<body>` CSS classes are replaced with email-safe alternatives
     - [posthtml-content](https://github.com/posthtml/posthtml-content) is used to transform content marked with custom attributes. By default, it looks for any `<style postcss>` tag in the Template. If it finds any, it tries to compile the contents with PostCSS. Useful if you need to use Tailwind CSS inside a style block right in your Template.
-    - [posthtml-md2html](https://github.com/posthtml/posthtml-md2html) is used to compile Markdown
+    - [posthtml-markdownit](https://github.com/posthtml/posthtml-markdownit) is used to compile Markdown
     - [prevent-widows](https://github.com/bashaus/prevent-widows) looks for tags containing the `prevent-widows` attribute. When it finds one, it will replace the last space in your text with a `&nbsp;`.
     - [Juice](https://github.com/Automattic/juice) inlines CSS
     - [email-comb](https://www.npmjs.com/package/email-comb) removes any unused CSS
@@ -89,7 +89,7 @@ Each Template is parsed and compiled in-place, in your destination directory:
 
     9.1 A plaintext version is output at the same location and with the same name, if `plaintext` is set to `true`
 
-10. Your assets are copied to the destination folder. All files and folders in `assets.source` are copied to `assets.destination`
+10. Your assets are copied to the destination folder. All files and folders in `templates.assets.source` are copied to `templates.assets.destination`
 
 ## afterBuild()
 
