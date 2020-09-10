@@ -8,19 +8,57 @@ import Alert from '~/components/Alert.vue'
 
 # Tailwind CSS
 
-Maizzle uses the [Tailwind CSS](https://tailwindcss.com) framework, so you can rapidly prototype email templates with utility classes instead of having to write inline styles.
+Maizzle uses the [Tailwind CSS](https://tailwindcss.com) framework, so you can rapidly prototype email templates with utility classes instead of writing inline styles.
 
 For most of the time, you won't be writing CSS anymore 😎
 
-## Structure
+## Workflow
 
-CSS files are typically stored in `src/assets/css`, and are imported in `main.css`.
+Simply write your HTML markup and add Tailwind classes to elements.
 
-### main.css
+Instead of writing something like this:
 
-The `src/assets/css/main.css` file imports Tailwind's utilities and components, and our custom, email-specific resets, components, and utilities.
+```html
+<table style="width: 100%;">
+  <tr>
+    <td style="padding: 24px 0; background-color: #e5e7eb;">
+      <h1 style="margin: 0; font-size: 36px; font-family: -apple-system, 'Segoe UI', sans-serif; color: #000000;">Some title</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 24px; color: #374151;">Content here...</p>
+    </td>
+  </tr>
+</table>
+```
 
-This is the file that Maizzle looks for when compiling Tailwind CSS, and you can configure where it lives and how it's named:
+You simply write:
+
+```html
+<table class="w-full">
+  <tr>
+    <td class="py-24 px-0 bg-gray-200">
+      <h1 class="m-0 text-4xl font-sans text-black">Some title</h1>
+      <p class="m-0 text-base leading-24 text-gray-700">Content here...</p>
+    </td>
+  </tr>
+</table>
+```
+
+Read more about the concept of utility-first CSS, and familiarize yourself with the syntax, in the [Tailwind CSS docs](https://tailwindcss.com/docs/utility-first).
+
+## CSS Files
+
+The [official Maizzle Starter](https://github.com/maizzle/maizzle) uses a `main.css` file stored in `src/assets/css`.
+
+Although optional, this is included in order to provide an example of how you'd use custom CSS components that go beyond the utility-first concept of Tailwind. 
+
+For example, it's common practice with HTML emails to use... [creative CSS selectors](https://howtotarget.email/) to get things working in a certain email client; stuff Tailwind can't do out of the box.
+
+This file does two things:
+
+1. it imports Tailwind CSS components and utilities
+2. it imports custom CSS files
+
+
+`config.js` then contains a reference to this file, which tells Tailwind to load it and compile the CSS based on it:
 
 ```js
 // config.js
@@ -28,13 +66,15 @@ module.exports = {
   build: {
     tailwind: {
       css: 'src/assets/css/main.css',
-      // ...
+      config: 'tailwind.config.js'
     }
   }
 }
 ```
 
-### Custom CSS Files
+As mentioned, this is totally optional: you can use Tailwind CSS in Maizzle without creating any CSS file at all! In this case, Tailwind will only generate components and utilities, based on your `tailwind.config.js`.
+
+### Custom CSS
 
 Add custom CSS files anywhere under `src/assets/css`.
 
@@ -46,15 +86,15 @@ Maizzle adds the following ones in `src/assets/css/custom` :
 
 <alert type="warning">Files that you <code>@import</code> in <code>main.css</code> must be relative to <code>src/assets/css</code></alert>
 
-### Plugins
+## Plugins
 
 To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`. 
-See the [Tailwind docs](https://tailwindcss.com/docs/configuration#plugins).
+See the [Tailwind CSS docs](https://tailwindcss.com/docs/configuration#plugins).
 
 
 ## CSS purging
 
-When running `maizzle build [env]`, if `[env]` is not equal to `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
+When running `maizzle build [env]`, if `[env]` is not `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
 
 This is needed so that the CSS inliner and `email-comb` (which run _after_ the purging step) receive as little CSS as possible to parse. 
 
@@ -77,6 +117,28 @@ module.exports = {
 
 <alert type="warning">Don't pass directory paths here, because PostCSS will fail.</alert>
 
+### Purging strategy
+
+Although it picks up [`purge`](https://tailwindcss.com/docs/controlling-file-size#removing-unused-css) options in your `tailwind.config.js` (like `content` or `extractor`), Maizzle doesn't actually use Tailwind's CSS purging functionality. 
+
+Instead, a custom CSS purging strategy is used.
+
+This is mainly required in order to respect the build environment and enable purging based on it, and especially so that we can purge sources that you wouldn't be able to define in `tailwind.config.js`.
+
+These are the default content sources used for CSS purging in Maizzle:
+
+```js
+const purgeSources = [
+  'src/layouts/**/*.*',
+  'src/partials/**/*.*',
+  'src/components/**/*.*',
+  ...templateSources, // paths from `build.templates.source` in your config.js
+  ...tailwindSources, // purge paths from your tailwind.config.js 
+  ...extraPurgeSources, // paths you define in `purgeCSS.content` in your config.js
+  {raw: html} // only used when compiling with the render() method
+]
+```
+
 ## Shorthand CSS
 
 <alert>This section refers to CSS inside <code>&lt;style&gt;</code> tags. For <em>inline</em> CSS shorthand, see the CSS inlining <g-link to="/docs/css-inlining/#mergelonghand">docs</g-link>.</alert>
@@ -88,7 +150,7 @@ Because utility classes map one-to-one with CSS properties, this normally doesn'
 Consider this template:
 
 ```html
-<extends src="src/layouts/base.html">
+<extends src="src/layouts/master.html">
   <block name="template">
     <div class="col">test</div>
   </block>
@@ -175,7 +237,7 @@ First, add a `<block name="head">` inside your Layout's `<head>` tag:
 Next, use that block in a Template:
 
 ```html
-<extends src="src/layouts/base.html">
+<extends src="src/layouts/master.html">
   <block name="head">
     <style postcss>
       a {
@@ -204,7 +266,7 @@ Next, use that block in a Template:
 When adding a `<style>` tag inside a Template, you can prevent all rules inside it from being inlined by using a `data-embed` attribute:
 
 ```html
-<extends src="src/layouts/base.html">
+<extends src="src/layouts/master.html">
   <block name="head">
     <style postcss data-embed>
       /* This rule will not be inlined */
