@@ -14,7 +14,32 @@ For most of the time, you won't be writing CSS anymore 😎
 
 ## Workflow
 
-Simply write your HTML markup and add Tailwind classes to elements.
+The compiled Tailwind CSS is available under `page.css`, so you should first add it inside a `<style>` tag in your Layout's `<head>`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <if condition="page.css">
+    <style>{{{ page.css }}}</style>
+  </if>
+</head>
+<body>
+  <block name="template"></block>
+</body>
+```
+
+In the example above, we used a [conditional](/docs/tags/#conditionals) to output the `<style>` tag only if `page.css` is truthy (i.e. not an empty string).
+
+You might have noticed that we used `{{{ }}}` instead of the usual `{{ }}`. 
+
+We do this to avoid double-escaping the CSS, which can break the build process when quoted property values are encountered (for example quoted font family names, background image URLs, etc.).
+
+<alert type="warning">In order to use Tailwind CSS, the Layout that you're extending must ouput <code>page.css</code> inside a <code>&lt;style&gt;</code> tag.</alert>
+
+### Utility-first
+
+Next, simply write your HTML markup and add Tailwind classes to elements.
 
 Instead of writing something like this:
 
@@ -43,6 +68,24 @@ You simply write:
 ```
 
 Read more about the concept of utility-first CSS, and familiarize yourself with the syntax, in the [Tailwind CSS docs](https://tailwindcss.com/docs/utility-first).
+
+### Components
+
+If you prefer wasting time with naming your CSS classes or actually need to extract a repeating markup pattern, or maybe you're used to other frameworks such as Bootstrap, you can do that too!
+
+Tailwind supports [extracting components with `@apply`](https://tailwindcss.com/docs/extracting-components#extracting-css-components-with-apply), which means you can define a new class by applying existing utility classes to it.
+
+Here's a quick example:
+
+```css
+.button-danger {
+  @apply px-24 py-12 text-white bg-red-500;
+}
+```
+
+Unlike utility classes in `tailwind.config.js`, you'd add that in a CSS file that Maizzle tells Tailwind to compile along with the rest of the CSS.
+
+And that brings us to...
 
 ## CSS Files
 
