@@ -38,7 +38,6 @@ module.exports = {
     enabled: true,
     lineLengthLimit: 500,
     removeIndentations: true,
-    removeLineBreaks: true,
     breakToTheLeftOf: [],
   },
 }
