@@ -34,7 +34,7 @@ Let's go through each of those options.
 
 ## purgeCSS
 
-When not developing locally, [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) is used to do a first pass over the compiled Tailwind CSS - this happens before CSS is injected into the HTML, so that tools like the Juice inliner or `email-comb` receive as little code to process as possible.
+When not developing [locally](/docs/environments/#local), [PurgeCSS](https://github.com/FullHuman/purgecss) is used to do a first pass over the compiled Tailwind CSS - this happens before CSS is injected into the HTML, so that tools like the Juice inliner or `email-comb` receive as little code to process as possible.
 
 However, it can sometimes happen that it purges classes that you actually need - for example, if you have dynamic classes that you reference in HTML like this:
 
@@ -49,41 +49,11 @@ Add a `purgeCSS` key to your config, to customize its settings:
 ```js
 module.exports = {
   purgeCSS: {
-    content: [], // array of filenames or globs to scan for selectors
-    whitelist: [], // array of strings
-    whitelistPatterns: [], // array of regular expressions
     extractor: /[\w-/:%]+(?<!:)/g, // regular expression
+    content: [], // array of filenames or globs to scan for selectors
+    safelist: [], // array of strings or custom object
+    blocklist: [], // array of strings
   }
-}
-```
-
-### content
-
-Use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
-
-```js
-purgeCSS: {
-  content: ['/Code/emails/project/', 'src/archive/'],
-}
-```
-
-### whitelist
-
-Use `whitelist` to define an array of class names that you want to preserve:
-
-```js
-purgeCSS: {
-  whitelist: ['wrapper', 'button--active'],
-}
-```
-
-### whitelistPatterns
-
-Use `whitelistPatterns` to define an array of regular expressions that match class names that you want to preserve:
-
-```js
-purgeCSS: {
-  whitelistPatterns: [/text-red-/, /button/],
 }
 ```
 
@@ -99,9 +69,58 @@ purgeCSS: {
 }
 ```
 
-<alert type="warning">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, you need to <a href="#safeclassnames">rewrite</a> them yourself.</alert>
+<alert type="warning">Characters like <code>$</code> need to be escaped in CSS. This isn't well supported in email clients. When using class names with characters other than <code>:</code>, <code>/</code>, <code>./</code> and <code>%</code>, Maizzle will <a href="#safeclassnames">replace</a> some of them with safer alternatives.</alert>
 
-<alert>Learn more about these options, in the <a href="https://github.com/FullHuman/postcss-purgecss#options" target="_blank" rel="nofollow noopener">PostCSS Purgecss docs &nearr;</a></alert>
+### content
+
+Use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
+
+```js
+purgeCSS: {
+  content: ['/Code/emails/project/', 'src/archive/'],
+}
+```
+
+### safelist
+
+Use `safelist` to define an array of class names or patterns that you want preserved:
+
+```js
+purgeCSS: {
+  safelist: ['wrapper', /red$/],
+}
+```
+
+In this example, the `.wrapper` selector as well as any selectors ending with 'red' such as `.bg-red` will be preserved in the final CSS.
+
+For greater control over CSS purging, `safelist` can also be an object:
+
+```js
+safelist: {
+  standard: [],
+  deep: [],
+  greedy: [],
+  keyframes: [],
+  variables: []
+}
+```
+
+See the [PurgeCSS docs](https://purgecss.com/configuration.html#options) for an explanation of all options.
+
+### blocklist
+
+`blocklist` will prevent the CSS selectors from showing up in the compiled CSS. 
+The selectors will be removed from your CSS _even if you use them and they are seen by PurgeCSS_.
+
+```js
+purgeCSS: {
+  blocklist: ['wrapper', /^nav-/]
+}
+```
+
+In the example above, even if you use `.wrapper` or `.nav-links` anywhere in your templates, they will be removed from the compiled CSS.
+
+<alert>Learn more about all these options, in the <a href="https://purgecss.com/configuration.html#options" target="_blank" rel="noopener">PurgeCSS docs &nearr;</a></alert>
 
 ## removeUnusedCSS
 
@@ -114,7 +133,6 @@ Enables CSS cleanup through `email-comb`:
 ```js
 removeUnusedCSS: {
   enabled: true,
-  // ...
 }
 ```
 
@@ -126,7 +144,6 @@ Array of classes or id's that you don't want removed. You can use all [matcher](
 removeUnusedCSS: {
   enabled: true,
   whitelist: ['.External*', '.ReadMsgBody', '.yshortcuts', '.Mso*', '#*'],
-  // ...
 }
 ```
 
@@ -145,7 +162,6 @@ removeUnusedCSS: {
     { heads: "{{", tails: "}}" }, 
     { heads: "{%", tails: "%}" }
   ],
-  // ...
 },
 ```
 
@@ -157,7 +173,6 @@ Set to `false` to prevent `email-comb` from removing `<!-- HTML comments -->`.
 removeUnusedCSS: {
   enabled: true,
   removeHTMLComments: false,
-  // ...
 }
 ```
 
@@ -169,7 +184,6 @@ Set to `false` to prevent `email-comb` from removing `/* CSS comments */`.
 removeUnusedCSS: {
   enabled: true,
   removeCSSComments: false,
-  // ...
 }
 ```
 
@@ -203,7 +217,6 @@ HTML email code often includes Outlook or IE conditional comments, which you pro
 removeUnusedCSS: {
   enabled: true,
   doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
-  // ...
 }
 ```
 
@@ -217,7 +230,6 @@ Used in production, it will help trim down your HTML size.
 removeUnusedCSS: {
   enabled: true,
   uglifyClassNames: true,
-  // ...
 }
 ```
 
@@ -259,7 +271,6 @@ module.exports = {
     { name: 'data-src' }, // remove empty data-src="" attributes
     { name: 'foo', value: 'bar'}, // remove all foo="bar" attributes
   ],
-  // ...
 }
 ```
 
