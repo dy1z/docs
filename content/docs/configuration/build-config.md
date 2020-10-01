@@ -132,11 +132,9 @@ You can disable it by setting it to `false`.
 
 ### watch
 
-Array of extra paths for Browsersync to watch.
+Array of extra paths for Browsersync to watch. By default, all files in your project's `src` folder and your `tailwind.config.js` file are watched.
 
-By default, all files in your `src` folder and the default `tailwind.config.js` file are watched.
-
-You can use this option to configure additional watch paths when developing locally:
+You can define extra file and folder paths to watch when developing locally:
 
 ```js
 // config.js
@@ -153,7 +151,7 @@ module.exports = {
 }
 ```
 
-When a file in any of these watch paths is updated, Browsersync will trigger a rebuild and will also refresh the browser page.
+When a file in any of these watch paths is updated, Browsersync will trigger a rebuild and changes will be reflected in the browser.
 
 ## components
 
