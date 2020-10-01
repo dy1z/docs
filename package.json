@@ -11,7 +11,7 @@
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/remark-prismjs": "^0.4.0",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.6.3",
     "@gridsome/transformer-yaml": "^0.2.1",
     "@gridsome/vue-remark": "^0.2.4",
     "@tailwindcss/ui": "^0.5.0",
