@@ -105,6 +105,8 @@ Something like this:
 <p style="margin: 4px 2px;">Example</p>
 ```
 
+By default, `mergeLonghand` is disabled.
+
 Enable it for all tags:
 
 ```js
