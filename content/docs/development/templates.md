@@ -143,38 +143,36 @@ Here's a very basic Template example:
 </extends>
 ```
 
-## Variables
+## Expressions
 
-Just as with [Layouts](/docs/layouts/#variables), variables from your [environment config](/docs/environments/) or from the Template's Front Matter are available on the `page` object:
+Maizzle uses [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions), allowing you to access variables from your [environment config](/docs/environments/) or from the Template's Front Matter, inside curly brace syntax:
 
 ```html
----
-preheader: This week's newsletter
----
-
 <extends src="src/layouts/master.html">
   <block name="template">
-    {{ page.preheader }}
+    You ran the `maizzle build {{ page.env }}` command
   </block>
 </extends>
 ```
 
-## Expressions
+Running `maizzle build production` would render this:
 
-Curly brace content will be evaluated, so you can use JavaScript expressions:
+```html
+You ran the `maizzle build production` command
+```
+
+You can even use _some_ JavaScript expressions within curly braces:
 
 ```html
 <extends src="src/layouts/master.html">
   <block name="template">
     doctype is {{ page.doctype || 'not set' }}
+    this email {{ page.env === 'production' ? "is" : "isn't" }} production ready!
   </block>
 </extends>
 ```
 
-The above will render `doctype is html` if you have `doctype: 'html'` set in your environment config. 
-It will otherwise fallback to `doctype is not set`.
-
-### Curly Brace Conflicts
+### Escaping
 
 Other templating engines, as well as many <abbr title="Email Service Provider">ESP</abbr>s  also use the `{{ }}` syntax.
 
@@ -197,6 +195,48 @@ If you want to output the curly braces as they are, so you can evaluate them at 
   ```
 
   The `<raw>` tag will be removed in the final output, but the curly braces will be left untouched.
+
+### Options
+
+You can configure `posthtml-expressions` in your `config.js`:
+
+```js
+module.exports = {
+  build: {
+    posthtml: {
+      expressions: {
+        // posthtml-expressions options
+      }
+    }
+  }
+}
+```
+
+Besides configuring templating tag names, here you can also pass other options to the plugin. For example, you could change the default expression delimiters from `{{ }}` to something like `[[ ]]`:
+
+```js
+module.exports = {
+  build: {
+    posthtml: {
+      expressions: {
+        delimiters: ['[[', ']]']
+      }
+    }
+  }
+}
+```
+
+You'd now use variables or expressions like this:
+
+```html
+<extends src="src/layouts/master.html">
+  <block name="template">
+    doctype is [[ page.doctype || 'not set' ]]
+  </block>
+</extends>
+```
+
+See all [`posthtml-expressions` options](https://github.com/posthtml/posthtml-expressions#options).
 
 ## Archiving
 
