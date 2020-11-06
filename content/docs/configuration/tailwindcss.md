@@ -21,7 +21,6 @@ This affects the following:
 - borderRadius
 - fontSize
 - lineHeight
-- letterSpacing
 - spacing (max/min width and height, width, height, margin, padding, etc)
 
 ### Extra spacing

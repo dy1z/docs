@@ -126,14 +126,18 @@ It's just a simple `<a>` tag, but with some nifty workarounds for Outlook's lack
 
 <alert>Line breaks and spaces between tags in the example above might render the button larger (although barely noticeable). If you want your button to be a precise size, just remove them.</alert>
 
-**Tip**: use the [`<outlook>`](/docs/tags/#outlook) tag for cleaner-looking, editor-friendly markup:
+**Tip**: use the [`<outlook>`](/docs/tags/#outlook) tag for cleaner-looking, editor-friendly markup. As an added bonus, you can also use Tailwind utilities with it:
 
 ```html
 <a 
   href="https://maizzle.com/"
   class="inline-block py-16 px-24 text-sm leading-none no-underline text-white font-semibold rounded bg-indigo-500 hover:bg-indigo-600">
-  <outlook><i style="letter-spacing: 27px; mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i></outlook>
+  <outlook>
+    <i class="tracking-24" style="mso-font-width: -100%; mso-text-raise: 26pt;">&nbsp;</i>
+  </outlook>
     <span style="mso-text-raise: 13pt;">Read more</span>
-  <outlook><i style="letter-spacing: 27px; mso-font-width: -100%;">&nbsp;</i></outlook>
+  <outlook>
+    <i class="tracking-24" style="mso-font-width: -100%;">&nbsp;</i>
+  </outlook>
 </a>
 ```
