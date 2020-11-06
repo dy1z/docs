@@ -117,3 +117,52 @@ The environment name is globally available under the `page.env` variable:
   This will show only when running `maizzle build production`
 </if>
 ```
+
+## Config Variables
+
+Maizzle exposes a `page` object that you can access through [expressions](/docs/templates/#expressions) in your HTML.
+This object contains: 
+
+- your Template config (`config.[env].js` merged with Front Matter)
+- the compiled Tailwind CSS
+
+This makes it possible to define variables in `config.js`:
+
+```js
+module.exports = {
+  doctype: 'html'
+}
+```
+
+... and use them in your markup:
+
+```html
+<extends src="src/layouts/master.html">
+  <block name="template">
+    <p>doctype is: {{ page.doctype }}</p>
+  </block>
+</extends>
+```
+
+### Top Level Locals
+
+If you need to define variables outside of the `page` object, you can use the `locals` key in your `config.js`:
+
+```js
+module.exports = {
+  locals: {
+    company: {
+      name: 'Spacely Space Sprockets, Inc.'
+    }
+  }
+}
+```
+
+Now, you can access `company` properties directly:
+
+```diff
+- Company name is {{ page.company.name }}
++ Company name is {{ company.name }}
+```
+
+<alert>Maizzle prevents overwriting the <code>page</code> object through <code>locals</code>.</alert>

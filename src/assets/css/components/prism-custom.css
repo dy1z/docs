@@ -121,7 +121,11 @@ a > code {
 }
 
 .token.deleted {
-  @apply text-red-500;
+  @apply text-red-400;
+}
+
+.token.inserted {
+  @apply text-green-400;
 }
 
 .token.unchanged {
