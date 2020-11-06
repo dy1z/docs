@@ -49,7 +49,9 @@ Add a `purgeCSS` key to your config, to customize its settings:
 ```js
 module.exports = {
   purgeCSS: {
-    extractor: /[\w-/:%]+(?<!:)/g, // regular expression
+    defaultExtractor: content => {
+      // return array of css selectors
+    },
     content: [], // array of filenames or globs to scan for selectors
     safelist: [], // array of strings or custom object
     blocklist: [], // array of strings
@@ -57,15 +59,14 @@ module.exports = {
 }
 ```
 
-### extractor
+### defaultExtractor
 
-If your Tailwind class names include characters not covered by the default extractor, use this option to specify a custom one.
-
-For example, let's make sure we don't purge classes that include a `!` character:
+If your CSS class names include characters not covered by [Tailwind's default extractor](https://github.com/tailwindlabs/tailwindcss/blob/master/src/lib/purgeUnusedStyles.js#L25-L34), use this option to specify a custom one:
 
 ```js
 purgeCSS: {
-  extractor: /[\w-/:.%!]+(?<!:)/g
+    defaultExtractor: content => [...myCustomExtractor(content)],    
+  }
 }
 ```
 
