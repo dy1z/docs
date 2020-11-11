@@ -83,6 +83,8 @@ styleToAttribute: {
 </table>
 ```
 
+By default, `styleToAttribute` only duplicates `vertical-align` as `valign`.
+
 ### attributeToStyle
 
 Duplicates specified HTML attributes as inline CSS.
@@ -108,6 +110,8 @@ module.exports = {
   }
 }
 ```
+
+<alert><code>attributeToStyle</code> runs right before CSS inlining, so you can still overwrite its output with Tailwind classes.</alert>
 
 **Supported attributes**
 
