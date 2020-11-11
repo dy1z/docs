@@ -73,6 +73,8 @@
       path: /docs/prettify/
     - title: Minify
       path: /docs/minify/
+    - title: Node.js
+      path: /docs/transformers/
 
 - name: Examples
   items:
