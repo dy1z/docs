@@ -83,6 +83,68 @@ styleToAttribute: {
 </table>
 ```
 
+### attributeToStyle
+
+Duplicates specified HTML attributes as inline CSS.
+
+Enable for all supported attributes:
+
+```js
+// config.production.js
+module.exports = {
+  inlineCSS: {
+    attributeToStyle: true
+  }
+}
+```
+
+Enable only for some attributes:
+
+```js
+// config.production.js
+module.exports = {
+  inlineCSS: {
+    attributeToStyle: ['width', 'bgcolor', 'background']
+  }
+}
+```
+
+**Supported attributes**
+
+`width` 
+
+Inlined as: `width: ${value}${unit}`
+
+Notes: supports only `px` and `%` values (defaults to `px`)
+
+`height` 
+
+Inlined as: `height: ${value}${unit}`
+
+Notes: supports only `px` and `%` values (defaults to `px`)
+
+`bgcolor` 
+
+Inlined as: `background-color: ${value}`
+
+`background` 
+
+Inlined as: `background-image: url('${value}')`
+
+
+`align` 
+
+On `<table>` elements: 
+
+- inlines `float: ${value}` for `left` or `right` values
+- inlines `margin-left: auto; margin-right: auto` for `center`
+
+On any other elements, gets inlined as `text-align: ${value}`
+
+`valign`
+
+Inlined as `vertical-align: ${value}`
+
 ### mergeLonghand
 
 Uses [`posthtml-postcss-merge-longhand`](https://github.com/posthtml/posthtml-postcss-merge-longhand) to rewrite longhand CSS with shorthand syntax. Only works with `margin`, `padding` and `border`, and only when all sides are specified.
