@@ -17,7 +17,7 @@
     "@tailwindcss/ui": "^0.7.2",
     "docsearch.js": "^2.6.3",
     "gridsome": "^0.7.23",
-    "gridsome-plugin-remark-shiki": "^0.3.1",
+    "gridsome-plugin-remark-shiki": "^0.6.0",
     "scroll-to-element": "^2.0.3"
   },
   "devDependencies": {
