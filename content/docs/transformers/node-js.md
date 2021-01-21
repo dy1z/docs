@@ -161,7 +161,7 @@ const html = removeInlineSizes(`<td style="width:100%;height:10px;">test</td>`).
 const {removeUnusedCSS} = require('@maizzle/framework')
 const options = {/* email-comb options */}
 
-const html = removeUnusedCSS(`<div class="unused">test</div>`).then(html => html)
+const html = removeUnusedCSS(`<div class="unused">test</div>`, options).then(html => html)
 
 // <div>test</div>
 ```
@@ -191,7 +191,7 @@ const html = safeClassNames('<div class="sm:text-left w-1.5">foo</div>', {'.': '
 ```js
 const {ensureSixHEX} = require('@maizzle/framework')
 
-const html = ensureSixHEX('<td style="color: #ffc" bgcolor="#000"></td>', {'.': '_dot_'}).then(html => html)
+const html = ensureSixHEX('<td style="color: #ffc" bgcolor="#000"></td>').then(html => html)
 
 // <td style="color: #ffffcc" bgcolor="#000000"></td>
 ```
