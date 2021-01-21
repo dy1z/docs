@@ -29,10 +29,9 @@ module.exports = {
       'src/layouts/**/*.*',
       'src/partials/**/*.*',
       'src/components/**/*.*',
-      ...extraPurgePaths, // spread the array variable
-    ],
-    // ...
-  },
+      ...extraPurgePaths // spread the array variable
+    ]
+  }
 }
 ```
 
@@ -55,7 +54,7 @@ module.exports = {
     // do stuff and return
     return 'baz'
   }(), // invoke function
-  wha: () => imaginaryLib.render('implicit return 👌'),
+  wha: () => imaginaryLib.render('implicit return 👌')
 }
 ```
 
