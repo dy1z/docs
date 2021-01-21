@@ -71,12 +71,9 @@ This ensures URLs from anchors are actually output in the plaintext version.
 
 You can use a `plaintext` object in your `config.js` to overwrite any of the defaults from `string-strip-html`.
 
-Note that in this case, you need to set `plaintext.enabled` to `true`, otherwise plaintext won't be output:
-
 ```js
 module.exports = {
   plaintext: {
-    enabled: true,
     ignoreTags: [],
     onlyStripTags: [],
     stripTogetherWithTheirContents: ['script', 'style', 'xml'],
@@ -106,7 +103,6 @@ You basically add the options object as shown above, but in Front Matter syntax:
 ```html
 ---
 plaintext: 
-  enabled: true
   dumpLinkHrefsNearby:
     enabled: true
     putOnNewLine: true,
@@ -170,4 +166,4 @@ const {plaintext} = Maizzle.plaintext(html, {
 })
 ```
 
-The object you pass here must contain a `plaintext: {}` key as explained in the [configuration section above](/docs/plaintext/#configuration), but in this case it does not require the `enabled: true` key in order to work.
+The object that you pass here must contain a `plaintext: {}` key, as explained in the [configuration section](/docs/plaintext/#configuration) above.
