@@ -148,9 +148,9 @@ First, let's register a new `@media` query - we will call it `screen`:
 module.exports = {
   theme: {
     screens: {
-      screen: {'raw': 'screen'},
-      sm: {'max': '600px'},
-    },
+      screen: {raw: 'screen'},
+      sm: {max: '600px'},
+    }
   }
 }
 ```

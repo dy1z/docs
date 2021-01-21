@@ -51,10 +51,9 @@ We need to tell Tailwind to use the plugin. Edit `tailwind.config.js` and `requi
 ```js
 // tailwind.config.js
 module.exports = {
-  // ...
   plugins: [
     require('tailwindcss-gradients'),
-  ],
+  ]
 }
 ```
 
@@ -67,7 +66,6 @@ For example, let's register linear gradients based on the existing color palette
 // tailwind.config.js
 module.exports = {
   theme: {
-    // ...
     linearGradientColors: theme => theme('colors'),
   }
 }
@@ -79,7 +77,7 @@ If you run `maizzle build` and take a look at one of the templates in `build_loc
 .bg-gradient-t-transparent {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0), transparent) !important;
 }
-/* + about 1487 more! */
+/* + many more! */
 ```
 
 The reason for so many classes is that `tailwindcss-gradients` outputs utilities for all combinations of colors defined in our config.
@@ -90,13 +88,12 @@ We can, of course, change that and only generate a handful of gradients:
 // tailwind.config.js
 module.exports = {
   theme: {
-    // ...
     linearGradientColors: {
       'red': '#f00',
       'red-blue': ['#f00', '#00f'],
       'red-green-blue': ['#f00', '#0f0', '#00f'],
       'black-white-with-stops': ['#000', '#000 45%', '#fff 55%', '#fff'],
-    },
+    }
   }
 }
 ```
@@ -190,9 +187,9 @@ We can register a `screen` breakpoint to prevent Juice from inlining our gradien
 module.exports = {
   theme: {
     screens: {
-      screen: {'raw': 'screen'},
-      sm: {'max': '600px'},
-    },
+      screen: {raw: 'screen'},
+      sm: {max: '600px'},
+    }
   }
 }
 ```

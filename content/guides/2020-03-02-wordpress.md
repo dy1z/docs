@@ -122,7 +122,6 @@ We can add a function to `config.js` and use it to format the post's date accord
 ```js
 // config.js
 module.exports = {
-  // ...
   formattedDate: (str) => {
     const date = new Date(str)
     return date.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'})

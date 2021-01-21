@@ -51,9 +51,9 @@ module.exports = {
   build: {
     posthtml: {
       plugins: [
-        require('posthtml-prism')(),
-      ],
-    },
+        require('posthtml-prism')()
+      ]
+    }
   }
 }
 ```
@@ -105,10 +105,9 @@ module.exports = {
       highlight: (code, lang) => {
         lang = lang || 'markup'
         return Prism.highlight(code, Prism.languages[lang], lang)
-      },
+      }
     }
-  },
-  // ...
+  }
 }
 ```
 
