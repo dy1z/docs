@@ -27,12 +27,36 @@ module.exports = {
     div: {
       role: 'article'
     }
-  },
-  // ...
+  }
 }
 ```
 
+## Default attributes
+
 By default, Maizzle makes your `<table>` accessible, resets its spacing, and ensures that an empty `alt=""` attribute is added to images that don't have it:
+
+```js
+let attributes = {
+  table: {
+    cellpadding: 0,
+    cellspacing: 0,
+    role: 'presentation'
+  },
+  img: {
+    alt: ''
+  }
+}
+```
+
+### Disabling
+
+You can turn this off by setting `extraAttributes` to `false` in your config:
+
+```js
+module.exports = {
+  extraAttributes: false
+}
+```
 
 <alert>Attributes will be added only if they're not already present on the element.</alert>
 
@@ -53,9 +77,8 @@ extraAttributes: {
   },
   '[role]': {
     'aria-roledescription': 'slide'
-  },
-  // ...
-},
+  }
+}
 ```
 
 ## Multiple selectors
@@ -65,11 +88,11 @@ Add multiple attributes to multiple elements in one go:
 ```js
 const attributes = {
   'div, p': {
-    class: 'test',
+    class: 'test'
   },
   'div[role=alert], section.alert': {
     class: 'alert'
-  },
+  }
 }
 ```
 
