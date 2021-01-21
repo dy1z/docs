@@ -17,7 +17,7 @@ For example, let's pull in Merriweather, and Open Sans with some custom weights:
 ```js
 // config.js
 module.exports = {
-  googleFonts: 'Merriweather|Open+Sans:300,400,700',
+  googleFonts: 'Merriweather|Open+Sans:300,400,700'
 }
 ```
 
@@ -62,10 +62,9 @@ theme: {
       '"Open Sans"',
       '-apple-system',
       '"Segoe UI"',
-      'sans-serif',
-    ],
-    // ...
-  },
+      'sans-serif'
+    ]
+  }
 }
 ```
 
@@ -86,8 +85,8 @@ module.exports = {
   theme: {
     screens: {
       screen: {raw: 'screen'},
-      sm: {max: '600px'},
-    },
+      sm: {max: '600px'}
+    }
   }
 }
 ```
