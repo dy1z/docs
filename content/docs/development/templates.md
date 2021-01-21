@@ -145,7 +145,7 @@ Here's a very basic Template example:
 
 ## Expressions
 
-Maizzle uses [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions), allowing you to access variables from your [environment config](/docs/environments/) or from the Template's Front Matter, inside curly brace syntax:
+Maizzle uses [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions), allowing you to access variables from your [environment config](/docs/environments/) or from the Template's Front Matter inside curly brace syntax:
 
 ```html
 <extends src="src/layouts/master.html">
@@ -242,9 +242,9 @@ See all [`posthtml-expressions` options](https://github.com/posthtml/posthtml-ex
 
 Maizzle will only compile templates found in path(s) you have defined in `build.templates.source`, and which use the extension defined in `build.templates.extensions`.
 
-If you create a lot of emails, your builds can start to slow down, since all templates are rebuilt every time you run the `build` command.
+If you create a lot of emails, your builds can start to slow down, since all templates are rebuilt every time you run the `build <env>` command or when developing locally and making changes to a Layout or Component.
 
 You can archive Templates in two ways:
 
 1. Move them to a directory outside the one defined in `build.templates.source`, so they don't get copied over to the destination directory (recommended).
-2. Change their file extension to something that is not defined in `build.templates.filetypes`. They will still be copied over to the destination, but Maizzle will not try to compile them.
+2. Change their file extension to something that is not defined in `build.templates.filetypes`. They'll just be copied over to the destination, Maizzle will not try to compile them.
