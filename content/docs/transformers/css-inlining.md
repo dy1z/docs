@@ -16,40 +16,53 @@ Let's first take a look at all the options available:
 // config.js
 module.exports = {
   inlineCSS: {
-    enabled: false,
     styleToAttribute: {
       'background-color': 'bgcolor',
       'background-image': 'background',
       'text-align': 'align',
-      'vertical-align': 'valign',
+      'vertical-align': 'valign'
     },
     mergeLonghand: false,
     applySizeAttribute: {
       width: [],
-      height: [],
+      height: []
     },
     keepOnlyAttributeSizes: {
       width: [],
-      height: [],
+      height: []
     },
-    preferBgColorAttribute: {
-      enabled: false,
-    },
-    excludedProperties: null,
-  },
-  // ...
+    preferBgColorAttribute: false,
+    excludedProperties: null
+  }
 }
 ```
 
+## Enable CSS inlining
+
+To enable CSS inlining, simply set `inlineCSS` to `true`:
+
+```js
+module.exports = {
+  inlineCSS: true
+}
+```
+
+Note that if you set `inlineCSS` to an empty object, inlining won't take place:
+
+```js
+module.exports = {
+  // won't inline CSS, needs at least one option set
+  inlineCSS: {}
+}
+```
+
+<alert>You will want to turn inlining off when developing ⚡ <a href="/docs/amp4email/">AMP4EMAIL templates</a>.</alert>
+
 ## Options
 
+If you need control over CSS inlining, simply pass an options object to  `inlineCSS`.
+
 Changing these options in your environment config will apply to all Templates when building emails for that environment.
-
-### enabled
-
-Enable automatic CSS inlining. When set to `false`, inlining will not take place and all other settings inside `inlineCSS` will be ignored.
-
-<alert>Note: you will need to turn this off when developing <a href="/docs/amp4email/">⚡4email templates</a>.</alert>
 
 ### styleToAttribute
 
@@ -58,9 +71,13 @@ Defines which CSS properties should Juice duplicate as what HTML attributes.
 For example, this property-attribute assignment:
 
 ```js
-styleToAttribute: {
-  'background-color': 'bgcolor',
-},
+module.exports = {
+  inlineCSS: {
+    styleToAttribute: {
+      'background-color': 'bgcolor',
+    }
+  }
+}
 ```
 
 ... will transform this:
@@ -92,7 +109,6 @@ Duplicates specified HTML attributes as inline CSS.
 Enable for all supported attributes:
 
 ```js
-// config.production.js
 module.exports = {
   inlineCSS: {
     attributeToStyle: true
@@ -103,7 +119,6 @@ module.exports = {
 Enable only for some attributes:
 
 ```js
-// config.production.js
 module.exports = {
   inlineCSS: {
     attributeToStyle: ['width', 'bgcolor', 'background']
@@ -176,27 +191,30 @@ By default, `mergeLonghand` is disabled.
 Enable it for all tags:
 
 ```js
-// config.js
 module.exports = {
   inlineCSS: {
     mergeLonghand: true
-    // ..
-  },
+  }
 }
 ```
 
 Enable it only for a selection of tags:
 
 ```js
-// config.js
 module.exports = {
   inlineCSS: {
-    mergeLonghand: {
-      enabled: true,
-      tags: ['td', 'div']
-    },
-    // ..
-  },
+    mergeLonghand: ['td', 'div']
+  }
+}
+```
+
+To disable `mergeLonghand`, set it to `false` or simply omit it:
+
+```js
+module.exports = {
+  inlineCSS: {
+    mergeLonghand: false
+  }
 }
 ```
 
@@ -209,7 +227,6 @@ Example:
 ```js
 module.exports = {
   inlineCSS: {
-    enabled: true,
     applyWidthAttributes: ['TABLE', 'TD', 'TH']
   }
 }
@@ -226,7 +243,6 @@ Example:
 ```js
 module.exports = {
   inlineCSS: {
-    enabled: true,
     applyHeightAttributes: ['TABLE', 'TD', 'TH']
   }
 }
@@ -241,19 +257,27 @@ Define for which elements should Maizzle keep _only_ attribute sizes, like `widt
 It's set to empty arrays by default, so that no elements are affected:
 
 ```js
-keepOnlyAttributeSizes: {
-  width: [],
-  height: [],
-},
+module.exports = {
+  inlineCSS: {
+    keepOnlyAttributeSizes: {
+      width: [],
+      height: []
+    }
+  }
+}
 ```
 
 You can add HTML elements like this:
 
 ```js
-keepOnlyAttributeSizes: {
-  width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-  height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
-},
+module.exports = {
+  inlineCSS: {
+    keepOnlyAttributeSizes: {
+      width: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO'],
+      height: ['TABLE', 'TD', 'TH', 'IMG', 'VIDEO']
+    }
+  }
+}
 ```
 
 <alert>This will only work for elements defined in <a href="/docs/css-inlining/#applysizeattribute">applySizeAttribute</a>.</alert>
@@ -267,25 +291,20 @@ If you're inlining your CSS and have `'background-color': 'bgcolor'` in the `sty
 Enable this option to remove any inlined `background-color` CSS properties:
 
 ```js
-// config.js
 module.exports = {
-  preferBgColorAttribute: {
-    enabled: true,
+  inlineCSS: {
+    preferBgColorAttribute: true
   }
-  // ...
 }
 ```
 
 You can optionally provide an array of tag names that it should remove the `background-color` inline CSS from:
 
 ```js
-// config.js
 module.exports = {
-  preferBgColorAttribute: {
-    enabled: true,
-    tags: ['td'], // default: ['body', 'marquee', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr']
+  inlineCSS: {
+    preferBgColorAttribute: ['td'] // default: ['body', 'marquee', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr']
   }
-  // ...
 }
 ```
 
@@ -298,7 +317,11 @@ Array of CSS property names that should be excluded from the CSS inlining proces
 For example:
 
 ```js
-'excludedProperties' => ['padding', 'padding-left'],
+module.exports = {
+  inlineCSS: {
+    excludedProperties: ['padding', 'padding-left']
+  }
+}
 ```
 
 ## Prevent inlining
