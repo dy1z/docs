@@ -20,6 +20,24 @@ module.exports = {
 }
 ```
 
+## Configuration
+
+You may configure the `path` and `extension` of the plaintext file:
+
+```js
+module.exports = {
+  plaintext: {
+    destination: {
+      path: 'dist/brand/template.txt',
+      extension: 'rxt'
+    }
+  }
+}
+```
+
+<alert>The <code>path</code> value must include the file name and extension.</alert>
+<alert>When using the <code>path</code> option, the <code>extension</code> option will be discarded.</alert>
+
 ## Front Matter
 
 Generate a plaintext version for a single Template by enabling it in its Front Matter:
