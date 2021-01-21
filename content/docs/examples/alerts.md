@@ -66,11 +66,11 @@ A two column table with a button.
       <td class="bg-blue-500 text-white rounded" style="padding: 16px 32px;">
         <table class="example w-full">
           <tr>
-            <td class="text-lg w-8/12">
+            <td class="text-lg block lg:table-cell w-full pb-4 lg:pb-0 text-center lg:text-left lg:w-8/12">
               📢 We have some big news for you!
             </td>
-            <td class="w-4/12">
-              <table class="example">
+            <td class="block lg:table-cell w-full lg:w-4/12">
+              <table class="example mx-auto lg:m-0">
                 <tr>
                   <th class="bg-white hover:bg-blue-50 text-blue-500 text-center rounded">
                     <button class="w-full text-sm font-bold leading-full no-underline" style="padding: 12px 40px;">Learn more</button>
@@ -91,11 +91,11 @@ A two column table with a button.
     <td class="bg-blue-500 text-white rounded py-16 px-32">
       <table class="w-full">
         <tr>
-          <th class="text-lg w-8/12 inline-block sm:w-full">
+          <th class="text-lg w-8/12 inline-block sm:w-full sm:pb-4 text-left sm:text-center">
             📢 We have some big news for you!
           </th>
           <th class="w-4/12 inline-block sm:w-full">
-            <table class="">
+            <table class="sm:mx-auto">
               <tr>
                 <th class="bg-white hover:bg-blue-50 text-center rounded" style="mso-padding-alt: 12px 48px;">
                   <a href="" class="w-full text-blue-500 text-sm leading-full no-underline py-12 px-48">Learn more</a>
