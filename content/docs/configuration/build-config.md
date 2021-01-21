@@ -143,11 +143,10 @@ module.exports = {
     browsersync: {
       watch: [
         './some/folder',
-        'some-file.js',
-      ],
-    },
-  },
-  // ...
+        'some-file.js'
+      ]
+    }
+  }
 }
 ```
 
@@ -164,7 +163,7 @@ You can define the path where your Components are located:
 ```js
 build: {
   components: {
-    root: 'src/components',
+    root: 'src/components'
   }
 }
 ```
@@ -183,7 +182,7 @@ Additionally, you may also customize the tag and attribute names:
 build: {
   components: {
     tag: 'module',
-    attribute: 'href',
+    attribute: 'href'
   }
 }
 ```
@@ -205,7 +204,7 @@ You can define the path where your Layouts are located:
 ```js
 build: {
   layouts: {
-    root: 'src/layouts',
+    root: 'src/layouts'
   }
 }
 ```
@@ -231,7 +230,7 @@ You may also change the `<extends>` tag name to something custom:
 ```js
 build: {
   layouts: {
-    tagName: 'layout',
+    tagName: 'layout'
   }
 }
 ```
@@ -257,13 +256,13 @@ build: {
     source: 'src/templates',
     destination: {
       path: 'build_local',
-      extension: 'html',
+      extension: 'html'
     },
     assets: {
       source: './src/assets/images',
-      destination: 'images',
-    },
-  },
+      destination: 'images'
+    }
+  }
 }
 ```
 
@@ -275,14 +274,14 @@ build: {
     {
       source: 'src/templates',
       destination: {
-        path: 'build_local',
-      },
+        path: 'build_local'
+      }
     },
     {
       source: 'src/amp-templates',
       destination: {
-        path: 'build_amp',
-      },
+        path: 'build_amp'
+      }
     }
   ]
 }
@@ -297,8 +296,8 @@ Define what file extensions you use for your Templates.
 ```js
 build: {
   templates: {
-    filetypes: ['html', 'blade.php'], // or 'html|blade.php'
-  },
+    filetypes: ['html', 'blade.php'] // or 'html|blade.php'
+  }
 }
 ```
 
@@ -315,8 +314,8 @@ Define the source directory where Maizzle should look for Templates to compile. 
 ```js
 build: {
   templates: {
-    source: 'src/templates',
-  },
+    source: 'src/templates'
+  }
 }
 ```
 
@@ -334,9 +333,9 @@ Directory path where Maizzle should output the compiled emails.
 build: {
   templates: {
     destination: {
-      path: 'build_local',
-    },
-  },
+      path: 'build_local'
+    }
+  }
 }
 ```
 
@@ -354,9 +353,9 @@ build: {
   templates: {
     destination: {
       path: 'build_laravel',
-      extension: 'blade.php',
-    },
-  },
+      extension: 'blade.php'
+    }
+  }
 }
 ```
 
@@ -405,11 +404,10 @@ At build time, `templates.assets.destination` will be created relative to `templ
 ```js
 build: {
   templates: {
-    // ...
     assets: {
       source: 'src/assets/images',
-      destination: 'images',
-    },
+      destination: 'images'
+    }
   }
 }
 ```
@@ -424,22 +422,22 @@ build: {
     {
       source: 'src/templates',
       destination: {
-        path: 'build_basic',
+        path: 'build_basic'
       },
       assets: {
         source: 'src/assets/images',
-        destination: 'images', // assets output to build_basic/images
-      },
+        destination: 'images' // assets output to build_basic/images
+      }
     },
     {
       source: 'src/amp-templates',
       destination: {
-        path: 'build_amp',
+        path: 'build_amp'
       },
       assets: {
         source: 'src/assets/amp',
-        destination: 'media', // assets output to build_amp/media
-      },
+        destination: 'media' // assets output to build_amp/media
+      }
     }
   ]
 }
@@ -453,9 +451,9 @@ Paths for Tailwind CSS.
 build : {
   tailwind: {
     css: 'src/assets/css/main.css',
-    config: 'tailwind.config.js',
-  },
-},
+    config: 'tailwind.config.js'
+  }
+}
 ```
 
 ### css
@@ -493,7 +491,7 @@ Register any PostHTML plugins you would like to use:
 build: {
   posthtml: {
     plugins: [
-      require('posthtml-spaceless')(),
+      require('posthtml-spaceless')()
     ]
   }
 }
@@ -518,8 +516,8 @@ build: {
   posthtml: {
     options: {
       directives: [
-        { name: '?php', start: '<', end: '>' },
-      ],
+        { name: '?php', start: '<', end: '>' }
+      ]
     }
   }
 }
@@ -548,8 +546,8 @@ You can configure how build errors are handled when developing with the CLI comm
 ```js
 module.exports = {
   build : {
-    fail: 'silent', // or 'verbose'
-  },
+    fail: 'silent' // or 'verbose'
+  }
 }
 ```
 
