@@ -14,8 +14,7 @@ First, add a `transform` object to your Maizzle config:
 ```js
 //config.js
 module.exports = {
-  transform: {},
-  // ...
+  transform: {}
 }
 ```
 
@@ -27,10 +26,9 @@ Each entry in this object is made up of a `key: value` pair.
 Example:
 
 ```js
-//config.js
 module.exports = {
   transform: {
-    uppercase: str => str.toUpperCase(),
+    uppercase: str => str.toUpperCase()
   }
 }
 ```
