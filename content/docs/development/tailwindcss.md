@@ -35,11 +35,11 @@ You might have noticed that we used `{{{ }}}` instead of the usual `{{ }}`.
 
 We do this to avoid double-escaping the CSS, which can break the build process when quoted property values are encountered (for example quoted font family names, background image URLs, etc.).
 
-<alert type="warning">In order to use Tailwind CSS, the Layout that you're extending must ouput <code>page.css</code> inside a <code>&lt;style&gt;</code> tag.</alert>
+<alert type="warning">In order to use Tailwind CSS, the Layout that you're extending must output <code>page.css</code> inside a <code>&lt;style&gt;</code> tag.</alert>
 
 ### Utility-first
 
-Next, simply write your HTML markup and add Tailwind classes to elements.
+Simply write your HTML markup and add Tailwind classes to elements.
 
 Instead of writing something like this:
 
@@ -150,9 +150,7 @@ To make sure the Tailwind CSS classes that you use in your emails are not purged
 module.exports = {
   purgeCSS: {
     content: [
-      'src/layouts/**/*.*',
-      'src/partials/**/*.*',
-      'src/components/**/*.*'
+      'brand/emails/**/*.*'
     ]
   }
 }
@@ -162,13 +160,13 @@ module.exports = {
 
 ### Purging strategy
 
-Although it picks up [`purge`](https://tailwindcss.com/docs/controlling-file-size#removing-unused-css) options in your `tailwind.config.js` (like `content` or `extractor`), Maizzle doesn't actually use Tailwind's CSS purging functionality. 
+Although it picks up [`purge`](https://tailwindcss.com/docs/controlling-file-size#removing-unused-css) options in your `tailwind.config.js`, Maizzle doesn't actually use Tailwind's CSS purging functionality. 
 
 Instead, a custom CSS purging strategy is used.
 
 This is mainly required in order to respect the build environment and enable purging based on it, and especially so that we can purge sources that you wouldn't be able to define in `tailwind.config.js`.
 
-These are the default content sources used for CSS purging in Maizzle:
+By default, these paths are scanned for selectors to preserve when purging CSS:
 
 ```js
 const purgeSources = [
@@ -184,7 +182,7 @@ const purgeSources = [
 
 ## Shorthand CSS
 
-<alert>This section refers to CSS inside <code>&lt;style&gt;</code> tags. For <em>inline</em> CSS shorthand, see the CSS inlining <g-link to="/docs/css-inlining/#mergelonghand">docs</g-link>.</alert>
+<alert>This section refers to CSS inside <code>&lt;style&gt;</code> tags. For <em>inline</em> CSS shorthand, see the <g-link to="/docs/css-inlining/#mergelonghand">CSS inlining docs</g-link>.</alert>
 
 Maizzle uses [postcss-merge-longhand](https://github.com/cssnano/cssnano/tree/master/packages/postcss-merge-longhand) to rewrite your CSS `padding`, `margin`, and `border` properties in shorthand-form, when possible.
 
@@ -326,4 +324,4 @@ When adding a `<style>` tag inside a Template, you can prevent all rules inside 
 </extends>
 ```
 
-<alert>Although it won't be inlined, the CSS will still be processed by <a href="/docs/code-cleanup/#removeunusedcss">email-comb</a>.</alert>
+<alert>Although it won't be inlined, the CSS will still be processed by the <a href="/docs/code-cleanup/#removeunusedcss">removeUnusedCSS</a> Transformer.</alert>
