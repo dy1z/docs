@@ -15,8 +15,7 @@ Make it globally available by setting it in your environment config:
 ```js
 // config.production.js
 module.exports = {
-  baseImageURL: 'https://cdn.example.com',
-  // ...
+  baseImageURL: 'https://cdn.example.com'
 }
 ```
 
