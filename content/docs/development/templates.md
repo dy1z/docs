@@ -172,7 +172,39 @@ You can even use _some_ JavaScript expressions within curly braces:
 </extends>
 ```
 
-### Escaping
+### Unescaping variables
+
+By default, special characters are escaped:
+
+```html
+---
+markup: '<strong>Bold</strong>'
+---
+
+<extends src="src/layouts/master.html">
+  <block name="template">
+    {{ page.markup }}
+    <!-- &lt;strong&gt;Bold&lt;strong&gt; -->
+  </block>
+</extends>
+```
+
+If you need to render values exactly as they are, so that maybe markup is interpreted, use triple curly braces:
+
+```html
+---
+markup: '<strong>Bold</strong>'
+---
+
+<extends src="src/layouts/master.html">
+  <block name="template">
+    {{{ page.markup }}}
+    <!-- <strong>Bold</strong> -->
+  </block>
+</extends>
+```
+
+### Ignoring
 
 Other templating engines, as well as many <abbr title="Email Service Provider">ESP</abbr>s  also use the `{{ }}` syntax.
 
