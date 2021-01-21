@@ -18,15 +18,14 @@ module.exports = {
   urlParameters: {
     _options: {
       tags: ['a'], 
-      qs: {},
+      qs: {}
     },
     utm_source: 'maizzle',
     utm_campaign: 'Campaign Name',
     utm_medium: 'email',
     custom_parameter: 'foo',
-    '1stOfApril': 'bar',
+    '1stOfApril': 'bar'
   }
-  // ...
 }
 ```
 
@@ -73,11 +72,10 @@ module.exports = {
     _options: {
       qs: {
         encode: true
-      },
+      }
     },
-    foo: '@Bar@',
+    foo: '@Bar@'
   }
-  // ...
 }
 ```
 
