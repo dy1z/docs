@@ -42,15 +42,21 @@ Maizzle also uses some [PostCSS](https://postcss.org/) plugins, enabling various
 
 ## BYOHTML
 
-Maizzle doesn't force you to write abstractions such as `<row>` or `<column>`. You code your emails the way you want to, it doesn't get in your way.
+Maizzle doesn't include markup abstractions that expand to table-based structures, such as `<row>` or `<column>` in other frameworks. 
 
-Knowing how bad email clients are at rendering HTML, this might sound terrifying to some, but this way you don't need to worry about markup being locked into the framework core. So you're free to code your emails however you like 💪
+You code your emails the way you want to with HTML you already know, there's no need to learn new tags or attributes.
+
+Knowing that some email clients still need layouts coded with tables in order to ensure proper rendering, this might sound terrifying to some. However, depending on your audience, nowadays you can actually use modern HTML and CSS and have your layout look great in the majority of email clients.
+
+Also, this way you don't need to worry about markup being locked into the framework core, or about not having full control over styling or accessibility. 
+
+You're free to code your emails however you like 💪
 
 _Bring Your Own HTML_ <sup>&trade;</sup>
 
 ## Responsive
 
-Because of the lack of standards and the wildly varying CSS support in email clients, there are many techniques that email designers use to code responsive emails.
+Because of the lack of standards and the wildly varying [CSS support in email clients](https://www.caniemail.com/), there are many techniques that email designers use to code responsive emails.
 
 Since you need to <abbr title="Bring Your Own HTML">BYOHTML</abbr>, Maizzle doesn't have an opinion on how you should code your emails: from _spongy_ to _fluid_ to _responsive_ to _hybrid_, everything is supported, so you're free to use whatever technique you like or need.
 
