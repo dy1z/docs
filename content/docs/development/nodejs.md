@@ -149,9 +149,9 @@ Maizzle.render('html string', {
 Transformers, such as CSS inlining or minification, are opt-in: they transform content only when you enable them.
 Since you don't need to pass in a Maizzle config object, this means that most of them will not run.
 
-The following Transformers _always_ run, regardless of your config:
+The following Transformers always run:
 
-- Markdown
+- Markdown (can be disabled)
 - Prevent Widows
 - Remove Attributes - removes empty `style` attributes by default
 - Transform Contents - processes CSS with PostCSS inside elements with a `postcss` attribute
