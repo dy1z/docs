@@ -26,7 +26,7 @@ Tailwind CSS is compiled, and various [PostCSS](https://postcss.org/) plugins ar
 
 When you specify a build environment, i.e. `maizzle build production`, PurgeCSS removes any unused classes from the compiled CSS. It scans all your source folders and any other, custom sources that you specify, and removes any unused CSS from the compiled CSS that will be passed to the final template.
 
-<alert>Yes, <a href="/docs/code-cleanup/#removeunusedcss"><code>email-comb</code></a> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.</alert>
+<alert>Yes, <a href="/docs/code-cleanup/#removeunusedcss"><code>removeUnusedCSS</code></a> can also remove unused CSS. But in order to speed things up it's best to feed it as little CSS as possible.</alert>
 
 ## Clean destination
 
@@ -70,9 +70,10 @@ Each Template is parsed and compiled in-place, in your destination directory:
     - [posthtml-content](https://github.com/posthtml/posthtml-content) is used to transform content marked with custom attributes. By default, it looks for any `<style postcss>` tag in the Template. If it finds any, it tries to compile the contents with PostCSS. Useful if you need to use Tailwind CSS inside a style block right in your Template.
     - [posthtml-markdownit](https://github.com/posthtml/posthtml-markdownit) is used to compile Markdown
     - [prevent-widows](https://github.com/bashaus/prevent-widows) looks for tags containing the `prevent-widows` attribute. When it finds one, it will replace the last space in your text with a `&nbsp;`.
+    - [attributeToStyle](/docs/css-inlining/#attributetostyle) translates HTML attributes to inline CSS
     - [Juice](https://github.com/Automattic/juice) inlines CSS
     - [email-comb](https://www.npmjs.com/package/email-comb) removes any unused CSS
-    - attributes are removed based on your config. By default, Maizzle cleans up any empty `style=""` attributes.
+    - attributes are removed based on your config. By default, Maizzle cleans up any empty `style=""` and `class=""` attributes.
     - inline CSS sizes are removed (`width=""` and `height=""` are preserved)
     - inline background colors are removed (`bgcolor=""` is preserved)
     - any [extra attributes](/docs/extra-attributes/) defined are added to tags
