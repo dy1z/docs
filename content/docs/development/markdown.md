@@ -94,13 +94,23 @@ module.exports = {
     root: './', // A path relative to which markdown files are imported
     encoding: 'utf8', // Encoding for imported Markdown files
     markdownit: {}, // Options passed to markdown-it
-    plugins: [], // Plugins for markdown-it
-  },
-  // ...
+    plugins: [] // Plugins for markdown-it
+  }
 }
 ```
 
 Checkout the options for [`posthtml-markdownit`](https://github.com/posthtml/posthtml-markdownit#options) and [`markdown-it`](https://github.com/markdown-it/markdown-it#init-with-presets-and-options).
+
+## Disabling
+
+You can disable the markdown Transformer by setting it to `false`:
+
+```js
+// config.js
+module.exports = {
+  markdown: false
+}
+```
 
 ## Plugins
 
@@ -117,9 +127,8 @@ module.exports = {
         plugin: require('markdown-it-emoji'),
         options: {} // Options for markdown-it-emoji
       }
-    ],
-  },
-  // ...
+    ]
+  }
 }
 ```
 
@@ -186,8 +195,31 @@ For example, imagine your have fenced code blocks like this in your Markdown:
 // config.production.js
 module.exports = {
   removeUnusedCSS: {
-    enabled: true,
-    whitelist: ['.lang*'],
-  },
+    whitelist: ['.lang*']
+  }
 }
 ```
+
+### Escaped variables
+
+If you're using expressions to render markdown from a variable that you have defined in your config, like this:
+
+```js
+module.exports = {
+  data: {
+    content: '> a markdown string'
+  }
+}
+```
+
+... you will need to use triple curly braces to output the unescaped content:
+
+```html
+<extends src="src/layouts/master.html">
+  <block name="template">
+    {{{ page.data.content }}
+  </block>
+</extends>
+```
+
+This is required for blockquotes to work - otherwise `>` will be output as `&gt;` and the blockquote will be rendered as a paragraph.
