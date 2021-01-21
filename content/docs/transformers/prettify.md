@@ -13,10 +13,7 @@ Need to send HTML to a human? Enable `prettify` in your config:
 ```js
 // config.production.js
 module.exports = {
-  prettify: {
-    enabled: true,
-  },
-  // ...
+  prettify: true
 }
 ```
 
@@ -31,13 +28,10 @@ Under the hood, `pretty` uses [js-beautify](https://www.npmjs.com/package/js-bea
 Maybe you prefer tabs for indentation?
 
 ```js
-// config.js
 module.exports = {
   prettify: {
-    enabled: true,
-    indent_with_tabs: true,
-    // ...
-  },
+    indent_with_tabs: true
+  }
 }
 ```
 
