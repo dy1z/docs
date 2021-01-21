@@ -20,7 +20,7 @@ You'll need [Node.js](https://nodejs.org/en/download/) installed. Either downloa
 node -v
 ```
 
-<alert>Maizzle requires at least Node v10.x.</alert>
+<alert>Currently, Maizzle requires at least Node v12.13.0</alert>
 
 ### Git
 
