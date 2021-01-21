@@ -61,7 +61,7 @@ You may disable this by adding the `important` key to your Tailwind config:
 ```js
 // tailwind.config.js
 module.exports = {
-  important: false,
+  important: false
 }
 ```
 
@@ -97,7 +97,7 @@ Of course, you're free to adjust this as you like:
 
 ```js
 screens: {
-  sm: {max: '600px'},
+  sm: {max: '600px'}
 },
 ```
 
@@ -129,5 +129,5 @@ corePlugins: {
   divideOpacity: false,
   placeholderOpacity: false,
   textOpacity: false,
-},
+}
 ```
