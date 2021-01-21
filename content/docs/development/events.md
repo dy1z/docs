@@ -28,7 +28,7 @@ module.exports = {
     },
     // some other event...
   }
-},
+}
 ```
 
 ### Node.js
@@ -44,7 +44,7 @@ html = Maizzle.render(str, {
     maizzle: {},
     beforeRender(config) {
       // ...
-    },
+    }
   }
 ).then(({html}) => console.log(html))
 ```
@@ -74,17 +74,17 @@ Exposes the config object so you can further customize it.
 For example, let's use a custom highlight function for Markdown fenced code blocks:
 
 ```js
+// config.js
 const Prism = require('prismjs')
 
 module.exports = {
-  // ...
   events: {
     async beforeCreate(config) {
       config.markdown.highlight = (code, lang, callback) => {
         return Prism.highlight(code, Prism.languages[lang], lang)
       }
-    },
-  },
+    }
+  }
 }
 ```
 
@@ -109,9 +109,9 @@ module.exports = {
 
       // must always return the `html`
       return html
-    },
-  },
-},
+    }
+  }
+}
 ```
 
 Then, you'd render it in your HTML, like so:
@@ -139,13 +139,13 @@ For example, let's disable CSS inlining:
 module.exports = {
   events: {
     afterRender(html, config) {
-      config.inlineCSS.enabled = false
+      config.inlineCSS = false
 
       // must always return the `html`
       return html
-    },
-  },
-},
+    }
+  }
+}
 ```
 
 <alert type="warning">You must always return the <code>html</code> when using <code>afterRender()</code>.</alert>
@@ -163,19 +163,17 @@ For example, maybe you don't like the minifier that Maizzle includes, and you di
 const Minifier = require('imaginary-minifier')
 
 module.exports = {
-  minify: {
-    enabled: false,
-  },
+  minify: false,
   events: {
     afterTransformers(html, config) {
-      if (!config.minify.enabled) {
+      if (!config.minify) {
         return Minifier.minify(html)
       }
 
       return html
-    },
-  },
-},
+    }
+  }
+}
 ```
 
 <alert type="warning">You must always return the <code>html</code> when using <code>afterTransformers()</code>.</alert>
@@ -191,9 +189,9 @@ module.exports = {
   events: {
     afterBuild(files) {
       console.log(files)
-    },
-  },
-},
+    }
+  }
+}
 ```
 
 Using it with the [Starter](https://github.com/maizzle/maizzle), `maizzle build production` will output:
