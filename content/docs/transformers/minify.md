@@ -23,23 +23,19 @@ Simply enabling it is enough to get you started with email-safe code minificatio
 ```js
 // config.production.js
 module.exports = {
-  minify: {
-    enabled: true,
-  },
+  minify: true
 }
 ```
 
 Of course, you can customize the `html-crush` options:
 
 ```js
-// config.production.js
 module.exports = {
   minify: {
-    enabled: true,
     lineLengthLimit: 500,
     removeIndentations: true,
-    breakToTheLeftOf: [],
-  },
+    breakToTheLeftOf: []
+  }
 }
 ```
 
