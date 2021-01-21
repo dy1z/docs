@@ -23,10 +23,10 @@ These are the cleanup-related options in `config.js` :
 module.exports = {
   purgeCSS: {},
   removeUnusedCSS: {},
-  replaceStrings: false,
+  replaceStrings: {},
   removeAttributes: [],
   safeClassNames: {},
-  sixHex: false,
+  sixHex: true
 }
 ```
 
@@ -64,8 +64,9 @@ module.exports = {
 If your CSS class names include characters not covered by [Tailwind's default extractor](https://github.com/tailwindlabs/tailwindcss/blob/master/src/lib/purgeUnusedStyles.js#L25-L34), use this option to specify a custom one:
 
 ```js
-purgeCSS: {
-    defaultExtractor: content => [...myCustomExtractor(content)],    
+module.exports = {
+  purgeCSS: {
+    defaultExtractor: content => [...myCustomExtractor(content)]
   }
 }
 ```
@@ -77,8 +78,10 @@ purgeCSS: {
 Use the `content` key to define _additional_ paths that the plugin should scan for CSS selectors - Maizzle already configures it with all your build source paths.
 
 ```js
-purgeCSS: {
-  content: ['/Code/emails/project/', 'src/archive/'],
+module.exports = {
+  purgeCSS: {
+    content: ['/Code/emails/project/', 'src/archive/']
+  }
 }
 ```
 
@@ -87,8 +90,10 @@ purgeCSS: {
 Use `safelist` to define an array of class names or patterns that you want preserved:
 
 ```js
-purgeCSS: {
-  safelist: ['wrapper', /red$/],
+module.exports = {
+  purgeCSS: {
+    safelist: ['wrapper', /red$/]
+  }
 }
 ```
 
@@ -114,8 +119,10 @@ See the [PurgeCSS docs](https://purgecss.com/configuration.html#options) for an 
 The selectors will be removed from your CSS _even if you use them and they are seen by PurgeCSS_.
 
 ```js
-purgeCSS: {
-  blocklist: ['wrapper', /^nav-/]
+module.exports = {
+  purgeCSS: {
+    blocklist: ['wrapper', /^nav-/]
+  }
 }
 ```
 
@@ -127,13 +134,20 @@ In the example above, even if you use `.wrapper` or `.nav-links` anywhere in you
 
 This is where you can configure the [email-comb](https://www.npmjs.com/package/email-comb) library. Options under `removeUnusedCSS` will be passed directly to it, to clean up your CSS.
 
-### enabled
-
-Enables CSS cleanup through `email-comb`:
+Enable CSS cleanup:
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
+module.exports = {
+  removeUnusedCSS: true,
+}
+```
+
+Note that if you set `removeUnusedCSS` to an empty object, it won't work:
+
+```js
+module.exports = {
+  // won't cleanup CSS, needs at least one option set
+  removeUnusedCSS: {}
 }
 ```
 
@@ -142,9 +156,10 @@ removeUnusedCSS: {
 Array of classes or id's that you don't want removed. You can use all [matcher](https://www.npmjs.com/package/matcher) patterns.
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
-  whitelist: ['.External*', '.ReadMsgBody', '.yshortcuts', '.Mso*', '#*'],
+module.exports = {
+  removeUnusedCSS: {
+    whitelist: ['.External*', '.ReadMsgBody', '.yshortcuts', '.Mso*', '#*']
+  }
 }
 ```
 
@@ -157,13 +172,14 @@ If you use computed class names, like for example `class="{{ computedRed }} text
 To prevent this from happening, set `backend` to an array of objects that define the start and end delimiters:
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
-  backend: [
-    { heads: "{{", tails: "}}" }, 
-    { heads: "{%", tails: "%}" }
-  ],
-},
+module.exports = {
+  removeUnusedCSS: {
+    backend: [
+      { heads: "{{", tails: "}}" }, 
+      { heads: "{%", tails: "%}" }
+    ]
+  }
+}
 ```
 
 ### removeHTMLComments
@@ -171,9 +187,10 @@ removeUnusedCSS: {
 Set to `false` to prevent `email-comb` from removing `<!-- HTML comments -->`.
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
-  removeHTMLComments: false,
+module.exports = {
+  removeUnusedCSS: {
+    removeHTMLComments: false
+  }
 }
 ```
 
@@ -182,9 +199,10 @@ removeUnusedCSS: {
 Set to `false` to prevent `email-comb` from removing `/* CSS comments */`.
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
-  removeCSSComments: false,
+module.exports = {
+  removeUnusedCSS: {
+    removeCSSComments: false
+  }
 }
 ```
 
@@ -215,9 +233,10 @@ For example, MailChimp uses CSS comments to define styles that are editable in t
 HTML email code often includes Outlook or IE conditional comments, which you probably want to preserve. If the opening tag of a conditional includes any of the strings you list here, `email-comb` will not remove that comment.
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
-  doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif'],
+module.exports = {
+  removeUnusedCSS: {
+    doNotRemoveHTMLCommentsWhoseOpeningTagContains: ['[if', '[endif']
+  }
 }
 ```
 
@@ -228,9 +247,10 @@ Set this to `true`, to rename all classes and id's in both your `<style>` tags a
 Used in production, it will help trim down your HTML size.
 
 ```js
-removeUnusedCSS: {
-  enabled: true,
-  uglifyClassNames: true,
+module.exports = {
+  removeUnusedCSS: {
+    uglifyClassNames: true
+  }
 }
 ```
 
@@ -246,32 +266,25 @@ module.exports = {
   replaceStrings: {
     'find and replace this exact string': 'with this one',
     '\\s?data-src=""': '', // remove empty data-src="" attributes
-  },
-}
-```
-
-Maizzle sets this to `false` in the development config, so that the function doesn't run and build time isn't unnecessarily affected: 
-
-```js
-// config.js
-module.exports = {
-  replaceStrings: false,
+  }
 }
 ```
 
 <alert type="warning">Character classes need to be escaped when defining a regular expression for <code>replaceStrings</code>. As you can see above, <code>\s</code> becomes <code>\\s</code>.</alert>
 
+`replaceStrings` is disabled by default, so that the function doesn't run and build time isn't unnecessarily affected.
+
 ## removeAttributes
 
-You can have Maizzle remove some attributes from your HTML after it's compiled.
+Maizzle can remove attributes from your HTML after it compiles it.
 
 ```js
 // config.js
 module.exports = {
   removeAttributes: [
-    { name: 'data-src' }, // remove empty data-src="" attributes
-    { name: 'foo', value: 'bar'}, // remove all foo="bar" attributes
-  ],
+    {name: 'data-src'}, // remove empty data-src="" attributes
+    {name: 'foo', value: 'bar'}, // remove all foo="bar" attributes
+  ]
 }
 ```
 
@@ -296,7 +309,7 @@ For example, let's replace `:` with a `_` instead of the default `-`:
 module.exports = {
   safeClassNames: {
     ':': '__'
-  },
+  }
 }
 ```
 
@@ -305,9 +318,8 @@ That would turn `sm:w-full` into `sm__w-full`.
 You can prevent Maizzle from rewriting your class names with safe characters, by setting this option to `false`:
 
 ```js
-// config.js
 module.exports = {
-  safeClassNames: false,
+  safeClassNames: false
 }
 ```
 
@@ -315,4 +327,12 @@ module.exports = {
 
 Ensures that all your HEX colors are defined with six digits - some email clients do not support 3-digit HEX colors, like `#fff`. Uses [color-shorthand-hex-to-six-digit &nearr;](https://www.npmjs.com/package/color-shorthand-hex-to-six-digit)
 
-<alert>For better email client compatibility, this transformer is always enabled.</alert>
+For better email client compatibility, this Transformer is enabled by default.
+
+To disable it, simply set it to `false`:
+
+```js
+module.exports = {
+  sixHex: false
+}
+```
