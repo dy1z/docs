@@ -15,8 +15,7 @@ Besides the standard parent-child templating relation, you can use Layouts to de
 ## Creating Layouts
 
 Layouts are typically stored in the `src/layouts` directory.
-
-Simply create a `layout.html` file in there, and add a minimal boilerplate with tags to yield the CSS and the Template body:
+Create a `layout.html` file with the required tags to yield the CSS and the Template body:
 
 ```html
 <!DOCTYPE html>
@@ -63,7 +62,7 @@ The compiled Tailwind CSS for the current Template is available under `page.css`
 </if>
 ```
 
-We use 3 curly braces so that we output the variable without escaping it.
+We use 3 curly braces so that we output the CSS without escaping it - this is required for quoted property values, so that we don't get `&quot;` instead of `"`.
 
 ### Environment 
 
@@ -83,7 +82,7 @@ You can add options to `config.js`, to customize the way you use Layouts.
 
 ### Encoding
 
-You may specify the encoding used by your Layouts through the `encoding` option:
+You may specify the encoding used by your Layout files through the `encoding` option:
 
 ```js
 // config.js
@@ -97,6 +96,8 @@ module.exports = {
 ```
 
 By default, this is set to `utf8`.
+
+<alert>This encoding is only used when reading a Layout file from disk, it does not automatically set the <code>&lt;meta charset&gt;</code> tag in your compiled Template.</alert>
 
 ### Blocks
 
@@ -133,7 +134,7 @@ Now you can use `<slot>` tags in the Layout, and `<fill>` tags in your Template:
 
 ```html
 ---
-preheader: "A template with a <fill> tag"
+title: "A template with a <fill> tag"
 ---
 
 <fill name="template"></fill>
