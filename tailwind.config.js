@@ -1,3 +1,4 @@
+const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 let gradients = {
@@ -40,30 +41,33 @@ module.exports = {
         xl: '1280px',
       },
       colors: {
-        transparent: 'transparent',
         inherit: 'inherit',
         black: '#22292f',
-        white: '#fff',
         ocean: {
-          default: '#4398ee',
+          DEFAULT: '#4398ee',
           dark: '#5f54f1',
           darker: '#4f45d6',
         },
         code: {
-          default: '#f9fcfd',
+          DEFAULT: '#f9fcfd',
         },
-        'gray-codeblock': '#fbfcfd',
-        'gray-default': '#b8c2cc',
-        'yellow-450': '#ffed4a',
-        'yellow-markdown-highlight': '#ff9',
+        yellow: {
+          450: '#ffed4a',
+          'markdown-highlight': '#ff9',
+        },
+        gray: {
+          codeblock: '#fbfcfd',
+          DEFAULT: '#b8c2cc',
+        },
+        'cool-gray': colors.coolGray,
       },
       cursor: {
         help: 'help',
       },
       spacing: {
-        '14': '3.5rem',
-        '72': '18rem',
-        '80': '20rem',
+        14: '3.5rem',
+        72: '18rem',
+        80: '20rem',
       },
       boxShadow: {
         'lg-soft': '0 10px 20px rgba(91,107,174,.2)',
@@ -120,13 +124,13 @@ module.exports = {
         sm: '30rem',
       },
       minHeight: {
-        '128': '32rem',
+        128: '32rem',
       },
       minWidth: {
-        '24': '6rem',
+        24: '6rem',
       },
       opacity: {
-        '90': '0.9',
+        90: '0.9',
       },
       zIndex: {
         '-1': '-1',
@@ -142,7 +146,6 @@ module.exports = {
   },
   corePlugins: {},
   plugins: [
-    require('@tailwindcss/ui'),
     require('tailwindcss-gradients'),
     require('tailwindcss-border-gradients')(),
   ],

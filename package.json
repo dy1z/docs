@@ -14,18 +14,20 @@
     "@gridsome/transformer-remark": "^0.6.4",
     "@gridsome/transformer-yaml": "^0.2.1",
     "@gridsome/vue-remark": "^0.2.6",
-    "@tailwindcss/ui": "^0.7.2",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "^9.8.6",
     "docsearch.js": "^2.6.3",
     "gridsome": "^0.7.23",
     "gridsome-plugin-remark-shiki": "^0.6.0",
-    "scroll-to-element": "^2.0.3"
+    "postcss": "^7.0.35",
+    "scroll-to-element": "^2.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
   },
   "devDependencies": {
     "axios": "^0.21.1",
     "moment": "^2.29.1",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^4.2.3",
-    "tailwindcss": "^1.9.6",
     "tailwindcss-border-gradients": "^2.0.3",
     "tailwindcss-gradients": "^3.0.0"
   }
