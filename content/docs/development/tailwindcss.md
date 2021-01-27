@@ -325,3 +325,21 @@ When adding a `<style>` tag inside a Template, you can prevent all rules inside 
 ```
 
 <alert>Although it won't be inlined, the CSS will still be processed by the <a href="/docs/code-cleanup/#removeunusedcss">removeUnusedCSS</a> Transformer.</alert>
+
+## Gotchas
+
+Some things might not work as you'd expect. We'll try to explain them.
+
+### New utilities
+
+When developing locally with `maizzle serve`, if you add a new utility to `tailwind.config.js` or some custom class to one of the CSS files, saving the changes will rebuild all templates and reload the browser window. As expected.
+
+However, when you go add that class to a Template and save, changes will not be reflected: the class won't exist in the compiled CSS.
+
+This happens because Tailwind compilation is done once for all Templates and it's not re-compiled when you save changes to a Template. 
+
+CSS purging also happens when Tailwind is compiled, so basically when you add a new utility to your Tailwind config, the CSS purging library won't see that utility being used anywhere. So it'll purge it.
+
+**Solution**
+
+Save your Tailwind config (again?) or a Layout/Component after you've added the class(es) to your HTML. This will trigger the re-build of all Templates, and it will re-compile Tailwind as well - this time, CSS purging will 'see' the class in your HTML.
