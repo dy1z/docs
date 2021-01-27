@@ -5,6 +5,7 @@ description: "See how the Tailwind CSS configuration is customized for email dev
 ---
 
 import Alert from '~/components/Alert.vue'
+import TailwindColors from '~/components/TailwindColors.vue'
 
 # Tailwind CSS Config
 
@@ -38,11 +39,54 @@ The `lineHeight` utilities have been extended to include all `spacing` scale val
 
 ## Colors
 
-Maizzle uses the more vivid color palette from [Tailwind UI](https://tailwindui.com/documentation#how-tailwindcss-ui-extends-tailwind).
+Maizzle doesn't define any colors, it uses the [default colors](https://tailwindcss.com/docs/customizing-colors) in Tailwind:
 
-Want to use the original Tailwind colors? Simply remove the `colors` key from `tailwind.config.js`. Since we redefine the originals by _extending_ the default Tailwind config, doing this will revert to the original colors.
+<tailwind-colors class="mb-8" />
 
-<alert>This is subject to change, depending on what new colors Tailwind CSS 2.0 will ship with. In the future, we might remove the <code>colors</code> key from your <code>tailwind.config.js</code> and just use Tailwind's defaults ✌</alert>
+You can define your own colors, or even extend or change the default colors by adding a `colors` key in your Tailwind config:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        blue: {
+          // change 'blue-500'
+          500: '#03a9f4',
+          // add 'blue-1000'
+          1000: '#101e47',
+        },
+        // custom color
+        primary: '#FFCC00',
+      }
+    }
+  }
+}
+```
+
+Tailwind 2.x comes with many other color palettes, which are not included by default.
+
+You can import and use them like this:
+
+```js
+// tailwind.config.js
+const colors = require('tailwindcss/colors')
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        gray: colors.coolGray,
+        blue: colors.lightBlue,
+        yellow: colors.amber,
+      }
+    }
+  }
+}
+```
+
+See the [Tailwind color palette reference](https://tailwindcss.com/docs/customizing-colors#color-palette-reference).
 
 ## !important
 
@@ -109,21 +153,24 @@ You can of course use any Tailwind plugin, please [see the docs](https://tailwin
 
 ### Disabled
 
-Because CSS variables are poorly supported in email clients, Maizzle's `tailwind.config.js` disables Tailwind's opacity plugins:
+Due to poor support in email clients, Maizzle disables the following Tailwind plugins:
 
+- animation
 - backgroundOpacity
 - borderOpacity
 - divideOpacity
 - placeholderOpacity
+- ringColor
+- ringWidth
+- ringOpacity
+- ringOffsetColor
 - textOpacity
 
-Additionally, the `animation` core plugin is also disabled, since it is not purged from the CSS and you won't need it in most cases.
-
-If you _do_ need the animation utilties, simply delete the line from `corePlugins` at the bottom of your `tailwind.config.js`:
+If you want to use one of these plugins, simply set it to `true` in `corePlugins` at the bottom of your `tailwind.config.js`:
 
 ```diff
 corePlugins: {
-- animation: false,
++ animation: true,
   backgroundOpacity: false,
   borderOpacity: false,
   divideOpacity: false,
@@ -131,3 +178,56 @@ corePlugins: {
   textOpacity: false,
 }
 ```
+
+### boxShadow
+
+Since 2.0, Tailwind CSS uses a CSS variable reset for box shadows:
+
+```css
+* {
+  --tw-shadow: 0 0 #0000;
+}
+```
+
+Normally, this would get inlined on every element when building for production, with `inlineCSS` enabled. 
+
+However, Maizzle prevents this from happening, by excluding the property from the 'properties that can be inlined'. This cannot be customized.
+
+What happens is that box shadows no longer work in production, even if you see them working when developing locally.
+
+If you want to use box shadows in your email templates, you'll need to write your own Tailwind CSS box shadow plugin.
+
+Here's an example:
+
+```js
+// tailwind.config.js
+const {map, fromPairs} = require('lodash')
+const plugin = require('tailwindcss/plugin')
+const nameClass = require('./node_modules/tailwindcss/lib/util/nameClass').default
+
+module.exports = {
+  // ...your Tailwind config,
+  plugins: [
+    /**
+     * Custom boxShadow plugin that does not use CSS variables
+     * (which are poorly supported in email)
+     */
+    plugin(function({ addUtilities, theme, variants }) {
+      const utilities = fromPairs(
+        map(theme('boxShadow'), (value, modifier) => {
+          return [
+            nameClass('shadow', modifier),
+            {
+              'box-shadow': value,
+            },
+          ]
+        })
+      )
+
+      addUtilities(utilities, variants('boxShadow'))
+    })
+  ],
+}
+```
+
+Now, `boxShadow` utilities will use the exact value from your config, no CSS variables.
