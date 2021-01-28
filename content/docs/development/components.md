@@ -159,38 +159,16 @@ Result:
 
 ## Variables
 
-When creating a Component, you have access to the `page` object:
+When creating a Component, you have access to global variables:
 
 ```html
 <!-- src/components/example.html -->
 <div>
-  The current build environment is: {{ page.env }}
+  A 'global' variable: {{ page.env }}
 </div>
 ```
 
-However, if you need to pass variables as content to a Component, like this:
-
-```html
-<component src="src/components/vmlbg.html">
-  Current build environment is: {{ page.env }}
-</component>
-```
-
-... you also need to enable the `initial` option in the Component config:
-
-```js
-module.exports = {
-  build: {
-    components: {
-      initial: true,
-    }
-  }
-}
-```
-
-When set to `true`, this will apply plugins to the root file as well, and expressions will be evaluated when passed as content to a Component. This is disabled by default, as it re-applies PostHTML plugins to the file, which can sometimes cause issues.
-
-You can also manually provide data to the Component instead, in the form of a JSON string that you pass inside a `locals` attribute:
+You can also manually provide data to the Component, in the form of a JSON string that you pass inside a `locals` attribute:
 
 ```html
 <extends src="src/layouts/master.html">
@@ -204,6 +182,24 @@ You can also manually provide data to the Component instead, in the form of a JS
 </extends>
 ```
 
-<alert type="danger">The object inside <code>locals=''</code> must be a <g-link to="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Object_literal_notation_vs_JSON">valid JSON string</g-link>.</alert>
+Of course, you can use both approaches at the same time.
 
-<alert type="danger">Using <code>locals=''</code> overrides the <code>page</code> object, which will now be <code>undefined</code>.</alert>
+<alert type="danger">Data passed inside <code>locals=''</code> must be a <g-link to="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Object_literal_notation_vs_JSON">valid JSON string</g-link>.</alert>
+
+### Ignoring
+
+Ignoring expressions inside a Component is a bit different.
+
+To ignore a single expression:
+
+```html
+@@{{ foo }}
+```
+
+To ignore a code block:
+
+```html
+<raw>
+  @{{ foo }}
+</raw>
+```
