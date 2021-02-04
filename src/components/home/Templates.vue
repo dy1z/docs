@@ -52,7 +52,7 @@ export default {
 
 <static-query>
 query Templates ($page: Int) {
-  templates: allTemplate (page: $page, perPage: 3, order: ASC) {
+  templates: allTemplate (page: $page, perPage: 3, order: DESC) {
     edges {
       node {
         id
