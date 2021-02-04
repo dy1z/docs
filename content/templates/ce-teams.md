@@ -1,6 +1,6 @@
 ---
 title: "Team notification email templates from Craftingemails"
-name: "Slick"
+name: "Teams"
 author: "Craftingemails"
 slug: "teams-email-templates-ce"
 description: "31 team plan notification HTML email templates for your business"

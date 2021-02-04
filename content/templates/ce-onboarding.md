@@ -1,6 +1,6 @@
 ---
 title: "Onboarding email templates from Craftingemails"
-name: "Slick"
+name: "Onboarding"
 author: "Craftingemails"
 slug: "onboarding-email-templates-ce"
 description: "27 SaaS welcome HTML email templates for your business"
