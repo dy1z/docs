@@ -85,6 +85,7 @@ module.exports = {
       fontSize: {
         xxxs: '.625rem',
         xxs: '.75rem',
+        '6xl': '3.75rem',
       },
       height: {
         quickies: 'calc(100vh - 6rem)',
