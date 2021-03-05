@@ -1,7 +1,6 @@
 <template>
   <section>
-    <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="relative bg-mailviews-dark">
+    <div class="relative bg-mailviews-dark overflow-hidden">
       <div class="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
         <div class="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
           <img src="https://mailviews.com/img/logo.png" alt="Mailviews" width="219" class="mb-12 sm:mb-24 mx-auto lg:ml-0">
