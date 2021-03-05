@@ -60,6 +60,12 @@ module.exports = {
           DEFAULT: '#b8c2cc',
         },
         'cool-gray': colors.coolGray,
+        mailviews: {
+          light: '#454c6e',
+          DEFAULT: '#7C84AF',
+          dark: '#1E2131',
+          darker: '#171725',
+        },
       },
       cursor: {
         help: 'help',

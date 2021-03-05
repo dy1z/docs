@@ -1,16 +1,13 @@
 <template>
   <section>
-    <div class="relative bg-code pt-16 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-28 lg:px-8">
-      <div class="absolute inset-0">
-        <div class="bg-code h-1/3 sm:h-2/3"></div>
-      </div>
+    <div class="relative bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-28 lg:px-8">
       <div class="relative max-w-7xl mx-auto">
         <div class="text-center">
           <h2 class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-            Premium Templates
+            3<sup>rd</sup> Party Templates
           </h2>
           <p class="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
-            Kickstart your project with premium email templates
+            Kickstart your project with these email templates
             <br>
             Built with Tailwind CSS in Maizzle 👌
           </p>

@@ -4,9 +4,10 @@
       <hero />
       <highlights />
       <features />
-      <templates />
+      <mailviews />
       <tutorials />
       <testimonials />
+      <templates />
       <bottom-cta />
       <site-footer />
     </main>
@@ -19,6 +20,7 @@ import config from '~/.temp/config.js'
 import Hero from '~/components/home/Hero.vue'
 import Highlights from '~/components/home/Highlights.vue'
 import Features from '~/components/home/Features.vue'
+import Mailviews from '~/components/home/Mailviews.vue'
 import Templates from '~/components/home/Templates.vue'
 import Tutorials from '~/components/home/Tutorials.vue'
 import Testimonials from '~/components/home/Testimonials.vue'
@@ -30,6 +32,7 @@ export default {
     Hero,
     Highlights,
     Features,
+    Mailviews,
     Templates,
     Tutorials,
     Testimonials,

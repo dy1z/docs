@@ -107,9 +107,9 @@
       <span class="text-gradient bg-gradient-l-ocean-dark">spacing</span><span class="text-cool-gray-500">:</span> <span class="text-cool-gray-400">{</span>
         <span class="text-gradient bg-gradient-l-ocean-dark">full</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'100%'</span><span class="text-cool-gray-500">,</span>
         <span class="text-gradient bg-gradient-l-ocean-dark">px</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'1px'</span><span class="text-cool-gray-500">,</span>
-        <span class="text-orange-400">0</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'0'</span><span class="text-cool-gray-500">,</span>
-        <span class="text-orange-400">2</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'2px'</span><span class="text-cool-gray-500">,</span>
-        <span class="text-orange-400">4</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'4px'</span><span class="text-cool-gray-500">,</span></code></pre>
+        <span class="text-pink-400">0</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'0'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-pink-400">2</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'2px'</span><span class="text-cool-gray-500">,</span>
+        <span class="text-pink-400">4</span><span class="text-cool-gray-500">:</span> <span class="text-green-400">'4px'</span><span class="text-cool-gray-500">,</span></code></pre>
               </div>
             </div>
           </div>
