@@ -1,0 +1,16 @@
+- user:
+    name: 'Michael Warning'
+    avatar: '/images/testimonials/found-logo.png'
+    role: 'Creative Director'
+    company:
+      name: 'Found'
+      url: 'http://foundartists.com'
+  text: 'Maizzle allows us to produce better, more consistent emails, in less time and without any of the typical nasty black-box “magic” that often plagues other frameworks.'
+- user:
+    name: 'Ted Goas'
+    avatar: 'https://pbs.twimg.com/profile_images/1044389039833407489/uEkIf6-w_400x400.jpg'
+    role: 'Design'
+    company:
+      name: 'StackOverflow'
+      url: 'https://stackoverflow.com'
+  text: 'Maizzle is a 💯 option for building properly-rendering email code using modern web technologies like Tailwind CSS, static site generators, and JavaScript.'
