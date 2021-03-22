@@ -228,6 +228,28 @@ If you want to output the curly braces as they are, so you can evaluate them at 
 
   The `<raw>` tag will be removed in the final output, but the curly braces will be left untouched.
 
+###### Ignoring expressions inside Front Matter
+
+Due to the way Maizzle works to enable expressions inside Front Matter, if you need to ignore an expression there you will also have to ignore it in the Layout or Template where you are using it.
+
+For example, in the Template's Front Matter:
+
+```
+---
+title: "Weekly newsletter no. @{{ edition_count }}"
+---
+```
+
+In the Layout:
+
+```html
+<if condition="page.title">
+ <title>Weekly newsletter no. @{{ edition_count }}</title>
+</if>
+```
+
+This is required because Maizzle first evaluates expressions in Front Matter and then it evaluates them again in the resulting HTML, meaning it will basically evaluate your expression twice.
+
 ### Options
 
 You can configure `posthtml-expressions` in your `config.js`:
