@@ -91,5 +91,5 @@
   description: Run the <code class="py-px">maizzle serve</code> command to develop emails locally and have the browser automatically refresh for you when you make changes.
 
 - title: ⚡4email
-  path: /docs/amp4email/
+  path: /guides/amp-email-template/
   description: Code interactive AMP emails, with realtime information and inline actions. We even provide a starter project to get you up and running.
