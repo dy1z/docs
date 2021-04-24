@@ -5,7 +5,7 @@ author: "Craftingemails"
 slug: "ecommerce-email-templates-ce"
 description: "72 eCommerce HTML email templates"
 image: https://res.cloudinary.com/maizzle/image/upload/v1594725964/templates/ce-ecommerce-email-templates.jpg
-date: 2020-07-14
+date: 2020-07-29
 ---
 
 <div class="mb-8 flex flex-col justify-center items-center group">

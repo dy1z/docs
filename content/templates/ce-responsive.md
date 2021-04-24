@@ -5,7 +5,7 @@ author: "Craftingemails"
 slug: "responsive-email-templates-ce"
 description: "8 responsive HTML email templates for your startup"
 image: https://res.cloudinary.com/maizzle/image/upload/v1594725964/templates/ce-responsive-email-templates.jpg
-date: 2020-07-29
+date: 2020-07-14
 ---
 
 <div class="mb-8 flex flex-col justify-center items-center group">
