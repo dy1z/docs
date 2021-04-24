@@ -212,7 +212,7 @@ build: {
 You could then extend Layouts by referencing them relative to that path - no need to write out the full path relative to your project root:
 
 ```html
-<extends src="master.html">
+<extends src="main.html">
   <block name="template">
     <!-- ... -->
   </block>
@@ -238,7 +238,7 @@ build: {
 This would allow using a `<layout>` tag for extending Layouts:
 
 ```html
-<layout src="src/layouts/master.html">
+<layout src="src/layouts/main.html">
   <block name="template">
     <!-- ... -->
   </block>
@@ -368,7 +368,7 @@ You can override `destination.path` for each Template, with the help of the `per
 permalink: path/to/file.html
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <!-- ... -->
   </block>

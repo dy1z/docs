@@ -194,7 +194,7 @@ maizzle make:config staging --full
 maizzle make:layout
 ```
 
-Scaffolds a new Layout based on the [Starter's default Layout](https://github.com/maizzle/maizzle/blob/master/src/layouts/master.html).
+Scaffolds a new Layout based on the [Starter's default Layout](https://github.com/maizzle/maizzle/blob/master/src/layouts/main.html).
 
 Running it with no arguments will present an interactive prompt:
 
@@ -231,7 +231,7 @@ maizzle make:layout amp-layout.html --directory=src/layouts/amp
 maizzle make:layout amp-layout.html -d=src/layouts/amp
 
 # paths can be relative to project root, i.e. one level above
-maizzle make:layout master.html -d=../global-layouts
+maizzle make:layout main.html -d=../global-layouts
 ```
 
 ### make:template

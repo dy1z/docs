@@ -116,7 +116,7 @@ module.exports = {
 We can now write code inside a fenced code block in our Template:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <md>
       ```js

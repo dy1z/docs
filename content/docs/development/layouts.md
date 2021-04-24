@@ -158,7 +158,7 @@ module.exports = {
 This allows you to specify a `src=""` relative to the path in that `root` key:
 
 ```html
-<extends src="master.html">
+<extends src="main.html">
   <block name="template">
     <!--  -->
   </block>
@@ -183,7 +183,7 @@ module.exports = {
 ```
 
 ```html
-<layout src="master.html">
+<layout src="main.html">
   <block name="template">
     <!-- ... -->
   </block>

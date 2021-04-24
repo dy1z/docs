@@ -66,7 +66,7 @@ Using the [default Starter](https://github.com/maizzle/maizzle), this will add a
 ### Add in Layout
 
 If you prefer a single `<style>` tag in your email template, you can register the font in the Layout instead. 
-Open `src/layouts/master.html` and replace this:
+Open `src/layouts/main.html` and replace this:
 
 ```html
 <if condition="page.css">
@@ -188,7 +188,7 @@ Since Outlook doesn't read `@media` queries, define a fallback<sup>2</sup> for i
 
 <alert><sup>1</sup> Don't add it to the <code>&lt;body&gt;</code> - some email clients remove or replace this tag.</alert>
 
-<alert><sup>2</sup> Maizzle includes this fallback in the <code>master.html</code> Layout.</alert>
+<alert><sup>2</sup> Maizzle includes this fallback in the <code>main.html</code> Layout.</alert>
 
 ## Outlook bugs
 

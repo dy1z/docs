@@ -133,7 +133,7 @@ image:
   height: 400
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <component src="src/components/my-component.html">
       <div>
@@ -171,7 +171,7 @@ When creating a Component, you have access to global variables:
 You can also manually provide data to the Component, in the form of a JSON string that you pass inside a `locals` attribute:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <component src="src/components/vmlbg.html" locals='{"foo": "bar"}'>
       <div>

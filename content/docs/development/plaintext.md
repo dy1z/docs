@@ -47,7 +47,7 @@ Generate a plaintext version for a single Template by enabling it in its Front M
 plaintext: true
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <!-- ... -->
   </block>
@@ -66,7 +66,7 @@ permalink: example/email.html
 plaintext: true
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <!-- ... -->
   </block>
@@ -128,7 +128,7 @@ plaintext:
     wrapTails: ']'
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <a href="https://example.com">Click here</a>
   </block>
@@ -152,7 +152,7 @@ You can output content only in the plaintext version, with the `<plaintext>` tag
 plaintext: true
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     This text shows in both the HTML and the plaintext versions.
     <plaintext>This will be output only in the plaintext version</plaintext>

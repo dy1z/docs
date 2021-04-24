@@ -215,7 +215,7 @@ module.exports = {
 ... you will need to use triple curly braces to output the unescaped content:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     {{{ page.data.content }}
   </block>

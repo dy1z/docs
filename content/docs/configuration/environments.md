@@ -137,7 +137,7 @@ module.exports = {
 ... and use them in your markup:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <p>doctype is: {{ page.doctype }}</p>
   </block>

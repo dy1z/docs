@@ -44,7 +44,7 @@ A Template can extend a Layout using the `<extends>` tag:
 preheader: The Weekly Newsletter
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <!-- Add block tags here -->
 </extends>
 ```
@@ -66,7 +66,7 @@ A Template can also extend another Template.
 For example, imagine `src/templates/first.html` :
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     Parent
     <block name="button">Child in first.html</block>
@@ -125,14 +125,14 @@ Everything inside that `<block>` will be output into the Layout that the Templat
 
 Your Templates can use as many blocks as you need. 
 
-For example, the [Starter](https://github.com/maizzle/maizzle) uses a `head` block in its master Layout, allowing you to inject additional code into the `<head>` of you HTML email, right from the Template.
+For example, the [Starter](https://github.com/maizzle/maizzle) uses a `head` block in its main Layout, allowing you to inject additional code into the `<head>` of you HTML email, right from the Template.
 
 ## Basic Example
 
 Here's a very basic Template example:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <table>
       <tr>
@@ -148,7 +148,7 @@ Here's a very basic Template example:
 Maizzle uses [`posthtml-expressions`](https://github.com/posthtml/posthtml-expressions), allowing you to access variables from your [environment config](/docs/environments/) or from the Template's Front Matter inside curly brace syntax:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     You ran the `maizzle build {{ page.env }}` command
   </block>
@@ -164,7 +164,7 @@ You ran the `maizzle build production` command
 You can even use _some_ JavaScript expressions within curly braces:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     doctype is {{ page.doctype || 'not set' }}
     this email {{ page.env === 'production' ? "is" : "isn't" }} production ready!
@@ -181,7 +181,7 @@ By default, special characters are escaped:
 markup: '<strong>Bold</strong>'
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     {{ page.markup }}
     <!-- &lt;strong&gt;Bold&lt;strong&gt; -->
@@ -196,7 +196,7 @@ If you need to render values exactly as they are, so that maybe markup is interp
 markup: '<strong>Bold</strong>'
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     {{{ page.markup }}}
     <!-- <strong>Bold</strong> -->
@@ -283,7 +283,7 @@ module.exports = {
 You'd now use variables or expressions like this:
 
 ```html
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     doctype is [[ page.doctype || 'not set' ]]
   </block>

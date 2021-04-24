@@ -117,7 +117,7 @@ module.exports = {
 Then, you'd render it in your HTML, like so:
 
 ```html
-<!-- layouts/master.html -->
+<!-- layouts/main.html -->
 <if condition="page.preheader">
   <div class="hidden">{{ page.preheader }}</div>
 </if>

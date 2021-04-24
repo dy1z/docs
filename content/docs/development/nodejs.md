@@ -77,7 +77,7 @@ const template = `---
 title: Using Maizzle on the server
 ---
 
-<extends src="src/layouts/master.html">
+<extends src="src/layouts/main.html">
   <block name="template">
     <table>
       <tr>
