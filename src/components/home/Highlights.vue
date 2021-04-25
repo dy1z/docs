@@ -179,7 +179,7 @@
               </svg>
               <div class="bg-white rounded-lg shadow-2xl max-w-md max-h-sm sm:max-h-full overflow-hidden mx-4 sm:mx-auto p-6 relative">
                 <div class="overflow-x-scroll sm:overflow-hidden">
-                  <pre class="leading-code text-base"><code><span class="text-cool-gray-500">&lt;</span><span class="text-green-400">extends</span> <span class="text-gradient bg-gradient-l-ocean-dark">src</span><span class="text-blue-500">=</span><span class="text-pink-400">"src/layouts/master.html"</span><span class="text-cool-gray-500">&gt;</span>
+                  <pre class="leading-code text-base"><code><span class="text-cool-gray-500">&lt;</span><span class="text-green-400">extends</span> <span class="text-gradient bg-gradient-l-ocean-dark">src</span><span class="text-blue-500">=</span><span class="text-pink-400">"src/layouts/main.html"</span><span class="text-cool-gray-500">&gt;</span>
   <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">block</span> <span class="text-gradient bg-gradient-l-ocean-dark">name</span><span class="text-blue-500">=</span><span class="text-pink-400">"template"</span><span class="text-cool-gray-500">&gt;</span>
     <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">table</span> <span class="text-gradient bg-gradient-l-ocean-dark">class</span><span class="text-blue-500">=</span><span class="text-pink-400">"w-600 sm:w-full"</span><span class="text-cool-gray-500">&gt;</span>
       <span class="text-cool-gray-500">&lt;</span><span class="text-green-400">tr</span><span class="text-cool-gray-500">&gt;</span>
