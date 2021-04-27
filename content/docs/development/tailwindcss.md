@@ -95,7 +95,7 @@ Although optional, this is included in order to provide an example of how you'd 
 
 For example, it's common practice with HTML emails to use... [creative CSS selectors](https://howtotarget.email/) to get things working in a certain email client; stuff Tailwind can't do out of the box.
 
-This file does two things:
+This `main.css` file does two things:
 
 1. it imports Tailwind CSS components and utilities
 2. it imports custom CSS files
@@ -109,7 +109,6 @@ module.exports = {
   build: {
     tailwind: {
       css: 'src/assets/css/main.css',
-      config: 'tailwind.config.js'
     }
   }
 }
@@ -129,21 +128,107 @@ Maizzle adds the following ones in `src/assets/css/custom` :
 
 <alert type="warning">Files that you <code>@import</code> in <code>main.css</code> must be relative to <code>src/assets/css</code></alert>
 
-## Plugins
+## Just-in-Time
 
-To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`. 
-See the [Tailwind CSS docs](https://tailwindcss.com/docs/configuration#plugins).
+Maizzle supports Tailwind's [Just-in-Time Mode](https://tailwindcss.com/docs/just-in-time-mode).
 
+Enable it in your `tailwind.config.js`:
+
+```js
+module.exports = {
+  mode: 'jit',
+  purge: [
+    'src/**/*.*',
+  ],
+}
+```
+
+When enabling JIT, it's currently required that you also specify the purge paths, and they _must be_ in simplified array syntax like above - using an object will not work:
+
+```diff
++  purge: [
++    'src/**/*.*',
++  ],
+-  purge: {
+-    content: [
+-      'src/**/*.*',
+-    ]
+-  },
+```
+
+### JIT in production
+
+JIT is awesome, but it's currently still in its early stages. Things like disabling text or background opacity don't work properly, and there might be other edge cases.
+
+When building your emails for production, it's best that you disable JIT.
+
+Here are two ways of doing that:
+
+###### Enable JIT in your Tailwind config
+
+You can enable JIT based on the current `NODE_ENV` in your `tailwind.config.js`:
+
+```js
+module.exports = {
+  mode: process.env.NODE_ENV === 'local' ? 'jit' : 'aot',
+  purge: [
+    'src/**/*.*',
+  ],
+}
+```
+
+With this, all `maizzle build` commands that specify an environment name different to `local` will use Always-on-Time (AOT) mode, which is the classic mode that outputs all classes based on your Tailwind config.
+
+###### Disable JIT in Maizzle config
+
+Alternatively, you can leave `tailwind.config.js` alone and disable JIT in your Maizzle `config.js` by creating a custom Tailwind config object.
+
+Here, we're creating a custom Tailwind config based on `tailwind.config.js`, but without the `mode` and `purge` keys:
+
+```js
+const omit = require('lodash/omit')
+const twconfig = omit(require('./tailwind.config'), ['mode', 'purge'])
+
+module.exports = {
+  build: {
+    tailwind: {
+      config: twconfig,
+    }
+  }
+}
+```
 
 ## CSS purging
 
-When running `maizzle build [env]`, if `[env]` is not `local`, Maizzle will use [postcss-purgecss](https://github.com/FullHuman/postcss-purgecss) to remove unused classes from the CSS that is being injected into the template currently being rendered.
+When running `maizzle build [env]`, if `[env]` is not `local`, Maizzle will enable CSS purging in Tailwind. This does a 'first pass' over your CSS and removes any classes that you don't use in your emails.
 
-This is needed so that the CSS inliner and `email-comb` (which run _after_ the purging step) receive as little CSS as possible to parse. 
+The CSS inliner and [`email-comb`](/docs/code-cleanup/#removeunusedcss) run _after_ this CSS purging step, so they receive as little CSS as possible to parse - greatly improving build times.
 
-_It greatly improves build speed._
+Here's how Maizzle configures Tailwind CSS purging internally:
 
-To make sure the Tailwind CSS classes that you use in your emails are not purged, pass Layouts and any Partial or Component directory paths to the `purgeCSS.content` config key, as an array of file globs:
+```js
+purge: {
+  enabled: maizzleConfig.env !== 'local',
+  content: [
+    'src/**/*.*',
+    {raw: html}
+  ],
+  options: get(maizzleConfig, 'purgeCSS', {})
+},
+```
+
+It's basically enabled _unless_ you run one of these commands:
+
+- `maizzle serve`
+- `maizzle build`
+- `maizzle build local`
+
+As you can see, it scans all files inside your project's `src` folder for CSS selectors to be preserved; 
+`{raw: html}` is used when [compiling templates programmatically](/docs/nodejs/).
+
+### Configuring PurgeCSS
+
+Tailwind uses [PurgeCSS](https://purgecss.com/) to purge unused CSS - you can configure PurgeCSS in Maizzle by adding the `purgeCSS` key to your `config.js`:
 
 ```js
 // config.js
@@ -151,34 +236,15 @@ module.exports = {
   purgeCSS: {
     content: [
       'brand/emails/**/*.*'
-    ]
+    ],
+    safelist: ['random', 'yep', 'button', /^nav-/],
   }
 }
 ```
 
-<alert type="warning">Don't pass directory paths here, because PostCSS will fail.</alert>
+The settings you define here will be merged on top of the internal ones, so you can use it to do things like safelisting class names or defining additional purge paths.
 
-### Purging strategy
-
-Although it picks up [`purge`](https://tailwindcss.com/docs/controlling-file-size#removing-unused-css) options in your `tailwind.config.js`, Maizzle doesn't actually use Tailwind's CSS purging functionality. 
-
-Instead, a custom CSS purging strategy is used.
-
-This is mainly required in order to respect the build environment and enable purging based on it, and especially so that we can purge sources that you wouldn't be able to define in `tailwind.config.js`.
-
-By default, these paths are scanned for selectors to preserve when purging CSS:
-
-```js
-const purgeSources = [
-  'src/layouts/**/*.*',
-  'src/partials/**/*.*',
-  'src/components/**/*.*',
-  ...templateSources, // paths from `build.templates.source` in your config.js
-  ...tailwindSources, // purge paths from your tailwind.config.js 
-  ...extraPurgeSources, // paths you define in `purgeCSS.content` in your config.js
-  {raw: html} // only used when compiling with the render() method
-]
-```
+<alert type="warning">Tailwind CSS JIT currently doesn't support advanced PurgeCSS options.</alert>
 
 ## Shorthand CSS
 
@@ -253,6 +319,11 @@ With Tailwind's `@apply`, that means you can do something like this:
 ```html
 <div style="border: 1px solid #3f83f8;">Border example</div>
 ```
+
+## Plugins
+
+To use a Tailwind CSS plugin, simply `npm install` it and follow its instructions to add it to `plugins: []` in your `tailwind.config.js`. 
+See the [Tailwind CSS docs](https://tailwindcss.com/docs/configuration#plugins).
 
 ## Use in Template
 
@@ -339,6 +410,8 @@ However, when you go add that class to a Template and save, changes will not be 
 This happens because Tailwind compilation is done once for all Templates and it's not re-compiled when you save changes to a Template. 
 
 CSS purging also happens when Tailwind is compiled, so basically when you add a new utility to your Tailwind config, the CSS purging library won't see that utility being used anywhere. So it'll purge it.
+
+<alert>This is not an issue when using JIT mode.</alert>
 
 **Solution**
 
