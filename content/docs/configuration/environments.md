@@ -98,7 +98,7 @@ maizzle build production
 
 You can create as many build environments as you need, and name them as you like.
 
-For example, create a config file named `config.shopify.js`, that you would use to build only the templates from the `src/clients/shopify` folder.
+For example, create a config file named `config.shopify.js`, that you would use to build only the templates from the `src/shopify-templates` folder.
 
 The build command for it would be:
 

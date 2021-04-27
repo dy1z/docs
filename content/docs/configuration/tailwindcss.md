@@ -181,53 +181,6 @@ corePlugins: {
 
 ### boxShadow
 
-Since 2.0, Tailwind CSS uses a CSS variable reset for box shadows:
+Since v3.1.5, Maizzle uses [tailwindcss-box-shadow](https://www.npmjs.com/package/tailwindcss-box-shadow) to output box-shadow CSS values exactly as you have them defined in your Tailwind config.
 
-```css
-* {
-  --tw-shadow: 0 0 #0000;
-}
-```
-
-Normally, this would get inlined on every element when building for production, with `inlineCSS` enabled. 
-
-However, Maizzle prevents this from happening, by excluding the property from the 'properties that can be inlined'. This cannot be customized.
-
-What happens is that box shadows no longer work in production, even if you see them working when developing locally.
-
-If you want to use box shadows in your email templates, you'll need to write your own Tailwind CSS box shadow plugin.
-
-Here's an example:
-
-```js
-// tailwind.config.js
-const {map, fromPairs} = require('lodash')
-const plugin = require('tailwindcss/plugin')
-const nameClass = require('./node_modules/tailwindcss/lib/util/nameClass').default
-
-module.exports = {
-  // ...your Tailwind config,
-  plugins: [
-    /**
-     * Custom boxShadow plugin that does not use CSS variables
-     * (which are poorly supported in email)
-     */
-    plugin(function({ addUtilities, theme, variants }) {
-      const utilities = fromPairs(
-        map(theme('boxShadow'), (value, modifier) => {
-          return [
-            nameClass('shadow', modifier),
-            {
-              'box-shadow': value,
-            },
-          ]
-        })
-      )
-
-      addUtilities(utilities, variants('boxShadow'))
-    })
-  ],
-}
-```
-
-Now, `boxShadow` utilities will use the exact value from your config, no CSS variables.
+The default Tailwind CSS variables-based box shadows are suppressed internally, because email clients have very poor support for CSS variables.

@@ -16,21 +16,14 @@ Here's a very basic example:
 
 ```js
 // config.js
+const axios = require('axios')
 
-// We define an array of additional paths for PurgeCSS to scan
-let extraPurgePaths = [
-  './src/2019/clients/**/*.*',
-  '../up/a/level/**/*.*'
-]
+const data = await axios.get('https://example.com/api/v1/info')
 
 module.exports = {
-  purgeCSS: {
-    content: [
-      'src/layouts/**/*.*',
-      'src/partials/**/*.*',
-      'src/components/**/*.*',
-      ...extraPurgePaths // spread the array variable
-    ]
+  company: {
+    name: 'Example, Inc.',
+    ...data
   }
 }
 ```

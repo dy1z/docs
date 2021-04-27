@@ -8,9 +8,9 @@ import Alert from '~/components/Alert.vue'
 
 # Events
 
-When compiling your email templates, Maizzle goes through a series of steps, like generating a Template config, rendering, or applying Transformers.
+When compiling your email templates, Maizzle goes through a series of steps like generating a Template config, rendering, or applying Transformers.
 
-You can hook into the build process and manipulate it, by using functions that run before or after some of these steps.
+You can hook into the build process and manipulate it by using functions that run before or after some of these steps.
 
 ## Usage
 
@@ -33,13 +33,12 @@ module.exports = {
 
 ### Node.js
 
-To use Events in a Node context, add them inside the second argument that you pass to the `render()` method:
+To use Events in a Node context, add them inside the options object that you pass to the `render()` method:
 
 ```js
 const Maizzle = require('@maizzle/framework')
-let html = `some HTML string...`
 
-html = Maizzle.render(str, {
+html = Maizzle.render(`some HTML string...`, {
     tailwind: {},
     maizzle: {},
     beforeRender(config) {
@@ -53,7 +52,7 @@ html = Maizzle.render(str, {
 
 These are the Events that you can use in Maizzle.
 
-The following Events are CLI-only - they run only when added inside the `events: {}` object in your `config.js` and when you run one of the [build commands](/docs/commands/):
+The following ones are CLI-only - they run only when added inside the `events: {}` object in your `config.js` and when you run one of the [build commands](/docs/commands/):
 
 - [`beforeCreate`](#beforecreate)
 - [`afterBuild`](#afterbuild)
@@ -63,8 +62,6 @@ These always run, every time a Template is compiled:
 - [`beforeRender`](#beforerender)
 - [`afterRender`](#afterrender)
 - [`afterTransformers`](#aftertransformers)
-
-<alert>If you don't need to manipulate a Template's unique config or its HTML, consider using one of the CLI-only Events instead.</alert>
 
 ### beforeCreate
 
@@ -125,6 +122,8 @@ Then, you'd render it in your HTML, like so:
 
 <alert><code>beforeRender</code> runs for each template that is going to be compiled. For performance reasons, you should use it only if you need access to the <em>Template</em> config (which includes variables from the template's Front Matter).</alert>
 
+<alert type="warning">You must always return the <code>html</code> when using <code>beforeRender()</code>.</alert>
+
 ### afterRender
 
 Runs after the Template has been compiled, but before any Transfomers have been applied.
@@ -156,7 +155,7 @@ Runs after all Transformers have been applied, just before the final HTML is ret
 
 Same as `afterRender()`, it exposes the `html` and the `config`, so you can do further adjustments to the HTML, or read some config settings.
 
-For example, maybe you don't like the minifier that Maizzle includes, and you disabled it in your config so that you can use your own after the Template has been compiled:
+For example, maybe you don't like the minifier that Maizzle includes, and you disabled it in your config so that you can use your own:
 
 ```js
 // config.js

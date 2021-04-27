@@ -99,5 +99,3 @@ We can now use it in the HTML:
   <p>Labore exercitation consequat tempor quis eu nulla amet.</p>
 </div>
 ```
-
-<alert>For this to work, Maizzle sets <code>fontFamily: ['responsive']</code>, in your <code>tailwind.config.js</code>.</alert>

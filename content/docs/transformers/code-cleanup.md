@@ -34,23 +34,15 @@ Let's go through each of those options.
 
 ## purgeCSS
 
-When not developing [locally](/docs/environments/#local), [PurgeCSS](https://github.com/FullHuman/purgecss) is used to do a first pass over the compiled Tailwind CSS - this happens before CSS is injected into the HTML, so that tools like the Juice inliner or `email-comb` receive as little code to process as possible.
+You can configure CSS purging as long as you're not using Tailwind CSS JIT mode.
 
-However, it can sometimes happen that it purges classes that you actually need - for example, if you have dynamic classes that you reference in HTML like this:
-
-```handlebars
-<div class="text-{{ computedTextSizeName }}">...</div>
-``` 
-
-To give you control, Maizzle exposes some of its options to your cleanup config.
-
-Add a `purgeCSS` key to your config, to customize its settings:
+Add a `purgeCSS` key to your config, to customize PurgeCSS settings:
 
 ```js
 module.exports = {
   purgeCSS: {
     defaultExtractor: content => {
-      // return array of css selectors
+      // return a custom extractor
     },
     content: [], // array of filenames or globs to scan for selectors
     safelist: [], // array of strings or custom object

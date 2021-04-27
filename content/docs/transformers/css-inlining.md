@@ -56,7 +56,7 @@ module.exports = {
 }
 ```
 
-<alert>You will want to turn inlining off when developing ⚡ <a href="/docs/amp4email/">AMP4EMAIL templates</a>.</alert>
+<alert>You will want to turn inlining off when developing ⚡ <a href="/guides/amp-email-template/">AMP4EMAIL templates</a>.</alert>
 
 ## Options
 
@@ -93,14 +93,14 @@ module.exports = {
 ... into this:
 
 ```html
-<table bgcolor="#e2e8f0">
+<table bgcolor="#e2e8f0" style="background-color: #e2e8f0">
   <tr>
     <td>...</td>
   </tr>
 </table>
 ```
 
-By default, `styleToAttribute` only duplicates `vertical-align` as `valign`.
+<alert>By default, <code>styleToAttribute</code> only duplicates <code>vertical-align</code> as <code>valign</code></alert>
 
 ### attributeToStyle
 
@@ -232,7 +232,7 @@ module.exports = {
 }
 ```
 
-By default, this is set to an empty array `[]`, so that no `width` attributes are added.
+<alert>By default, it's an empty array <code>[]</code> so that no <code>width</code> attributes are added.</alert>
 
 ### applyHeightAttributes
 
@@ -248,7 +248,7 @@ module.exports = {
 }
 ```
 
-By default, this is set to an empty array `[]`, so that no `height` attributes are added.
+<alert>By default, it's an empty array <code>[]</code> so that no <code>height</code> attributes are added.</alert>
 
 ### keepOnlyAttributeSizes
 
@@ -323,6 +323,8 @@ module.exports = {
   }
 }
 ```
+
+<alert><code>--tw-shadow</code> is automatically excluded from the properties that can be inlined.</alert>
 
 ## Prevent inlining
 

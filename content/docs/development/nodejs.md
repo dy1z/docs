@@ -24,9 +24,7 @@ Then, call the `render()` method, passing it a string and an options object:
 const {html, config} = Maizzle.render(`html string`, options)
 ```
 
-The `render()` method returns an object containing the compiled HTML, and the [environment config](/docs/environments/) computed for this template.
-
-And of course, your `html string` can use Front Matter and templating tags, so you can even extend [Layouts](/docs/layouts/) or use [Components](/docs/components/).
+The `render()` method returns an object containing the compiled HTML and the [environment config](/docs/environments/) computed for this template.
 
 ### Options
 
