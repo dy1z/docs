@@ -71,9 +71,9 @@ Read more about the concept of utility-first CSS, and familiarize yourself with 
 
 ### Components
 
-If you prefer wasting time with naming your CSS classes or actually need to extract a repeating markup pattern, or maybe you're used to other frameworks such as Bootstrap, you can do that too!
+If you find yourself repeating common utility combinations to apply the same styling in many different places (buttons maybe?), you can extract those to a component.
 
-Tailwind supports [extracting components with `@apply`](https://tailwindcss.com/docs/extracting-components#extracting-css-components-with-apply), which means you can define a new class by applying existing utility classes to it.
+Tailwind includes an [`@apply`](https://tailwindcss.com/docs/extracting-components#extracting-css-components-with-apply) directive that can be used to compose custom CSS classes by "applying" Tailwind utilities to it.
 
 Here's a quick example:
 
@@ -83,7 +83,7 @@ Here's a quick example:
 }
 ```
 
-Unlike utility classes in `tailwind.config.js`, you'd add that in a CSS file that Maizzle tells Tailwind to compile along with the rest of the CSS.
+Unlike utility classes that you add to `tailwind.config.js`, you add that in a CSS file that Maizzle tells Tailwind to compile along with the rest of the CSS.
 
 And that brings us to...
 
@@ -91,7 +91,7 @@ And that brings us to...
 
 The [official Maizzle Starter](https://github.com/maizzle/maizzle) uses a `main.css` file stored in `src/assets/css`.
 
-Although optional, this is included in order to provide an example of how you'd use custom CSS components that go beyond the utility-first concept of Tailwind. 
+Although optional, this is included in order to provide an example of how you can use custom CSS components that go beyond the utility-first concept of Tailwind. 
 
 For example, it's common practice with HTML emails to use... [creative CSS selectors](https://howtotarget.email/) to get things working in a certain email client; stuff Tailwind can't do out of the box.
 
@@ -164,9 +164,9 @@ When building your emails for production, it's best that you disable JIT.
 
 Here are two ways of doing that:
 
-###### Enable JIT in your Tailwind config
+###### Customize JIT in your Tailwind config
 
-You can enable JIT based on the current `NODE_ENV` in your `tailwind.config.js`:
+You can toggle JIT based on the current `NODE_ENV` in your `tailwind.config.js`:
 
 ```js
 module.exports = {
@@ -177,17 +177,20 @@ module.exports = {
 }
 ```
 
-With this, all `maizzle build` commands that specify an environment name different to `local` will use Always-on-Time (AOT) mode, which is the classic mode that outputs all classes based on your Tailwind config.
+That will enable JIT only when developing locally with `maizzle serve`, or when you run `maizzle build` without specifying an environment name.
+
+`maizzle build [env]` commands will use Always-on-Time (AOT) mode, which is the classic mode that outputs all classes based on your Tailwind config.
 
 ###### Disable JIT in Maizzle config
 
-Alternatively, you can leave `tailwind.config.js` alone and disable JIT in your Maizzle `config.js` by creating a custom Tailwind config object.
+Alternatively, you can disable JIT for a certain build environment by using a custom Tailwind config object in the Maizzle `config.[env].js`.
 
-Here, we're creating a custom Tailwind config based on `tailwind.config.js`, but without the `mode` and `purge` keys:
+For example, let's disable JIT when we run `maizzle build production` by customizing `config.production.js` to use a Tailwind config that doesn't include the `mode` and `purge` keys:
 
 ```js
-const omit = require('lodash/omit')
-const twconfig = omit(require('./tailwind.config'), ['mode', 'purge'])
+// config.production.js
+
+const {mode, purge, ...twconfig} = require('./tailwind.config')
 
 module.exports = {
   build: {
@@ -202,7 +205,7 @@ module.exports = {
 
 When running `maizzle build [env]`, if `[env]` is not `local`, Maizzle will enable CSS purging in Tailwind. This does a 'first pass' over your CSS and removes any classes that you don't use in your emails.
 
-The CSS inliner and [`email-comb`](/docs/code-cleanup/#removeunusedcss) run _after_ this CSS purging step, so they receive as little CSS as possible to parse - greatly improving build times.
+The CSS inliner and [`email-comb`](/docs/code-cleanup/#removeunusedcss) run _after_ this CSS purging step, so they receive as little CSS as possible to parse (greatly improving build times).
 
 Here's how Maizzle configures Tailwind CSS purging internally:
 
@@ -217,14 +220,14 @@ purge: {
 },
 ```
 
-It's basically enabled _unless_ you run one of these commands:
+So CSS purging is enabled _unless_ you run one of these commands:
 
 - `maizzle serve`
 - `maizzle build`
 - `maizzle build local`
 
-As you can see, it scans all files inside your project's `src` folder for CSS selectors to be preserved; 
-`{raw: html}` is used when [compiling templates programmatically](/docs/nodejs/).
+All files inside your project's `src` folder are scanned for CSS selectors to be preserved; 
+`{raw: html}` is only used when [compiling templates programmatically](/docs/nodejs/).
 
 ### Configuring PurgeCSS
 
@@ -244,7 +247,7 @@ module.exports = {
 
 The settings you define here will be merged on top of the internal ones, so you can use it to do things like safelisting class names or defining additional purge paths.
 
-<alert type="warning">Tailwind CSS JIT currently doesn't support advanced PurgeCSS options.</alert>
+<alert type="warning">Tailwind CSS JIT currently doesn't support configuring PurgeCSS options.</alert>
 
 ## Shorthand CSS
 
