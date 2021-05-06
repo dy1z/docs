@@ -75,8 +75,14 @@ const template = `---
 title: Using Maizzle on the server
 ---
 
-<extends src="src/layouts/main.html">
-  <block name="template">
+<!DOCTYPE html>
+<html>
+  <head>
+    <if condition="page.css">
+      <style>{{{ page.css }}}</style>
+    </if>
+  </head>
+  <body>
     <table>
       <tr>
         <td class="button">
@@ -84,8 +90,8 @@ title: Using Maizzle on the server
         </td>
       </tr>
     </table>
-  </block>
-</extends>`
+  </body>
+</html>`
 
 Maizzle.render(
   template,
@@ -104,9 +110,31 @@ Maizzle.render(
 ).then(({html}) => console.log(html)).catch(error => console.log(error))
 ```
 
+<alert type="warning">Your <code>template</code> string must include <code v-pre>&lt;style&gt;{{{ page.css }}}&lt;/style&gt;</code> inside the <code>&lt;head&gt;</code> tag as shown above, otherwise no CSS will be output or inlined.</alert>
+
 ## Templating
 
 You can use templating tags when using Maizzle in Node.js.
+
+Here's the `template` string defined above, refactored to extend a Layout:
+
+```js
+const template = `---
+title: Using Maizzle on the server
+---
+
+<extends src="src/layouts/main.html">
+  <block name="template">
+    <table>
+      <tr>
+        <td class="button">
+          <a href="https://maizzle.com">Confirm email address</a>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>`
+```
 
 <alert type="danger">Paths to Layouts or any includes/modules in your string to be rendered must be relative to the location where you execute the script.</alert>
 
@@ -153,3 +181,21 @@ The following Transformers always run:
 - Prevent Widows
 - Remove Attributes - removes empty `style` attributes by default
 - Transform Contents - processes CSS with PostCSS inside elements with a `postcss` attribute
+
+### CSS Output
+
+Your string that you compile with `render()` must include `{{{ page.css }}}` in a `<style>` tag inside the `<head>`, otherwise no CSS will be output or inlined:
+
+```diff
+  <!DOCTYPE html>
+  <html>
++    <head>
++      <if condition="page.css">
++        <style>{{{ page.css }}}</style>
++      </if>
++    </head>
+    <body>
+      ...
+    </body>
+  </html>
+```
