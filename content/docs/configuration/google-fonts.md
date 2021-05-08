@@ -28,7 +28,7 @@ You can then use a `<link>` tag to import them in your Layout:
 ```html
 <if condition="page.googleFonts">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?{{ page.googleFonts }}&display=swap" rel="stylesheet" media="screen">
+  <link href="https://fonts.googleapis.com/css2?{{{ page.googleFonts }}}&display=swap" rel="stylesheet" media="screen">
 </if>
 ```
 
