@@ -79,7 +79,7 @@
   description: Easily pull in Google Fonts, either globally or just inside a single template, then use them with Tailwind utility classes.
 
 - title: Plaintext Versions
-  path: /docs/templates/#plaintext
+  path: /docs/plaintext/
   description: Optionally generate optimized plaintext versions from your HTML emails. Or have your <abbr title="Email Service Provider">ESP</abbr> do it. Your call.
 
 - title: Localhost Tunneling
