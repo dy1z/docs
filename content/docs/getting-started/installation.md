@@ -5,6 +5,7 @@ description: "Installing the Maizzle Email Framework on your machine and creatin
 ---
 
 import Alert from '~/components/Alert.vue'
+import MaizzleVersion from '~/components/LatestReleaseNumber.vue'
 
 # Installing Maizzle
 
@@ -91,3 +92,29 @@ maizzle build production
 ```
 
 Check out the [Commands](/docs/commands/) for more info.
+
+## Updating
+
+Maizzle is listed as a dependency in your project's `package.json` file:
+
+```
+"dependencies": {
+  "@maizzle/framework": "^3.0.0"
+}
+```
+
+To update, first bump that number to the Maizzle release that you want to upgrade to:
+
+<pre class="language-text"><code class="language-text">"dependencies": {
+  "@maizzle/framework": "^<maizzle-version />"
+}</code></pre>
+
+Then, re-install dependencies by running `npm install` in your project's root folder.
+
+<alert>Note: latest Maizzle release number is <maizzle-version class="italic" /></alert>
+
+### Clean update
+
+If for some reason you're not getting the latest version or are running into installation issues, simply delete your `node_modules` folder and your `package-lock.json` file from the root of your project, and then run `npm install`.
+
+This will do a fresh install of all dependencies.
