@@ -13,24 +13,153 @@ Maizzle comes with an email-tailored `tailwind.config.js` that changes a few thi
 
 These are the differences from the original Tailwind config.
 
-## Spacing units
+## Units
 
 Because of poor email client support, `rem` units have been replaced with `px`.
 
-This affects the following:
+This affects the following utilities:
 
-- borderRadius
-- fontSize
-- lineHeight
-- spacing (max/min width and height, width, height, margin, padding, etc)
+- `spacing` (max/min width and height, width, height, margin, padding, etc)
+- `borderRadius`
+- `fontSize`
+- `lineHeight`
 
-### Extra spacing
+### spacing 
 
-The `spacing` scale also includes all percentage-based utilities, so you can use things like `mb-1/2` or `max-w-3/4` if you ever need to.
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      spacing: {
+        screen: '100vw',
+        full: '100%',
+        px: '1px',
+        0: '0',
+        2: '2px',
+        3: '3px',
+        4: '4px',
+        5: '5px',
+        6: '6px',
+        7: '7px',
+        8: '8px',
+        9: '9px',
+        10: '10px',
+        11: '11px',
+        12: '12px',
+        14: '14px',
+        16: '16px',
+        20: '20px',
+        24: '24px',
+        28: '28px',
+        32: '32px',
+        36: '36px',
+        40: '40px',
+        44: '44px',
+        48: '48px',
+        52: '52px',
+        56: '56px',
+        60: '60px',
+        64: '64px',
+        72: '72px',
+        80: '80px',
+        96: '96px',
+        600: '600px',
+        '1/2': '50%',
+        '1/3': '33.333333%',
+        '2/3': '66.666667%',
+        '1/4': '25%',
+        '2/4': '50%',
+        '3/4': '75%',
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
+        '1/6': '16.666667%',
+        '2/6': '33.333333%',
+        '3/6': '50%',
+        '4/6': '66.666667%',
+        '5/6': '83.333333%',
+        '1/12': '8.333333%',
+        '2/12': '16.666667%',
+        '3/12': '25%',
+        '4/12': '33.333333%',
+        '5/12': '41.666667%',
+        '6/12': '50%',
+        '7/12': '58.333333%',
+        '8/12': '66.666667%',
+        '9/12': '75%',
+        '10/12': '83.333333%',
+        '11/12': '91.666667%',
+      },
+    }
+  }
+}
+```
 
-### Extended leading
+### borderRadius
 
-The `lineHeight` utilities have been extended to include all `spacing` scale values, so you can use leading to easily create vertical spacing, like this:
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      borderRadius: {
+        sm: '2px',
+        DEFAULT: '4px',
+        lg: '8px',
+      },
+    }
+  }
+}
+```
+
+### fontSize
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      fontSize: {
+        0: '0',
+        xs: '12px',
+        sm: '14px',
+        base: '16px',
+        lg: '18px',
+        xl: '20px',
+        '2xl': '24px',
+        '3xl': '30px',
+        '4xl': '36px',
+        '5xl': '48px',
+        '6xl': '60px',
+        '7xl': '72px',
+        '8xl': '96px',
+        '9xl': '128px',
+      },
+    }
+  }
+}
+```
+
+### lineHeight
+
+The `lineHeight` utilities have been extended to include all `spacing` scale values:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      lineHeight: theme => ({
+        ...theme('spacing'),
+      }),
+    }
+  }
+}
+```
+
+So you can use `leading` utilities to easily create vertical spacing, like this:
 
 ```html
 <div class="leading-64">&zwnj;</div>
