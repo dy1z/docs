@@ -133,6 +133,6 @@ You will see lots of `@font-face` declarations in there, for example
 }
 ```
 
-Copy only the `@font-face` declarations that you need and add them either in a Template or in the Layout your templates extend (for global usage) - see our [web fonts in HTML emails guide](http://localhost:8080/guides/custom-web-fonts-html-emails-font-face/#add-in-template) to learn how to do so.
+Copy only the `@font-face` declarations that you need and add them either in a Template or in the Layout your templates extend (for global usage) - see our [web fonts in HTML emails guide](https://maizzle.com/guides/custom-web-fonts-html-emails-font-face/#add-in-template) to learn how to do so.
 
 Note that you'll still need to register the [Tailwind utility](#tailwind-utility) in order to use the fonts.
